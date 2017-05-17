@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sobre - ATS - HM</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="image/hotel.png">
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<div class="row" style="margin-top: 2%; margin-left: 0px; margin-right: 0px; margin-bottom: 2%">
+					<div class="col-lg-offset-4 col-lg-6">
+						 <img src="image/hotel.png" alt="Logo Hotel" height="60" width="60"><h1 class="text-center" style="display: inline; padding-left: 3%;">ATS - Hotel Management</h1>	 	
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<nav class="navbar navbar-default">
+				  <div class="container-fluid">
+				  	<div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				    </div>
+				    <div class="collapse navbar-collapse" id="menu">
+						<ul class="nav navbar-nav">
+						  <li><a href="#">Página Principal - Estabelecimento</a></li>
+						  <li class="active"><a href="#">Gerenciamento de Operadores</a></li>
+						  <li><a href="#">Gerenciamento de Quartos</a></li>
+						  <li><a href="#">Gerenciamento de Hospedagens</a></li>
+						  <li><a href="#">Página Principal - ADM </a></li>
+						  <li><a href="#">Sair do Sistema</a></li>
+						</ul>
+					</div>
+				  </div>
+				</nav>
+				<div class="container-fluid">
+					<div class="row" style="margin-top: 1%">
+						<div class="col-lg-offset-1 col-lg-3">
+							<a href="#">Voltar</a>
+						</div>
+					</div>
+					<div class="row" style="margin-left: 0px; margin-right: 0px">
+						<div class="col-lg-offset-2 col-lg-8">
+							<h2 class="text-center">Alterar Operador</h2>
+							<br>
+							<br>
+							<form role="form" action="#" method="POST">
+		                        <div class="form-group row">
+		                            <label for="nome" class="col-xs-4 col-form-label">Nome Completo: </label>
+		                            <div class="col-xs-8">
+		                                <input class="form-control" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="30">
+		                            </div>
+		                        </div>
+		                        <div class="form-group row">
+		                            <label for="cpf" class="col-xs-4 col-form-label">CPF: </label>
+		                            <div class="col-xs-8">
+		                                <input class="form-control" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf">
+		                            </div>
+		                        </div>
+		                        <div class="form-group row">
+		                            <label for="fixo" class="col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
+		                            <div class="col-xs-8">
+		                                <input class="form-control" type="text" placeholder="(##) ####-####" name="fixo" id="fixo">
+		                            </div>
+		                        </div>
+		                        <div class="form-group row">
+		                            <label for="celular" class="col-xs-4 col-form-label">Telefone Celular:</label>
+		                            <div class="col-xs-8">
+		                                <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="celular" id="celular">
+		                            </div>
+		                        </div>
+		                        <div class="form-group row">
+		                            <label for="nickname" class="col-xs-4 col-form-label">Nickname de Acesso (Apelido)*: </label>
+		                            <div class="col-xs-8">
+		                                <input class="form-control" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="40">
+		                            </div>
+		                        </div>
+		                        <div class="form-group row">
+		                            <label for="senha" class="col-xs-4 col-form-label">Senha: </label>
+		                            <div class="col-xs-8">
+		                                <input class="form-control" type="password" placeholder="Digite sua senha" required="true" name="senha" id="senha">
+		                            </div>
+		                        </div>
+		                        <div class="form-group row">
+		                            <label for="senha" class="col-xs-4 col-form-label">Digite novamente a Senha: </label>
+		                            <div class="col-xs-8">
+		                                <input class="form-control" type="password" placeholder="Digite novamente a sua senha" required="true" name="senha" id="senha">
+		                            </div>
+		                        </div>
+		                        <div class="form-group row">
+		                            <p style="text-align: center">
+		                            <button type="submit" class="btn btn-primary">Alterar</button></p>
+		                        </div>
+		                        <p class="text-center">* Nickname: O nickname ou apelido deve ser único ao usuário operador, pois é a partir dele que o mesmo possui acesso ao ambiente de gerenciamento do estabelecimento em que ele está vinculado.</p>
+		                    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<footer class="footer" style="margin-top: 2%">
+					<p class="text-center">Desenvolvido por AlissonTS7 - 2017</p>
+				</footer>
+			</div>
+		</div>
+
+		<script src="js/jquery-3.2.1.js"></script>
+		<script src="js/bootstrap.js"></script>
+	</body>
+</html>
