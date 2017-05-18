@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sobre - ATS - HM</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="image/hotel.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<div class="row" style="margin-top: 2%; margin-left: 0px; margin-right: 0px; margin-bottom: 2%">
+					<div class="col-lg-offset-4 col-lg-6">
+						 <img src="image/hotel.png" alt="Logo Hotel" height="60" width="60"><h1 class="text-center" style="display: inline; padding-left: 3%;">ATS - Hotel Management</h1>	 	
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<nav class="navbar navbar-default">
+				  <div class="container-fluid">
+				  	<div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				    </div>
+				    <div class="collapse navbar-collapse" id="menu">
+						<ul class="nav navbar-nav">
+						  <li><a href="#">Página Principal - Estabelecimento</a></li>
+						  <li><a href="#">Gerenciamento de Operadores</a></li>
+						  <li><a href="#">Gerenciamento de Quartos</a></li>
+						  <li class="active"><a href="#">Gerenciamento de Hospedagens</a></li>
+						  <li><a href="#">Página Principal - ADM </a></li>
+						  <li><a href="#">Sair do Sistema</a></li>
+						</ul>
+					</div>
+				  </div>
+				</nav>
+				<div class="container-fluid">
+					<div class="row" style="margin-top: 1%">
+						<div class="col-lg-offset-1 col-lg-3">
+							<a href="#">Voltar</a>
+						</div>
+					</div>
+					<div style="margin-left: 0px; margin-right: 0px">
+						<div class="col-lg-offset-3 col-lg-6">
+							<h2 class="text-center">Relatório de Hospedagem</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-offset-3 col-lg-6">
+							<br>
+							<form role="form" action="#" method="POST">
+		                        <div class="form-group row">
+		                            <label for="dataInicial" class="col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial: </label>
+		                            <div class="col-xs-8">
+		                                <input class="form-control" type="date" id="dataInicial" name="dataInicial" required="true">
+		                            </div>
+		                        </div>
+		                        <div class="form-group row">
+									<p style="text-align: center">
+               							<button type="submit" class="btn btn-default">Gerar Relatório</button></p>
+		                        </div>
+		                    </form>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-offset-2 col-lg-8">
+							<h4 class="text-center">Relatório Gerado</h4>	
+						</div>
+					</div>	
+					<div class="row">	
+						<div class="col-lg-offset-2 col-lg-8">
+	                            <div class="table-responsive">
+								    <table class="table table-bordered table-hover">
+								      <thead>
+								        <tr>
+								          <th>Total de Quartos</th>
+								          <th>Quartos Ocupados</th>
+								          <th>Quartos Desocupados</th>
+								          <th>Quartos Desabilitados</th>
+								          <th>% de Ocupação</th>
+								        </tr>
+								      </thead>
+								      <tbody>
+								        <tr>
+								          <th>1</th>
+								          <td>Conteúdo</td>
+								          <td>Conteúdo</td>
+								          <td>Conteúdo</td>
+								          <td>Conteúdo</td>
+								        </tr>
+								      </tbody>
+								    </table>
+	                        	</div>   
+						</div>
+					</div>
+					<div class="row">	
+						<div class="col-lg-offset-3 col-lg-6">
+                            <div class="table-responsive">
+							    <table class="table table-bordered table-hover">
+							      <thead>
+							        <tr>
+							          <th>Número do Quarto</th>
+							          <th>Estado do Quarto</th>
+							        </tr>
+							      </thead>
+							      <tbody>
+							        <tr>
+							          <th>1</th>
+							          <td>Conteúdo</td>
+							        </tr>
+							      </tbody>
+							    </table>
+                        	</div>   
+						</div>
+					</div>
+					<div class="row" style="margin-bottom: 3%;">	
+						<div class="col-lg-offset-3 col-lg-6">
+                            <p style="text-align: center">
+               					<button type="submit" class="btn btn-success">Imprimir Relatório</button></p>
+						</div>
+					</div>
+			</div>	
+			<div id="footer">
+				<footer class="footer" style="margin-top: 2%">
+					<p class="text-center">Desenvolvido por AlissonTS7 - 2017</p>
+				</footer>
+			</div>
+		</div>
+
+		<script src="js/jquery-3.2.1.js"></script>
+		<script src="js/bootstrap.js"></script>
+	</body>
+</html>
