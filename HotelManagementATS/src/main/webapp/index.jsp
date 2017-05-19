@@ -4,14 +4,13 @@
     Author     : Alisson
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ include file="import/contentType.jsp" %>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Página Inicial</title>
+        <%@ include file="import/head.jsp" %>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <c:redirect url="/paginaInicial.html"/>
     </body>
 </html>
