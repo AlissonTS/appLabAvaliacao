@@ -17,21 +17,21 @@ public class EstabelecimentoController {
     
     @RequestMapping("cadastrarEstabelecimentoFormAdm.html")
     public String cadastrarEstabelecimentoFormAdm(){	
-            return "/WEB-INF/views/ambienteAdministrador/cadastrarEstabelecimentoFormAdm";
+            return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/cadastrarEstabelecimentoAdm";
     }
     
     @RequestMapping("escolherEstabelecimentoAlterarAdm.html")
     public String escolherEstabelecimentoAlterarAdm(){	
-            return "/WEB-INF/views/ambienteAdministrador/escolherEstabelecimentoAlterarAdm";
+            return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/escolherEstabelecimentoAlterarAdm";
     }
     
     @RequestMapping("escolherEstabelecimentoExcluirAdm.html")
     public String escolherEstabelecimentoExcluirAdm(){	
-            return "/WEB-INF/views/ambienteAdministrador/escolherEstabelecimentoExcluirAdm";
+            return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/escolherEstabelecimentoExcluirAdm";
     }
     
     @RequestMapping("alterarEstabelecimentoFormAdm.html")
     public String alterarEstabelecimentoFormAdm(){	
-            return "/WEB-INF/views/ambienteAdministrador/alterarEstabelecimentoFormAdm";
+            return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/alterarEstabelecimentoAdm";
     }
 }

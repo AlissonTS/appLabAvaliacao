@@ -1,5 +1,6 @@
 br\ufsm\csi\hotelmanagementats\model\Hospedagem.class
 br\ufsm\csi\hotelmanagementats\controller\UsuarioOpController.class
+br\ufsm\csi\hotelmanagementats\controller\OperadorController.class
 br\ufsm\csi\hotelmanagementats\model\UsuarioAdministrador.class
 br\ufsm\csi\hotelmanagementats\model\Quarto.class
 br\ufsm\csi\hotelmanagementats\util\ConectaBD.class

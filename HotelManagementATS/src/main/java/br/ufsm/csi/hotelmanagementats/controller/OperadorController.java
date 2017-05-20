@@ -17,26 +17,26 @@ public class OperadorController {
     
     @RequestMapping("cadastrarOperadorForm.html")
     public String cadastrarOperadorForm(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/cadastrarOperador";
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/cadastrarOperador";
     }
     
     @RequestMapping("alterarExcluirOperador.html")
     public String alterarExcluirOperador(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/alterarExcluirOperador";
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador";
     }
     
-    @RequestMapping("escolherOperadorAlterar.html")
+    @RequestMapping("alterarOperadorForm.html")
     public String escolherOperadorAlterar(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/alterarOperador";
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador";
     }
     
-    @RequestMapping("escolherOperadorExcluir.html")
-    public String escolherOperadorExcluirAdm(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/escolherOperadorExcluirAdm";
+    @RequestMapping("excluirOperador.html")
+    public String excluirOperador(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador";
     }
     
     @RequestMapping("alterarOperador.html")
-    public String alterarEstabelecimentoFormAdm(){	
+    public String alterarOperador(){	
             return "/WEB-INF/views/ambienteEstabelecimento/alterarOperador";
     }
 }
