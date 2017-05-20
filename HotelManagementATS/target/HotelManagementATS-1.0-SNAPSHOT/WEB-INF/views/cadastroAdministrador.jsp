@@ -5,35 +5,26 @@
 --%>
 
 <%@ include file="../../import/contentType.jsp" %>
-<!DOCTYPE html>
 <html>
     <head>
         <title>Cadastro Administrador - ATS-HM</title>
         <%@ include file="../../import/head.jsp" %>
     </head>
     <body>
-        
         <div id="wrapper">
             <%@ include file="../../import/header.jsp" %>
             
             <div id="content">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
-                          <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                      </div>
-                      <div class="collapse navbar-collapse" id="menu">
-                          <ul class="nav navbar-nav navbar-right">
-                            <li><a href="paginaInicial.html">Acesso ao Sistema</a></li>
-                            <li class="active"><a href="cadastroAdministrador.html">Cadastrado de Administrador</a></li>
-                            <li><a href="sobreAplicacao.html">Sobre a Aplicação</a></li>
-                          </ul>
-                      </div>
+                        <%@ include file="../../import/menu.jsp" %>  
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav navbar-right">
+                              <li><a href="paginaInicial.html">Acesso ao Sistema</a></li>
+                              <li class="active"><a href="cadastroAdministrador.html">Cadastrado de Administrador</a></li>
+                              <li><a href="sobreAplicacao.html">Sobre a Aplicação</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
                 <div class="container-fluid">
@@ -94,5 +85,6 @@
         </div>  
         
         <%@ include file="../../import/js.jsp" %>
+        <script type="text/javascript" src="scripts/mask.js"></script>
     </body>
 </html>

@@ -1,11 +1,13 @@
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Estabelecimento.java
-C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Quarto.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\dao\UsuarioDao.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\MenuInicialController.java
-C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Cliente.java
-C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Foto.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Gasto.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\UsuarioOperador.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\util\ConectaBD.java
-C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Hospedagem.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\AcessoController.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\UsuarioAdministrador.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Quarto.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Cliente.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Foto.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\MenuPrincipalAdmController.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Hospedagem.java

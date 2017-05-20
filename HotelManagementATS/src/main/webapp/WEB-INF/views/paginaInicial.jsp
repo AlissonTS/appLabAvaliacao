@@ -18,21 +18,14 @@
             <div id="content">
                 <nav class="navbar navbar-default">
                   <div class="container-fluid">
-                        <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="menu">
-                        <ul class="nav navbar-nav navbar-right">
-                          <li class="active"><a href="paginaInicial.html">Acesso ao Sistema</a></li>
-                          <li><a href="cadastroAdministrador.html">Cadastrado de Administrador</a></li>
-                          <li><a href="sobreAplicacao.html">Sobre a Aplicação</a></li>
-                        </ul>
-                    </div>
+                        <%@ include file="../../import/menu.jsp" %>
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav navbar-right">
+                              <li class="active"><a href="paginaInicial.html">Acesso ao Sistema</a></li>
+                              <li><a href="cadastroAdministrador.html">Cadastrado de Administrador</a></li>
+                              <li><a href="sobreAplicacao.html">Sobre a Aplicação</a></li>
+                            </ul>
+                        </div>
                   </div>
                 </nav>
                 <div class="container-fluid">
@@ -40,7 +33,7 @@
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <h2 class="text-center" style="font-size: 25px;">Acesso ao Sistema</h2>
                             <br>
-                             <form role="form" action="#" method="POST" style="margin-top: 4%">
+                             <form role="form" action="realizarLogin.html" method="POST" style="margin-top: 4%">
                                 <div class="form-group row">
                                     <label for="login" class="col-md-2 col-xs-4 col-form-label">Login *: </label>
                                     <div class="col-md-8 col-xs-8">
@@ -68,8 +61,8 @@
                                     <p id="formulario">Login - Perfil usuário administrador: Use seu email cadastrado.</p>
                                     <p id="formulario">Login - Perfil usuário operador: Use nickname (apelido) cadastrado.</p>
                                     <div style="text-align: center">
-                                            <p><b>Deseja administrar as hospedagens de seus hotéis?</b></p>
-                                            <a href="#">Cadastre-se Aqui!</a>
+                                        <p><b>Deseja administrar as hospedagens de seus hotéis?</b></p>
+                                        <a href="#">Cadastre-se Aqui!</a>
                                     </div>
                                 </div>
                             </div>
