@@ -37,60 +37,58 @@
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <div class="col-lg-offset-1 col-lg-10">
-                                <h2 class="text-center" style="font-size: 25px;">Alterar Conta</h2>
-                                <br>
-                                <form role="form" action="#" method="POST">
-                                    <div class="form-group row">
-                                        <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
-                                        <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="30">
-                                        </div>
+                            <h2 class="text-center" style="font-size: 25px;">Alterar Conta</h2>
+                            <br>
+                            <form role="form" action="#" method="POST">
+                                <div class="form-group row">
+                                    <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="30">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="cpf" class="col-md-3 col-xs-4 col-form-label">CPF: </label>
-                                        <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="cpf" class="col-md-3 col-xs-4 col-form-label">CPF: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="fixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
-                                        <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="(##) ####-####" name="fixo" id="fixo">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" type="text" placeholder="(##) ####-####" name="fixo" id="fixo">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="celular" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
-                                        <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="celular" id="celular">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="celular" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="celular" id="celular">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="email" class="col-md-3 col-xs-4 col-form-label">E-mail de Acesso: </label>
-                                        <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="email" placeholder="Digite seu e-mail" required="true" name="email" id="email" maxlength="40">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-3 col-xs-4 col-form-label">E-mail de Acesso: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" type="email" placeholder="Digite seu e-mail" required="true" name="email" id="email" maxlength="40">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="senha" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
-                                        <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="password" placeholder="Digite sua senha" required="true" name="senha" id="senha">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="senha" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" type="password" placeholder="Digite sua senha" required="true" name="senha" id="senha">
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="senha" class="col-md-3 col-xs-4 col-form-label">Digite a Senha novamente: </label>
-                                        <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="password" placeholder="Digite sua senha novamente" required="true" name="senha" id="senha">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="senha" class="col-md-3 col-xs-4 col-form-label">Digite a Senha novamente: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" type="password" placeholder="Digite sua senha novamente" required="true" name="senha" id="senha">
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-12 col-xs-12">
-                                            <p style="text-align: center">
-                                            <button type="submit" class="btn btn-primary">Alterar</button></p>
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <p style="text-align: center">
+                                        <button type="submit" class="btn btn-primary">Alterar</button></p>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>                 

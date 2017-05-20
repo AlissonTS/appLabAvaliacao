@@ -32,19 +32,17 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <div class="col-lg-offset-1 col-lg-10">
-                                <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Conta</h2>
-                                <br>
-                                <p class="text-center">Nome Completo: Fulano Brasil</p>
-                                <p class="text-center">CNPJ: 999.999.99-99</p>
-                                <p class="text-center">Telefone Celular: (55) 90000-0005</p>
-                                <p class="text-center">Telefone Fixo: (55) 0000-0004</p>
-                                <p class="text-center">Email de Acesso: fulanobrasil@gmail.com</p>
-                                <p class="text-center">Senha: *********</p>
-                                <div class="row" style="margin-top: 3%">
-                                    <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                        <a href="alterarContaAdm.html" class="btn btn-default" role="button">Alterar Conta</a>
-                                    </div>
+                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Conta</h2>
+                            <br>
+                            <p class="text-center">Nome Completo: Fulano Brasil</p>
+                            <p class="text-center">CNPJ: 999.999.99-99</p>
+                            <p class="text-center">Telefone Celular: (55) 90000-0005</p>
+                            <p class="text-center">Telefone Fixo: (55) 0000-0004</p>
+                            <p class="text-center">Email de Acesso: fulanobrasil@gmail.com</p>
+                            <p class="text-center">Senha: *********</p>
+                            <div class="row" style="margin-top: 3%">
+                                <div class="col-md-12 col-xs-12" style="text-align: center;">
+                                    <a href="alterarContaAdm.html" class="btn btn-primary" role="button">Alterar Conta</a>
                                 </div>
                             </div>
                         </div>

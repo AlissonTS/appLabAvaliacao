@@ -1,13 +1,13 @@
 <%-- 
-    Document   : gerenciamentoContaAdm
-    Created on : 19/05/2017, 23:16:42
+    Document   : gerenciamentoContaOp
+    Created on : 20/05/2017, 10:00:38
     Author     : Alisson
 --%>
 
 <%@ include file="../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Gerenciamento de Conta ADM - ATS-HM</title>
+        <title>Gerenciamento de Conta Operador - ATS-HM</title>
         <%@ include file="../../../import/head.jsp" %>
     </head>
     <body>
@@ -20,9 +20,9 @@
                         <%@ include file="../../../import/menu.jsp" %>    
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
-                              <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
-                              <li><a href="gerenciamentoEstabelecimentosAdm.html">Gerenciamento de Estabelecimentos</a></li>
-                              <li class="active"><a href="gerenciamentoContaAdm.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
+                              <li><a href="#">Página Principal - Estabelecimento</a></li>
+                              <li><a href="#">Gerenciamento de Hospedagens</a></li>
+                              <li class="active"><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
                               <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                             </ul>
                         </div>
@@ -38,11 +38,11 @@
                             <p class="text-center">CNPJ: 999.999.99-99</p>
                             <p class="text-center">Telefone Celular: (55) 90000-0005</p>
                             <p class="text-center">Telefone Fixo: (55) 0000-0004</p>
-                            <p class="text-center">Email de Acesso: fulanobrasil@gmail.com</p>
+                            <p class="text-center">Nickname (Apelido) de Acesso: fulanoBr</p>
                             <p class="text-center">Senha: *********</p>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                    <a href="alterarContaAdm.html" class="btn btn-primary" role="button">Alterar Conta</a>
+                                    <a href="alterarContaOp.html" class="btn btn-primary" role="button">Alterar Conta</a>
                                 </div>
                             </div>
                         </div>

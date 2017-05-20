@@ -5,6 +5,7 @@
  */
 package br.ufsm.csi.hotelmanagementats.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,8 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AcessoController {
     
     @RequestMapping("realizarLogin.html")
-    public String realizarLogin(){	
-            return "/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm";
+    public String realizarLogin(HttpServletRequest rq){	
+        
+        String acesso = rq.getParameter("login");
+        
+        if(acesso!=null){
+            if(acesso.equals("1")){
+                return "/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm";
+            }else{
+                return "/WEB-INF/views/ambienteOperador/gerenciamentoContaOp";
+            }
+        }
+        return "/WEB-INF/views/paginaInicial";
     }
     
     @RequestMapping("realizarLogout.html")

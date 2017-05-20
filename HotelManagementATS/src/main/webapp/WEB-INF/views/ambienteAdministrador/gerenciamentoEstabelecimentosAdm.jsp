@@ -36,17 +36,17 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="#" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Cadastrar Estabelecimento</a>
+                                    <a href="cadastrarEstabelecimentoFormAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Cadastrar Estabelecimento</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="#" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Alterar Estabelecimento</a>
+                                    <a href="escolherEstabelecimentoAlterarAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Alterar Estabelecimento</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="#" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Excluir Estabelecimento</a>
+                                    <a href="escolherEstabelecimentoExcluirAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Excluir Estabelecimento</a>
                                 </div>
                             </div>
                         </div>

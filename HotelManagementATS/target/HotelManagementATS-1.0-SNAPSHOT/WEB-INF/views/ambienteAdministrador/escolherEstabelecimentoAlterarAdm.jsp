@@ -1,13 +1,13 @@
 <%-- 
-    Document   : gerenciamentoEstabelecimentos
-    Created on : 19/05/2017, 22:53:02
+    Document   : escolherEstabelecimentoAlterar
+    Created on : 20/05/2017, 09:13:46
     Author     : Alisson
 --%>
 
 <%@ include file="../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Gerenciamento de Estabelecimentos ADM - ATS-HM</title>
+        <title>Alterar Estabelecimento - ATS-HM</title>
         <%@ include file="../../../import/head.jsp" %>
     </head>
     <body>
@@ -30,25 +30,30 @@
                 </nav>
                 
                 <div class="container-fluid">
+                    <div class="row" style="margin-top: 1%">
+                        <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
+                                <a href="gerenciamentoEstabelecimentosAdm.html">Voltar</a>
+                        </div>
+                    </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Estabelecimentos</h2>
+                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Estabelecimentos </h2>
                             <br>
-                            <div class="row">
-                                <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="cadastrarEstabelecimentoFormAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Cadastrar Estabelecimento</a>
+                            <h4 class="text-center">Escolha o Estabelecimento para Alteração: </h4>
+                            <form action="alterarEstabelecimentoFormAdm.html" method="POST">
+                                <div class="form-group row">
+                                    <center>	
+                                      <input type="radio" name="gender" value="male" checked> Hotel Santa Maria - Santa Maria/RS<br>
+                                      <input type="radio" name="gender" value="female"> Hotel Unidos de Manchester - Novo Hamburgo/RS<br>
+                                      <input type="radio" name="gender" value="other"> Pousada Mar Azul - Torres/RS
+                                    </center>
                                 </div>
-                            </div>
-                            <div class="row" style="margin-top: 3%">
-                                <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="escolherEstabelecimentoAlterarAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Alterar Estabelecimento</a>
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 3%">
-                                <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="escolherEstabelecimentoExcluirAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Excluir Estabelecimento</a>
-                                </div>
-                            </div>
+                                <div class="form-group row">
+                                    <br>
+                                    <p style="text-align: center">
+                                    <button type="submit" class="btn btn-primary">Alterar Estabelecimento</button></p>
+                                </div>		
+                            </form>
                         </div>
                     </div>
                 </div>                 
