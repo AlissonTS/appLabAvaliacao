@@ -35,7 +35,7 @@
                             <h2 class="text-center" style="font-size: 25px;">Página Principal - ADM </h2>
                             <p class="text-center" style="font-size: 17px">Olá, Fulano </p>
                             <h3 class="text-center">Seus Estabelecimentos:</h3>
-                            <form>
+                            <form action="paginaPrincipalEstabelecimento.html" method="POST">
                                 <div class="form-group row">
                                     <center>	
                                       <input type="radio" name="gender" value="male" checked> Hotel Santa Maria - Santa Maria/RS<br>
