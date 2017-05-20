@@ -59,8 +59,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <p style="text-align: center">
-                                    <button type="submit" class="btn btn-success">Cadastrar</button></p>
+                                    <div class="col-md-12 col-xs-12">
+                                        <p style="text-align: center">
+                                        <button type="submit" class="btn btn-success">Cadastrar</button></p>
+                                    </div>
                                 </div>
                             </form>
                         </div>

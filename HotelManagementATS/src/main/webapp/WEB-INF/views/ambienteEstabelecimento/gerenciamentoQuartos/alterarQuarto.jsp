@@ -1,13 +1,13 @@
 <%-- 
-    Document   : alterarOperador
-    Created on : 20/05/2017, 14:45:05
+    Document   : alterarQuarto
+    Created on : 20/05/2017, 14:57:59
     Author     : Alisson
 --%>
 
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Alterar Operador - ATS-HM</title>
+        <title>Alterar Quarto - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
     </head>
     <body>
@@ -21,8 +21,8 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
                                 <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
-                                <li class="active"><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
-                                <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
+                                <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
+                                <li class="active"><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
                                 <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                 <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
                                 <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
@@ -34,54 +34,48 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="alterarExcluirOperador.html">Voltar</a>
+                                <a href="alterarDesabilitarQuarto.html">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Alterar Operador</h2>
+                            <h2 class="text-center" style="font-size: 25px;">Alterar Quarto</h2>
                             <br>
-                            <form role="form" action="alterarOperador.html" method="POST">
+                            <form role="form" action="#" method="POST">
                                 <div class="form-group row">
-                                    <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
+                                    <label for="numero" class="col-md-3 col-xs-4 col-form-label">Número de Identificação: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="30">
+                                        <input class="form-control" type="text" placeholder="Digite o número de identificação do quarto" required="true" name="numero" id="numero" maxlength="30">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="cpf" class="col-md-3 col-xs-4 col-form-label">CPF: </label>
+                                    <label for="area" class="col-md-3 col-xs-4 col-form-label">Área do quarto (m²): </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf">
+                                        <input class="form-control" type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="fixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
+                                    <label for="maxhospedes" class="col-md-3 col-xs-4 col-form-label">Máximo de hóspedes:  </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="(##) ####-####" name="fixo" id="fixo">
+                                        <input class="form-control" type="text" placeholder="Digite o máximo de hóspedes" name="maxhospedes" id="maxhospedes">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="celular" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
+                                    <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária:</label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="celular" id="celular">
+                                        <input class="form-control" type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="nickname" class="col-md-3 col-xs-4 col-form-label">Nickname de Acesso (Apelido)*: </label>
+                                    <label for="info" class="col-md-3 col-xs-4 col-form-label">Informações extras sobre o quarto (Não obrigatório): </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="40">
+                                        <textarea class="form-control" rows="5" id="info" name="info"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="senha" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
-                                    <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="password" placeholder="Digite sua senha" required="true" name="senha" id="senha">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="senha" class="col-md-3 col-xs-4 col-form-label">Digite a senha novamente: </label>
-                                    <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="password" placeholder="Digite sua senha novamente" required="true" name="senha" id="senha">
+                                    <label for="foto" class="col-md-3 col-xs-4 col-form-label">Selecione fotos do quarto: </label>
+                                    <div class="col-md-8 col-xs-8">	                                
+                                        <input type="file" name="foto" accept="image/*">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -90,7 +84,6 @@
                                         <button type="submit" class="btn btn-primary">Alterar</button></p>
                                     </div>    
                                 </div>
-                                <p class="text-center">* Nickname: O nickname ou apelido deve ser único ao usuário operador, pois é a partir dele que o mesmo possui acesso ao ambiente de gerenciamento do estabelecimento em que ele está vinculado.</p>
                             </form>    
                         </div>
                     </div>

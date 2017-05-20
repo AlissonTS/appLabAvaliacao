@@ -43,44 +43,46 @@
                             <br>
                             <form role="form" action="#" method="POST">
                                 <div class="form-group row">
-                                    <label for="nome" class="col-xs-4 col-form-label">Nome Completo: </label>
-                                    <div class="col-xs-8">
+                                    <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
+                                    <div class="col-md-8 col-xs-8">
                                         <input class="form-control" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="30">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="cpf" class="col-xs-4 col-form-label">CPF: </label>
-                                    <div class="col-xs-8">
+                                    <label for="cpf" class="col-md-3 col-xs-4 col-form-label">CPF: </label>
+                                    <div class="col-md-8 col-xs-8">
                                         <input class="form-control" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="fixo" class="col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
-                                    <div class="col-xs-8">
+                                    <label for="fixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
+                                    <div class="col-md-8 col-xs-8">
                                         <input class="form-control" type="text" placeholder="(##) ####-####" name="fixo" id="fixo">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="celular" class="col-xs-4 col-form-label">Telefone Celular:</label>
-                                    <div class="col-xs-8">
+                                    <label for="celular" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
+                                    <div class="col-md-8 col-xs-8">
                                         <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="celular" id="celular">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="nickname" class="col-xs-4 col-form-label">Nickname de Acesso (Apelido)*: </label>
-                                    <div class="col-xs-8">
+                                    <label for="nickname" class="col-md-3 col-xs-4 col-form-label">Nickname de Acesso (Apelido)*: </label>
+                                    <div class="col-md-8 col-xs-8">
                                         <input class="form-control" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="40">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="senha" class="col-xs-4 col-form-label">Senha: </label>
-                                    <div class="col-xs-8">
+                                    <label for="senha" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
+                                    <div class="col-md-8 col-xs-8">
                                         <input class="form-control" type="password" placeholder="Digite sua senha" required="true" name="senha" id="senha">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <p style="text-align: center">
-                                    <button type="submit" class="btn btn-success">Cadastrar</button></p>
+                                    <div class="col-md-12 col-xs-12">
+                                        <p style="text-align: center">
+                                        <button type="submit" class="btn btn-success">Cadastrar</button></p>
+                                    </div>    
                                 </div>
                                 <p class="text-center">* Nickname: O nickname ou apelido deve ser único ao usuário operador, pois é a partir dele que o mesmo possui acesso ao ambiente de gerenciamento do estabelecimento em que ele está vinculado.</p>
                             </form>    

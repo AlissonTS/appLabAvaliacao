@@ -26,7 +26,7 @@ public class OperadorController {
     }
     
     @RequestMapping("alterarOperadorForm.html")
-    public String escolherOperadorAlterar(){	
+    public String alterarOperadorForm(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador";
     }
     
@@ -37,6 +37,6 @@ public class OperadorController {
     
     @RequestMapping("alterarOperador.html")
     public String alterarOperador(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/alterarOperador";
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador";
     }
 }
