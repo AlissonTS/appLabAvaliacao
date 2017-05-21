@@ -57,7 +57,7 @@
                                   </thead>
                                   <tbody>
                                     <tr>
-                                      <th>1</th>
+                                      <td>1</td>
                                       <td>Mark</td>
                                       <td>Otto</td>
                                       <td>@mdo</td>
@@ -67,7 +67,7 @@
                                       <td class="text-center"><a href="desabilitarQuarto.html" class="btn btn-default" role="button">Desabilitar</a></td>
                                     </tr>
                                     <tr>
-                                      <th>1</th>
+                                      <td>1</td>
                                       <td>Mark</td>
                                       <td>Otto</td>
                                       <td>@mdo</td>

@@ -9,4 +9,7 @@
         });
         $(document).ready(function(){
                $("#fixo").mask("(99) 9999-9999");
-        });  
+        });
+        $(document).ready(function(){
+               $("#horaFinal").mask("99:99");
+        });

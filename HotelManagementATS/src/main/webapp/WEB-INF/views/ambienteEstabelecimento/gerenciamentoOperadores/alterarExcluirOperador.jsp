@@ -45,7 +45,7 @@
                                 <table class="table table-bordered">
                                   <thead>
                                     <tr>
-                                      <th>Nome</th>
+                                      <td>Nome</td>
                                       <th>CPF</th>
                                       <th>Telefone Fixo</th>
                                       <th>Telefone Celular</th>
@@ -56,7 +56,7 @@
                                   </thead>
                                   <tbody>
                                     <tr>
-                                      <th>2</th>
+                                      <td>2</td>
                                       <td>Mark</td>
                                       <td>Otto</td>
                                       <td>@TwBootstrap</td>
