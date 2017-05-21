@@ -34,7 +34,7 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%; margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoHospedagens.html">Voltar</a>
+                                <a href="quartosDesocupados.html">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
@@ -52,12 +52,6 @@
                                             <h4 class="text-center">Informações do Período:</h4>
                                             <br>
                                             <form role="form" action="#" method="POST">
-                                                <div class="form-group row">
-                                                    <label for="dataInicial" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial: </label>
-                                                    <div class="col-md-5 col-xs-8">
-                                                        <input class="form-control" type="date" id="dataInicial" name="dataInicial" required="true">
-                                                    </div>
-                                                </div>
                                                 <div class="form-group row">
                                                     <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
                                                     <div class="col-md-5 col-xs-8">

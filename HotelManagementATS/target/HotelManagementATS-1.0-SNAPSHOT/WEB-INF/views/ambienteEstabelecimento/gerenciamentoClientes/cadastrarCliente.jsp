@@ -55,9 +55,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="celular" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
+                                    <label for="telCel" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="celular" id="celular">
+                                        <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="telCel" id="telCel">
                                     </div>
                                 </div>
                                 <div class="form-group row">

@@ -14,7 +14,7 @@ public class Estabelecimento {
     private int cod;
     private String cnpj;
     private String nome;
-    private String telefone;
+    private String telFixo;
     private int codUsuario;
 
     /**
@@ -60,17 +60,17 @@ public class Estabelecimento {
     }
 
     /**
-     * @return the telefone
+     * @return the telFixo
      */
-    public String getTelefone() {
-        return telefone;
+    public String getTelFixo() {
+        return telFixo;
     }
 
     /**
-     * @param telefone the telefone to set
+     * @param telFixo the telefone to set
      */
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelFixo(String telFixo) {
+        this.telFixo = telFixo;
     }
 
     /**

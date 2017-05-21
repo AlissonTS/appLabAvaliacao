@@ -46,7 +46,7 @@
                             <br>
                             <p class="text-center">Hotel Santa Maria - Santa Maria/RS</p>
                             <p class="text-center">CNPJ: 99.999.999/9999-99</p>
-                            <p class="text-center">Telefone: (55) 0000-0009</p>
+                            <p class="text-center">Telefone Fixo: (55) 0000-0009</p>
                         </div>
                     </div>
                 </div>                 

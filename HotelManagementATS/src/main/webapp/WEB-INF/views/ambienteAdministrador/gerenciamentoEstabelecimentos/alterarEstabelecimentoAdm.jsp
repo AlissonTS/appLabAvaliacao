@@ -53,9 +53,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="fixo" class="col-md-3 col-xs-4 col-form-label">Telefone:  </label>
+                                    <label for="telFixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo:  </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="(##) ####-####" name="fixo" id="fixo">
+                                        <input class="form-control" type="text" placeholder="(##) ####-####" name="telFixo" id="telFixo">
                                     </div>
                                 </div>
                                 <div class="form-group row">

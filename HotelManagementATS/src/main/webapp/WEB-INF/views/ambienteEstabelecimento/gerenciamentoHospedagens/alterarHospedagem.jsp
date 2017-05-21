@@ -53,12 +53,6 @@
                                             <br>
                                             <form role="form" action="#" method="POST">
                                                 <div class="form-group row">
-                                                    <label for="dataInicial" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial: </label>
-                                                    <div class="col-md-5 col-xs-8">
-                                                        <input class="form-control" type="date" id="dataInicial" name="dataInicial" required="true">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
                                                     <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
                                                     <div class="col-md-5 col-xs-8">
                                                         <input class="form-control" type="date" id="dataFinal" name="dataFinal" required="true">

@@ -20,8 +20,8 @@
                         <%@ include file="../../../import/menu.jsp" %>    
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
-                              <li><a href="#">Página Principal - Estabelecimento</a></li>
-                              <li><a href="#">Gerenciamento de Hospedagens</a></li>
+                              <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
+                              <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                               <li class="active"><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
                               <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                             </ul>
@@ -53,15 +53,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="fixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
+                                    <label for="telFixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="(##) ####-####" name="fixo" id="fixo">
+                                        <input class="form-control" type="text" placeholder="(##) ####-####" name="telFixo" id="telFixo">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="celular" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
+                                    <label for="telCel" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="celular" id="celular">
+                                        <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="telCel" id="telCel">
                                     </div>
                                 </div>
                                 <div class="form-group row">

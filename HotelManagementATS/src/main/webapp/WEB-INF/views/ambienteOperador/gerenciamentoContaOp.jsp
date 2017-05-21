@@ -20,8 +20,8 @@
                         <%@ include file="../../../import/menu.jsp" %>    
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
-                              <li><a href="#">Página Principal - Estabelecimento</a></li>
-                              <li><a href="#">Gerenciamento de Hospedagens</a></li>
+                              <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
+                              <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                               <li class="active"><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
                               <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                             </ul>
