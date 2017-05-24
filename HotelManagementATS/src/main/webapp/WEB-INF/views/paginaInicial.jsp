@@ -31,6 +31,12 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2%;">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
                             <h2 class="text-center" style="font-size: 25px;">Acesso ao Sistema</h2>
                             <br>
                              <form role="form" action="realizarLogin.html" method="POST" style="margin-top: 4%">

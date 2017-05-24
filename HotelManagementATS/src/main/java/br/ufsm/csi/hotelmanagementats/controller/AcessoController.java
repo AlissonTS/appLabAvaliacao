@@ -19,16 +19,14 @@ public class AcessoController {
     @RequestMapping("realizarLogin.html")
     public String realizarLogin(HttpServletRequest rq){	
         
-        String acesso = rq.getParameter("login");
+        int verificador = rq.getParameter("login").indexOf("@");
         
-        if(acesso!=null){
-            if(acesso.equals("1")){
-                return "/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm";
-            }else{
-                return "/WEB-INF/views/ambienteOperador/gerenciamentoContaOp";
-            }
+        if(verificador!=-1){
+            return "/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm";
+        }else{
+            return "/WEB-INF/views/ambienteOperador/gerenciamentoContaOp";
         }
-        return "/WEB-INF/views/paginaInicial";
+           
     }
     
     @RequestMapping("realizarLogout.html")
