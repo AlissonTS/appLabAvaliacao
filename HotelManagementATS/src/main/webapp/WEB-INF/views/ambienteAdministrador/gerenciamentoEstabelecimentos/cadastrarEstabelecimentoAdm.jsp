@@ -43,19 +43,19 @@
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o nome do Estabelecimento" required="true" name="nome" id="nome" maxlength="30">
+                                        <input class="form-control" type="text" placeholder="Digite o nome do Estabelecimento" required="true" name="nome" id="nome" maxlength="25">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="cnpj" class="col-md-3 col-xs-4 col-form-label">CNPJ: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="##.###.###/####-##" required="true" name="cnpj" id="cnpj">
+                                        <input class="form-control" type="text" placeholder="##.###.###/####-##" required="true" name="cnpj" id="cnpj" pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}" title="99.999.999/9999-99">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="telFixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo:  </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="(##) ####-####" name="telFixo" id="telFixo">
+                                        <input class="form-control" type="text" placeholder="(##) ####-####" name="telFixo" id="telFixo" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4}" title="(##) ####-####">
                                     </div>
                                 </div>
                                 <div class="form-group row">

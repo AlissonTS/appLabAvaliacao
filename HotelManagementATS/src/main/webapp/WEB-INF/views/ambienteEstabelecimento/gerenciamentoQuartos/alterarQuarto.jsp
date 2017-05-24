@@ -45,31 +45,31 @@
                                 <div class="form-group row">
                                     <label for="numero" class="col-md-3 col-xs-4 col-form-label">Número de Identificação: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o número de identificação do quarto" required="true" name="numero" id="numero" maxlength="30">
+                                        <input class="form-control" type="text" placeholder="Digite o número de identificação do quarto" required="true" name="numero" id="numero" maxlength="4" pattern="[0-9]+$" title="Apenas Números">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="area" class="col-md-3 col-xs-4 col-form-label">Área do quarto (m²): </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area">
+                                        <input class="form-control" type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area" maxlength="7">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="maxhospedes" class="col-md-3 col-xs-4 col-form-label">Máximo de hóspedes:  </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o máximo de hóspedes" name="maxhospedes" id="maxhospedes">
+                                        <input class="form-control" type="text" placeholder="Digite o máximo de hóspedes" name="maxhospedes" id="maxhospedes" maxlength="3" pattern="[0-9]+$" title="Apenas Números">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária:</label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria">
+                                        <input class="form-control" type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="10">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="info" class="col-md-3 col-xs-4 col-form-label">Informações extras sobre o quarto (Não obrigatório): </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <textarea class="form-control" rows="5" id="info" name="info"></textarea>
+                                        <textarea class="form-control" rows="5" id="info" name="info" maxlength="60"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">

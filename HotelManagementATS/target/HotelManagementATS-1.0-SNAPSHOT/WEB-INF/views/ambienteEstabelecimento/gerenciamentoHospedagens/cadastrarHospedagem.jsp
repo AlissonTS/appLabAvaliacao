@@ -55,13 +55,13 @@
                                                 <div class="form-group row">
                                                     <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
                                                     <div class="col-md-5 col-xs-8">
-                                                        <input class="form-control" type="date" id="dataFinal" name="dataFinal" required="true">
+                                                        <input class="form-control" type="date" id="dataFinal" name="dataFinal" required="true" pattern="\d{2}\/\d{2}\/\d{4}" title="##/##/####">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="horaFinal" class="col-md-4 col-xs-4 col-form-label">Hora Final:</label>
                                                     <div class="col-md-5 col-xs-8">
-                                                        <input class="form-control" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]">
+                                                        <input class="form-control" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">

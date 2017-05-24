@@ -62,7 +62,7 @@
                                                 <div class="form-group row">
                                                     <label for="descricaoGasto" class="col-xs-4 col-form-label">Descrição do gasto:</label>
                                                     <div class="col-xs-8">
-                                                        <input class="form-control" type="text" placeholder="Digite a descrição do gasto" id="descricaoGasto" name="descricaoGasto" required="true">
+                                                        <input class="form-control" type="text" placeholder="Digite a descrição do gasto" id="descricaoGasto" name="descricaoGasto" required="true" maxlength="10">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
