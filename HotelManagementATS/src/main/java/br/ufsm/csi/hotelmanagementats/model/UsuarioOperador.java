@@ -9,31 +9,12 @@ package br.ufsm.csi.hotelmanagementats.model;
  *
  * @author Alisson
  */
-public class UsuarioOperador {
+public class UsuarioOperador extends Usuario{
     
-    private int cod;
     private String nickname;
     private byte[] senha;
-    private String nome;
-    private String cpf;
-    private String telFixo;
-    private String telCel;
-    private int codEstabelecimento;
+    private Estabelecimento estabelecimento;
     
-    /**
-     * @return the cod
-     */
-    public int getCod() {
-        return cod;
-    }
-
-    /**
-     * @param cod the cod to set
-     */
-    public void setCod(int cod) {
-        this.cod = cod;
-    }
-
     /**
      * @return the email
      */
@@ -63,73 +44,17 @@ public class UsuarioOperador {
     }
 
     /**
-     * @return the nome
+     * @return the estabelecimento
      */
-    public String getNome() {
-        return nome;
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
     }
 
     /**
-     * @param nome the nome to set
+     * @param estabelecimento the estabelecimento to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    /**
-     * @return the cpf
-     */
-    public String getCpf() {
-        return cpf;
-    }
-
-    /**
-     * @param cpf the cpf to set
-     */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    /**
-     * @return the telFixo
-     */
-    public String getTelFixo() {
-        return telFixo;
-    }
-
-    /**
-     * @param telFixo the telFixo to set
-     */
-    public void setTelFixo(String telFixo) {
-        this.telFixo = telFixo;
-    }
-
-    /**
-     * @return the telCel
-     */
-    public String getTelCel() {
-        return telCel;
-    }
-
-    /**
-     * @param telCel the telCel to set
-     */
-    public void setTelCel(String telCel) {
-        this.telCel = telCel;
-    }
-
-    /**
-     * @return the codEstabelecimento
-     */
-    public int getCodEstabelecimento() {
-        return codEstabelecimento;
-    }
-
-    /**
-     * @param codEstabelecimento the codEstabelecimento to set
-     */
-    public void setCodEstabelecimento(int codEstabelecimento) {
-        this.codEstabelecimento = codEstabelecimento;
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
     }
     
 }

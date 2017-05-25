@@ -5,6 +5,8 @@
  */
 package br.ufsm.csi.hotelmanagementats.model;
 
+import java.util.List;
+
 /**
  *
  * @author Alisson
@@ -12,7 +14,6 @@ package br.ufsm.csi.hotelmanagementats.model;
 public class Hospedagem {
     
     private int cod;
-    private int codQuarto;
     private String dataInicial;
     private String dataFinal;
     private String horaInicial;
@@ -20,7 +21,11 @@ public class Hospedagem {
     private float valorHospedagem;
     private float valorGastos;
     private float valorTotal;
-
+    private Quarto quarto;
+    private List<Cliente> clientes;
+    private List<Gasto> gastos;
+    
+    
     /**
      * @return the cod
      */
@@ -33,20 +38,6 @@ public class Hospedagem {
      */
     public void setCod(int cod) {
         this.cod = cod;
-    }
-
-    /**
-     * @return the codQuarto
-     */
-    public int getCodQuarto() {
-        return codQuarto;
-    }
-
-    /**
-     * @param codQuarto the codQuarto to set
-     */
-    public void setCodQuarto(int codQuarto) {
-        this.codQuarto = codQuarto;
     }
 
     /**
@@ -145,6 +136,48 @@ public class Hospedagem {
      */
     public void setValorTotal(float valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    /**
+     * @return the quarto
+     */
+    public Quarto getQuarto() {
+        return quarto;
+    }
+
+    /**
+     * @param quarto the quarto to set
+     */
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
+    }
+
+    /**
+     * @return the clientes
+     */
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    /**
+     * @param clientes the clientes to set
+     */
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    /**
+     * @return the gastos
+     */
+    public List<Gasto> getGastos() {
+        return gastos;
+    }
+
+    /**
+     * @param gastos the gastos to set
+     */
+    public void setGastos(List<Gasto> gastos) {
+        this.gastos = gastos;
     }
     
 }

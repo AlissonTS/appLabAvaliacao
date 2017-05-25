@@ -68,7 +68,7 @@
                                     <p id="formulario">Login - Perfil usuário operador: Use nickname (apelido) cadastrado.</p>
                                     <div style="text-align: center">
                                         <p><b>Deseja administrar as hospedagens de seus hotéis?</b></p>
-                                        <a href="#">Cadastre-se Aqui!</a>
+                                        <a href="cadastroAdministrador.html">Cadastre-se Aqui!</a>
                                     </div>
                                 </div>
                             </div>

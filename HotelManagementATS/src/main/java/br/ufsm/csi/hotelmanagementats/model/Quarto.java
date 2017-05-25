@@ -5,6 +5,8 @@
  */
 package br.ufsm.csi.hotelmanagementats.model;
 
+import java.util.List;
+
 /**
  *
  * @author Alisson
@@ -18,7 +20,9 @@ public class Quarto {
     private String descricaoExtra;
     private String estado;
     private float valorDiaria;
-    private int codEstabelecimento;
+    private Estabelecimento estabelecimento;
+    private List<Hospedagem> hospedagens;
+    private Foto foto;
 
     /**
      * @return the cod
@@ -119,17 +123,45 @@ public class Quarto {
     }
 
     /**
-     * @return the codEstabelecimento
+     * @return the estabelecimento
      */
-    public int getCodEstabelecimento() {
-        return codEstabelecimento;
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
     }
 
     /**
-     * @param codEstabelecimento the codEstabelecimento to set
+     * @param estabelecimento the estabelecimento to set
      */
-    public void setCodEstabelecimento(int codEstabelecimento) {
-        this.codEstabelecimento = codEstabelecimento;
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
+    }
+
+    /**
+     * @return the hospedagens
+     */
+    public List<Hospedagem> getHospedagens() {
+        return hospedagens;
+    }
+
+    /**
+     * @param hospedagens the hospedagens to set
+     */
+    public void setHospedagens(List<Hospedagem> hospedagens) {
+        this.hospedagens = hospedagens;
+    }
+
+    /**
+     * @return the foto
+     */
+    public Foto getFoto() {
+        return foto;
+    }
+
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(Foto foto) {
+        this.foto = foto;
     }
     
 }

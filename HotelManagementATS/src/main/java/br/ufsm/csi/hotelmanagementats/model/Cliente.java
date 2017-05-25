@@ -16,7 +16,7 @@ public class Cliente {
     private String nome;
     private String email;
     private String telCel;
-    private int codEstabelecimento;
+    private Estabelecimento estabelecimento;
 
     /**
      * @return the cod
@@ -86,20 +86,20 @@ public class Cliente {
      */
     public void setTelCel(String telCel) {
         this.telCel = telCel;
+    }  
+
+    /**
+     * @return the estabelecimento
+     */
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
     }
 
     /**
-     * @return the codEstabelecimento
+     * @param estabelecimento the estabelecimento to set
      */
-    public int getCodEstabelecimento() {
-        return codEstabelecimento;
-    }
-
-    /**
-     * @param codEstabelecimento the codEstabelecimento to set
-     */
-    public void setCodEstabelecimento(int codEstabelecimento) {
-        this.codEstabelecimento = codEstabelecimento;
+    public void setEstabelecimento(Estabelecimento estabelecimento) {
+        this.estabelecimento = estabelecimento;
     }
     
 }

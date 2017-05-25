@@ -13,7 +13,7 @@ public class Foto {
     
     private int cod;
     private byte[] foto;
-    private int codQuarto;
+    private Quarto quarto;
 
     /**
      * @return the cod
@@ -44,17 +44,17 @@ public class Foto {
     }
 
     /**
-     * @return the codQuarto
+     * @return the quarto
      */
-    public int getCodQuarto() {
-        return codQuarto;
+    public Quarto getQuarto() {
+        return quarto;
     }
 
     /**
-     * @param codQuarto the codQuarto to set
+     * @param quarto the quarto to set
      */
-    public void setCodQuarto(int codQuarto) {
-        this.codQuarto = codQuarto;
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
     }
-    
+
 }

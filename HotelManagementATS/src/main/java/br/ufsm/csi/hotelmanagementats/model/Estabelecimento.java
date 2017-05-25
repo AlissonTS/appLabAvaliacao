@@ -5,6 +5,8 @@
  */
 package br.ufsm.csi.hotelmanagementats.model;
 
+import java.util.List;
+
 /**
  *
  * @author Alisson
@@ -15,7 +17,9 @@ public class Estabelecimento {
     private String cnpj;
     private String nome;
     private String telFixo;
-    private int codUsuario;
+    private UsuarioAdministrador usuarioAdm;
+    private List<UsuarioOperador> usuariosOp;
+    private List<Cliente> clientes;
 
     /**
      * @return the cod
@@ -74,17 +78,45 @@ public class Estabelecimento {
     }
 
     /**
-     * @return the codUsuario
+     * @return the usuarioAdm
      */
-    public int getCodUsuario() {
-        return codUsuario;
+    public UsuarioAdministrador getUsuarioAdm() {
+        return usuarioAdm;
     }
 
     /**
-     * @param codUsuario the codUsuario to set
+     * @param usuarioAdm the usuarioAdm to set
      */
-    public void setCodUsuario(int codUsuario) {
-        this.codUsuario = codUsuario;
+    public void setUsuarioAdm(UsuarioAdministrador usuarioAdm) {
+        this.usuarioAdm = usuarioAdm;
     }
-   
+
+    /**
+     * @return the usuariosOp
+     */
+    public List<UsuarioOperador> getUsuariosOp() {
+        return usuariosOp;
+    }
+
+    /**
+     * @param usuariosOp the usuariosOp to set
+     */
+    public void setUsuariosOp(List<UsuarioOperador> usuariosOp) {
+        this.usuariosOp = usuariosOp;
+    }
+
+    /**
+     * @return the clientes
+     */
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    /**
+     * @param clientes the clientes to set
+     */
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
 }

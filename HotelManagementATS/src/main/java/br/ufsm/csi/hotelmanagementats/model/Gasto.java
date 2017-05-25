@@ -14,7 +14,7 @@ public class Gasto {
     private int cod;
     private String descricao;
     private float valor;
-    private int codHospedagem;
+    private Hospedagem hospedagem;
 
     /**
      * @return the cod
@@ -59,18 +59,17 @@ public class Gasto {
     }
 
     /**
-     * @return the codHospedagem
+     * @return the hospedagem
      */
-    public int getCodHospedagem() {
-        return codHospedagem;
+    public Hospedagem getHospedagem() {
+        return hospedagem;
     }
 
     /**
-     * @param codHospedagem the codHospedagem to set
+     * @param hospedagem the hospedagem to set
      */
-    public void setCodHospedagem(int codHospedagem) {
-        this.codHospedagem = codHospedagem;
+    public void setHospedagem(Hospedagem hospedagem) {
+        this.hospedagem = hospedagem;
     }
-    
     
 }
