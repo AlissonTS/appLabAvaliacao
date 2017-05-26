@@ -10,6 +10,7 @@ import br.ufsm.csi.hotelmanagementats.util.ConectaBD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -31,10 +32,10 @@ public class UsuarioAdmDao {
             String sql;
             
             sql = "INSERT INTO USUARIOADM (cod, email, senha, nome, cpf, telfixo, telcel) "
-                    + "values(DEFAULT, ?, ?, ?, ?, ?, ?)";
+                    + "values(DEFAULT, ?, ?, ?, ?, ?, ?);";
             stmt = c.prepareStatement(sql);
             stmt.setString(1, u.getEmail());
-            stmt.setBytes(2, u.getSenha());
+            stmt.setString(2, u.getSenha());
             stmt.setString(3, u.getNome());
             stmt.setString(4, u.getCpf());
             stmt.setString(5, u.getTelFixo());
@@ -51,5 +52,46 @@ public class UsuarioAdmDao {
         }
         
         return retorno;
+    }
+    
+    public UsuarioAdministrador logar(UsuarioAdministrador u){
+        Connection c = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "SELECT * FROM USUARIOADM WHERE EMAIL=? AND SENHA=?;";
+            stmt = c.prepareStatement(sql);
+            stmt.setString(1, u.getEmail());
+            stmt.setString(2, u.getSenha());
+            
+            // u = null;
+            
+            ResultSet valor = stmt.executeQuery();
+            
+            while(valor.next()){
+                u.setCod(valor.getInt("cod"));
+                u.setEmail(valor.getString("email"));
+                u.setSenha(valor.getString("senha"));
+                u.setNome(valor.getString("nome"));
+                u.setCpf(valor.getString("cpf"));
+                u.setTelFixo(valor.getString("telfixo"));
+                u.setTelCel(valor.getString("telcel"));
+            }
+            
+            if(u.getNome()==null){
+                u = null;
+            }
+            
+            stmt.close();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            u = null;
+        }
+        
+        return u;
     }
 }

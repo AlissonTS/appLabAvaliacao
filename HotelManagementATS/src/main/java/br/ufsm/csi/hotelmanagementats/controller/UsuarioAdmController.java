@@ -15,6 +15,7 @@ import br.ufsm.csi.hotelmanagementats.dao.UsuarioAdmDao;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  *
@@ -36,21 +37,26 @@ public class UsuarioAdmController {
         if(u.getNome()!=null && u.getCpf()!=null && 
            u.getTelFixo()!=null && u.getTelCel()!=null &&
            u.getEmail()!=null && u.getSenha()!=null){
+            
+           byte[] senha = rq.getParameter("senha").getBytes(); 
            
-           String senha = rq.getParameter("senha"); 
+           MessageDigest md = MessageDigest.getInstance("SHA-256");
+           byte[] hashSenha = md.digest(senha);
            
-           MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-           u.setSenha(algorithm.digest(senha.getBytes("UTF-8")));
+           byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
+           String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+           
+           u.setSenha(valorSenha);
            
            try{
                boolean retorno = uD.cadastrarUsuarioAdm(u);
                
                if(retorno){
-                   mv.addObject("mensagem", "<Strong> Sucesso</Strong>Cadastro feito com sucesso!");
+                   mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
                    mv.addObject("tipo", "success");
                    System.out.println("Cadastro Concluído!");
                }else{
-                   mv.addObject("mensagem", "<Strong> Erro!</Strong> Dados de cadastro já utilizados!");
+                   mv.addObject("mensagem", "<Strong>Erro!</Strong> Dados de cadastro já utilizados!");
                    mv.addObject("tipo", "danger");
                    System.out.println("Erro ao cadastrar!");
                }

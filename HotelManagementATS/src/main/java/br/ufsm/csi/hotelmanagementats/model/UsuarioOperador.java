@@ -12,7 +12,7 @@ package br.ufsm.csi.hotelmanagementats.model;
 public class UsuarioOperador extends Usuario{
     
     private String nickname;
-    private byte[] senha;
+    private String senha;
     private Estabelecimento estabelecimento;
     
     /**
@@ -32,14 +32,14 @@ public class UsuarioOperador extends Usuario{
     /**
      * @return the senha
      */
-    public byte[] getSenha() {
+    public String getSenha() {
         return senha;
     }
 
     /**
      * @param senha the senha to set
      */
-    public void setSenha(byte[] senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 

@@ -14,7 +14,7 @@ import java.util.List;
 public class UsuarioAdministrador extends Usuario{
 
     private String email;
-    private byte[] senha;
+    private String senha;
     private List<Estabelecimento> estabelecimentos;
 
     /**
@@ -34,14 +34,14 @@ public class UsuarioAdministrador extends Usuario{
     /**
      * @return the senha
      */
-    public byte[] getSenha() {
+    public String getSenha() {
         return senha;
     }
 
     /**
      * @param senha the senha to set
      */
-    public void setSenha(byte[] senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 

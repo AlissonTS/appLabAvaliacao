@@ -1,7 +1,7 @@
 CREATE TABLE USUARIOADM(
 		cod serial not null,
 		email varchar(40) unique not null,
-		senha bytea not null,
+		senha varchar(70) not null,
 		nome varchar(50) not null,
 		cpf varchar(15) unique not null,
 		telFixo varchar(20),
@@ -22,7 +22,7 @@ CREATE TABLE ESTABELECIMENTO(
 CREATE TABLE USUARIOOP(
 		cod serial not null,
 		nickname varchar(12) unique not null,
-		senha bytea not null,
+		senha varchar(70) not null,
 		nome varchar(50) not null,
 		cpf varchar(15) not null,
 		telFixo varchar(20),
