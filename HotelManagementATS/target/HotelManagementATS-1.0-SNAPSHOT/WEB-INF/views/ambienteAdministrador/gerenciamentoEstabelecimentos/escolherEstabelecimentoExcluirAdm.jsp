@@ -40,7 +40,7 @@
                             <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Estabelecimentos </h2>
                             <br>
                             <h4 class="text-center">Escolha o Estabelecimento para Exclusão *: </h4>
-                            <form action="excluirEstabelecimento.html" method="POST">
+                            <form action="excluirEstabelecimentoAdm.html" method="POST">
                                 <div class="form-group row">
                                     <center>	
                                       <input type="radio" name="gender" value="male" checked> Hotel Santa Maria - Santa Maria/RS<br>

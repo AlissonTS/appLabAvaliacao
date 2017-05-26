@@ -15,14 +15,12 @@
 	<context:component-scan base-package="br.ufsm.csi.hotelmanagementats"/>
 	<mvc:annotation-driven/>
         
-        <!-- 
         <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="br.ufsm.csi.hotelmanagementats.controller.AutenticacaoInterceptor"/> 
 		</mvc:interceptor>
 	</mvc:interceptors>
-        -->
         
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix" value="/"/>

@@ -34,4 +34,9 @@ public class EstabelecimentoController {
     public String alterarEstabelecimentoFormAdm(){	
             return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/alterarEstabelecimentoAdm";
     }
+    
+    @RequestMapping("excluirEstabelecimentoAdm.html")
+    public String excluirEstabelecimentoAdm(){	
+            return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/escolherEstabelecimentoExcluirAdm";
+    }
 }

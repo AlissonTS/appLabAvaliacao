@@ -39,7 +39,7 @@
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <h2 class="text-center" style="font-size: 25px;">Alterar Estabelecimento</h2>
                             <br>
-                            <form role="form" action="cadastrarEstabelecimentoAdm.html" method="POST">
+                            <form role="form" action="alterarEstabelecimentoAdm.html" method="POST">
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome: </label>
                                     <div class="col-md-8 col-xs-8">
