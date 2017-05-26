@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AcessoController {
     
     @RequestMapping("realizarLogin.html")
-    public ModelAndView realizarLogin(HttpServletRequest rq) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
+    public ModelAndView realizarLogin(HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
         System.out.println("-------------------------------");
 	System.out.println("Submit Formulário de Login...");
         
@@ -60,9 +61,11 @@ public class AcessoController {
                     mv.addObject("tipo", "danger");
                     System.out.println("Erro de Login - Administrador!");
                 }else{
+                    session.setAttribute("administrador", u);
+                    
                     mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm");
-                    mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Dados válidos!");
-                    mv.addObject("tipo", "success");
+                    // mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Dados válidos!");
+                    // mv.addObject("tipo", "success");
                     System.out.println("Login feito com sucesso - Administrador!");
                 }
                 
@@ -81,18 +84,25 @@ public class AcessoController {
                     System.out.println("Erro de Login - Operador!");
                 }else{
                     mv = new ModelAndView("/WEB-INF/views/ambienteOperador/gerenciamentoContaOp");
-                    mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Dados válidos!");
-                    mv.addObject("tipo", "success");
+                    // mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Dados válidos!");
+                    // mv.addObject("tipo", "success");
+                    session.setAttribute("operador", u);
+                    
                     System.out.println("Login feito com sucesso - Operador!");
                 }
             }
         }
         
+        System.out.println("\n-------------------------------\n");
+        
         return mv;
     }
     
     @RequestMapping("realizarLogout.html")
-    public String realizarLogout(){	
-            return "/WEB-INF/views/paginaInicial";
+    public String realizarLogout(HttpSession session){
+            
+        session.invalidate();
+
+        return "forward:paginaInicial.html";
     }
 }

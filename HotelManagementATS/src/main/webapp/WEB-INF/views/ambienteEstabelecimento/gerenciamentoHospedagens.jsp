@@ -20,20 +20,21 @@
                         <%@ include file="../../../import/menu.jsp" %>    
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
-                                <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
-                                <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
-                                <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
-                                <li class="active"><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
-                                <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
+                                <c:if test="${not empty administrador and empty operador}">
+                                    <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
+                                    <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
+                                    <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
+                                    <li class="active"><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
+                                    <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
+                                    <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
+                                </c:if>
                             </ul>
-                            
-                            <!-- Menu Operador
+                            <c:if test="${not empty operador and empty administrador}">
                                 <li><a href="#">Página Principal - Estabelecimento</a></li>
                                 <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                 <li><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
                                 <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
-                            -->
+                            </c:if>
                         </div>
                     </div>
                 </nav>
@@ -73,11 +74,13 @@
                                     <a href="hospedagensCorrentesGasto.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Gerenciar gasto de Quarto</a>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 3%">
-                                <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="relatoriosHospedagem.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Relatórios de Hospedagem</a>
+                            <c:if test="${not empty administrador and empty operador}">
+                                <div class="row" style="margin-top: 3%">
+                                    <div class="col-md-12 col-xs-12" style="text-align: center">
+                                        <a href="relatoriosHospedagem.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Relatórios de Hospedagem</a>
+                                    </div>
                                 </div>
-                            </div>
+                            </c:if>
                         </div>
                     </div>
                 </div>                 

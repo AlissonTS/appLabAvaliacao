@@ -23,7 +23,9 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav navbar-right">
                               <li><a href="paginaInicial.html">Acesso ao Sistema</a></li>
-                              <li><a href="cadastroAdministrador.html">Cadastrado de Administrador</a></li>
+                              <c:if test="${empty administrador and empty operador}">
+                                <li><a href="cadastroAdministrador.html">Cadastrado de Administrador</a></li>
+                              </c:if>
                               <li class="active"><a href="sobreAplicacao.html">Sobre a Aplicação</a></li>
                             </ul>
                         </div>
