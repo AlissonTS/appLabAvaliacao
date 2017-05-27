@@ -31,18 +31,23 @@
                 
                 <div class="container-fluid">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
-                        <div class="col-md-offset-3 col-md-6 col-xs-12">
+                        <div class="col-md-offset-3 col-md-6 col-xs-12" style="font-size: 17px;">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
                             <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Conta</h2>
                             <br>
-                            <p class="text-center">Nome Completo: Fulano Brasil</p>
-                            <p class="text-center">CNPJ: 999.999.99-99</p>
-                            <p class="text-center">Telefone Celular: (55) 90000-0005</p>
-                            <p class="text-center">Telefone Fixo: (55) 0000-0004</p>
-                            <p class="text-center">Email de Acesso: fulanobrasil@gmail.com</p>
-                            <p class="text-center">Senha: *********</p>
-                            <div class="row" style="margin-top: 3%">
+                            <p class="text-center">Nome Completo: ${administrador.nome}</p>
+                            <p class="text-center">CPF: ${administrador.cpf}</p>
+                            <p class="text-center">Telefone Celular: ${administrador.telCel}</p>
+                            <p class="text-center">Telefone Fixo: ${administrador.telFixo}</p>
+                            <p class="text-center">Email de Acesso: ${administrador.email}</p>
+                            <div class="row" style="margin-top: 5%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                    <a href="alterarContaAdm.html" class="btn btn-primary" role="button">Alterar Conta</a>
+                                    <a href="alterarContaAdmForm.html" class="btn btn-primary" role="button">Alterar Conta</a>
                                 </div>
                             </div>
                         </div>

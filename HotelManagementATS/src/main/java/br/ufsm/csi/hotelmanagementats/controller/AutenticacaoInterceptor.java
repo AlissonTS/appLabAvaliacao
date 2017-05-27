@@ -30,7 +30,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
         if(uAdm!=null && uOp==null){
             if(uri.endsWith("alterarContaOp.html") ||
                uri.endsWith("gerenciamentoContaOp.html") ||
-               uri.endsWith("cadastroAdministrador.html ")     
+               uri.endsWith("cadastroAdministrador.html")     
             ){
                 response.sendRedirect("paginaPrincipalAdm.html");
                 return false;
@@ -63,7 +63,8 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                uri.endsWith("paginaPrincipalAdm.html") ||
                uri.endsWith("gerenciamentoEstabelecimentosAdm.html") ||
                uri.endsWith("gerenciamentoContaAdm.html") ||
-               uri.endsWith("alterarContaAdm.html") ||  
+               uri.endsWith("alterarContaAdmForm.html") ||
+               uri.endsWith("alterarAdministrador.html") ||      
                uri.endsWith("cadastrarEstabelecimentoFormAdm.html") ||  
                uri.endsWith("escolherEstabelecimentoAlterarAdm.html") ||  
                uri.endsWith("escolherEstabelecimentoExcluirAdm.html") ||
@@ -76,6 +77,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
         }else{
             if(uri.contains("paginaInicial.html") ||
                uri.endsWith("cadastroAdministrador.html") ||
+               uri.endsWith("cadastrarAdministrador.html") ||
                uri.endsWith("sobreAplicacao.html") ||
                uri.endsWith("realizarLogin.html")    
             ){

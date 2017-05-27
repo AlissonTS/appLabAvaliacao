@@ -33,7 +33,7 @@
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <h2 class="text-center" style="font-size: 25px;">Página Principal - ADM </h2>
-                            <p class="text-center" style="font-size: 17px">Olá, Fulano </p>
+                            <p class="text-center" style="font-size: 17px">Olá, ${administrador.nome}!</p>
                             <h3 class="text-center">Seus Estabelecimentos:</h3>
                             <form action="paginaPrincipalEstabelecimento.html" method="POST">
                                 <div class="form-group row">
@@ -44,8 +44,8 @@
                                     </center>
                                 </div>
                                 <div class="form-group row">
-                                    <p style="text-align: center">
-                                    <button type="submit" class="btn btn-default">Entrar no Estabelecimento</button></p>
+                                    <div class="col-md-12 col-xs-12" style="text-align: center;">
+                                        <button type="submit" class="btn btn-default">Entrar no Estabelecimento</button></div>
                                 </div>		
                             </form> 
                         </div>

@@ -54,6 +54,43 @@ public class UsuarioAdmDao {
         return retorno;
     }
     
+    public boolean alterarUsuarioAdm(UsuarioAdministrador u){
+        boolean retorno = false;
+        
+        System.out.println("\nUsuarioAdmDao - Alterar usuário ADM...\n");
+        
+        Connection c = null;
+	PreparedStatement stmt = null;
+        
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+           
+            sql = "UPDATE USUARIOADM SET email=?, senha=?, nome=?, cpf=?, telfixo=?, telcel=?"
+                    + "WHERE COD=?;";
+            
+            stmt = c.prepareStatement(sql);
+            stmt.setString(1, u.getEmail());
+            stmt.setString(2, u.getSenha());
+            stmt.setString(3, u.getNome());
+            stmt.setString(4, u.getCpf());
+            stmt.setString(5, u.getTelFixo());
+            stmt.setString(6, u.getTelCel());
+            stmt.setInt(7, u.getCod());
+            
+            stmt.execute();
+            stmt.close();
+            retorno = true;
+            
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            retorno = false;
+        }
+        
+        return retorno;
+    }
+    
     public UsuarioAdministrador logar(UsuarioAdministrador u){
         Connection c = null;
         PreparedStatement stmt = null;

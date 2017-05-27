@@ -64,8 +64,7 @@ public class AcessoController {
                     session.setAttribute("administrador", u);
                     
                     mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm");
-                    // mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Dados válidos!");
-                    // mv.addObject("tipo", "success");
+                    
                     System.out.println("Login feito com sucesso - Administrador!");
                 }
                 
