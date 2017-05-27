@@ -6,11 +6,14 @@
 package br.ufsm.csi.hotelmanagementats.dao;
 
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
+import br.ufsm.csi.hotelmanagementats.model.UsuarioAdministrador;
 import br.ufsm.csi.hotelmanagementats.util.ConectaBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -65,5 +68,43 @@ public class EstabelecimentoDao {
         }
         
         return retorno;
-    }  
+    }
+    
+    public List<Estabelecimento> getEstabelecimentosAdm(UsuarioAdministrador u){
+			
+        System.out.println("\nEstabelecimentoDao - Buscar estabelecimentos do ADM...\n");
+
+        List<Estabelecimento> estabelecimentos = new ArrayList<Estabelecimento>();
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT * FROM ESTABELECIMENTO WHERE codusuarioadm=? ORDER BY NOME DESC;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, u.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+
+            while(valor.next()){
+                Estabelecimento est = new Estabelecimento();
+
+                est.setCod(valor.getInt("cod"));
+                est.setCnpj(valor.getString("cnpj"));
+                est.setNome(valor.getString("nome"));
+
+                estabelecimentos.add(est);
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return estabelecimentos;
+    }
 }

@@ -41,7 +41,7 @@
                             <c:if test="${not empty operador and empty administrador}">
                                 <p class="text-center"><a href="paginaPrincipalEstabelecimento.html" class="btn btn-default" role="button">Entrar no Sistema <span class="glyphicon glyphicon-log-in"></span></a></p>
                             </c:if>
-                            <c:if test="${empty administrador and empty operador}">
+                            <c:if test="${empty administrador and empty operador}">    
                                 <c:if test="${not empty mensagem}">
                                     <div class="alert alert-${tipo}">
                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
