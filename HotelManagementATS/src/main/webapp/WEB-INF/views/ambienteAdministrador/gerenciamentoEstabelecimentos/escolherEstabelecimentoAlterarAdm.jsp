@@ -39,21 +39,37 @@
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Estabelecimentos </h2>
                             <br>
-                            <h4 class="text-center">Escolha o Estabelecimento para Alteração: </h4>
-                            <form action="alterarEstabelecimentoFormAdm.html" method="POST">
-                                <div class="form-group row">
-                                    <center>	
-                                      <input type="radio" name="gender" value="male" checked> Hotel Santa Maria - Santa Maria/RS<br>
-                                      <input type="radio" name="gender" value="female"> Hotel Unidos de Manchester - Novo Hamburgo/RS<br>
-                                      <input type="radio" name="gender" value="other"> Pousada Mar Azul - Torres/RS
-                                    </center>
-                                </div>
-                                <div class="form-group row">
-                                    <br>
-                                    <p style="text-align: center">
-                                    <button type="submit" class="btn btn-primary">Alterar Estabelecimento</button></p>
-                                </div>		
-                            </form>
+                            
+                            <jsp:useBean id="estabelecimentoDao" class="br.ufsm.csi.hotelmanagementats.dao.EstabelecimentoDao"/>
+                            <c:set value="${estabelecimentoDao.getEstabelecimentosAdm(administrador)}" var="estabelecimentos"/>
+                            
+                            <c:if test="${not empty estabelecimentos}">
+                                <h4 class="text-center">Escolha o Estabelecimento para Alteração: </h4>
+                                <form action="alterarEstabelecimentoFormAdm.html" method="POST">
+                                    <div class="form-group row">
+                                        <center>
+                                            <c:set value="0" var="contador"/>
+                                            <c:forEach var="estabelecimento" items="${estabelecimentos}">
+                                                <c:if test="${contador>0}">
+                                                    <label for="estabelecimento"><input type="radio" name="estabelecimento" value="${estabelecimento.cnpj}"> ${estabelecimento.nome} - ${estabelecimento.cnpj}</label><br>
+                                                </c:if>
+                                                <c:if test="${contador==0}">
+                                                    <label for="estabelecimento"><input type="radio" name="estabelecimento" value="${estabelecimento.cnpj}" checked> ${estabelecimento.nome} - ${estabelecimento.cnpj}</label><br>
+                                                    <c:set value="1" var="contador"/>    
+                                                </c:if>
+                                            </c:forEach>
+                                        </center>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12 col-xs-12" style="text-align: center;">
+                                            <button type="submit" class="btn btn-primary">Alterar Estabelecimento</button></div>
+                                    </div>	
+                                </form>
+                            </c:if>
+                            <c:if test="${empty estabelecimentos}">
+                                <br><p class="text-center" style="font-size: 16px"><strong>Você não possui estabelecimentos cadastrados</strong></p>
+                                <p class="text-center"><a href="cadastrarEstabelecimentoAdm.html">Cadastrar Estabelecimento</a></p>
+                            </c:if>
                         </div>
                     </div>
                 </div>                 

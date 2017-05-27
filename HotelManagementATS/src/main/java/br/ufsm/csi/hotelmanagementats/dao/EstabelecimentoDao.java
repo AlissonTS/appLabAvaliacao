@@ -74,7 +74,7 @@ public class EstabelecimentoDao {
 			
         System.out.println("\nEstabelecimentoDao - Buscar estabelecimentos do ADM...\n");
 
-        List<Estabelecimento> estabelecimentos = new ArrayList<Estabelecimento>();
+        List<Estabelecimento> estabelecimentos = new ArrayList();
 
         Connection c = null;
         PreparedStatement stmt = null;
@@ -83,7 +83,7 @@ public class EstabelecimentoDao {
             c = ConectaBD.getConexao();
             String sql;
 
-            sql = "SELECT * FROM ESTABELECIMENTO WHERE codusuarioadm=? ORDER BY NOME DESC;";
+            sql = "SELECT * FROM ESTABELECIMENTO WHERE codusuarioadm=? ORDER BY NOME ASC;";
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, u.getCod());
 
@@ -107,4 +107,47 @@ public class EstabelecimentoDao {
 
         return estabelecimentos;
     }
+    
+    public List<Estabelecimento> getEstabelecimentosExcluirAdm(UsuarioAdministrador u){
+			
+        System.out.println("\nEstabelecimentoDao - Buscar estabelecimentos do ADM possíveis de exclusão...\n");
+
+        List<Estabelecimento> estabelecimentos = new ArrayList();
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT * FROM ESTABELECIMENTO WHERE NOT EXISTS "
+                    + "(SELECT * FROM QUARTO, ESTABELECIMENTO WHERE "
+                    + "quarto.codestabelecimento=estabelecimento.cod "
+                    + "and estabelecimento.codusuarioadm=?) ORDER BY NOME ASC;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, u.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+
+            while(valor.next()){
+                Estabelecimento est = new Estabelecimento();
+
+                est.setCod(valor.getInt("cod"));
+                est.setCnpj(valor.getString("cnpj"));
+                est.setNome(valor.getString("nome"));
+
+                estabelecimentos.add(est);
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return estabelecimentos;
+    }
+    
+    
 }

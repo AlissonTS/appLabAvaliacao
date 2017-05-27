@@ -92,6 +92,8 @@ public class UsuarioAdmController {
         
         UsuarioAdministrador uA = (UsuarioAdministrador) session.getAttribute("administrador");
         String senhaAntiga = uA.getSenha();
+        String cpfAntigo = uA.getCpf();
+        
         int codUsuario = uA.getCod();
         
         UsuarioAdmDao uD = new UsuarioAdmDao();
@@ -101,7 +103,8 @@ public class UsuarioAdmController {
            u.getEmail()!=null && u.getSenha()!=null && senhaN!=null){
            
            u.setCod(codUsuario);
-            
+           u.setCpf(cpfAntigo);
+           
            if(redefinir.equals("Sim")){
                byte[] senha = rq.getParameter("senha").getBytes(); 
            

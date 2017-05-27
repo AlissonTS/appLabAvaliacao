@@ -55,7 +55,7 @@
                                 <div class="form-group row">
                                     <label for="cpf" class="col-md-3 col-xs-4 col-form-label">CPF: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" value="${administrador.cpf}" placeholder="###.###.###-##" required="true" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="###.###.###-##">
+                                        <input class="form-control" type="text" value="${administrador.cpf}" placeholder="###.###.###-##" required="true" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="###.###.###-##" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">

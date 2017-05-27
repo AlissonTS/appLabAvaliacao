@@ -36,11 +36,6 @@ public class EstabelecimentoController {
             return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/escolherEstabelecimentoExcluirAdm";
     }
     
-    @RequestMapping("alterarEstabelecimentoFormAdm.html")
-    public String alterarEstabelecimentoFormAdm(){	
-            return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/alterarEstabelecimentoAdm";
-    }
-    
     @RequestMapping("excluirEstabelecimentoAdm.html")
     public String excluirEstabelecimentoAdm(){	
             return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/escolherEstabelecimentoExcluirAdm";
@@ -92,6 +87,30 @@ public class EstabelecimentoController {
         }
         
         System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    @RequestMapping("alterarEstabelecimentoFormAdm.html")
+    public ModelAndView alterarEstabelecimentoFormAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Estabelecimento de Cadastro de Estabelecimento do Adm...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentosAdm");
+        
+        EstabelecimentoDao eD = new EstabelecimentoDao();
+        
+        if(rq.getParameter("estabelecimento")!=null){
+            String cnpj = rq.getParameter("estabelecimento");
+            
+            est = eD.carregarFormAlterarEstabelecimento(cnpj);
+            
+            
+            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        // return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/alterarEstabelecimentoAdm";
         
         return mv;
     }
