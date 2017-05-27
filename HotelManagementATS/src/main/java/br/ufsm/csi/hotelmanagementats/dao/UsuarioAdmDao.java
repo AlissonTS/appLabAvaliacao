@@ -95,6 +95,8 @@ public class UsuarioAdmDao {
         Connection c = null;
         PreparedStatement stmt = null;
         
+        System.out.println("\nUsuarioAdmDao - Logar...\n");
+        
         try{
             c = ConectaBD.getConexao();
             String sql;

@@ -65,7 +65,8 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                uri.endsWith("gerenciamentoContaAdm.html") ||
                uri.endsWith("alterarContaAdmForm.html") ||
                uri.endsWith("alterarAdministrador.html") ||      
-               uri.endsWith("cadastrarEstabelecimentoFormAdm.html") ||  
+               uri.endsWith("cadastrarEstabelecimentoFormAdm.html") ||
+               uri.endsWith("cadastrarEstabelecimentoAdm.html") ||      
                uri.endsWith("escolherEstabelecimentoAlterarAdm.html") ||  
                uri.endsWith("escolherEstabelecimentoExcluirAdm.html") ||
                uri.endsWith("alterarEstabelecimentoFormAdm.html")     

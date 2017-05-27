@@ -58,7 +58,7 @@
                                     <div class="form-group row">
                                         <label for="senha" class="col-md-2 col-xs-4 col-form-label">Senha: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="Digite sua Senha" required="true" name="senha" id="login" maxlength="20">
+                                            <input class="form-control" type="password" placeholder="Digite sua Senha" required="true" name="senha" id="login" maxlength="20">
                                         </div>
                                     </div>
                                     <br>

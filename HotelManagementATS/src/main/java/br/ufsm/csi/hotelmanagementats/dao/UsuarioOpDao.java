@@ -21,6 +21,8 @@ public class UsuarioOpDao {
         Connection c = null;
         PreparedStatement stmt = null;
         
+        System.out.println("\nUsuarioOpDao - Logar...\n");
+        
         try{
             c = ConectaBD.getConexao();
             String sql;
