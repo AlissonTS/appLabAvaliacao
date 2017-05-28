@@ -41,7 +41,7 @@
                             <br>
                             
                             <jsp:useBean id="estabelecimentoDao" class="br.ufsm.csi.hotelmanagementats.dao.EstabelecimentoDao"/>
-                            <c:set value="${estabelecimentoDao.getEstabelecimentosExcluirAdm(administrador)}" var="estabelecimentos"/>
+                            <c:set value="${estabelecimentoDao.getEstabelecimentosAdm(administrador)}" var="estabelecimentos"/>
                             
                             <c:if test="${not empty estabelecimentos}">
                                 <h4 class="text-center">Escolha o Estabelecimento para Exclusão *: </h4>
@@ -65,19 +65,11 @@
                                           <button id="excluir" type="button" class="btn btn-danger" class="btn btn-default" data-toggle="modal" data-target="#confirm">Excluir Estabelecimento</button></div>
                                     </div>	
                                 </form>
-                                <p class="text-center" style="font-size: 14px"><strong>Lista de Estabelecimentos sem operadores, quartos, clientes e hospedagens cadastrados.</strong></p>            
+                                <p class="text-center" style="font-size: 14px"><strong>Apenas estabelecimentos sem histórico de operadores, quartos, clientes ou hospedagens cadastradas podem ser excluídos.</strong></p>            
                             </c:if>
                             <c:if test="${empty estabelecimentos}">
-                                <c:set value="${estabelecimentoDao.getEstabelecimentosAdm(administrador)}" var="listaEstabelecimentos"/>
-                                
-                                <c:if test="${not empty estabelecimentos}">
-                                    <br><p class="text-center" style="font-size: 15px"><strong>Você não possui estabelecimentos que podem ser excluídos!*</strong></p>
-                                    <p class="text-center" style="font-size: 14px"><strong>Informações que inviabilizam a exclusão: Operadores, quartos, clientes e hospedagens cadastrados.</strong></p>
-                                </c:if>
-                                <c:if test="${empty estabelecimentos}">
-                                    <br><p class="text-center" style="font-size: 15px"><strong>Você não possui estabelecimentos cadastrados</strong></p>
-                                    <p class="text-center"><a href="cadastrarEstabelecimentoAdm.html">Cadastrar Estabelecimento</a></p>
-                                </c:if>
+                                <br><p class="text-center" style="font-size: 15px"><strong>Você não possui estabelecimentos cadastrados</strong></p>
+                                <p class="text-center"><a href="cadastrarEstabelecimentoAdm.html">Cadastrar Estabelecimento</a></p>
                             </c:if>
                         </div>
                     </div>

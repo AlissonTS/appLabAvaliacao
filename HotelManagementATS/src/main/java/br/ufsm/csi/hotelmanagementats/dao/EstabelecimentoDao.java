@@ -108,49 +108,6 @@ public class EstabelecimentoDao {
         return estabelecimentos;
     }
     
-    public List<Estabelecimento> getEstabelecimentosExcluirAdm(UsuarioAdministrador u){
-			
-        System.out.println("\nEstabelecimentoDao - Buscar estabelecimentos do ADM possíveis de exclusão...\n");
-
-        List<Estabelecimento> estabelecimentos = new ArrayList();
-
-        Connection c = null;
-        PreparedStatement stmt = null;
-
-        try{
-            c = ConectaBD.getConexao();
-            String sql;
-
-            sql = "SELECT * FROM ESTABELECIMENTO WHERE NOT EXISTS "
-                    + "(SELECT * FROM QUARTO, ESTABELECIMENTO, USUARIOOP, CLIENTE "
-                    + "WHERE quarto.codestabelecimento=estabelecimento.cod "
-                    + "and usuarioop.codestabelecimento=estabelecimento.cod "
-                    + "and cliente.codestabelecimento=estabelecimento.cod and "
-                    + "estabelecimento.codusuarioadm=?) ORDER BY NOME ASC;";
-            stmt = c.prepareStatement(sql);	
-            stmt.setInt(1, u.getCod());
-
-            ResultSet valor = stmt.executeQuery();
-
-            while(valor.next()){
-                Estabelecimento est = new Estabelecimento();
-
-                est.setCod(valor.getInt("cod"));
-                est.setCnpj(valor.getString("cnpj"));
-                est.setNome(valor.getString("nome"));
-
-                estabelecimentos.add(est);
-            }
-
-            stmt.close();
-        }catch(SQLException e){
-            System.out.println("Exception SQL!");
-            e.printStackTrace();
-        }
-
-        return estabelecimentos;
-    }
-    
     public Estabelecimento carregarFormAlterarEstabelecimento(UsuarioAdministrador u, int codEstabelecimento){
         
         System.out.println("\nEstabelecimentoDao - Carregar Form com dados do estabelecimento para alteração...\n");
@@ -243,8 +200,8 @@ public class EstabelecimentoDao {
         return retorno;
     }
     
-    public boolean excluirEstabelecimento(Estabelecimento est){
-        boolean retorno = false;
+    public int excluirEstabelecimento(Estabelecimento est){
+        int retorno = 0;
         
         System.out.println("\nEstabelecimentoDao - Excluir estabelecimento ADM...\n");
         
@@ -263,9 +220,9 @@ public class EstabelecimentoDao {
             stmt.execute();    
             stmt.close(); 
 			
-            retorno = true;	
+            retorno = 1;	
         }catch(SQLException e){
-            retorno = false;
+            retorno = 0;
             System.out.println("Exception SQL!");
             e.printStackTrace();
         }

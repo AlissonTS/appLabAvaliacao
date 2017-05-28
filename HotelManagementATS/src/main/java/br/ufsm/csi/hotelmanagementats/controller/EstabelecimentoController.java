@@ -178,17 +178,20 @@ public class EstabelecimentoController {
            est.setUsuarioAdm((UsuarioAdministrador) session.getAttribute("administrador"));
 		   
            try{
-               boolean retorno = eD.excluirEstabelecimento(est);
+               int retorno = eD.excluirEstabelecimento(est);
                
-                if(retorno){
-                    mv.addObject("mensagem", "<Strong>Sucesso</Strong> Exclusão feita com sucesso!");
-                    mv.addObject("tipo", "success");
-                    System.out.println("Exclusão Concluída!");
-                }else{
-                    mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do estabelecimento não efetuada!");
-                    mv.addObject("tipo", "danger");
-                    System.out.println("Erro ao excluir!");
-                }   
+               switch (retorno) {
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Exclusão feita com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Exclusão Concluída!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do estabelecimento não efetuada!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao excluir!");
+                       break;
+               } 
            }catch(Exception e){
                e.printStackTrace();
                mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do estabelecimento não efetuada!");
