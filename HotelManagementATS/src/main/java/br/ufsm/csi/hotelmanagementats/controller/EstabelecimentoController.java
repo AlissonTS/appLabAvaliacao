@@ -67,12 +67,12 @@ public class EstabelecimentoController {
                        System.out.println("Cadastro Concluído!");
                        break;
                    case 1:
-                       mv.addObject("mensagem", "<Strong>Erro!</Strong> Você possui um estabelecimento com mesmo nome!");
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um estabelecimento com mesmo nome!");
                        mv.addObject("tipo", "danger");
                        System.out.println("Erro ao cadastrar!");
                        break;
                    default:
-                       mv.addObject("mensagem", "<Strong>Erro!</Strong> Dados de cadastro já utilizados!");
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
                        mv.addObject("tipo", "danger");
                        System.out.println("Erro ao cadastrar!");
                        break;
@@ -80,7 +80,7 @@ public class EstabelecimentoController {
                
            }catch(Exception e){
                e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro!</Strong> Dados de cadastro já utilizados!");
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
                mv.addObject("tipo", "danger");
                System.out.println("Erro ao cadastrar!");
            }            
@@ -101,16 +101,68 @@ public class EstabelecimentoController {
         EstabelecimentoDao eD = new EstabelecimentoDao();
         
         if(rq.getParameter("estabelecimento")!=null){
-            String cnpj = rq.getParameter("estabelecimento");
+            int codEstabelecimento = Integer.parseInt(rq.getParameter("estabelecimento"));
             
-            est = eD.carregarFormAlterarEstabelecimento(cnpj);
+            UsuarioAdministrador uA = (UsuarioAdministrador) session.getAttribute("administrador");
             
+            est = eD.carregarFormAlterarEstabelecimento(uA, codEstabelecimento);
             
-            
+            if(est!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/alterarEstabelecimentoAdm");
+                mv.addObject("estabelecimento", est);
+                System.out.println("Estabelecimento buscado para alteração!");
+            }
         }
         
         System.out.println("\n-------------------------------\n");
-        // return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/alterarEstabelecimentoAdm";
+        
+        return mv;
+    }
+    
+    /* Alterar Estabelecimento */
+    @RequestMapping("alterarEstabelecimentoAdm.html")
+    public ModelAndView alterarEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de Alteração de Estabelecimento do Adm...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentosAdm");
+        
+        EstabelecimentoDao eD = new EstabelecimentoDao();
+        
+        if(est.getNome()!=null && est.getCnpj()!=null && 
+           est.getTelFixo()!=null){
+           
+           est.setUsuarioAdm((UsuarioAdministrador) session.getAttribute("administrador"));
+		   
+           try{
+               int retorno = eD.alterarEstabelecimento(est);
+               
+               switch (retorno) {
+                   case 2:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Alteração Concluída!");
+                       break;
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro estabelecimento com mesmo nome!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao alterar!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro estabelecimento!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao alterar!");
+                       break;
+               }     
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro estabelecimento!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao alterar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
         
         return mv;
     }

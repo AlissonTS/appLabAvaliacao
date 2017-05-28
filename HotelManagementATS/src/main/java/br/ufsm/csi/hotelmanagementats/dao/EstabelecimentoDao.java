@@ -122,9 +122,11 @@ public class EstabelecimentoDao {
             String sql;
 
             sql = "SELECT * FROM ESTABELECIMENTO WHERE NOT EXISTS "
-                    + "(SELECT * FROM QUARTO, ESTABELECIMENTO WHERE "
-                    + "quarto.codestabelecimento=estabelecimento.cod "
-                    + "and estabelecimento.codusuarioadm=?) ORDER BY NOME ASC;";
+                    + "(SELECT * FROM QUARTO, ESTABELECIMENTO, USUARIOOP, CLIENTE "
+                    + "WHERE quarto.codestabelecimento=estabelecimento.cod "
+                    + "and usuarioop.codestabelecimento=estabelecimento.cod "
+                    + "and cliente.codestabelecimento=estabelecimento.cod and "
+                    + "estabelecimento.codusuarioadm=?) ORDER BY NOME ASC;";
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, u.getCod());
 
@@ -149,5 +151,95 @@ public class EstabelecimentoDao {
         return estabelecimentos;
     }
     
+    public Estabelecimento carregarFormAlterarEstabelecimento(UsuarioAdministrador u, int codEstabelecimento){
+        
+        System.out.println("\nEstabelecimentoDao - Carregar Form com dados do estabelecimento para alteração...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        Estabelecimento est = new Estabelecimento();
+
+        try{
+                c = ConectaBD.getConexao();
+                String sql;
+
+                sql = "SELECT * FROM ESTABELECIMENTO WHERE cod=? AND codusuarioadm=?;";
+                stmt = c.prepareStatement(sql);	
+                stmt.setInt(1, codEstabelecimento);
+                stmt.setInt(2, u.getCod());
+
+                ResultSet valor = stmt.executeQuery();	
+
+                while(valor.next()){
+                    est.setCod(valor.getInt("cod"));
+                    est.setCnpj(valor.getString("cnpj"));
+                    est.setNome(valor.getString("nome"));
+                    est.setTelFixo(valor.getString("telefone"));
+                }
+
+                if(est.getNome()==null){
+                    est = null;
+                }
+
+                stmt.close();
+
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            est = null;
+        }
+
+        return est;
+    }
     
+    public int alterarEstabelecimento(Estabelecimento est){
+        int retorno = 0;
+        
+        System.out.println("\nEstabelecimentoDao - Alterar estabelecimento ADM...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "SELECT nome FROM ESTABELECIMENTO WHERE EXISTS "
+                    + "(SELECT estabelecimento.nome FROM ESTABELECIMENTO "
+                    + "WHERE codusuarioadm=? and "
+                    + "estabelecimento.codusuarioadm=codusuarioadm and nome=? and cnpj!=?);";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, est.getUsuarioAdm().getCod());
+            stmt.setString(2, est.getNome());
+            stmt.setString(3, est.getCnpj());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(!verificador){
+                sql = "UPDATE ESTABELECIMENTO SET nome=?, telefone=?"
+                    + "WHERE codusuarioadm=? and cnpj=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setString(1, est.getNome());
+				stmt.setString(2, est.getTelFixo());
+                stmt.setInt(3, est.getUsuarioAdm().getCod());
+				stmt.setString(4, est.getCnpj());
+
+                stmt.execute();
+                retorno = 2;
+            }
+            else{
+                retorno = 1;
+            }
+            
+            stmt.close();            
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
 }

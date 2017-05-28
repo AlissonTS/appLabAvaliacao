@@ -57,7 +57,7 @@ public class AcessoController {
                 u = uD.logar(u);
                 
                 if(u==null){
-                    mv.addObject("mensagem", "<Strong> Erro!</Strong> Dados inválidos!");
+                    mv.addObject("mensagem", "<Strong> Erro</Strong> Dados inválidos!");
                     mv.addObject("tipo", "danger");
                     System.out.println("Erro de Login - Administrador!");
                 }else{
@@ -78,7 +78,7 @@ public class AcessoController {
                 u = uD.logar(u);
                 
                 if(u==null){
-                    mv.addObject("mensagem", "<Strong> Erro!</Strong> Dados inválidos!");
+                    mv.addObject("mensagem", "<Strong> Erro</Strong> Dados inválidos!");
                     mv.addObject("tipo", "danger");
                     System.out.println("Erro de Login - Operador!");
                 }else{

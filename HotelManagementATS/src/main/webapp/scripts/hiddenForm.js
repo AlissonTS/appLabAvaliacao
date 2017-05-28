@@ -28,7 +28,7 @@
                     return true;
                 }else{
                     $('#avisoDiv').show();
-                    $("#avisoContent").html( "<Strong> Erro!</Strong> Senhas diferentes!" );
+                    $("#avisoContent").html("<Strong> Erro</Strong> Senhas diferentes!");
                     return false;
                 }
                 });

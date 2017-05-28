@@ -57,14 +57,14 @@ public class UsuarioAdmController {
                    mv.addObject("tipo", "success");
                    System.out.println("Cadastro Concluído!");
                }else{
-                   mv.addObject("mensagem", "<Strong>Erro!</Strong> Dados de cadastro já utilizados!");
+                   mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
                    mv.addObject("tipo", "danger");
                    System.out.println("Erro ao cadastrar!");
                }
                
            }catch(Exception e){
                e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro!</Strong> Dados de cadastro já utilizados!");
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
                mv.addObject("tipo", "danger");
                System.out.println("Erro ao cadastrar!");
            }            
@@ -130,13 +130,13 @@ public class UsuarioAdmController {
                    mv.addObject("tipo", "success");
                    System.out.println("Alteração Concluída!");
                }else{
-                   mv.addObject("mensagem", "<Strong>Erro!</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
+                   mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
                    mv.addObject("tipo", "danger");
                    System.out.println("Erro ao Alterar!");
                }
            }catch(Exception e){
                e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro!</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
                mv.addObject("tipo", "danger");
                System.out.println("Erro ao Alterar!");
            }

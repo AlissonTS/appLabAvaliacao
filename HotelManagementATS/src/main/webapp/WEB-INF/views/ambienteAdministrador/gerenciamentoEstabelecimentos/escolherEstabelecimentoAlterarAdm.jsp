@@ -51,10 +51,10 @@
                                             <c:set value="0" var="contador"/>
                                             <c:forEach var="estabelecimento" items="${estabelecimentos}">
                                                 <c:if test="${contador>0}">
-                                                    <label for="estabelecimento"><input type="radio" name="estabelecimento" value="${estabelecimento.cnpj}"> ${estabelecimento.nome} - ${estabelecimento.cnpj}</label><br>
+                                                    <label for="estabelecimento"><input type="radio" name="estabelecimento" value="${estabelecimento.cod}"> ${estabelecimento.nome} - ${estabelecimento.cnpj}</label><br>
                                                 </c:if>
                                                 <c:if test="${contador==0}">
-                                                    <label for="estabelecimento"><input type="radio" name="estabelecimento" value="${estabelecimento.cnpj}" checked> ${estabelecimento.nome} - ${estabelecimento.cnpj}</label><br>
+                                                    <label for="estabelecimento"><input type="radio" name="estabelecimento" value="${estabelecimento.cod}" checked> ${estabelecimento.nome} - ${estabelecimento.cnpj}</label><br>
                                                     <c:set value="1" var="contador"/>    
                                                 </c:if>
                                             </c:forEach>
@@ -67,7 +67,7 @@
                                 </form>
                             </c:if>
                             <c:if test="${empty estabelecimentos}">
-                                <br><p class="text-center" style="font-size: 16px"><strong>Você não possui estabelecimentos cadastrados</strong></p>
+                                <br><p class="text-center" style="font-size: 15px"><strong>Você não possui estabelecimentos cadastrados</strong></p>
                                 <p class="text-center"><a href="cadastrarEstabelecimentoAdm.html">Cadastrar Estabelecimento</a></p>
                             </c:if>
                         </div>
