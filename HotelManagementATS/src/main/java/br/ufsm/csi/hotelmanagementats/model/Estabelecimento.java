@@ -60,7 +60,7 @@ public class Estabelecimento {
      * @param nome the nome to set
      */
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     /**

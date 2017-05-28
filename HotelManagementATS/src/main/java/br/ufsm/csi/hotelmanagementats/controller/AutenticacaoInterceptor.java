@@ -30,14 +30,14 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
         if(uAdm!=null && uOp==null){
             if(uri.endsWith("alterarContaOp.html") ||
                uri.endsWith("gerenciamentoContaOp.html") ||
-               uri.endsWith("alterarOperador.html") ||     
+               uri.endsWith("alterarOperadorLogado.html") ||     
                uri.endsWith("cadastroAdministrador.html")     
             ){
                 response.sendRedirect("paginaPrincipalAdm.html");
                 return false;
             }
             if(est==null){
-                if(uri.endsWith("paginaPrincipalEstabelecimento.html") ||
+                if(uri.endsWith("paginaPrincipalEstabelecimento.html") ||     
                    uri.endsWith("gerenciamentoOperadores.html") ||
                    uri.endsWith("gerenciamentoQuartos.html") ||
                    uri.endsWith("gerenciamentoHospedagens.html") ||
@@ -94,7 +94,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                 return false;
             }
         }
-            
+
         return true;
     }
     

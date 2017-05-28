@@ -24,16 +24,41 @@ import org.apache.commons.codec.binary.Base64;
  */
 @Controller
 public class UsuarioOpController {
- 
+    
+    @RequestMapping("cadastrarOperadorForm.html")
+    public String cadastrarOperadorForm(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/cadastrarOperador";
+    }
+    
+    @RequestMapping("alterarExcluirOperador.html")
+    public String alterarExcluirOperador(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador";
+    }
+    
+    @RequestMapping("alterarOperadorForm.html")
+    public String alterarOperadorForm(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador";
+    }
+    
+    @RequestMapping("excluirOperador.html")
+    public String excluirOperador(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador";
+    }
+    
+    @RequestMapping("alterarOperadorEstabelecimento.html")
+    public String alterarOperadorEstabelecimento(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador";
+    }
+    
     @RequestMapping("alterarContaOp.html")
     public String alterarContaAdm(){	
             return "/WEB-INF/views/ambienteOperador/alterarContaOp";
     }
     
-    @RequestMapping("alterarOperador.html")
-    public ModelAndView alterarOperador(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
+    @RequestMapping("alterarOperadorLogado.html")
+    public ModelAndView alterarOperadorLogado(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
         System.out.println("-------------------------------");
-        System.out.println("Submit Formulário de Alteração de Operador..."); 
+        System.out.println("Submit Formulário de Alteração de Operador Logado..."); 
 
         UsuarioOperador uA = (UsuarioOperador) session.getAttribute("operador");
         Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimento");
@@ -42,16 +67,12 @@ public class UsuarioOpController {
 
         String senhaAntiga="";
         int codUsuario=0;
-        
-        if(uA.getNome()==null){
-            mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
-        }else{
-            mv = new ModelAndView("/WEB-INF/views/ambienteOperador/alterarContaOp");
 
-            senhaAntiga = uA.getSenha();
-            codUsuario = uA.getCod();
-        }
-		
+	mv = new ModelAndView("/WEB-INF/views/ambienteOperador/alterarContaOp");
+
+	senhaAntiga = uA.getSenha();
+	codUsuario = uA.getCod();
+
         String redefinir = rq.getParameter("redefinir");
         String senhaN = rq.getParameter("senhaN");
         
@@ -59,17 +80,10 @@ public class UsuarioOpController {
         
         if(u.getNome()!=null && u.getCpf()!=null && 
            u.getTelFixo()!=null && u.getTelCel()!=null &&
-           u.getNickname()!=null && u.getSenha()!=null && senhaN!=null && redefinir!=null){
-           
-           if(uA.getNome()==null){ 
-               if(rq.getParameter("codUsuario")==null){
-                    return mv; 
-               }else{
-                    u.setCod(Integer.parseInt(rq.getParameter("codUsuario")));
-               }
-           }else{
-               u.setCod(codUsuario);
-           }    
+           u.getNickname()!=null && u.getSenha()!=null && 
+           senhaN!=null && redefinir!=null){
+
+           u.setCod(codUsuario);
 
            if(redefinir.equals("Sim")){
                byte[] senha = rq.getParameter("senha").getBytes(); 
@@ -89,10 +103,9 @@ public class UsuarioOpController {
                boolean retorno = uD.alterarUsuarioOperador(u, est);
                
                if(retorno){
-                   if(uA.getNome()!=null){	
-                     session.setAttribute("operador", u);
-                     mv = new ModelAndView("/WEB-INF/views/ambienteOperador/gerenciamentoContaOp");
-                   } 
+                   session.setAttribute("operador", u);
+                   mv = new ModelAndView("/WEB-INF/views/ambienteOperador/gerenciamentoContaOp");
+					 
                    mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
                    mv.addObject("tipo", "success");
                    System.out.println("Alteração Concluída!");
@@ -114,4 +127,5 @@ public class UsuarioOpController {
         
         return mv;
     }
+
 }

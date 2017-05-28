@@ -39,11 +39,11 @@
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <h2 class="text-center" style="font-size: 25px;">Alterar Conta</h2>
                             <br>
-                            <form role="form" action="alterarOperador.html" method="POST">
+                            <form role="form" action="alterarOperadorLogado.html" method="POST">
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" value="${operador.nome}" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40">
+                                        <input class="form-control" type="text" value="${operador.nome}" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40" pattern="[a-z\s]+$" title="Apenas letras!">
                                     </div>
                                 </div>
                                 <div class="form-group row">

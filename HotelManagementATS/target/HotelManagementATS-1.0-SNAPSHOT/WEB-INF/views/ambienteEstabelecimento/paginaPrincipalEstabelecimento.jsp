@@ -49,7 +49,7 @@
                             </c:if> 
                             <c:if test="${not empty operador and empty administrador}">   
                                 <p class="text-center" style="font-size: 17px">Olá, ${operador.nome}</p>
-                            </c:if>    
+                            </c:if>   
                             <c:if test="${not empty estabelecimento}">
                                 <div style="font-size: 16px">
                                     <p class="text-center">Nome do Hotel: ${estabelecimento.nome}</p>

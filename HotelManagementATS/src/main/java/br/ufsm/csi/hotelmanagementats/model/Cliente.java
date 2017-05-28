@@ -57,7 +57,7 @@ public class Cliente {
      * @param nome the nome to set
      */
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     /**
@@ -71,7 +71,7 @@ public class Cliente {
      * @param email the email to set
      */
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.toUpperCase();
     }
 
     /**

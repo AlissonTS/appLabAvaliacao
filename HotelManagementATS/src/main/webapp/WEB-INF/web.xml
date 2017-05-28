@@ -30,6 +30,6 @@
   	  <servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern> *.html</url-pattern> 
-	  </servlet-mapping>			
-  
+	  </servlet-mapping>
+          			
 </web-app>

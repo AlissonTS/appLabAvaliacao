@@ -26,7 +26,7 @@ public class UsuarioOperador extends Usuario{
      * @param nickname the nickname to set
      */
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.nickname = nickname.toUpperCase();
     }
 
     /**
