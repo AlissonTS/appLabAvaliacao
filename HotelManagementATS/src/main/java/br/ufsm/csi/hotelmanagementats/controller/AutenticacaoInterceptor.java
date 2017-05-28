@@ -71,7 +71,8 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                uri.endsWith("escolherEstabelecimentoExcluirAdm.html") ||
                uri.endsWith("alterarEstabelecimentoFormAdm.html") ||
                uri.endsWith("alterarEstabelecimentoAdm.html") ||
-               uri.endsWith("excluirEstabelecimentoAdm.html")     
+               uri.endsWith("excluirEstabelecimentoAdm.html") ||
+               uri.endsWith("paginaPrincipalEstabelecimentoAdm.html")     
             ){
                 response.sendRedirect("paginaPrincipalEstabelecimento.html");
                 return false;

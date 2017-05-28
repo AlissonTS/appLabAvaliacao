@@ -5,6 +5,8 @@
  */
 package br.ufsm.csi.hotelmanagementats.controller;
 
+import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,8 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MenuPrincipalAdmController {
     
     @RequestMapping("paginaPrincipalAdm.html")
-    public String paginaPrincipalAdm(){	
-            return "/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm";
+    public String paginaPrincipalAdm(HttpSession session){
+        
+        Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimento");
+        
+        if(est!=null){
+            session.setAttribute("estabelecimento", null);
+        }
+        
+        return "/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm";
     }
     
     @RequestMapping("gerenciamentoEstabelecimentosAdm.html")

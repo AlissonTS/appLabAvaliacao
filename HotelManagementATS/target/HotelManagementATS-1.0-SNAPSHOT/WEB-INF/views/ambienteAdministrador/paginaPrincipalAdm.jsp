@@ -40,7 +40,7 @@
                             <c:set value="${estabelecimentoDao.getEstabelecimentosAdm(administrador)}" var="estabelecimentos"/>
                             
                             <c:if test="${not empty estabelecimentos}">
-                                <form action="paginaPrincipalEstabelecimento.html" method="POST">
+                                <form action="paginaPrincipalEstabelecimentoAdm.html" method="POST">
                                     <div class="form-group row">
                                         <center>
                                             <c:set value="0" var="contador"/>

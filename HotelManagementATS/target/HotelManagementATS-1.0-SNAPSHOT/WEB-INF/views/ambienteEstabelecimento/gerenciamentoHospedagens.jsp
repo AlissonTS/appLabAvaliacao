@@ -28,13 +28,14 @@
                                     <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
                                     <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                                 </c:if>
-                            </ul>
-                            <c:if test="${not empty operador and empty administrador}">
-                                <li><a href="#">Página Principal - Estabelecimento</a></li>
-                                <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                <li><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
-                                <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
-                            </c:if>
+                            
+                                <c:if test="${not empty operador and empty administrador}">
+                                    <li><a href="#">Página Principal - Estabelecimento</a></li>
+                                    <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
+                                    <li><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
+                                    <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
+                                </c:if>
+                            </ul>    
                         </div>
                     </div>
                 </nav>

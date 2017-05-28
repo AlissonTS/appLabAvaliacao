@@ -80,7 +80,6 @@
                                         <button type="submit" class="btn btn-primary">Alterar</button></p>
                                     </div>    
                                 </div>
-                                <p class="text-center">* Nickname: O nickname ou apelido deve ser único ao usuário operador, pois é a partir dele que o mesmo possui acesso ao ambiente de gerenciamento do estabelecimento em que ele está vinculado.</p>
                             </form>    
                         </div>
                     </div>

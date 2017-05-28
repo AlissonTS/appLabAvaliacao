@@ -5,11 +5,13 @@
  */
 package br.ufsm.csi.hotelmanagementats.dao;
 
+import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
 import br.ufsm.csi.hotelmanagementats.model.UsuarioOperador;
 import br.ufsm.csi.hotelmanagementats.util.ConectaBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -32,9 +34,9 @@ public class UsuarioOpDao {
             stmt.setString(1, u.getNickname());
             stmt.setString(2, u.getSenha());
             
-            // u = null;
-            
             ResultSet valor = stmt.executeQuery();
+            
+            int estabelecimento=0;
             
             while(valor.next()){
                 u.setCod(valor.getInt("cod"));
@@ -44,6 +46,25 @@ public class UsuarioOpDao {
                 u.setCpf(valor.getString("cpf"));
                 u.setTelFixo(valor.getString("telfixo"));
                 u.setTelCel(valor.getString("telcel"));
+                estabelecimento = valor.getInt("codEstabelecimento");
+            }
+            
+            if(u.getNome()!=null){
+                sql = "SELECT * FROM ESTABELECIMENTO WHERE COD=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, estabelecimento);
+                
+                valor = stmt.executeQuery();
+                
+                Estabelecimento est = new Estabelecimento();
+                
+                while(valor.next()){
+                    est.setCod(valor.getInt("cod"));
+                    est.setCnpj(valor.getString("cnpj"));
+                    est.setNome(valor.getString("nome"));
+                    est.setTelFixo(valor.getString("telefone"));
+                }
+                u.setEstabelecimento(est);
             }
             
             if(u.getNome()==null){
@@ -52,8 +73,9 @@ public class UsuarioOpDao {
             
             stmt.close();
             
-        }catch(Exception e){
+        }catch(SQLException e){
             e.printStackTrace();
+            System.out.println("Exception SQL!");
             u = null;
         }
         

@@ -29,7 +29,7 @@
                                     <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                                 </c:if>
                                 <c:if test="${not empty operador and empty administrador}">    
-                                    <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
+                                    <li class="active"><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                     <li><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
                                     <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
@@ -43,11 +43,20 @@
                     <div class="row" style="margin-left: 0px; margin-right: 0px;">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <h2 class="text-center" style="font-size: 25px;">Página Principal - Estabelecimento </h2>
-                            <p class="text-center" style="font-size: 17px">Olá, Fulano </p>
-                            <br>
-                            <p class="text-center">Hotel Santa Maria - Santa Maria/RS</p>
-                            <p class="text-center">CNPJ: 99.999.999/9999-99</p>
-                            <p class="text-center">Telefone Fixo: (55) 0000-0009</p>
+                            
+                            <c:if test="${not empty administrador and empty operador}"> 
+                                <p class="text-center" style="font-size: 17px">Olá, ${administrador.nome} </p>
+                            </c:if> 
+                            <c:if test="${not empty operador and empty administrador}">   
+                                <p class="text-center" style="font-size: 17px">Olá, ${operador.nome}</p>
+                            </c:if>    
+                            <c:if test="${not empty estabelecimento}">
+                                <div style="font-size: 16px">
+                                    <p class="text-center">Nome do Hotel: ${estabelecimento.nome}</p>
+                                    <p class="text-center">CNPJ: ${estabelecimento.cnpj}</p>
+                                    <p class="text-center">Telefone Fixo: ${estabelecimento.telFixo}</p>
+                                </div>
+                            </c:if>
                         </div>
                     </div>
                 </div>                 

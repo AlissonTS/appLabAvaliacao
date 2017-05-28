@@ -100,7 +100,7 @@ public class EstabelecimentoController {
             
             UsuarioAdministrador uA = (UsuarioAdministrador) session.getAttribute("administrador");
             
-            est = eD.carregarFormAlterarEstabelecimento(uA, codEstabelecimento);
+            est = eD.carregarEstabelecimentoEscolhido(uA, codEstabelecimento);
             
             if(est!=null){
                 mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/alterarEstabelecimentoAdm");
@@ -203,5 +203,34 @@ public class EstabelecimentoController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping("paginaPrincipalEstabelecimentoAdm.html")
+    public String paginaPrincipalEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Estabelecimento de Estabelecimento do Adm para Ambiente de Gerenciamento...");
+        
+        String retorno = "forward:paginaPrincipalAdm.html";
+        
+        EstabelecimentoDao eD = new EstabelecimentoDao();
+        
+        if(rq.getParameter("estabelecimento")!=null){
+            int codEstabelecimento = Integer.parseInt(rq.getParameter("estabelecimento"));
+            
+            UsuarioAdministrador uA = (UsuarioAdministrador) session.getAttribute("administrador");
+            
+            est = eD.carregarEstabelecimentoEscolhido(uA, codEstabelecimento);
+            
+            if(est!=null){
+                session.setAttribute("estabelecimento", est);
+                
+                retorno = "forward:paginaPrincipalEstabelecimento.html";
+                System.out.println("Estabelecimento buscado para montagem do ambiente de gerenciamento!");
+            }
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return retorno;
     }
 }

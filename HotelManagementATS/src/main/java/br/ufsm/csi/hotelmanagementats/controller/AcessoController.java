@@ -76,16 +76,17 @@ public class AcessoController {
                 UsuarioOpDao uD = new UsuarioOpDao();
                 
                 u = uD.logar(u);
-                
+
                 if(u==null){
                     mv.addObject("mensagem", "<Strong> Erro</Strong> Dados inválidos!");
                     mv.addObject("tipo", "danger");
                     System.out.println("Erro de Login - Operador!");
                 }else{
-                    mv = new ModelAndView("/WEB-INF/views/ambienteOperador/gerenciamentoContaOp");
+                    mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/paginaPrincipalEstabelecimento");
                     // mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Dados válidos!");
                     // mv.addObject("tipo", "success");
                     session.setAttribute("operador", u);
+                    session.setAttribute("estabelecimento", u.getEstabelecimento());
                     
                     System.out.println("Login feito com sucesso - Operador!");
                 }

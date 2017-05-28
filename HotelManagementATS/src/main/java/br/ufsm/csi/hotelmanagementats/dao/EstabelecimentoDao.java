@@ -108,9 +108,9 @@ public class EstabelecimentoDao {
         return estabelecimentos;
     }
     
-    public Estabelecimento carregarFormAlterarEstabelecimento(UsuarioAdministrador u, int codEstabelecimento){
+    public Estabelecimento carregarEstabelecimentoEscolhido(UsuarioAdministrador u, int codEstabelecimento){
         
-        System.out.println("\nEstabelecimentoDao - Carregar Form com dados do estabelecimento para alteração...\n");
+        System.out.println("\nEstabelecimentoDao - Carregar estabelecimento escolhido...\n");
         
         Connection c = null;
         PreparedStatement stmt = null;
