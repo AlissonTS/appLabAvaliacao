@@ -69,26 +69,42 @@
                                 <div class="form-group row">
                                     <label for="nickname" class="col-md-3 col-xs-4 col-form-label">Nickname de Acesso (Apelido)*: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="12">
+                                        <input class="form-control" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="12" pattern='[a-zA-Z0-9]+' title="Apenas números e letras!">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="senha" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
+                                    <label for="redefinir" class="col-md-3 col-xs-4 col-form-label">Redefinir Senha? </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="password" placeholder="Digite sua senha" required="true" name="senha" id="senha" maxlength="20">
+                                        <select class="form-control" id="redefinir" name="redefinir">
+                                            <option value="Não">Não</option>
+                                            <option value="Sim">Sim</option>
+                                        </select>
+                                    </div>
+                                </div>    
+                                <div class="form-group row" id="inputOculto">
+                                    <label for="senha" class="col-md-3 col-xs-4 col-form-label">Digite sua nova Senha: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" type="password" placeholder="Digite sua nova senha" required="true" name="senha" id="senha" maxlength="30">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="senha" class="col-md-3 col-xs-4 col-form-label">Digite a senha novamente: </label>
+                                <div class="form-group row" id="inputOculto2">
+                                    <label for="senhaN" class="col-md-3 col-xs-4 col-form-label">Digite sua nova Senha novamente: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="password" placeholder="Digite sua senha novamente" required="true" name="senha" id="senha" maxlength="20">
+                                        <input class="form-control" type="password" placeholder="Digite sua nova senha novamente" required="true" name="senhaN" id="senhaN">
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12" id="avisoDiv">
+                                        <div class="alert alert-danger">
+                                            <a data-dismiss="alert"></a><p id="avisoContent"></p>
+                                        </div>    
+                                    </div>  
+                                </div>     
                                 <div class="form-group row">
                                     <div class="col-md-12 col-xs-12">
                                         <p style="text-align: center">
                                         <button type="submit" class="btn btn-primary">Alterar</button></p>
-                                    </div>    
+                                    </div>
                                 </div>
                                 <p class="text-center">* Nickname: O nickname ou apelido deve ser único ao usuário operador, pois é a partir dele que o mesmo possui acesso ao ambiente de gerenciamento do estabelecimento em que ele está vinculado.</p>
                             </form>    
@@ -103,4 +119,5 @@
         <%@ include file="../../../../import/js.jsp" %>
     </body>
     <script type="text/javascript" src="scripts/mask.js"></script>
+    <script type="text/javascript" src="scripts/hiddenForm.js"></script>
 </html>

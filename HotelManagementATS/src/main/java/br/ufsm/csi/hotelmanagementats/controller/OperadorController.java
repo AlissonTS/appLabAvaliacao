@@ -35,8 +35,8 @@ public class OperadorController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador";
     }
     
-    @RequestMapping("alterarOperador.html")
-    public String alterarOperador(){	
+    @RequestMapping("alterarOperadorEstabelecimento.html")
+    public String alterarOperadorEstabelecimento(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador";
     }
 }

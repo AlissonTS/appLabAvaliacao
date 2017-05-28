@@ -100,7 +100,7 @@ public class UsuarioAdmController {
         
         if(u.getNome()!=null && u.getCpf()!=null && 
            u.getTelFixo()!=null && u.getTelCel()!=null &&
-           u.getEmail()!=null && u.getSenha()!=null && senhaN!=null){
+           u.getEmail()!=null && u.getSenha()!=null && senhaN!=null && redefinir!=null){
            
            u.setCod(codUsuario);
            u.setCpf(cpfAntigo);

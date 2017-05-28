@@ -69,7 +69,7 @@
                                 <div class="form-group row">
                                     <label for="nickname" class="col-md-3 col-xs-4 col-form-label">Nickname de Acesso (Apelido)*: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="40">
+                                        <input class="form-control" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="40" pattern='[a-zA-Z0-9]+' title="Apenas números e letras!">
                                     </div>
                                 </div>
                                 <div class="form-group row">

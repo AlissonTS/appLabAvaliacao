@@ -19,6 +19,43 @@ import java.sql.SQLException;
  */
 public class UsuarioOpDao {
     
+    public boolean alterarUsuarioOperador(UsuarioOperador u, Estabelecimento est){
+        boolean retorno = false;
+        
+        System.out.println("\nUsuarioAdmDao - Alterar usuário operador...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+           
+            sql = "UPDATE USUARIOOP SET nickname=?, senha=?, nome=?, telfixo=?, telcel=?"
+                    + "WHERE COD=? AND CODESTABELECIMENTO=?;";
+            
+            stmt = c.prepareStatement(sql);
+            stmt.setString(1, u.getNickname());
+            stmt.setString(2, u.getSenha());
+            stmt.setString(3, u.getNome());
+            stmt.setString(4, u.getTelFixo());
+            stmt.setString(5, u.getTelCel());
+            stmt.setInt(6, u.getCod());
+	    stmt.setInt(7, est.getCod());
+            
+            stmt.execute();
+            stmt.close();
+            retorno = true;
+            
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            retorno = false;
+        }
+        
+        return retorno;
+    }
+    
     public UsuarioOperador logar(UsuarioOperador u){
         Connection c = null;
         PreparedStatement stmt = null;
@@ -80,5 +117,5 @@ public class UsuarioOpDao {
         }
         
         return u;
-    }  
+    } 
 }
