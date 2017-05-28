@@ -18,19 +18,20 @@
                     $('#inputOculto2').hide();
                     $("#senha").prop('required', false);
                     $("#senhaN").prop('required', false);
+                    $('#avisoDiv').hide();
                   }
                 });
                 
                 $("form").submit(function(event){
-                if ($('#senha').val() === $('#senhaN').val() && $('#redefinir').val() === 'Sim') {
-                    return true;
-                }else if($('#redefinir').val() !== 'Sim'){
-                    return true;
-                }else{
-                    $('#avisoDiv').show();
-                    $("#avisoContent").html("<Strong> Erro</Strong> Senhas diferentes!");
-                    return false;
-                }
+                    if ($('#senha').val() === $('#senhaN').val() && $('#redefinir').val() === 'Sim') {
+                        return true;
+                    }else if($('#redefinir').val() !== 'Sim'){
+                        return true;
+                    }else{
+                        $('#avisoDiv').show();
+                        $("#avisoContent").html("<Strong> Erro</Strong> Senhas diferentes!");
+                        return false;
+                    }
                 });
             });
 

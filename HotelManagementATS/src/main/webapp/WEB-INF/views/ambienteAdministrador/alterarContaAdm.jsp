@@ -100,7 +100,7 @@
                                 <div class="row">
                                     <div class="col-md-12 col-xs-12" id="avisoDiv">
                                         <div class="alert alert-danger">
-                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><p id="avisoContent"></p>
+                                            <a data-dismiss="alert"></a><p id="avisoContent"></p>
                                         </div>    
                                     </div>  
                                 </div>     

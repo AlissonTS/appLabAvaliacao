@@ -242,4 +242,34 @@ public class EstabelecimentoDao {
         
         return retorno;
     }
+    
+    public boolean excluirEstabelecimento(Estabelecimento est){
+        boolean retorno = false;
+        
+        System.out.println("\nEstabelecimentoDao - Excluir estabelecimento ADM...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "DELETE FROM ESTABELECIMENTO WHERE cod=? and codusuarioadm=?;";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, est.getCod());
+            stmt.setInt(2, est.getUsuarioAdm().getCod());
+
+            stmt.execute();    
+            stmt.close(); 
+			
+            retorno = true;	
+        }catch(SQLException e){
+            retorno = false;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
 }

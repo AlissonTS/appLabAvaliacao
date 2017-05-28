@@ -36,11 +36,6 @@ public class EstabelecimentoController {
             return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/escolherEstabelecimentoExcluirAdm";
     }
     
-    @RequestMapping("excluirEstabelecimentoAdm.html")
-    public String excluirEstabelecimentoAdm(){	
-            return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentos/escolherEstabelecimentoExcluirAdm";
-    }
-    
     /* Cadastrar Estabelecimento */
     @RequestMapping("cadastrarEstabelecimentoAdm.html")
     public ModelAndView cadastrarEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
@@ -159,6 +154,46 @@ public class EstabelecimentoController {
                mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro estabelecimento!");
                mv.addObject("tipo", "danger");
                System.out.println("Erro ao alterar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    /* Excluir Estabelecimento */
+    @RequestMapping("excluirEstabelecimentoAdm.html")
+    public ModelAndView excluirEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de Exclusão de Estabelecimento do Adm...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentosAdm");
+        
+        EstabelecimentoDao eD = new EstabelecimentoDao();
+
+        if(rq.getParameter("estabelecimento")!=null){
+           
+           est.setCod(Integer.parseInt(rq.getParameter("estabelecimento")));
+           est.setUsuarioAdm((UsuarioAdministrador) session.getAttribute("administrador"));
+		   
+           try{
+               boolean retorno = eD.excluirEstabelecimento(est);
+               
+                if(retorno){
+                    mv.addObject("mensagem", "<Strong>Sucesso</Strong> Exclusão feita com sucesso!");
+                    mv.addObject("tipo", "success");
+                    System.out.println("Exclusão Concluída!");
+                }else{
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do estabelecimento não efetuada!");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao excluir!");
+                }   
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do estabelecimento não efetuada!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao excluir!");
            }            
         }
         
