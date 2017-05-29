@@ -25,6 +25,8 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
         UsuarioOperador uOp = (UsuarioOperador) request.getSession().getAttribute("operador");
         Estabelecimento est = (Estabelecimento) request.getSession().getAttribute("estabelecimentoEscolhido");
         
+        Estabelecimento e;
+        
         String uri = request.getRequestURI();
         
         if(uAdm!=null && uOp==null){
@@ -53,6 +55,29 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                    uri.endsWith("alterarOperadorEstabelecimento.html")     
                 ){
                     response.sendRedirect("paginaPrincipalAdm.html");
+                    return false;
+                }
+            }else if(est.getNome()!=null){
+                if(uri.contains("paginaInicial.html") ||
+                   uri.endsWith("cadastroAdministrador.html") ||
+                   uri.endsWith("cadastrarAdministrador.html") ||
+                   uri.endsWith("paginaPrincipalAdm.html") ||      
+                   uri.endsWith("gerenciamentoEstabelecimentosAdm.html") ||
+                   uri.endsWith("gerenciamentoContaAdm.html") ||
+                   uri.endsWith("alterarContaAdmForm.html") ||
+                   uri.endsWith("alterarAdministrador.html") ||     
+                   uri.endsWith("paginaPrincipalEstabelecimentoAdm.html") ||
+                   uri.endsWith("cadastrarEstabelecimentoFormAdm.html")  ||
+                   uri.endsWith("escolherEstabelecimentoAlterarAdm.html")  ||
+                   uri.endsWith("alterarEstabelecimentoFormAdm.html")  ||     
+                   uri.endsWith("alterarEstabelecimentoAdm.html")  ||
+                   uri.endsWith("cadastrarEstabelecimentoAdm.html")  ||     
+                   uri.endsWith("escolherEstabelecimentoExcluirAdm.html")  ||
+                   uri.endsWith("excluirEstabelecimentoAdm.html")    
+                ){
+                    e = null;
+                    request.getSession().setAttribute("estabelecimentoEscolhido", e);
+                    response.sendRedirect("paginaInicial.html");
                     return false;
                 }
             }
