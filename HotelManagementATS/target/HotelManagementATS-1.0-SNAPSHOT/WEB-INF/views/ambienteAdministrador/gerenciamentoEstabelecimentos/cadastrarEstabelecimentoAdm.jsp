@@ -49,7 +49,7 @@
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o nome do Estabelecimento" required="true" name="nome" id="nome" maxlength="25">
+                                        <input class="form-control" type="text" placeholder="Digite o nome do Estabelecimento" required="true" name="nome" id="nome" maxlength="40">
                                     </div>
                                 </div>
                                 <div class="form-group row">

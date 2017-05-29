@@ -58,10 +58,8 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                     return false;
                 }
             }else if(est.getNome()!=null){
-                if(uri.contains("paginaInicial.html") ||
-                   uri.endsWith("cadastroAdministrador.html") ||
-                   uri.endsWith("cadastrarAdministrador.html") ||
-                   uri.endsWith("paginaPrincipalAdm.html") ||      
+                if(uri.endsWith("cadastroAdministrador.html") ||
+                   uri.endsWith("cadastrarAdministrador.html") ||      
                    uri.endsWith("gerenciamentoEstabelecimentosAdm.html") ||
                    uri.endsWith("gerenciamentoContaAdm.html") ||
                    uri.endsWith("alterarContaAdmForm.html") ||
@@ -79,6 +77,13 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                     request.getSession().setAttribute("estabelecimentoEscolhido", e);
                     response.sendRedirect("paginaInicial.html");
                     return false;
+                }else if(uri.contains("paginaInicial.html") ||
+                     uri.endsWith("paginaPrincipalAdm.html") ||   
+                     uri.endsWith("sobreAplicacao.html")   
+                ){
+                    e = null;
+                    request.getSession().setAttribute("estabelecimentoEscolhido", e);
+                    return true;   
                 }
             }
             

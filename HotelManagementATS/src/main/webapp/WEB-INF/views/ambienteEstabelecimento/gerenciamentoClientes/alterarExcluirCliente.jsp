@@ -46,32 +46,52 @@
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                        <div class="col-md-offset-1 col-md-10 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
                             <h2 class="text-center" style="font-size: 25px;">Alterar/Excluir Cliente</h2>
                             <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>Nome</th>
-                                      <th>CPF</th>
-                                      <th>Telefone Celular</th>
-                                      <th>E-mail</th>
-                                      <th>Alterar Cliente</th>
-                                      <th>Excluir Cliente</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>Mark</td>
-                                      <td>Otto</td>
-                                      <td>@mdo</td>
-                                      <td class="text-center"><a href="alterarClienteForm.html" class="btn btn-primary" role="button">Alterar</a></td>
-                                      <td class="text-center"><a href="excluirCliente.html" class="btn btn-danger" role="button">Excluir</a></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                            
+                            <jsp:useBean id="clienteDao" class="br.ufsm.csi.hotelmanagementats.dao.ClienteDao"/>
+                            <c:set value="${clienteDao.getClientesEstabelecimento(estabelecimentoEscolhido)}" var="clientes"/>
+                            
+                            <c:if test="${not empty clientes}">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>Nome</th>
+                                          <th>CPF</th>
+                                          <th>Telefone Celular</th>
+                                          <th>Email</th>
+                                          <th>Alterar Cliente</th>
+                                          <th>Excluir Cliente</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <c:forEach var="cliente" items="${clientes}">  
+                                            <tr>
+                                              <th>${cliente.nome}</th>
+                                              <td>${cliente.cpf}</td>
+                                              <td>${cliente.telCel}</td>
+                                              <td>${cliente.email}</td>
+                                              <td class="text-center"><form action="alterarClienteForm.html" method="POST"><button value="${cliente.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
+                                              <td class="text-center"><form action="excluirCliente.html" method="POST"><button value="${cliente.cod}" name="cod" type="submit" class="btn btn-danger">Excluir</button></form>
+                                            </tr>
+                                        </c:forEach>
+                                      </tbody>
+                                    </table>
+                            </c:if>
+                            <c:if test="${empty clientes}">
+                                <br><p class="text-center" style="font-size: 15px"><strong>O estabelecimento não possui clientes cadastrados</strong></p>
+                                <p class="text-center"><a href="cadastrarClienteForm.html">Cadastrar Cliente</a></p>
+                            </c:if>
+                            
+                            
                             </div>    
                         </div>
                     </div>
