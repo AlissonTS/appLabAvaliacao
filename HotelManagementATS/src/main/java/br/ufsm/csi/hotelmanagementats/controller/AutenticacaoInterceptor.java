@@ -23,7 +23,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
         
         UsuarioAdministrador uAdm = (UsuarioAdministrador) request.getSession().getAttribute("administrador");
         UsuarioOperador uOp = (UsuarioOperador) request.getSession().getAttribute("operador");
-        Estabelecimento est = (Estabelecimento) request.getSession().getAttribute("estabelecimento");
+        Estabelecimento est = (Estabelecimento) request.getSession().getAttribute("estabelecimentoEscolhido");
         
         String uri = request.getRequestURI();
         

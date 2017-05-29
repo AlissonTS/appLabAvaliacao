@@ -86,7 +86,7 @@ public class AcessoController {
                     // mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Dados válidos!");
                     // mv.addObject("tipo", "success");
                     session.setAttribute("operador", u);
-                    session.setAttribute("estabelecimento", u.getEstabelecimento());
+                    session.setAttribute("estabelecimentoEscolhido", u.getEstabelecimento());
                     
                     System.out.println("Login feito com sucesso - Operador!");
                 }
@@ -99,10 +99,15 @@ public class AcessoController {
     }
     
     @RequestMapping("realizarLogout.html")
-    public String realizarLogout(HttpSession session){
+    public ModelAndView realizarLogout(HttpSession session){
             
         session.invalidate();
-
-        return "forward:paginaInicial.html";
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/paginaInicial");
+        
+        mv.addObject("mensagem", "<Strong> Sucesso</Strong> Usuário saiu do sistema!");
+        mv.addObject("tipo", "success");
+        
+        return mv;
     }
 }

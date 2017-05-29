@@ -61,7 +61,7 @@ public class UsuarioOpController {
         System.out.println("Submit Formulário de Alteração de Operador Logado..."); 
 
         UsuarioOperador uA = (UsuarioOperador) session.getAttribute("operador");
-        Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimento");
+        Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
 
         ModelAndView mv;
 

@@ -44,7 +44,7 @@
                                     <div class="form-group row">
                                         <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40" pattern="[a-z\s]+$" title="Apenas letras!">
+                                            <input class="form-control" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40" pattern="[a-ZA-ZА-За=з\s]+$" title="Apenas letras!">
                                         </div>
                                     </div>
                                     <div class="form-group row">

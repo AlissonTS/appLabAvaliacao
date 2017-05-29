@@ -206,12 +206,12 @@ public class EstabelecimentoController {
     }
     
     @RequestMapping("paginaPrincipalEstabelecimentoAdm.html")
-    public ModelAndView paginaPrincipalEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
+    public String paginaPrincipalEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Estabelecimento de Estabelecimento do Adm para Ambiente de Gerenciamento...");
         
-        // String retorno = "forward:paginaPrincipalAdm.html";
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm");
+        String retorno = "forward:paginaPrincipalAdm.html";
+        // ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm");
         
         EstabelecimentoDao eD = new EstabelecimentoDao();
         
@@ -223,17 +223,17 @@ public class EstabelecimentoController {
             est = eD.carregarEstabelecimentoEscolhido(uA, codEstabelecimento);
             
             if(est!=null){
-                session.setAttribute("estabelecimento", est);
+                session.setAttribute("estabelecimentoEscolhido", est);
                 
-                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/paginaPrincipalEstabelecimento");
+                // mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/paginaPrincipalEstabelecimento");
                 
-                // retorno = "forward:paginaPrincipalEstabelecimento.html";
+                retorno = "forward:paginaPrincipalEstabelecimento.html";
                 System.out.println("Estabelecimento buscado para montagem do ambiente de gerenciamento!");
             }
         }
         
         System.out.println("\n-------------------------------\n");
         
-        return mv;
+        return retorno;
     }
 }

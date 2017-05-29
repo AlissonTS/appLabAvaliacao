@@ -20,10 +20,12 @@ public class MenuPrincipalAdmController {
     @RequestMapping("paginaPrincipalAdm.html")
     public String paginaPrincipalAdm(HttpSession session){
         
-        Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimento");
+        Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+        
+        Estabelecimento e = null;
         
         if(est!=null){
-            session.setAttribute("estabelecimento", null);
+            session.setAttribute("estabelecimentoEscolhido", e);
         }
         
         return "/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm";

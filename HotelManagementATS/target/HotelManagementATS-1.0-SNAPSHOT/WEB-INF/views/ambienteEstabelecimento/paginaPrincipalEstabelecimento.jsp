@@ -50,11 +50,11 @@
                             <c:if test="${not empty operador and empty administrador}">   
                                 <p class="text-center" style="font-size: 17px">Olá, ${operador.nome}</p>
                             </c:if>   
-                            <c:if test="${not empty estabelecimento}">
+                            <c:if test="${not empty estabelecimentoEscolhido}">
                                 <div style="font-size: 16px">
-                                    <p class="text-center">Nome do Hotel: ${estabelecimento.nome}</p>
-                                    <p class="text-center">CNPJ: ${estabelecimento.cnpj}</p>
-                                    <p class="text-center">Telefone Fixo: ${estabelecimento.telFixo}</p>
+                                    <p class="text-center">Nome do Hotel: ${estabelecimentoEscolhido.nome}</p>
+                                    <p class="text-center">CNPJ: ${estabelecimentoEscolhido.cnpj}</p>
+                                    <p class="text-center">Telefone Fixo: ${estabelecimentoEscolhido.telFixo}</p>
                                 </div>
                             </c:if>
                         </div>
