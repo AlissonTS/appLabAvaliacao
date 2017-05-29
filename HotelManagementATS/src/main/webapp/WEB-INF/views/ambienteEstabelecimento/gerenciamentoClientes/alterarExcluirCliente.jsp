@@ -80,11 +80,31 @@
                                               <td>${cliente.telCel}</td>
                                               <td>${cliente.email}</td>
                                               <td class="text-center"><form action="alterarClienteForm.html" method="POST"><button value="${cliente.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
-                                              <td class="text-center"><form action="excluirCliente.html" method="POST"><button value="${cliente.cod}" name="cod" type="submit" class="btn btn-danger">Excluir</button></form>
+                                              <td class="text-center"><form id="formularioExcluir" action="excluirCliente.html" method="POST"><button type="button" data-nome="${cliente.nome}" value="${cliente.cod}" id="excluirCliente" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirm">Excluir</button></form>
                                             </tr>
                                         </c:forEach>
                                       </tbody>
                                     </table>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">Excluir Cliente</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p style="font-size: 17px;">Deseja excluir o cliente <strong id="nomeCliente"></strong>?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <p class="text-center">
+                                                    <button type="button" class="btn btn-danger" id="yesCliente">Desejo excluir o cliente</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                                                </div>
+                                            </div>
+                                      </div>
+                                    </div> 
+                                    
                             </c:if>
                             <c:if test="${empty clientes}">
                                 <br><p class="text-center" style="font-size: 15px"><strong>O estabelecimento não possui clientes cadastrados</strong></p>

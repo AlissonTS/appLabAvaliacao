@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                          <button id="excluir" type="button" class="btn btn-danger" class="btn btn-default" data-toggle="modal" data-target="#confirm">Excluir Estabelecimento</button></div>
+                                          <button id="excluirEstabelecimento" type="button" class="btn btn-danger" class="btn btn-default" data-toggle="modal" data-target="#confirm">Excluir Estabelecimento</button></div>
                                     </div>	
                                 </form>
                                 <p class="text-center" style="font-size: 14px"><strong>Apenas estabelecimentos sem histórico de operadores, quartos, clientes ou hospedagens cadastradas podem ser excluídos.</strong></p>            
@@ -87,7 +87,7 @@
                             </div>
                             <div class="modal-footer">
                                 <p class="text-center">
-                                <button type="button" class="btn btn-danger" id="yes">Desejo excluir o estabelecimento</button>
+                                <button type="button" class="btn btn-danger" id="yesEstabelecimento">Desejo excluir o estabelecimento</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
                             </div>
                         </div>
