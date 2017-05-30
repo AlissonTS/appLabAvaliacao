@@ -32,24 +32,136 @@ public class ClienteController {
     }
     
     @RequestMapping("alterarClienteForm.html")
-    public String alterarClienteForm(HttpServletRequest rq){
-        String retorno = rq.getParameter("cod");
-        System.out.println("Cliente Selecionado: "+retorno);
+    public ModelAndView alterarClienteForm(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Cliente para Alteração...");
         
-        return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarCliente";
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarExcluirCliente");
+        
+        ClienteDao cD = new ClienteDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codCliente= Integer.parseInt(rq.getParameter("cod"));
+            
+            Cliente ct = new Cliente();
+            ct.setCod(codCliente);
+			
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+            ct.setEstabelecimento(est);
+			
+            ct = cD.carregarClienteEscolhido(ct);
+            
+            if(ct!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarCliente");
+                mv.addObject("cliente", ct);
+                System.out.println("Cliente buscado para alteração!");
+            }
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
     }
     
+    /* Excluir Cliente */
     @RequestMapping("excluirCliente.html")
-    public String excluirCliente(HttpServletRequest rq){
-        String retorno = rq.getParameter("cod");
-        System.out.println("Cliente Selecionado: "+retorno);
+    public ModelAndView excluirCliente(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de Exclusão de Cliente do Estabelecimento...");
         
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarExcluirCliente";
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarExcluirCliente");
+        
+        ClienteDao cD = new ClienteDao();
+
+        if(rq.getParameter("cod")!=null){
+            int codCliente= Integer.parseInt(rq.getParameter("cod"));
+            
+            Cliente ct = new Cliente();
+            ct.setCod(codCliente);
+			
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+            ct.setEstabelecimento(est);
+		   
+           try{
+               int retorno = cD.excluirCliente(ct);
+               
+               switch (retorno) {
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Exclusão feita com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Exclusão Concluída!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do cliente não efetuada!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao excluir!");
+                       break;
+               } 
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do cliente não efetuada!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao excluir!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
     }
     
+    /* Alterar Cliente */
     @RequestMapping("alterarCliente.html")
-    public String alterarCliente(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarCliente";
+    public ModelAndView alterarCliente(Cliente ct, HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de Alteração de Cliente do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarExcluirCliente");
+        
+        ClienteDao cD = new ClienteDao();
+        
+        if(rq.getParameter("cod")!=null && ct.getNome()!=null && ct.getCpf()!=null && 
+           ct.getTelCel()!=null && ct.getEmail()!=null){
+           int codCliente= Integer.parseInt(rq.getParameter("cod"));
+           ct.setCod(codCliente);
+
+           Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+		   
+           ct.setEstabelecimento(est);
+		   
+           try{
+               int retorno = cD.alterarCliente(ct);
+               
+               switch (retorno) {
+                   case 2:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Alteração Concluída!");
+                       break;
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro cliente com mesmo CPF!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao alterar!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro cliente!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao alterar!");
+                       break;
+               }     
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro cliente!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao alterar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
     }
     
     /* Cadastrar Cliente */

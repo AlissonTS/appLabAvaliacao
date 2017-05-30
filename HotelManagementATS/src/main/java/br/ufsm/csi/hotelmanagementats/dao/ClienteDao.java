@@ -111,4 +111,139 @@ public class ClienteDao {
         return clientes;
     }
     
+    public Cliente carregarClienteEscolhido(Cliente ct){
+        
+        System.out.println("\nClienteDao - Carregar cliente escolhido...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+                c = ConectaBD.getConexao();
+                String sql;
+
+                sql = "SELECT * FROM CLIENTE WHERE cod=? AND codEstabelecimento=?;";
+                stmt = c.prepareStatement(sql);	
+                stmt.setInt(1, ct.getCod());
+                stmt.setInt(2, ct.getEstabelecimento().getCod());
+
+                ResultSet valor = stmt.executeQuery();	
+
+                while(valor.next()){
+                    ct.setCod(valor.getInt("cod"));
+                    ct.setCpf(valor.getString("cpf"));
+                    ct.setNome(valor.getString("nome"));
+                    ct.setTelCel(valor.getString("telcel"));
+		    ct.setEmail(valor.getString("email"));
+                }
+
+                if(ct.getNome()==null){
+                    ct = null;
+                }
+
+                stmt.close();
+
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            ct = null;
+        }
+
+        return ct;
+    }
+    
+    public int alterarCliente(Cliente ct){
+        int retorno = 0;
+        
+        System.out.println("\nClienteDao - Alterar cliente do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "SELECT cpf FROM CLIENTE WHERE EXISTS "
+                    + "(SELECT cliente.cpf FROM CLIENTE "
+                    + "WHERE codEstabelecimento=? and cpf=?"
+                    + "and cod!=?);";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, ct.getEstabelecimento().getCod());
+            stmt.setString(2, ct.getCpf());
+            stmt.setInt(3, ct.getCod());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(!verificador){
+                sql = "UPDATE CLIENTE SET nome=?, telCel=?, cpf=?, email=?"
+                    + "WHERE cod=? and codEstabelecimento=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setString(1, ct.getNome());
+                stmt.setString(2, ct.getTelCel());
+                stmt.setString(3, ct.getCpf());
+                stmt.setString(4, ct.getEmail());
+                stmt.setInt(5, ct.getCod());
+                stmt.setInt(6, ct.getEstabelecimento().getCod());
+
+                stmt.execute();
+                retorno = 2;
+            }
+            else{
+                retorno = 1;
+            }
+            
+            stmt.close();            
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
+    
+    public int excluirCliente(Cliente ct){
+        int retorno = 0;
+        
+        System.out.println("\nClienteDao - Excluir cliente do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "SELECT * FROM CLIENTE WHERE cod=? and codEstabelecimento=?;";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, ct.getCod());
+            stmt.setInt(2, ct.getEstabelecimento().getCod());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(verificador){
+                sql = "DELETE FROM CLIENTE WHERE cod=? and codEstabelecimento=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, ct.getCod());
+                stmt.setInt(2, ct.getEstabelecimento().getCod());
+
+                stmt.execute();
+  
+                retorno = 1;
+            }else{
+                retorno = 0;
+            }
+  
+            stmt.close();             	
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
 }

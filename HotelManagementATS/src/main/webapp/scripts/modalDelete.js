@@ -4,14 +4,15 @@
         });
         $('#yesEstabelecimento').click(function(){
            $('#formularioExcluir').submit();
-        });
-        $("#excluirCliente").click(function(){
-            var $cliente = $(this).attr('value');
+        });  
+        /* $("#excluirCliente").click(function(e){
+            e.preventDefault;
+            var $cliente = $(this).closest('tr').find('th[data-nome]').data('nome');
             console.log($cliente);
             $("#nomeCliente").html($cliente);
         });
         $('#yesCliente').click(function(){
            $('#formularioExcluir').submit();
-        });
+        }); */
 
 

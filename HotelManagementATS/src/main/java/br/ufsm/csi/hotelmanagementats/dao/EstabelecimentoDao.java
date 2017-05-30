@@ -212,15 +212,27 @@ public class EstabelecimentoDao {
             c = ConectaBD.getConexao();
             String sql;
             
-            sql = "DELETE FROM ESTABELECIMENTO WHERE cod=? and codusuarioadm=?;";
+            sql = "SELECT * FROM ESTABELECIMENTO WHERE cod=? and codusuarioadm=?;";
             stmt = c.prepareStatement(sql);
             stmt.setInt(1, est.getCod());
             stmt.setInt(2, est.getUsuarioAdm().getCod());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(verificador){
+                sql = "DELETE FROM ESTABELECIMENTO WHERE cod=? and codusuarioadm=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, est.getCod());
+                stmt.setInt(2, est.getUsuarioAdm().getCod());
 
-            stmt.execute();    
-            stmt.close(); 
-			
-            retorno = 1;	
+                stmt.execute();
+                retorno = 1;
+            }else{
+                retorno = 0;
+            }
+ 
+            stmt.close();   	
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");
