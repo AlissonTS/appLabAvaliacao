@@ -38,35 +38,54 @@
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                        <div class="col-md-offset-1 col-md-10 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
                             <h2 class="text-center" style="font-size: 25px;">Alterar/Excluir Operador</h2>
                             <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <td>Nome</td>
-                                      <th>CPF</th>
-                                      <th>Telefone Fixo</th>
-                                      <th>Telefone Celular</th>
-                                      <th>Nickname de Acesso</th>
-                                      <th>Alterar Operador</th>
-                                      <th>Excluir Operador</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>Mark</td>
-                                      <td>Otto</td>
-                                      <td>@TwBootstrap</td>
-                                      <td>Mark</td>
-                                      <td class="text-center"><a href="alterarOperadorForm.html" class="btn btn-primary" role="button">Alterar</a></td>
-                                      <td class="text-center"><a href="excluirOperador.html" class="btn btn-danger" role="button">Excluir</a></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                            </div>    
+                            
+                            <jsp:useBean id="usuarioOpDao" class="br.ufsm.csi.hotelmanagementats.dao.UsuarioOpDao"/>
+                            <c:set value="${usuarioOpDao.getOperadoresEstabelecimento(estabelecimentoEscolhido)}" var="operadores"/>
+                            
+                            <c:if test="${not empty operadores}">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>Nome</th>
+                                          <th>CPF</th>
+                                          <th>Telefone Fixo</th>
+                                          <th>Telefone Celular</th>
+                                          <th>Nickname de Acesso</th>
+                                          <th>Alterar Operador</th>
+                                          <th>Excluir Operador</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <c:forEach var="op" items="${operadores}">   
+                                            <tr>
+                                              <th>${op.nome}</th>
+                                              <td>${op.cpf}</td>
+                                              <td>${op.telFixo}</td>
+                                              <td>${op.telCel}</td>
+                                              <td>${op.nickname}</td>
+                                              <td class="text-center"><form action="alterarOperadorForm.html" method="POST"><button value="${op.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
+                                              <td class="text-center"><form id="formularioExcluir" action="excluirOperador.html" method="POST"><button type="submit" value="${op.cod}" id="excluirOperador" name="cod" class="btn btn-danger">Excluir</button></form>
+                                            </tr>
+                                        </c:forEach>
+                                      </tbody>
+                                    </table>
+                                </div>
+                            </c:if>
+                            <c:if test="${empty operadores}">
+                                <br><p class="text-center" style="font-size: 15px"><strong>O estabelecimento não possui operadores cadastrados</strong></p>
+                                <p class="text-center"><a href="cadastrarOperadorForm.html">Cadastrar Operador</a></p>
+                            </c:if>
+                               
                         </div>
                     </div>
                 </div>                 

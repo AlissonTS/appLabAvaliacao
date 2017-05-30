@@ -12,12 +12,66 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Alisson
  */
 public class UsuarioOpDao {
+    
+    public int cadastrarOperador(UsuarioOperador u){
+        int retorno = 0;
+        
+        System.out.println("\nUsuarioOpDao - Cadastrar operador no Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "SELECT cpf FROM USUARIOOP WHERE EXISTS "
+                    + "(SELECT usuarioop.cpf FROM USUARIOOP, ESTABELECIMENTO  "
+                    + "WHERE usuarioop.codestabelecimento=estabelecimento.cod "
+                    + "and cpf=? and estabelecimento.cod=?);";
+            stmt = c.prepareStatement(sql);
+            stmt.setString(1, u.getCpf());
+            stmt.setInt(2, u.getEstabelecimento().getCod());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(!verificador){
+                sql = "INSERT INTO USUARIOOP (cod, nickname, nome, cpf, telFixo, telCel, senha, codEstabelecimento) "
+                    + "values(DEFAULT, ?, ?, ?, ?, ?, ?, ?);";
+                stmt = c.prepareStatement(sql);
+                stmt.setString(1, u.getNickname());
+                stmt.setString(2, u.getNome());
+                stmt.setString(3, u.getCpf());
+                stmt.setString(4, u.getTelFixo());
+                stmt.setString(5, u.getTelCel());
+                stmt.setString(6, u.getSenha());
+                stmt.setInt(7, u.getEstabelecimento().getCod());
+
+                stmt.execute();
+                retorno = 2;
+            }
+            else{
+                retorno = 1;
+            }
+            
+            stmt.close();            
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
     
     public boolean alterarUsuarioOperador(UsuarioOperador u, Estabelecimento est){
         boolean retorno = false;
@@ -54,6 +108,48 @@ public class UsuarioOpDao {
         }
         
         return retorno;
+    }
+    
+    public List<UsuarioOperador> getOperadoresEstabelecimento(Estabelecimento est){
+			
+        System.out.println("\nUsuarioOpDao - Buscar operadores do Estabelecimento...\n");
+
+        List<UsuarioOperador> operadores = new ArrayList();
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT * FROM USUARIOOP WHERE codEstabelecimento=? ORDER BY NOME ASC;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, est.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+
+            while(valor.next()){
+                UsuarioOperador u = new UsuarioOperador();
+
+                u.setCod(valor.getInt("cod"));
+                u.setNickname(valor.getString("nickname"));
+                u.setSenha(valor.getString("senha"));
+                u.setNome(valor.getString("nome"));
+                u.setCpf(valor.getString("cpf"));
+                u.setTelCel(valor.getString("telcel"));
+                u.setTelFixo(valor.getString("telfixo"));
+
+                operadores.add(u);
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return operadores;
     }
     
     public UsuarioOperador logar(UsuarioOperador u){

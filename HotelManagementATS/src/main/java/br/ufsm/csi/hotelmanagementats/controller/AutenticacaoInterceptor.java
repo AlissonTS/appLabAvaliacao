@@ -105,7 +105,8 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                uri.endsWith("alterarEstabelecimentoAdm.html") ||
                uri.endsWith("excluirEstabelecimentoAdm.html") ||
                uri.endsWith("paginaPrincipalEstabelecimentoAdm.html") ||
-               uri.endsWith("alterarOperadorEstabelecimento.html")     
+               uri.endsWith("alterarOperadorEstabelecimento.html") ||
+               uri.endsWith("cadastrarOperador.html")      
             ){
                 response.sendRedirect("paginaPrincipalEstabelecimento.html");
                 return false;

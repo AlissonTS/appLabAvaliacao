@@ -127,5 +127,64 @@ public class UsuarioOpController {
         
         return mv;
     }
-
+    
+    /* Cadastrar Operador */
+    @RequestMapping("cadastrarOperador.html")
+    public ModelAndView cadastrarOperador(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de Cadastro de Operador do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/cadastrarOperador");
+        
+        UsuarioOpDao uD = new UsuarioOpDao();
+        
+        if(u.getNome()!=null && u.getCpf()!=null 
+           && u.getTelCel()!=null && u.getTelFixo()!=null 
+           && u.getNickname()!=null && u.getSenha()!=null){
+           
+           u.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
+		   
+	   byte[] senha = rq.getParameter("senha").getBytes(); 
+           
+           MessageDigest md = MessageDigest.getInstance("SHA-256");
+           byte[] hashSenha = md.digest(senha);
+           
+           byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
+           String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+           
+           u.setSenha(valorSenha);
+		   
+           try{
+               int retorno = uD.cadastrarOperador(u);
+               
+               switch (retorno) {
+                   case 2:		
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Cadastro Concluído!");
+                       break;
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um operador com mesmo CPF!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao cadastrar!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao cadastrar!");
+                       break;
+               }
+               
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao cadastrar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
 }
