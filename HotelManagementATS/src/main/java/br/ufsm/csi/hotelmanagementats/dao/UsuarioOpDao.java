@@ -73,10 +73,10 @@ public class UsuarioOpDao {
         return retorno;
     }
     
-    public boolean alterarUsuarioOperador(UsuarioOperador u, Estabelecimento est){
+    public boolean alterarUsuarioOperador(UsuarioOperador u, boolean verificador){
         boolean retorno = false;
         
-        System.out.println("\nUsuarioAdmDao - Alterar usuário operador...\n");
+        System.out.println("\nUsuarioOpDao - Alterar usuário operador...\n");
         
         Connection c = null;
         PreparedStatement stmt = null;
@@ -84,18 +84,31 @@ public class UsuarioOpDao {
         try{
             c = ConectaBD.getConexao();
             String sql;
-           
-            sql = "UPDATE USUARIOOP SET nickname=?, senha=?, nome=?, telfixo=?, telcel=?"
+            
+            if(verificador){
+                sql = "UPDATE USUARIOOP SET nickname=?, senha=?, nome=?, telfixo=?, telcel=?"
                     + "WHERE COD=? AND CODESTABELECIMENTO=?;";
             
-            stmt = c.prepareStatement(sql);
-            stmt.setString(1, u.getNickname());
-            stmt.setString(2, u.getSenha());
-            stmt.setString(3, u.getNome());
-            stmt.setString(4, u.getTelFixo());
-            stmt.setString(5, u.getTelCel());
-            stmt.setInt(6, u.getCod());
-	    stmt.setInt(7, est.getCod());
+                stmt = c.prepareStatement(sql);
+                stmt.setString(1, u.getNickname());
+                stmt.setString(2, u.getSenha());
+                stmt.setString(3, u.getNome());
+                stmt.setString(4, u.getTelFixo());
+                stmt.setString(5, u.getTelCel());
+                stmt.setInt(6, u.getCod());
+                stmt.setInt(7, u.getEstabelecimento().getCod());
+            }else{
+                sql = "UPDATE USUARIOOP SET nickname=?, nome=?, telfixo=?, telcel=?"
+                    + "WHERE COD=? AND CODESTABELECIMENTO=?;";
+            
+                stmt = c.prepareStatement(sql);
+                stmt.setString(1, u.getNickname());
+                stmt.setString(2, u.getNome());
+                stmt.setString(3, u.getTelFixo());
+                stmt.setString(4, u.getTelCel());
+                stmt.setInt(5, u.getCod());
+                stmt.setInt(6, u.getEstabelecimento().getCod());
+            }     
             
             stmt.execute();
             stmt.close();
@@ -213,5 +226,90 @@ public class UsuarioOpDao {
         }
         
         return u;
-    } 
+    }
+    
+    public UsuarioOperador carregarOperadorEscolhido(UsuarioOperador u){
+        
+        System.out.println("\nUsuarioOpDao - Carregar operador do estabelecimento escolhido...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT * FROM USUARIOOP WHERE cod=? AND codEstabelecimento=?;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, u.getCod());
+            stmt.setInt(2, u.getEstabelecimento().getCod());
+
+            ResultSet valor = stmt.executeQuery();	
+
+            while(valor.next()){
+                u.setCod(valor.getInt("cod"));
+                u.setNickname(valor.getString("nickname"));
+                u.setNome(valor.getString("nome"));
+                u.setCpf(valor.getString("cpf"));
+                u.setTelCel(valor.getString("telcel"));
+                u.setTelFixo(valor.getString("telfixo"));
+            }
+
+            if(u.getNome()==null){
+                u = null;
+            }
+
+            stmt.close();
+
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            u = null;
+        }
+
+        return u;
+    }
+    
+    public int excluirOperador(UsuarioOperador u){
+        int retorno = 0;
+        
+        System.out.println("\nUsuarioOpDao - Excluir operador do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "SELECT * FROM USUARIOOP WHERE cod=? and codEstabelecimento=?;";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, u.getCod());
+            stmt.setInt(2, u.getEstabelecimento().getCod());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(verificador){
+                sql = "DELETE FROM USUARIOOP WHERE cod=? and codEstabelecimento=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, u.getCod());
+                stmt.setInt(2, u.getEstabelecimento().getCod());
+
+                stmt.execute();
+  
+                retorno = 1;
+            }else{
+                retorno = 0;
+            }
+  
+            stmt.close();             	
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
 }

@@ -73,7 +73,9 @@
                                       </tr>
                                   </tbody>
                                 </table>
-                            </div>    
+                            </div>
+                            <br><p class="text-center" style="font-size: 15px"><strong>Para realizar o cadastro de hospedagem é preciso que os hóspedes estejam cadastrados</strong></p>
+                            <p class="text-center"><a href="cadastrarClienteForm.html">Cadastrar Cliente</a></p>
                         </div>
                     </div>
                 </div>                 

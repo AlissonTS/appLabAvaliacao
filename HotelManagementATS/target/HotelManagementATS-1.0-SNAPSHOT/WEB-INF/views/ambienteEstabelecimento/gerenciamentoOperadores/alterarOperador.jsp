@@ -42,35 +42,36 @@
                             <h2 class="text-center" style="font-size: 25px;">Alterar Operador</h2>
                             <br>
                             <c:if test="${not empty operadorEscolhido}">
-                                <form role="form" action="alterarOperador.html" method="POST">
+                                <form role="form" action="alterarOperadorEstabelecimento.html" method="POST">
                                     <div class="form-group row">
+                                        <input class="form-control" value="${operadorEscolhido.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
                                         <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40" pattern="[a-ZA-Zá-úÁ=Ú\s]+$" title="Apenas letras!">
+                                            <input class="form-control" value="${operadorEscolhido.nome}" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40" pattern="[a-ZA-Zá-úÁ=Ú\s]+$" title="Apenas letras!">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="cpf" class="col-md-3 col-xs-4 col-form-label">CPF: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="###.###.###-##">
+                                            <input class="form-control" value="${operadorEscolhido.cpf}" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="###.###.###-##" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="telFixo" class="col-md-3 col-xs-4 col-form-label">Telefone Fixo (Campo não Obrigatório):  </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="(##) ####-####" name="telFixo" id="telFixo" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4}" title="(##) ####-####">
+                                            <input class="form-control" value="${operadorEscolhido.telFixo}" type="text" placeholder="(##) ####-####" name="telFixo" id="telFixo" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4}" title="(##) ####-####">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="telCel" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="(##) #####-####" required="true" name="telCel" id="telCel" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="(##) #####-####">
+                                            <input class="form-control" value="${operadorEscolhido.telCel}" type="text" placeholder="(##) #####-####" required="true" name="telCel" id="telCel" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="(##) #####-####">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="nickname" class="col-md-3 col-xs-4 col-form-label">Nickname de Acesso (Apelido)*: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="12" pattern='[a-zA-Z0-9]+' title="Apenas números e letras!">
+                                            <input class="form-control" value="${operadorEscolhido.nickname}" type="text" placeholder="Digite nickname de Acesso" required="true" name="nickname" id="nickname" maxlength="12" pattern='[a-zA-Z0-9]+' title="Apenas números e letras!">
                                         </div>
                                     </div>
                                     <div class="form-group row">

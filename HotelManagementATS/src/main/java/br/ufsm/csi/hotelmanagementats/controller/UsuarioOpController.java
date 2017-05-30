@@ -35,19 +35,113 @@ public class UsuarioOpController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador";
     }
     
-    @RequestMapping("alterarOperadorForm.html")
-    public String alterarOperadorForm(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador";
-    }
-    
+    /* Excluir Operador */
     @RequestMapping("excluirOperador.html")
-    public String excluirOperador(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador";
+    public ModelAndView excluirOperador(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de Exclusão de Operador do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        
+        UsuarioOpDao cD = new UsuarioOpDao();
+
+        if(rq.getParameter("cod")!=null){
+           int codOperador = Integer.parseInt(rq.getParameter("cod"));
+            
+           UsuarioOperador u = new UsuarioOperador();
+           u.setCod(codOperador);
+			
+           Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+           u.setEstabelecimento(est);
+		   
+           try{
+               int retorno = cD.excluirOperador(u);
+               
+               switch (retorno) {
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Exclusão feita com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Exclusão Concluída!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do operador não efetuada!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao excluir!");
+                       break;
+               } 
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do operador não efetuada!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao excluir!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
     }
     
     @RequestMapping("alterarOperadorEstabelecimento.html")
-    public String alterarOperadorEstabelecimento(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador";
+    public ModelAndView alterarOperadorEstabelecimento(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de Alteração de Operador do Estabelecimento - Adm..."); 
+
+        Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+
+        String redefinir = rq.getParameter("redefinir");
+        String senhaN = rq.getParameter("senhaN");
+        
+        UsuarioOpDao uD = new UsuarioOpDao();
+        boolean verificador = false;
+        
+        if(rq.getParameter("cod")!=null && u.getNome()!=null 
+            && u.getCpf()!=null && u.getTelFixo()!=null 
+            && u.getTelCel()!=null && u.getNickname()!=null && u.getSenha()!=null 
+            && senhaN!=null && redefinir!=null){
+			
+           if(redefinir.equals("Sim")){
+               byte[] senha = rq.getParameter("senha").getBytes(); 
+           
+               MessageDigest md = MessageDigest.getInstance("SHA-256");
+               byte[] hashSenha = md.digest(senha);
+
+               byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
+               String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+
+               u.setSenha(valorSenha);
+               verificador = true;
+           }
+		   
+           u.setEstabelecimento(est);
+           
+           try{
+               boolean retorno = uD.alterarUsuarioOperador(u, verificador);
+               
+               if(retorno){				 
+                   mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                   mv.addObject("tipo", "success");
+                   System.out.println("Alteração Concluída!");
+               }else{
+                   mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário operador cadastrado no Sistema.");
+                   mv.addObject("tipo", "danger");
+                   System.out.println("Erro ao Alterar!");
+               }
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário operador cadastrado no Sistema.");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao Alterar!");
+           }
+            
+        }
+
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
     }
     
     @RequestMapping("alterarContaOp.html")
@@ -78,6 +172,8 @@ public class UsuarioOpController {
         
         UsuarioOpDao uD = new UsuarioOpDao();
         
+        boolean verificador = false;
+        
         if(u.getNome()!=null && u.getCpf()!=null && 
            u.getTelFixo()!=null && u.getTelCel()!=null &&
            u.getNickname()!=null && u.getSenha()!=null && 
@@ -95,12 +191,16 @@ public class UsuarioOpController {
                String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
 
                u.setSenha(valorSenha);
+               
+               verificador = true;
            }else{
                u.setSenha(senhaAntiga);
            }
            
+           u.setEstabelecimento(est);
+           
            try{
-               boolean retorno = uD.alterarUsuarioOperador(u, est);
+               boolean retorno = uD.alterarUsuarioOperador(u, verificador);
                
                if(retorno){
                    session.setAttribute("operador", u);
@@ -181,6 +281,39 @@ public class UsuarioOpController {
                mv.addObject("tipo", "danger");
                System.out.println("Erro ao cadastrar!");
            }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    @RequestMapping("alterarOperadorForm.html")
+    public ModelAndView alterarOperadorForm(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Operador do estabelecimento para Alteração...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        
+        UsuarioOpDao uD = new UsuarioOpDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codOperador = Integer.parseInt(rq.getParameter("cod"));
+            
+            UsuarioOperador u = new UsuarioOperador();
+            u.setCod(codOperador);
+			
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+            u.setEstabelecimento(est);
+			
+            u = uD.carregarOperadorEscolhido(u);
+            
+            if(u!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarOperador");
+                mv.addObject("operadorEscolhido", u);
+                System.out.println("Operador buscado para alteração!");
+            }
         }
         
         System.out.println("\n-------------------------------\n");
