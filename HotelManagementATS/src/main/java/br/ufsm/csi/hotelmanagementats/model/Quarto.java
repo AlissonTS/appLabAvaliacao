@@ -18,7 +18,7 @@ public class Quarto {
     private float area;
     private int maxHosp;
     private String descricaoExtra;
-    private String estado;
+    private int estado; // 0 - Desocupado, 1 - Ocupado, 2 - Desabilitado
     private float valorDiaria;
     private Estabelecimento estabelecimento;
     private List<Hospedagem> hospedagens;
@@ -97,14 +97,14 @@ public class Quarto {
     /**
      * @return the estado
      */
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
     /**
      * @param estado the estado to set
      */
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 

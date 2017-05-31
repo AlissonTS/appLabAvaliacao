@@ -34,51 +34,71 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoQuartos.html">Voltar</a>
+                            <a href="gerenciamentoQuartos.html">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
                             <h2 class="text-center" style="font-size: 25px;">Alterar/Desabilitar Quarto</h2>
                             <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>Número de Identificação</th>
-                                      <th>Área do quarto (m²)</th>
-                                      <th>Máximo de Hóspedes</th>
-                                      <th>Valor da diária</th>
-                                      <th>Ocupado</th>
-                                      <th>Já recebeu Hospedagens?</th>
-                                      <th>Alterar Quarto</th>
-                                      <th>Habilitar/Desabilitar Quarto</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>Mark</td>
-                                      <td>Otto</td>
-                                      <td>@mdo</td>
-                                      <td>Mark</td>
-                                      <td>Mark</td>
-                                      <td class="text-center"><a href="alterarQuartoForm.html" class="btn btn-primary" role="button">Alterar</a></td>
-                                      <td class="text-center"><a href="desabilitarQuarto.html" class="btn btn-default" role="button">Desabilitar</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>Mark</td>
-                                      <td>Otto</td>
-                                      <td>@mdo</td>
-                                      <td>Mark</td>
-                                      <td>Mark</td>
-                                      <td class="text-center"><a href="alterarQuartoForm.html" class="btn btn-primary" role="button">Alterar</a></td>
-                                      <td class="text-center"><a href="habilitarQuarto.html" class="btn btn-default" role="button">Habilitar</a></td>
-                                    </tr>
-                                   </tbody>
-                                </table>
-                        </div>    
+                            
+                            <jsp:useBean id="quartoDao" class="br.ufsm.csi.hotelmanagementats.dao.QuartoDao"/>
+                            <c:set value="${quartoDao.getQuartosEstabelecimento(estabelecimentoEscolhido)}" var="quartos"/>
+                            
+                            <c:if test="${not empty quartos}">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>Número de Identificação</th>
+                                          <th>Área do quarto (m²)</th>
+                                          <th>Máximo de Hóspedes</th>
+                                          <th>Valor da diária</th>
+                                          <th>Estado do Quarto</th>
+                                          <th>Alterar Quarto</th>
+                                          <th>Habilitar/Desabilitar Quarto</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                       <c:forEach var="quarto" items="${quartos}">    
+                                        <tr>
+                                          <td>${quarto.numero}</td>
+                                          <td>${quarto.area}</td>
+                                          <td>${quarto.maxHosp}</td>
+                                          <td>${quarto.valorDiaria}</td>
+                                          <c:choose>
+                                             <c:when test="${quarto.estado==0}">
+                                                 <td>Desocupado</td>
+                                                 <td class="text-center"><form action="alterarQuartoForm.html" method="POST"><button value="${quarto.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
+                                                 <td class="text-center"><form id="formularioDesabilitar" action="desabilitarQuarto.html" method="POST"><button type="submit" value="${quarto.cod}" id="desabilitarQuarto" name="cod" class="btn btn-default">Desabilitar</button></form></td>
+                                             </c:when>
+                                             <c:when test="${quarto.estado==1}">
+                                                 <td>Ocupado</td>
+                                                 <td>Alteração não pode ser feita</td>
+                                                 <td>Não é possível desabilitar</td>
+                                             </c:when>
+                                             <c:when test="${quarto.estado==2}">
+                                                 <td>Desabilitado</td>
+                                                 <td>Alteração não pode ser feita</td>
+                                                 <td class="text-center"><form id="formularioHabilitar" action="habilitarQuarto.html" method="POST"><button type="submit" value="${quarto.cod}" id="habilitarQuarto" name="cod" class="btn btn-default">Habilitar</button></form></td>
+                                             </c:when>
+                                          </c:choose>
+                                        </tr>
+                                       </c:forEach>
+                                       </tbody>
+                                    </table>
+                                </div>
+                            </c:if>    
+                            <c:if test="${empty quartos}">
+                                <br><p class="text-center" style="font-size: 15px"><strong>O estabelecimento não possui quartos cadastrados</strong></p>
+                                <p class="text-center"><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></p>
+                            </c:if>    
                         </div>
                     </div>
                 </div>                 

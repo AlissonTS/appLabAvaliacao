@@ -39,9 +39,15 @@
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
                             <h2 class="text-center" style="font-size: 25px;">Cadastrar Quarto</h2>
                             <br>
-                            <form role="form" action="#" method="POST">
+                            <form role="form" action="cadastrarQuarto.html" method="POST">
                                 <div class="form-group row">
                                     <label for="numero" class="col-md-3 col-xs-4 col-form-label">Número de Identificação: </label>
                                     <div class="col-md-8 col-xs-8">
@@ -55,9 +61,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="maxhospedes" class="col-md-3 col-xs-4 col-form-label">Máximo de hóspedes:  </label>
+                                    <label for="maxHosp" class="col-md-3 col-xs-4 col-form-label">Máximo de hóspedes:  </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o máximo de hóspedes" name="maxhospedes" id="maxhospedes" maxlength="3" pattern="[0-9]+$" title="Apenas Números">
+                                        <input class="form-control" type="text" placeholder="Digite o máximo de hóspedes" name="maxHosp" id="maxHosp" maxlength="3" pattern="[0-9]+$" title="Apenas Números">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -67,17 +73,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="info" class="col-md-3 col-xs-4 col-form-label">Informações extras sobre o quarto (Não obrigatório): </label>
+                                    <label for="descricaoExtra" class="col-md-3 col-xs-4 col-form-label">Informações extras sobre o quarto (Não obrigatório): </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <textarea class="form-control" rows="5" id="info" name="info" maxlength="60"></textarea>
+                                        <textarea class="form-control" rows="5" id="descricaoExtra" name="descricaoExtra" maxlength="120"></textarea>
                                     </div>
-                                </div>
+                                </div><!--
                                 <div class="form-group row">
                                     <label for="foto" class="col-md-3 col-xs-4 col-form-label">Selecione fotos do quarto: </label>
                                     <div class="col-md-8 col-xs-8">	                                
                                         <input type="file" name="foto" accept="image/*">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group row">
                                     <div class="col-md-12 col-xs-12">
                                         <p style="text-align: center">

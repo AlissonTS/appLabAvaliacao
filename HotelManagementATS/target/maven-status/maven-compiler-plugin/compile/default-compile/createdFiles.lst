@@ -14,6 +14,7 @@ br\ufsm\csi\hotelmanagementats\controller\HospedagemController.class
 br\ufsm\csi\hotelmanagementats\dao\UsuarioOpDao.class
 br\ufsm\csi\hotelmanagementats\controller\UsuarioOpController.class
 br\ufsm\csi\hotelmanagementats\dao\ClienteDao.class
+br\ufsm\csi\hotelmanagementats\dao\QuartoDao.class
 br\ufsm\csi\hotelmanagementats\util\ConectaBD.class
 br\ufsm\csi\hotelmanagementats\controller\ClienteController.class
 br\ufsm\csi\hotelmanagementats\controller\EstabelecimentoController.class

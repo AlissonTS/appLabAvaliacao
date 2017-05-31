@@ -104,15 +104,12 @@
                                             </div>
                                       </div>
                                     </div> -->
-                                    
+                                 </div>    
                             </c:if>
                             <c:if test="${empty clientes}">
                                 <br><p class="text-center" style="font-size: 15px"><strong>O estabelecimento não possui clientes cadastrados</strong></p>
                                 <p class="text-center"><a href="cadastrarClienteForm.html">Cadastrar Cliente</a></p>
-                            </c:if>
-                            
-                            
-                            </div>    
+                            </c:if>    
                         </div>
                     </div>
                 </div>                 

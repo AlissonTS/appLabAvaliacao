@@ -41,50 +41,56 @@
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <h2 class="text-center" style="font-size: 25px;">Alterar Quarto</h2>
                             <br>
-                            <form role="form" action="#" method="POST">
-                                <div class="form-group row">
-                                    <label for="numero" class="col-md-3 col-xs-4 col-form-label">Número de Identificação: </label>
-                                    <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o número de identificação do quarto" required="true" name="numero" id="numero" maxlength="4" pattern="[0-9]+$" title="Apenas Números">
+                            <c:if test="${not empty quartoEscolhido}">
+                                <form role="form" action="alterarQuarto.html" method="POST">
+                                    <input class="form-control" value="${quartoEscolhido.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
+                                    <div class="form-group row">
+                                        <label for="numero" class="col-md-3 col-xs-4 col-form-label">Número de Identificação: </label>
+                                        <div class="col-md-8 col-xs-8">
+                                            <input class="form-control" value="${quartoEscolhido.numero}" type="text" placeholder="Digite o número de identificação do quarto" required="true" name="numero" id="numero" maxlength="4" pattern="[0-9]+$" title="Apenas Números">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="area" class="col-md-3 col-xs-4 col-form-label">Área do quarto (m²): </label>
-                                    <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area" maxlength="7">
+                                    <div class="form-group row">
+                                        <label for="area" class="col-md-3 col-xs-4 col-form-label">Área do quarto (m²): </label>
+                                        <div class="col-md-8 col-xs-8">
+                                            <input class="form-control" value="${quartoEscolhido.area}" type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area" maxlength="7">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="maxhospedes" class="col-md-3 col-xs-4 col-form-label">Máximo de hóspedes:  </label>
-                                    <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o máximo de hóspedes" name="maxhospedes" id="maxhospedes" maxlength="3" pattern="[0-9]+$" title="Apenas Números">
+                                    <div class="form-group row">
+                                        <label for="maxhospedes" class="col-md-3 col-xs-4 col-form-label">Máximo de clientes hospedados:  </label>
+                                        <div class="col-md-8 col-xs-8">
+                                            <input class="form-control" value="${quartoEscolhido.maxHosp}" type="text" placeholder="Digite o máximo de hóspedes" name="maxHosp" id="maxHosp" maxlength="3" pattern="[0-9]+$" title="Apenas Números">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária:</label>
-                                    <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="10">
+                                    <div class="form-group row">
+                                        <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária:</label>
+                                        <div class="col-md-8 col-xs-8">
+                                            <input class="form-control" value="${quartoEscolhido.valorDiaria}" type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="10">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="info" class="col-md-3 col-xs-4 col-form-label">Informações extras sobre o quarto (Não obrigatório): </label>
-                                    <div class="col-md-8 col-xs-8">
-                                        <textarea class="form-control" rows="5" id="info" name="info" maxlength="60"></textarea>
+                                    <div class="form-group row">
+                                        <label for="descricaoExtra" class="col-md-3 col-xs-4 col-form-label">Informações extras sobre o quarto (Não obrigatório): </label>
+                                        <div class="col-md-8 col-xs-8">
+                                            <textarea class="form-control" rows="5" id="descricaoExtra" name="descricaoExtra" maxlength="60">${quartoEscolhido.descricaoExtra}</textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="foto" class="col-md-3 col-xs-4 col-form-label">Selecione fotos do quarto: </label>
-                                    <div class="col-md-8 col-xs-8">	                                
-                                        <input type="file" name="foto" accept="image/*">
+                                    <div class="form-group row">
+                                        <label for="foto" class="col-md-3 col-xs-4 col-form-label">Selecione fotos do quarto: </label>
+                                        <div class="col-md-8 col-xs-8">	                                
+                                            <input type="file" name="foto" accept="image/*">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12 col-xs-12">
-                                        <p style="text-align: center">
-                                        <button type="submit" class="btn btn-primary">Alterar</button></p>
-                                    </div>    
-                                </div>
-                            </form>    
+                                    <div class="form-group row">
+                                        <div class="col-md-12 col-xs-12">
+                                            <p style="text-align: center">
+                                            <button type="submit" class="btn btn-primary">Alterar</button></p>
+                                        </div>    
+                                    </div>
+                                </form>
+                            </c:if>
+                            <c:if test="${empty quartoEscolhido}">
+                                <br><p class="text-center" style="font-size: 15px"><strong>Nenhum quarto selecionado para alteração!</strong></p>
+                            </c:if>    
                         </div>
                     </div>
                 </div>                 

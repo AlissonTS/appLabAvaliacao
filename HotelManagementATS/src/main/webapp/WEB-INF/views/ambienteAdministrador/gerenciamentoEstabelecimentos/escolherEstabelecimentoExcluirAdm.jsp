@@ -87,7 +87,7 @@
                             </div>
                             <div class="modal-footer">
                                 <p class="text-center">
-                                <button type="button" class="btn btn-danger" id="yesEstabelecimento">Desejo excluir o estabelecimento</button>
+                                <button type="button" class="btn btn-danger" id="yesEstabelecimento">Sim</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
                             </div>
                         </div>
