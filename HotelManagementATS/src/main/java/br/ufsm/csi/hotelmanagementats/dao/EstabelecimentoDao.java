@@ -72,7 +72,7 @@ public class EstabelecimentoDao {
     
     public List<Estabelecimento> getEstabelecimentosAdm(UsuarioAdministrador u){
 			
-        System.out.println("\nEstabelecimentoDao - Buscar estabelecimentos do ADM...\n");
+        // System.out.println("\nEstabelecimentoDao - Buscar estabelecimentos do ADM...\n");
 
         List<Estabelecimento> estabelecimentos = new ArrayList();
 

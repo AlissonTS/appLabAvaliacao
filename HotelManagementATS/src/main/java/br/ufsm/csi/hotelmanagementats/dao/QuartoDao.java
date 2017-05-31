@@ -75,7 +75,7 @@ public class QuartoDao {
     
     public List<Quarto> getQuartosEstabelecimento(Estabelecimento est){
 			
-        System.out.println("\nQuartoDao - Buscar quartos do Estabelecimento...\n");
+        // System.out.println("\nQuartoDao - Buscar quartos do Estabelecimento...\n");
 
         List<Quarto> quartos = new ArrayList();
 
@@ -115,4 +115,98 @@ public class QuartoDao {
         return quartos;
     }
     
+    public Quarto carregarQuartoEscolhido(Quarto q){
+        
+        System.out.println("\nQuartoDao - Carregar quarto escolhido do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT * FROM QUARTO WHERE cod=? AND codEstabelecimento=? AND estado=0;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, q.getCod());
+            stmt.setInt(2, q.getEstabelecimento().getCod());
+
+            ResultSet valor = stmt.executeQuery();	
+
+            while(valor.next()){
+                q.setCod(valor.getInt("cod"));
+                q.setNumero(valor.getInt("numero"));
+                q.setArea(valor.getFloat("area"));
+                q.setMaxHosp(valor.getInt("maxHosp"));
+                q.setDescricaoExtra(valor.getString("descricaoExtra"));
+                q.setEstado(valor.getInt("estado"));
+                q.setValorDiaria(valor.getFloat("valorDiaria"));
+            }
+
+            if(q.getNumero()<0){
+                q = null;
+            }
+
+            stmt.close();
+
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            q = null;
+        }
+
+        return q;
+    }
+    
+    public int alterarQuarto(Quarto q){
+        int retorno = 0;
+        
+        System.out.println("\nQuartoDao - Alterar quarto do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "SELECT numero FROM QUARTO WHERE EXISTS "
+                    + "(SELECT quarto.numero FROM QUARTO, ESTABELECIMENTO  "
+                    + "WHERE quarto.codestabelecimento=estabelecimento.cod "
+                    + "and numero=? and estabelecimento.cod=?);";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, q.getNumero());
+            stmt.setInt(2, q.getEstabelecimento().getCod());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(!verificador){
+                sql = "UPDATE QUARTO SET numero=?, area=?, maxHosp=?, descricaoExtra=?, valorDiaria=? "
+                    + "WHERE cod=? and codEstabelecimento=? and estado=0;";
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, q.getNumero());
+                stmt.setFloat(2, q.getArea());
+                stmt.setInt(3, q.getMaxHosp());
+                stmt.setString(4, q.getDescricaoExtra());
+                stmt.setFloat(5, q.getValorDiaria());
+                stmt.setInt(6, q.getCod());
+                stmt.setInt(7, q.getEstabelecimento().getCod());
+
+                stmt.execute();
+                retorno = 2;
+            }
+            else{
+                retorno = 1;
+            }
+            
+            stmt.close();            
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
 }

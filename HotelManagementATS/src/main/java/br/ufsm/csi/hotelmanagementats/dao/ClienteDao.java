@@ -73,7 +73,7 @@ public class ClienteDao {
     
     public List<Cliente> getClientesEstabelecimento(Estabelecimento est){
 			
-        System.out.println("\nClienteDao - Buscar clientes do Estabelecimento...\n");
+        // System.out.println("\nClienteDao - Buscar clientes do Estabelecimento...\n");
 
         List<Cliente> clientes = new ArrayList();
 
@@ -96,8 +96,8 @@ public class ClienteDao {
                 ct.setCod(valor.getInt("cod"));
                 ct.setEmail(valor.getString("email"));
                 ct.setNome(valor.getString("nome"));
-				ct.setCpf(valor.getString("cpf"));
-				ct.setTelCel(valor.getString("telcel"));
+                ct.setCpf(valor.getString("cpf"));
+                ct.setTelCel(valor.getString("telcel"));
 
                 clientes.add(ct);
             }

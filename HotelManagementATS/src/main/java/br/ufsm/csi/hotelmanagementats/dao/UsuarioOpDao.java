@@ -125,7 +125,7 @@ public class UsuarioOpDao {
     
     public List<UsuarioOperador> getOperadoresEstabelecimento(Estabelecimento est){
 			
-        System.out.println("\nUsuarioOpDao - Buscar operadores do Estabelecimento...\n");
+        // System.out.println("\nUsuarioOpDao - Buscar operadores do Estabelecimento...\n");
 
         List<UsuarioOperador> operadores = new ArrayList();
 

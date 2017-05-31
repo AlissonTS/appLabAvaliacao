@@ -78,14 +78,98 @@ public class QuartoController {
         return mv;
     }
     
+    @RequestMapping("alterarQuartoForm.html")
+    public ModelAndView alterarQuartoForm(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Quarto do Estabelecimento para Alteração...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto");
+        
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codQuarto= Integer.parseInt(rq.getParameter("cod"));
+            
+            Quarto q = new Quarto();
+            q.setCod(codQuarto);
+			
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+            q.setEstabelecimento(est);
+			
+            q = qD.carregarQuartoEscolhido(q);
+            
+            if(q!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarQuarto");
+                mv.addObject("quartoEscolhido", q);
+                System.out.println("Quarto buscado para alteração!");
+            }
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    /* Alterar Quarto */
+    @RequestMapping("alterarQuarto.html")
+    public ModelAndView alterarQuarto(Quarto q, HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de Alteração de Quarto do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto");
+        
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null && rq.getParameter("numero")!=null 
+           && rq.getParameter("maxHosp")!=null && rq.getParameter("area")!=null 
+	   && rq.getParameter("descricaoExtra")!=null && rq.getParameter("valorDiaria")!=null){
+           
+           int codQuarto = Integer.parseInt(rq.getParameter("cod"));
+           q.setCod(codQuarto);
+		   
+	   // q.setEstado(0); // Quarto desocupado
+		   
+           Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+		   
+           q.setEstabelecimento(est);
+		   
+           try{
+               int retorno = qD.alterarQuarto(q);
+               
+               switch (retorno) {
+                   case 2:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Alteração Concluída!");
+                       break;
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro quarto com mesmo número de identificação!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao alterar!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao alterar!");
+                       break;
+               }     
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao alterar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
     @RequestMapping("alterarDesabilitarQuarto.html")
     public String alterarDesabilitarQuarto(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto";
-    }
-    
-    @RequestMapping("alterarQuartoForm.html")
-    public String alterarQuartoForm(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarQuarto";
     }
     
     @RequestMapping("desabilitarQuarto.html")
@@ -96,10 +180,5 @@ public class QuartoController {
     @RequestMapping("habilitarQuarto.html")
     public String habilitarQuarto(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto";
-    }
-    
-    @RequestMapping("alterarQuarto.html")
-    public String alterarQuarto(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarQuarto";
     }
 }

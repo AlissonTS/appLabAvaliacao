@@ -63,7 +63,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária:</label>
+                                        <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária (R$):</label>
                                         <div class="col-md-8 col-xs-8">
                                             <input class="form-control" value="${quartoEscolhido.valorDiaria}" data-thousands="" data-decimal="." type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="6">
                                         </div>
@@ -73,13 +73,13 @@
                                         <div class="col-md-8 col-xs-8">
                                             <textarea class="form-control" rows="5" id="descricaoExtra" name="descricaoExtra" maxlength="60">${quartoEscolhido.descricaoExtra}</textarea>
                                         </div>
-                                    </div>
+                                    </div><!--
                                     <div class="form-group row">
                                         <label for="foto" class="col-md-3 col-xs-4 col-form-label">Selecione fotos do quarto: </label>
                                         <div class="col-md-8 col-xs-8">	                                
                                             <input type="file" name="foto" accept="image/*">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12">
                                             <p style="text-align: center">

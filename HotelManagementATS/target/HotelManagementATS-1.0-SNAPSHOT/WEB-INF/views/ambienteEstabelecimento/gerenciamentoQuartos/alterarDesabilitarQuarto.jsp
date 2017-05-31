@@ -59,7 +59,7 @@
                                           <th>Número de Identificação</th>
                                           <th>Área do quarto (m²)</th>
                                           <th>Máximo de Hóspedes</th>
-                                          <th>Valor da diária</th>
+                                          <th>Valor da diária (R$)</th>
                                           <th>Estado do Quarto</th>
                                           <th>Alterar Quarto</th>
                                           <th>Habilitar/Desabilitar Quarto</th>

@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária:</label>
+                                    <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária (R$):</label>
                                     <div class="col-md-8 col-xs-8">
                                         <input class="form-control" data-thousands="" data-decimal="." type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="7">
                                     </div>
