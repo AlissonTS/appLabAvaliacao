@@ -68,7 +68,7 @@
                                       <tbody>
                                        <c:forEach var="quarto" items="${quartos}">    
                                         <tr>
-                                          <td>${quarto.numero}</td>
+                                          <th>${quarto.numero}</th>
                                           <td>${quarto.area}</td>
                                           <td>${quarto.maxHosp}</td>
                                           <td>${quarto.valorDiaria}</td>

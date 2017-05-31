@@ -101,6 +101,5 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
-    <script type="text/javascript" src="js/jquery.maskMoney.js"></script>
     <script type="text/javascript" src="scripts/mask.js"></script>
 </html>

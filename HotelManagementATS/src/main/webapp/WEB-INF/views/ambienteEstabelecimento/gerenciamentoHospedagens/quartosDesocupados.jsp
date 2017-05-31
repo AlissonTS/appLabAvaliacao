@@ -50,32 +50,43 @@
                             <h2 class="text-center" style="font-size: 25px;">Cadastrar Hospedagem</h2>
                             <h3 class="text-center">Quartos Desocupados</h3>
                             <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>Número de Identificação</th>
-                                        <th>Área do quarto (m²)</th>
-                                        <th>Máximo de hóspedes</th>
-                                        <th>Valor da diária</th>
-                                        <th>Mostrar Quarto</th>
-                                        <th>Escolher Quarto</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td class="text-center"><a href="#" class="btn btn-info" role="button">Mostrar</a></td>
-                                        <td class="text-center"><a href="cadastrarHospedagemForm.html" class="btn btn-default" role="button">Escolher</a></td>
-                                      </tr>
-                                  </tbody>
-                                </table>
-                            </div>
-                            <br><p class="text-center" style="font-size: 15px"><strong>Para realizar o cadastro de hospedagem é preciso que os hóspedes estejam cadastrados</strong></p>
-                            <p class="text-center"><a href="cadastrarClienteForm.html">Cadastrar Cliente</a></p>
+                            
+                            <jsp:useBean id="quartoDao" class="br.ufsm.csi.hotelmanagementats.dao.QuartoDao"/>
+                            <c:set value="${quartoDao.getQuartosDesocupadosEstabelecimento(estabelecimentoEscolhido)}" var="quartos"/>
+                            
+                            <c:if test="${not empty quartos}">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>Número de Identificação</th>
+                                            <th>Área do quarto (m²)</th>
+                                            <th>Máximo de hóspedes</th>
+                                            <th>Valor da diária (R$)</th>
+                                            <th>Mostrar Quarto</th>
+                                            <th>Escolher Quarto</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <c:forEach var="quarto" items="${quartos}">  
+                                            <tr>
+                                              <th>${quarto.numero}</th>
+                                              <td>${quarto.area}</td>
+                                              <td>${quarto.maxHosp}</td>
+                                              <td>${quarto.valorDiaria}</td>
+                                              <td class="text-center"><a href="#" class="btn btn-info" role="button">Mostrar</a></td>
+                                              <td class="text-center"><a href="cadastrarHospedagemForm.html" class="btn btn-default" role="button">Escolher</a></td>
+                                            </tr>
+                                          </c:forEach>
+                                      </tbody>
+                                    </table>
+                                </div>
+                                <br><p class="text-center" style="font-size: 15px"><strong>Para realizar o cadastro de hospedagem é preciso que os hóspedes estejam cadastrados</strong></p>
+                                <p class="text-center"><a href="cadastrarClienteForm.html">Cadastrar Cliente</a></p>
+                            </c:if>
+                            <c:if test="${empty quartos}">
+                                <br><p class="text-center" style="font-size: 15px"><strong>O estabelecimento não possui quartos cadastrados</strong></p>
+                            </c:if>
                         </div>
                     </div>
                 </div>                 

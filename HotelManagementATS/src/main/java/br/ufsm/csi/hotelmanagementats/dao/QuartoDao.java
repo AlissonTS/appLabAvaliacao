@@ -115,6 +115,48 @@ public class QuartoDao {
         return quartos;
     }
     
+    public List<Quarto> getQuartosDesocupadosEstabelecimento(Estabelecimento est){
+			
+        // System.out.println("\nQuartoDao - Buscar quartos do Estabelecimento...\n");
+
+        List<Quarto> quartos = new ArrayList();
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT * FROM QUARTO WHERE codEstabelecimento=? and estado=0 ORDER BY NUMERO ASC;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, est.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+
+            while(valor.next()){
+                Quarto qt = new Quarto();
+
+                qt.setCod(valor.getInt("cod"));
+                qt.setNumero(valor.getInt("numero"));
+                qt.setArea(valor.getFloat("area"));
+                qt.setMaxHosp(valor.getInt("maxHosp"));
+                qt.setDescricaoExtra(valor.getString("descricaoExtra"));
+                qt.setEstado(valor.getInt("estado"));
+                qt.setValorDiaria(valor.getFloat("valorDiaria"));
+				
+                quartos.add(qt);
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return quartos;
+    }
+    
     public Quarto carregarQuartoEscolhido(Quarto q){
         
         System.out.println("\nQuartoDao - Carregar quarto escolhido do Estabelecimento...\n");
@@ -198,6 +240,55 @@ public class QuartoDao {
             }
             else{
                 retorno = 1;
+            }
+            
+            stmt.close();            
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
+    
+    public int abilitarDesabilitarQuarto(Quarto q, int escolha){
+        int retorno = 0;
+        
+        System.out.println("\nQuartoDao - Habilitar/Desabilitar quarto do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql="";
+            
+            if(escolha==1){ // habilitar quarto
+                sql = "SELECT numero FROM QUARTO WHERE cod=? AND codEstabelecimento=? and estado=2;";
+            }else{ // desabilitar quarto
+                sql = "SELECT numero FROM QUARTO WHERE cod=? AND codEstabelecimento=? and estado=0;";
+            }
+            
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, q.getCod());
+            stmt.setInt(2, q.getEstabelecimento().getCod());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(verificador){
+                sql = "UPDATE QUARTO SET estado=? WHERE cod=? AND codEstabelecimento=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, q.getEstado());
+                stmt.setInt(2, q.getCod());
+                stmt.setInt(3, q.getEstabelecimento().getCod());
+
+                stmt.execute();
+                retorno = 1;
+            }
+            else{
+                retorno = 0;
             }
             
             stmt.close();            

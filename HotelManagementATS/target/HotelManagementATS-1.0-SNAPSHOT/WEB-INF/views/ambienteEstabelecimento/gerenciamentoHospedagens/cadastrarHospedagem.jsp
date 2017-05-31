@@ -57,32 +57,7 @@
                                 <div class="col-md-offset-1 col-md-5 col-xs-12">
                                     <div class="row" style="margin-bottom: 3%;">
                                         <div class="col-md-12 col-xs-12">
-                                            <h4 class="text-center">Informações do Período:</h4>
-                                            <br>
-                                            <form role="form" action="#" method="POST">
-                                                <div class="form-group row">
-                                                    <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
-                                                    <div class="col-md-5 col-xs-8">
-                                                        <input class="form-control" type="date" id="dataFinal" name="dataFinal" required="true" pattern="\d{2}\/\d{2}\/\d{4}" title="##/##/####">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="horaFinal" class="col-md-4 col-xs-4 col-form-label">Hora Final:</label>
-                                                    <div class="col-md-5 col-xs-8">
-                                                        <input class="form-control" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="valorTotal" class="col-md-4 col-xs-4 col-form-label">Valor da Hospedagem:</label>
-                                                    <div class="col-md-6 col-xs-8">
-                                                        <input class="form-control" type="text" placeholder="Valor da Hospedagem" required="true" name="valorTotal" id="valorTotal">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-xs-12">
-                                                <h4 class="text-center">Insira os Hóspedes:</h4>
+                                            <h4 class="text-center">Insira os Hóspedes:</h4>
                                                 <br>
                                                 <div class="form-group row">
                                                     <label for="hospedes" class="col-md-4 col-xs-4 col-form-label">Hóspedes:</label>
@@ -107,13 +82,38 @@
                                                             <button type="submit" class="btn btn-default">Inserir Hóspede</button>
                                                         </div>
                                                 </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-xs-12" style="margin-top: 2%;">
+                                                <h4 class="text-center">Informações do Período:</h4>
+                                                <br>
+                                                <form role="form" action="#" method="POST">
+                                                    <div class="form-group row">
+                                                        <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
+                                                        <div class="col-md-5 col-xs-8">
+                                                            <input class="form-control" type="date" id="dataFinal" name="dataFinal" required="true" pattern="\d{2}\/\d{2}\/\d{4}" title="##/##/####">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="horaFinal" class="col-md-4 col-xs-4 col-form-label">Hora Final:</label>
+                                                        <div class="col-md-5 col-xs-8">
+                                                            <input class="form-control" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="valorTotal" class="col-md-4 col-xs-4 col-form-label">Valor da Hospedagem:</label>
+                                                        <div class="col-md-6 col-xs-8">
+                                                            <input class="form-control" type="text" placeholder="Valor da Hospedagem" required="true" name="valorTotal" id="valorTotal">
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>	
                                 <div class="col-md-offset-1 col-md-5 col-xs-12">
                                     <div class="row">
-                                        <div class="col-md-12 col-xs-12" style="margin-top:5%">
+                                        <div class="col-md-12 col-xs-12">
                                             <h4>Hóspedes adicionados:</h4>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-hover">

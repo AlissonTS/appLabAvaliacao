@@ -172,13 +172,105 @@ public class QuartoController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto";
     }
     
+    /* Desabilitar Quarto */
     @RequestMapping("desabilitarQuarto.html")
-    public String desabilitarQuarto(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto";
+    public ModelAndView desabilitarQuarto(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de desabilitação de quarto do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto");
+        
+        QuartoDao qD = new QuartoDao();
+
+        if(rq.getParameter("cod")!=null){
+           int codQuarto = Integer.parseInt(rq.getParameter("cod"));
+            
+           Quarto q = new Quarto();
+           q.setCod(codQuarto);
+			
+           Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+           q.setEstabelecimento(est);
+           q.setEstado(2);
+		   
+           int escolha = 2; // 1 - habilitar, 2 - Desabilitar
+		   
+           try{
+               int retorno = qD.abilitarDesabilitarQuarto(q, escolha);
+               
+               switch (retorno) {
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Desabilitação feita com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Desabilitação Concluída!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Desabilitação do quarto não efetuada!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao desabilitar!");
+                       break;
+               } 
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Desabilitação do quarto não efetuada!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao desabilitar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
     }
     
+    /* Habilitar Quarto */
     @RequestMapping("habilitarQuarto.html")
-    public String habilitarQuarto(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto";
+    public ModelAndView habilitarQuarto(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de habilitação de quarto do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto");
+        
+        QuartoDao qD = new QuartoDao();
+
+        if(rq.getParameter("cod")!=null){
+           int codQuarto = Integer.parseInt(rq.getParameter("cod"));
+            
+           Quarto q = new Quarto();
+           q.setCod(codQuarto);
+			
+           Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+           q.setEstabelecimento(est);
+           q.setEstado(0);
+		   
+           int escolha = 1; // 1 - habilitar, 2 - Desabilitar
+		   
+           try{
+               int retorno = qD.abilitarDesabilitarQuarto(q, escolha);
+               
+               switch (retorno) {
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Habilitação feita com sucesso!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Habilitação Concluída!");
+                       break;   
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Habilitação do quarto não efetuada!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao habilitar!");
+                       break;
+               } 
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Habilitação do quarto não efetuada!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao habilitar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
     }
 }
