@@ -53,7 +53,7 @@
                                     <div class="form-group row">
                                         <label for="area" class="col-md-3 col-xs-4 col-form-label">Área do quarto (m²): </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" value="${quartoEscolhido.area}" type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area" maxlength="7">
+                                            <input class="form-control" value="${quartoEscolhido.area}" data-thousands="" data-decimal="."  type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area" maxlength="7">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -65,7 +65,7 @@
                                     <div class="form-group row">
                                         <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária:</label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" value="${quartoEscolhido.valorDiaria}" type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="10">
+                                            <input class="form-control" value="${quartoEscolhido.valorDiaria}" data-thousands="" data-decimal="." type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="6">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -101,5 +101,6 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
+    <script type="text/javascript" src="js/jquery.maskMoney.js"></script>
     <script type="text/javascript" src="scripts/mask.js"></script>
 </html>

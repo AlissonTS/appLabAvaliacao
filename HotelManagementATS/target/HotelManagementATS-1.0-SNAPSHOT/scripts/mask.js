@@ -19,3 +19,10 @@
         $(document).ready(function(){
                $("#dataInicial").mask("99/99/9999");
         });
+        $(document).ready(function(){
+               $("#area").maskMoney();
+        });
+        $(document).ready(function(){
+               $("#valorDiaria").maskMoney();
+        });
+        
