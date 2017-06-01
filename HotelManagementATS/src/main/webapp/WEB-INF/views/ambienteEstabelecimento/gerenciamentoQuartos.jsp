@@ -33,17 +33,17 @@
                 
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
-                        <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Quartos </h2>
+                        <div class="col-md-offset-3 col-md-6 col-xs-12" style="font-size: 17px;">
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Quartos </h2>
                             <br>
                             <div class="row">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="cadastrarQuartoForm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Cadastrar Quarto</a>
+                                    <a href="cadastrarQuartoForm.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Cadastrar Quarto</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="alterarDesabilitarQuarto.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Alterar/Desabilitar Quarto</a>
+                                    <a href="alterarDesabilitarQuarto.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Alterar/Desabilitar Quarto</a>
                                 </div>
                             </div>
                         </div>

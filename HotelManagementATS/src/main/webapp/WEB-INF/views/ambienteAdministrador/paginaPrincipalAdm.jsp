@@ -32,15 +32,15 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Página Principal - ADM </h2>
-                            <p class="text-center" style="font-size: 17px">Olá, ${administrador.nome}!</p>
-                            <h3 class="text-center" style="font-size: 20px;">Seus Estabelecimentos:</h3>
+                            <h2 class="text-center" style="font-size: 28px;">Página Principal - ADM </h2>
+                            <p class="text-center" style="font-size: 18px">Olá, ${administrador.nome}!</p><br>
+                            <h3 class="text-center" style="font-size: 25px;">Seus estabelecimentos cadastrados:</h3>
                             
                             <jsp:useBean id="estabelecimentoDao" class="br.ufsm.csi.hotelmanagementats.dao.EstabelecimentoDao"/>
                             <c:set value="${estabelecimentoDao.getEstabelecimentosAdm(administrador)}" var="estabelecimentos"/>
                             
                             <c:if test="${not empty estabelecimentos}">
-                                <form action="paginaPrincipalEstabelecimentoAdm.html" method="POST">
+                                <form action="paginaPrincipalEstabelecimentoAdm.html" method="POST" style="font-size: 16px;">
                                     <div class="form-group row">
                                         <center>
                                             <c:set value="0" var="contador"/>
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                            <button type="submit" class="btn btn-default">Entrar no Estabelecimento</button></div>
+                                            <button type="submit" class="btn btn-default btn-lg">Entrar no estabelecimento</button></div>
                                     </div>	
                                 </form>
                             </c:if>

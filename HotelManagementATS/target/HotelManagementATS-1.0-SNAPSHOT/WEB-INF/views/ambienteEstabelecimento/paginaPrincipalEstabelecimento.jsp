@@ -42,16 +42,14 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px;">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Página Principal - Estabelecimento </h2>
-                            
-                            <c:if test="${not empty administrador and empty operador}"> 
-                                <p class="text-center" style="font-size: 17px">Olá, ${administrador.nome} </p>
-                            </c:if> 
+                            <h2 class="text-center" style="font-size: 28px;">Página Principal - Estabelecimento </h2>
+
                             <c:if test="${not empty operador and empty administrador}">   
-                                <p class="text-center" style="font-size: 17px">Olá, ${operador.nome}</p>
-                            </c:if>   
+                                <p class="text-center" style="font-size: 18px">Olá, ${operador.nome}</p>
+                            </c:if> 
+                            <br>    
                             <c:if test="${not empty estabelecimentoEscolhido}">
-                                <div style="font-size: 16px">
+                                <div style="font-size: 19px">
                                     <p class="text-center">Nome do Hotel: ${estabelecimentoEscolhido.nome}</p>
                                     <p class="text-center">CNPJ: ${estabelecimentoEscolhido.cnpj}</p>
                                     <p class="text-center">Telefone Fixo: ${estabelecimentoEscolhido.telFixo}</p>

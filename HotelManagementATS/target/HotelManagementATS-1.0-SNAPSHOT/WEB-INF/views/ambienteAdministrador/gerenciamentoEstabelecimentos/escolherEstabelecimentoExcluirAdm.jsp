@@ -32,20 +32,20 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoEstabelecimentosAdm.html">Voltar</a>
+                                <a href="gerenciamentoEstabelecimentosAdm.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Estabelecimentos </h2>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Estabelecimentos </h2>
                             <br>
                             
                             <jsp:useBean id="estabelecimentoDao" class="br.ufsm.csi.hotelmanagementats.dao.EstabelecimentoDao"/>
                             <c:set value="${estabelecimentoDao.getEstabelecimentosAdm(administrador)}" var="estabelecimentos"/>
                             
                             <c:if test="${not empty estabelecimentos}">
-                                <h4 class="text-center">Escolha o Estabelecimento para Exclusão *: </h4>
-                                <form id="formularioExcluir" action="excluirEstabelecimentoAdm.html" method="POST">
+                                <h4 class="text-center" style="font-size: 20px;">Escolha o estabelecimento para exclusão *: </h4>
+                                <form id="formularioExcluir" action="excluirEstabelecimentoAdm.html" method="POST" style="font-size: 16px;">
                                     <div class="form-group row">
                                         <center>
                                             <c:set value="0" var="contador"/>
@@ -62,13 +62,13 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                          <button id="excluirEstabelecimento" type="button" class="btn btn-danger" class="btn btn-default" data-toggle="modal" data-target="#confirm">Excluir Estabelecimento</button></div>
+                                          <button id="excluirEstabelecimento" type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#confirm">Excluir Estabelecimento</button></div>
                                     </div>	
                                 </form>
-                                <p class="text-center" style="font-size: 14px"><strong>Apenas estabelecimentos sem histórico de operadores, quartos, clientes ou hospedagens cadastradas podem ser excluídos.</strong></p>            
+                                <p class="text-center" style="font-size: 16px"><strong>Apenas estabelecimentos sem histórico de operadores, quartos, clientes ou hospedagens cadastradas podem ser excluídos.</strong></p>            
                             </c:if>
                             <c:if test="${empty estabelecimentos}">
-                                <br><p class="text-center" style="font-size: 15px"><strong>Você não possui estabelecimentos cadastrados</strong></p>
+                                <br><p class="text-center" style="font-size: 16px"><strong>Você não possui estabelecimentos cadastrados</strong></p>
                                 <p class="text-center"><a href="cadastrarEstabelecimentoAdm.html">Cadastrar Estabelecimento</a></p>
                             </c:if>
                         </div>

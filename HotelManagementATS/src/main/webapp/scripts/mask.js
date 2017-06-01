@@ -13,12 +13,13 @@
         $(document).ready(function(){
                $("#horaFinal").mask("99:99");
         });
-        $(document).ready(function(){
-               $("#dataFinal").mask("99/99/9999");
-        });
-        $(document).ready(function(){
-               $("#dataInicial").mask("99/99/9999");
-        });
+        
+        // $(document).ready(function(){
+           //    $("#dataFinal").mask("99/99/9999");
+        // });
+        // $(document).ready(function(){
+           //    $("#dataInicial").mask("99/99/9999");
+        // });
         $(document).ready(function(){
                $("#area").maskMoney();
         });

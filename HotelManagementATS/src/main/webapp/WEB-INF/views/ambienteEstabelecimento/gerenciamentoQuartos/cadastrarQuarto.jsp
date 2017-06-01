@@ -34,7 +34,7 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoQuartos.html">Voltar</a>
+                                <a href="gerenciamentoQuartos.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
@@ -45,37 +45,37 @@
                                     ${mensagem}
                                 </div>
                             </c:if>
-                            <h2 class="text-center" style="font-size: 25px;">Cadastrar Quarto</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Cadastrar Quarto</h2>
                             <br>
-                            <form role="form" action="cadastrarQuarto.html" method="POST">
+                            <form role="form" action="cadastrarQuarto.html" method="POST" style="font-size: 16px;">
                                 <div class="form-group row">
                                     <label for="numero" class="col-md-3 col-xs-4 col-form-label">Número de Identificação: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o número de identificação do quarto" required="true" name="numero" id="numero" maxlength="4" pattern="[0-9]+$" title="Apenas Números">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o número de identificação do quarto" required="true" name="numero" id="numero" maxlength="4" pattern="[0-9]+$" title="Apenas Números">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="area" class="col-md-3 col-xs-4 col-form-label">Área do quarto (m²): </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" data-thousands="" data-decimal="." type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area" maxlength="7">
+                                        <input class="form-control" style="height: 50px;" data-thousands="" data-decimal="." type="text" placeholder="Digite a área do quarto" required="true" name="area" id="area" maxlength="7">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="maxHosp" class="col-md-3 col-xs-4 col-form-label">Máximo de hóspedes:  </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="text" placeholder="Digite o máximo de hóspedes" name="maxHosp" id="maxHosp" maxlength="3" pattern="[0-9]+$" title="Apenas Números">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o máximo de hóspedes" name="maxHosp" id="maxHosp" maxlength="3" pattern="[0-9]+$" title="Apenas Números">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="valorDiaria" class="col-md-3 col-xs-4 col-form-label">Valor cobrado pela diária (R$):</label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" data-thousands="" data-decimal="." type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="7">
+                                        <input class="form-control" style="height: 50px;" data-thousands="" data-decimal="." type="text" placeholder="Digite o valor a ser cobrado pela diária" required="true" name="valorDiaria" id="valorDiaria" maxlength="7">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="descricaoExtra" class="col-md-3 col-xs-4 col-form-label">Informações extras sobre o quarto (Não obrigatório): </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <textarea class="form-control" rows="5" id="descricaoExtra" name="descricaoExtra" maxlength="120"></textarea>
+                                        <textarea class="form-control" style="height: 120px;" rows="5" id="descricaoExtra" name="descricaoExtra" maxlength="120"></textarea>
                                     </div>
                                 </div><!--
                                 <div class="form-group row">
@@ -87,7 +87,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-12 col-xs-12">
                                         <p style="text-align: center">
-                                        <button type="submit" class="btn btn-success">Cadastrar</button></p>
+                                        <button type="submit" class="btn btn-success btn-lg">Cadastrar</button></p>
                                     </div>    
                                 </div>
                             </form>    

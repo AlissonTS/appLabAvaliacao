@@ -38,7 +38,7 @@
                                     ${mensagem}
                                 </div>
                             </c:if>
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Conta</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Conta</h2>
                             <br>
                             <p class="text-center">Nome Completo: ${operador.nome}</p>
                             <p class="text-center">CPF: ${operador.cpf}</p>
@@ -47,7 +47,7 @@
                             <p class="text-center">Nickname (Apelido) de Acesso: ${operador.nickname}</p>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                    <a href="alterarContaOp.html" class="btn btn-primary" role="button">Alterar Conta</a>
+                                    <a href="alterarContaOp.html" class="btn btn-primary btn-lg" role="button">Alterar Conta</a>
                                 </div>
                             </div>
                         </div>

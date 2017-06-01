@@ -34,12 +34,12 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoHospedagens.html">Voltar</a>
+                                <a href="gerenciamentoHospedagens.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Relatórios de Hospedagem</h2>  
+                            <h2 class="text-center" style="font-size: 28px;">Relatórios de Hospedagem</h2>  
                         </div>
                     </div>
                     <div class="row">
@@ -49,7 +49,7 @@
                                 <div class="form-group row">
                                     <label for="dataInicial" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" type="date" id="dataInicial" name="dataInicial" required="true">
+                                        <input class="form-control" style="height: 50px;" type="date" id="dataInicial" name="dataInicial" required="true">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -125,7 +125,7 @@
                     <div class="row" style="margin-bottom: 3%;">	
                         <div class="col-md-12 col-xs-12">
                             <p style="text-align: center">
-                                <button type="submit" class="btn btn-success">Imprimir Relatório</button></p>
+                                <button type="submit" class="btn btn-success btn-lg">Imprimir Relatório</button></p>
                         </div>
                     </div>
                 </div>                 

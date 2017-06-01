@@ -32,19 +32,19 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoEstabelecimentosAdm.html">Voltar</a>
+                                <a href="gerenciamentoEstabelecimentosAdm.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Estabelecimentos </h2>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Estabelecimentos </h2>
                             <br>
                             
                             <jsp:useBean id="estabelecimentoDao" class="br.ufsm.csi.hotelmanagementats.dao.EstabelecimentoDao"/>
                             <c:set value="${estabelecimentoDao.getEstabelecimentosAdm(administrador)}" var="estabelecimentos"/>
                             
                             <c:if test="${not empty estabelecimentos}">
-                                <h4 class="text-center">Escolha o Estabelecimento para Alteração: </h4>
+                                <h4 class="text-center" style="font-size: 20px;">Escolha o estabelecimento para alteração: </h4>
                                 <form action="alterarEstabelecimentoFormAdm.html" method="POST">
                                     <div class="form-group row">
                                         <center>
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                            <button type="submit" class="btn btn-primary">Alterar Estabelecimento</button></div>
+                                            <button type="submit" class="btn btn-primary btn-lg">Alterar Estabelecimento</button></div>
                                     </div>	
                                 </form>
                             </c:if>

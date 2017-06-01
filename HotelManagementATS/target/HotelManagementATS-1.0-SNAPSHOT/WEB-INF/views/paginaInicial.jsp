@@ -33,13 +33,13 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2%;">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Acesso ao Sistema</h2>
+                            <h2 class="text-center" style="font-size: 30px;">Acesso ao Sistema</h2>
                             <br>
                             <c:if test="${not empty administrador and empty operador}">
-                                <p class="text-center"><a href="paginaPrincipalAdm.html" class="btn btn-default" role="button">Entrar no Sistema <span class="glyphicon glyphicon-log-in"></span></a></p>
+                                <p class="text-center"><a href="paginaPrincipalAdm.html" class="btn btn-default btn-lg" role="button">Entrar no Sistema <span class="glyphicon glyphicon-log-in"></span></a></p>
                             </c:if>
                             <c:if test="${not empty operador and empty administrador}">
-                                <p class="text-center"><a href="paginaPrincipalEstabelecimento.html" class="btn btn-default" role="button">Entrar no Sistema <span class="glyphicon glyphicon-log-in"></span></a></p>
+                                <p class="text-center"><a href="paginaPrincipalEstabelecimento.html" class="btn btn-default btn-lg" role="button">Entrar no Sistema <span class="glyphicon glyphicon-log-in"></span></a></p>
                             </c:if>
                             <c:if test="${empty administrador and empty operador}">    
                                 <c:if test="${not empty mensagem}">
@@ -48,24 +48,24 @@
                                         ${mensagem}
                                     </div>
                                 </c:if>
-                                 <form role="form" action="realizarLogin.html" method="POST" style="margin-top: 4%">
+                                 <form role="form" action="realizarLogin.html" method="POST" style="margin-top: 4%; font-size: 16px;">
                                     <div class="form-group row">
                                         <label for="login" class="col-md-2 col-xs-4 col-form-label">Login *: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="text" placeholder="Digite seu Login" required="true" name="login" id="login" maxlength="30">
+                                            <input class="form-control" style="height: 50px;" type="text" placeholder="Digite seu Login" required="true" name="login" id="login" maxlength="30">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="senha" class="col-md-2 col-xs-4 col-form-label">Senha: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" type="password" placeholder="Digite sua Senha" required="true" name="senha" id="login" maxlength="20">
+                                            <input class="form-control" style="height: 50px;" type="password" placeholder="Digite sua Senha" required="true" name="senha" id="login" maxlength="20">
                                         </div>
                                     </div>
                                     <br>
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12">
                                             <p class="text-center">
-                                                <button type="submit" class="btn btn-default">Entrar no Sistema <span class="glyphicon glyphicon-log-in"></span></button>
+                                                <button type="submit" class="btn btn-default btn-lg">Entrar no Sistema <span class="glyphicon glyphicon-log-in"></span></button>
                                             </p>
                                         </div>
                                     </div>

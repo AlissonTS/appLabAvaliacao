@@ -38,7 +38,7 @@
                                     ${mensagem}
                                 </div>
                             </c:if>
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Conta</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Conta</h2>
                             <br>
                             <p class="text-center">Nome Completo: ${administrador.nome}</p>
                             <p class="text-center">CPF: ${administrador.cpf}</p>
@@ -47,7 +47,7 @@
                             <p class="text-center">Email de Acesso: ${administrador.email}</p>
                             <div class="row" style="margin-top: 5%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center;">
-                                    <a href="alterarContaAdmForm.html" class="btn btn-primary" role="button">Alterar Conta</a>
+                                    <a href="alterarContaAdmForm.html" class="btn btn-primary btn-lg" role="button">Alterar Conta</a>
                                 </div>
                             </div>
                         </div>

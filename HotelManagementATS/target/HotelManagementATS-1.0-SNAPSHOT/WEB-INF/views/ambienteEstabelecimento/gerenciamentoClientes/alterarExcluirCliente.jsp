@@ -7,7 +7,7 @@
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Alterar/Excluir Cliente - ATS-HM</title>
+        <title>Alterar/Excluir Hóspede - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
     </head>
     <body>
@@ -42,10 +42,10 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoHospedagens.html">Voltar</a>
+                                <a href="gerenciamentoHospedagens.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
-                    <div class="row" style="margin-left: 0px; margin-right: 0px">
+                    <div class="row" style="margin-left: 0px; margin-right: 0px;">
                         <div class="col-md-offset-1 col-md-10 col-xs-12">
                             <c:if test="${not empty mensagem}">
                                 <div class="alert alert-${tipo}" style="margin-top: 3%;">
@@ -53,14 +53,14 @@
                                     ${mensagem}
                                 </div>
                             </c:if>
-                            <h2 class="text-center" style="font-size: 25px;">Alterar/Excluir Cliente</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Alterar/Excluir Hóspede</h2>
                             <br>
                             
                             <jsp:useBean id="clienteDao" class="br.ufsm.csi.hotelmanagementats.dao.ClienteDao"/>
                             <c:set value="${clienteDao.getClientesEstabelecimento(estabelecimentoEscolhido)}" var="clientes"/>
                             
                             <c:if test="${not empty clientes}">
-                                <div class="table-responsive">
+                                <div class="table-responsive" style="font-size: 16px;">
                                     <table class="table table-bordered">
                                       <thead>
                                         <tr>
@@ -68,8 +68,8 @@
                                           <th>CPF</th>
                                           <th>Telefone Celular</th>
                                           <th>Email</th>
-                                          <th>Alterar Cliente</th>
-                                          <th>Excluir Cliente</th>
+                                          <th>Alterar Hóspede</th>
+                                          <th>Excluir Hóspede</th>
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -107,8 +107,8 @@
                                  </div>    
                             </c:if>
                             <c:if test="${empty clientes}">
-                                <br><p class="text-center" style="font-size: 15px"><strong>O estabelecimento não possui clientes cadastrados</strong></p>
-                                <p class="text-center"><a href="cadastrarClienteForm.html">Cadastrar Cliente</a></p>
+                                <br><p class="text-center" style="font-size: 16px"><strong>O estabelecimento não possui hóspedes cadastrados</strong></p>
+                                <p class="text-center"><a href="cadastrarClienteForm.html">Cadastrar Hóspede</a></p>
                             </c:if>    
                         </div>
                     </div>

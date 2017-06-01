@@ -34,7 +34,7 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                            <a href="gerenciamentoQuartos.html">Voltar</a>
+                            <a href="gerenciamentoQuartos.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
@@ -45,14 +45,14 @@
                                     ${mensagem}
                                 </div>
                             </c:if>
-                            <h2 class="text-center" style="font-size: 25px;">Alterar/Desabilitar Quarto</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Alterar/Desabilitar Quarto</h2>
                             <br>
                             
                             <jsp:useBean id="quartoDao" class="br.ufsm.csi.hotelmanagementats.dao.QuartoDao"/>
                             <c:set value="${quartoDao.getQuartosEstabelecimento(estabelecimentoEscolhido)}" var="quartos"/>
                             
                             <c:if test="${not empty quartos}">
-                                <div class="table-responsive">
+                                <div class="table-responsive" style="font-size: 16px;">
                                     <table class="table table-bordered">
                                       <thead>
                                         <tr>
@@ -96,7 +96,7 @@
                                 </div>
                             </c:if>    
                             <c:if test="${empty quartos}">
-                                <br><p class="text-center" style="font-size: 15px"><strong>O estabelecimento não possui quartos cadastrados</strong></p>
+                                <br><p class="text-center" style="font-size: 16px"><strong>O estabelecimento não possui quartos cadastrados</strong></p>
                                 <p class="text-center"><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></p>
                             </c:if>    
                         </div>

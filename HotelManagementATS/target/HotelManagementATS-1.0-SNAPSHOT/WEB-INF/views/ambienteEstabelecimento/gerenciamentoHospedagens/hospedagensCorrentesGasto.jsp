@@ -42,13 +42,13 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoHospedagens.html">Voltar</a>
+                                <a href="gerenciamentoHospedagens.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
-                    <div class="row" style="margin-left: 0px; margin-right: 0px">
+                    <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciar gasto de Quarto</h2>
-                            <h3 class="text-center">Hospedagens Correntes</h3>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
+                            <h3 class="text-center" style="font-size: 25px;">Hospedagens Correntes</h3>
                             <br>
                             <div class="table-responsive">
                                 <table class="table table-bordered">

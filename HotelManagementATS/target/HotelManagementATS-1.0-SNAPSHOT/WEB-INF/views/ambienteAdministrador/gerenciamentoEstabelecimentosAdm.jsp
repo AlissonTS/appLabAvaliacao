@@ -31,28 +31,28 @@
                 
                 <div class="container-fluid">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
-                        <div class="col-md-offset-3 col-md-6 col-xs-12">
+                        <div class="col-md-offset-3 col-md-6 col-xs-12" style="font-size: 17px;">
                             <c:if test="${not empty mensagem}">
                                 <div class="alert alert-${tipo}">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                     ${mensagem}
                                 </div>
                             </c:if>
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Estabelecimentos</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Estabelecimentos</h2>
                             <br>
                             <div class="row">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="cadastrarEstabelecimentoFormAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Cadastrar Estabelecimento</a>
+                                    <a href="cadastrarEstabelecimentoFormAdm.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Cadastrar Estabelecimento</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="escolherEstabelecimentoAlterarAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Alterar Estabelecimento</a>
+                                    <a href="escolherEstabelecimentoAlterarAdm.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Alterar Estabelecimento</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="escolherEstabelecimentoExcluirAdm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Excluir Estabelecimento</a>
+                                    <a href="escolherEstabelecimentoExcluirAdm.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Excluir Estabelecimento</a>
                                 </div>
                             </div>
                         </div>

@@ -34,16 +34,16 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Operadores </h2>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Operadores </h2>
                             <br>
                             <div class="row">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="cadastrarOperadorForm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Cadastrar Operador</a>
+                                    <a href="cadastrarOperadorForm.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Cadastrar Operador</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="alterarExcluirOperador.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Alterar/Excluir Operador</a>
+                                    <a href="alterarExcluirOperador.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Alterar/Excluir Operador</a>
                                 </div>
                             </div>
                         </div>

@@ -43,42 +43,42 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciamento de Hospedagens </h2>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Hospedagens </h2>
                             <br>
                             <div class="row">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="cadastrarClienteForm.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Cadastrar Cliente</a>
+                                    <a href="cadastrarClienteForm.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Cadastrar Hóspede</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="alterarExcluirCliente.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Alterar/Excluir Cliente</a>
+                                    <a href="alterarExcluirCliente.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Alterar/Excluir Hóspede</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="quartosDesocupados.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Cadastrar Hospedagem</a>
+                                    <a href="quartosDesocupados.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Cadastrar Hospedagem</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="hospedagensCorrentesAlterar.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Alterar Hospedagem</a>
+                                    <a href="hospedagensCorrentesAlterar.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Alterar Hospedagem</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="hospedagensTermino.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Hospedagens em Término</a>
+                                    <a href="hospedagensTermino.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Hospedagens em Término</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="hospedagensCorrentesGasto.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Gerenciar gasto de Quarto</a>
+                                    <a href="hospedagensCorrentesGasto.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Gerenciar gasto de Quarto</a>
                                 </div>
                             </div>
                             <c:if test="${not empty administrador and empty operador}">
                                 <div class="row" style="margin-top: 3%">
                                     <div class="col-md-12 col-xs-12" style="text-align: center">
-                                        <a href="relatoriosHospedagem.html" class="btn btn-link" role="button" style="font-size: 16px; text-decoration: none">Relatórios de Hospedagem</a>
+                                        <a href="relatoriosHospedagem.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Relatórios de Hospedagem</a>
                                     </div>
                                 </div>
                             </c:if>

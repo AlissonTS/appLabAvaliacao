@@ -42,35 +42,35 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%; margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="hospedagensCorrentesGasto.html">Voltar</a>
+                                <a href="hospedagensCorrentesGasto.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Gerenciar gasto de Quarto</h2>
-                            <h3 class="text-center">Quarto ??</h3>
+                            <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
+                            <h3 class="text-center" style="font-size: 25px;">Quarto ??</h3>
                             <br>
                          </div>    
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-1 col-md-10 col-xs-12">
-                            <div class="row">
+                            <div class="row" style="font-size: 16px;">
                                 <div class="col-md-offset-1 col-md-5 col-xs-12">
                                     <div class="row" style="margin-bottom: 3%;">
                                         <div class="col-md-12 col-xs-12">
-                                            <h4 class="text-center">Cadastrar gasto de Quarto:</h4>
+                                            <h4 class="text-center" style="font-size: 20px;">Cadastrar gasto de Quarto:</h4>
                                             <br>
                                             <form role="form" action="#" method="POST">
                                                 <div class="form-group row">
-                                                    <label for="valorGasto" class="col-xs-4 col-form-label">Valor do gasto:</label>
+                                                    <label for="descricaoGasto" class="col-xs-4 col-form-label">Descrição do gasto:</label>
                                                     <div class="col-xs-8">
-                                                        <input class="form-control" type="text" placeholder="Digite o valor do gasto" id="valorGasto" name="valorGasto" required="true">
+                                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite a descrição do gasto" id="descricaoGasto" name="descricaoGasto" required="true" maxlength="10">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="descricaoGasto" class="col-xs-4 col-form-label">Descrição do gasto:</label>
+                                                    <label for="valorGasto" class="col-xs-4 col-form-label">Valor do gasto:</label>
                                                     <div class="col-xs-8">
-                                                        <input class="form-control" type="text" placeholder="Digite a descrição do gasto" id="descricaoGasto" name="descricaoGasto" required="true" maxlength="10">
+                                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o valor do gasto" id="valorGasto" name="valorGasto" required="true">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -86,7 +86,7 @@
                                 <div class="col-md-offset-1 col-md-5 col-xs-12">
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
-                                            <h4>Gastos com serviço de quarto já cadastrados:</h4>
+                                            <h4 style="font-size: 20px;">Gastos com serviço de quarto já cadastrados:</h4>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-hover">
                                                   <thead>

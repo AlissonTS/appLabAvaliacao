@@ -42,22 +42,22 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%; margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="hospedagensTermino.html">Voltar</a>
+                                <a href="hospedagensTermino.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 25px;">Finalizar Hospedagem</h2>
-                            <h3 class="text-center">Quarto ??</h3>   
+                            <h2 class="text-center" style="font-size: 28px;">Finalizar Hospedagem</h2>
+                            <h3 class="text-center" style="font-size: 25px;">Quarto ??</h3>   
                          </div>    
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-1 col-md-10 col-xs-12">
-                            <div class="row">
+                            <div class="row" style="font-size: 16px;">
                                 <div class="col-md-offset-1 col-md-5 col-xs-12">
                                     <div class="row" style="margin-bottom: 2%;">
                                         <div class="col-md-12 col-xs-12">
-                                            <h4 class="text-center">Informações Gerais:</h4>
+                                            <h4 class="text-center" style="font-size: 20px;">Informações Gerais:</h4>
                                             <br>
                                             <div class="row">
                                                 <p class="col-xs-4"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial:</p>
@@ -93,7 +93,7 @@
                                 <div class="col-md-offset-1 col-md-5 col-xs-12">
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
-                                            <h4>Hóspedes presentes no quarto:</h4>
+                                            <h4 style="font-size: 20px;">Hóspedes presentes no quarto:</h4>
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered table-hover">
                                                       <thead>
@@ -118,7 +118,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12" style="margin-top:5%">
-                                            <h4>Gastos com serviço de quarto:</h4>
+                                            <h4 style="font-size: 20px;">Gastos com serviço de quarto:</h4>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-hover">
                                                   <thead>
@@ -152,7 +152,7 @@
                     <div class="row" style="margin-bottom: 3%; margin-top: 3%">
                         <div class="col-lg-offset-3 col-lg-6">
                             <p style="text-align: center">
-                            <button type="submit" class="btn btn-success">Finalizar Hospedagem</button></p>
+                            <button type="submit" class="btn btn-success btn-lg">Finalizar Hospedagem</button></p>
                         </div>
                     </div>
                 </div>                 

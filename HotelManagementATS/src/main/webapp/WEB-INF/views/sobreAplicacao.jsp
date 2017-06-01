@@ -34,7 +34,7 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2%;">
                         <div class="col-md-offset-3 col-md-6 col-xs-offset-1 col-xs-10">
-                            <h2 class="text-center" style="font-size: 25px;">Sobre o ATS - HM</h2>
+                            <h2 class="text-center" style="font-size: 30px;">Sobre o ATS - HM</h2>
                             <br>
                             <p id="descricao">O ATS - Hotel Management é um Sistema totalmente Web destinado ao gerenciamento físico de hospedagens de hotéis e pousadas de pequeno e médio porte.</p>
                             <p id="descricao">O Sistema permite ao usuário o cadastro de seus estabelecimentos, envolvendo todo o cadastro e gerenciamento de:</p>

@@ -10,8 +10,8 @@
                 <center><img src="image/hotel.png" alt="Logo Hotel" height="70" width="70"></center>
             </div>
             <div class="col-md-4">
-                <h1 class="text-center" style="font-size: 35px;">ATS</h1>
-                <h2 class="text-center" style="font-size: 30px;">Hotel Management</h2>
+                <h1 class="text-center" style="font-size: 45px; font-family: Impact, sans-serif;">ATS</h1>
+                <h2 class="text-center" style="font-size: 40px; font-family: Impact, sans-serif;">Hotel Management</h2>
             </div>
             <div class="col-md-2">
                 <center><img src="image/hotel.png" alt="Logo Hotel" height="70" width="70"></center>
