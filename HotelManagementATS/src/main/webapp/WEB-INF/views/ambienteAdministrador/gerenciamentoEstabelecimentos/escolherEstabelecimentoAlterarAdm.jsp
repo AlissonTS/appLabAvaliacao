@@ -32,7 +32,7 @@
                 <div class="container-fluid">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoEstabelecimentosAdm.html" style="font-size: 16px;">Voltar</a>
+                            <a href="gerenciamentoEstabelecimentosAdm.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">

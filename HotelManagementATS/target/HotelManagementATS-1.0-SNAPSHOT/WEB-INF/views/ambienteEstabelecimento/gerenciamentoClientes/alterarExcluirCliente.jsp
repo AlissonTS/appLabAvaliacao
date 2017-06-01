@@ -48,7 +48,7 @@
                     <div class="row" style="margin-left: 0px; margin-right: 0px;">
                         <div class="col-md-offset-1 col-md-10 col-xs-12">
                             <c:if test="${not empty mensagem}">
-                                <div class="alert alert-${tipo}" style="margin-top: 3%;">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%; font-size: 16px;">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                     ${mensagem}
                                 </div>

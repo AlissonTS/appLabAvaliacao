@@ -48,7 +48,7 @@
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <c:if test="${not empty mensagem}">
-                                <div class="alert alert-${tipo}" style="margin-top: 3%;">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%; font-size: 16px;">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                     ${mensagem}
                                 </div>
@@ -77,7 +77,7 @@
                                 <div class="form-group row">
                                     <label for="email" class="col-md-3 col-xs-4 col-form-label">Email: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o email do cliente" required="true" name="email" id="email" maxlength="40">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o email do hóspede" required="true" name="email" id="email" maxlength="40">
                                     </div>
                                 </div>
                                 <div class="form-group row">

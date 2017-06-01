@@ -94,14 +94,14 @@ public class ClienteController {
                        System.out.println("Exclusão Concluída!");
                        break;
                    default:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do cliente não efetuada!");
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do hóspede não efetuada!");
                        mv.addObject("tipo", "danger");
                        System.out.println("Erro ao excluir!");
                        break;
                } 
            }catch(Exception e){
                e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do cliente não efetuada!");
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Exclusão do hóspede não efetuada!");
                mv.addObject("tipo", "danger");
                System.out.println("Erro ao excluir!");
            }            
@@ -141,19 +141,19 @@ public class ClienteController {
                        System.out.println("Alteração Concluída!");
                        break;
                    case 1:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro cliente com mesmo CPF!");
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro hóspede com mesmo CPF!");
                        mv.addObject("tipo", "danger");
                        System.out.println("Erro ao alterar!");
                        break;
                    default:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro cliente!");
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro hóspede!");
                        mv.addObject("tipo", "danger");
                        System.out.println("Erro ao alterar!");
                        break;
                }     
            }catch(Exception e){
                e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro cliente!");
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro hóspede!");
                mv.addObject("tipo", "danger");
                System.out.println("Erro ao alterar!");
            }            
@@ -189,7 +189,7 @@ public class ClienteController {
                        System.out.println("Cadastro Concluído!");
                        break;
                    case 1:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um cliente com mesmo CPF!");
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um hóspede com mesmo CPF!");
                        mv.addObject("tipo", "danger");
                        System.out.println("Erro ao cadastrar!");
                        break;

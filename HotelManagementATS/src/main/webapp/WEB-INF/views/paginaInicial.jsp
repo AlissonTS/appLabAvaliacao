@@ -43,7 +43,7 @@
                             </c:if>
                             <c:if test="${empty administrador and empty operador}">    
                                 <c:if test="${not empty mensagem}">
-                                    <div class="alert alert-${tipo}">
+                                    <div class="alert alert-${tipo}" style="font-size: 16px;">
                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                         ${mensagem}
                                     </div>
