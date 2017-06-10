@@ -84,15 +84,15 @@
                                         </div>
                                     </div>    
                                     <div class="form-group row" id="inputOculto">
-                                        <label for="senha" class="col-md-3 col-xs-4 col-form-label">Digite sua nova Senha: </label>
+                                        <label for="senha" class="col-md-3 col-xs-4 col-form-label">Digite a nova senha do Operador: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" style="height: 50px;" type="password" placeholder="Digite sua nova senha" required="true" name="senha" id="senha" maxlength="30">
+                                            <input class="form-control" style="height: 50px;" type="password" placeholder="Digite a nova senha do Operador" required="true" name="senha" id="senha" maxlength="30">
                                         </div>
                                     </div>
                                     <div class="form-group row" id="inputOculto2">
-                                        <label for="senhaN" class="col-md-3 col-xs-4 col-form-label">Digite sua nova Senha novamente: </label>
+                                        <label for="senhaN" class="col-md-3 col-xs-4 col-form-label">Digite a nova senha novamente: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" style="height: 50px;" type="password" placeholder="Digite sua nova senha novamente" required="true" name="senhaN" id="senhaN">
+                                            <input class="form-control" style="height: 50px;" type="password" placeholder="Digite a nova senha novamente" required="true" name="senhaN" id="senhaN">
                                         </div>
                                     </div>
                                     <div class="row">

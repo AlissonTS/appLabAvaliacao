@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                        <label for="senhaN" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
+                                        <label for="senhaN" class="col-md-3 col-xs-4 col-form-label">Digite a Senha novamente: </label>
                                         <div class="col-md-8 col-xs-8">
                                             <input class="form-control" style="height: 50px;" type="password" placeholder="Digite novamente a senha do operador" required="true" name="senhaN" id="senhaN" maxlength="20">
                                         </div>

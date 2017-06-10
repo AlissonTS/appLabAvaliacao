@@ -7,7 +7,7 @@
 	#descricao{
 		text-align: justify;
 		font-size: 16px;
-		font-family: "Arial", Gadget, sans-serif;
+		font-family: opensans, "Arial", Gadget, sans-serif;
 	}
 	#formulario{
 		text-align: center;
@@ -17,7 +17,7 @@
 	#lista{
 		text-align: justify;
 		font-size: 17px;
-		font-family: "Arial", Gadget, sans-serif;
+		font-family: opensans, "Arial", Gadget, sans-serif;
 	}
 
 	html,
