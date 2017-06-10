@@ -12,9 +12,9 @@
     </head>
     <body>
       
+        <%@ include file="../../import/header.jsp" %>
+        
         <div id="wrapper">  
-            <%@ include file="../../import/header.jsp" %>
-
             <div id="content">
                 <nav class="navbar navbar-default">
                   <div class="container-fluid">
@@ -30,6 +30,7 @@
                         </div>
                   </div>
                 </nav>
+                        
                 <div class="container-fluid">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 2%;">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">

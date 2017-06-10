@@ -8,7 +8,7 @@
         <footer class="footer" style="margin-top: 2%">
             <div class="row" style="margin-left: 0px; margin-right: 0px;">
                 <div class="col-md-offset-3 col-md-6 col-xs-offset-2 col-xs-8">
-                    <p class="text-center">Desenvolvido por AlissonTS7 © 2017</p>
+                    <p class="text-center" style="font-family: opensans, sans-serif;">Desenvolvido por AlissonTS7 © 2017</p>
                 </div>
             </div>
         </footer>

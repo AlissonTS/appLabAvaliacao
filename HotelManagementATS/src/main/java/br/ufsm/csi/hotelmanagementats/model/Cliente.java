@@ -71,7 +71,7 @@ public class Cliente {
      * @param email the email to set
      */
     public void setEmail(String email) {
-        this.email = email.toUpperCase();
+        this.email = email.toLowerCase();
     }
 
     /**

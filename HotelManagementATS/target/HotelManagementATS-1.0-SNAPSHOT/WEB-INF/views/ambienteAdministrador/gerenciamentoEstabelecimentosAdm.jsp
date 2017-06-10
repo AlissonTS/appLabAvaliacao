@@ -12,7 +12,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <%@ include file="../../../import/header.jsp" %>
+            <%@ include file="../../../import/headerAdm.jsp" %>
             
             <div id="content">
                 <nav class="navbar navbar-default">
