@@ -313,4 +313,53 @@ public class UsuarioOpDao {
         
         return retorno;
     }
+    
+    public int abilitarDesabilitarOperador(UsuarioOperador u, int escolha){
+        int retorno = 0;
+        
+        System.out.println("\nUsuarioOpDao - Habilitar/Desabilitar Acesso do Operador no Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql="";
+            
+            if(escolha==1){ // habilitar acesso do operador
+                sql = "SELECT nickname FROM USUARIOOP WHERE cod=? AND codEstabelecimento=? and estado=0;";
+            }else{ // desabilitar acesso do operador
+                sql = "SELECT nickname FROM USUARIOOP WHERE cod=? AND codEstabelecimento=? and estado=1;";
+            }
+            
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, u.getCod());
+            stmt.setInt(2, u.getEstabelecimento().getCod());
+            
+            ResultSet valor = stmt.executeQuery();
+            boolean verificador = valor.next();
+            
+            if(verificador){
+                sql = "UPDATE USUARIOOP SET estado=? WHERE cod=? AND codEstabelecimento=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, u.getEstado());
+                stmt.setInt(2, u.getCod());
+                stmt.setInt(3, u.getEstabelecimento().getCod());
+
+                stmt.execute();
+                retorno = 1;
+            }
+            else{
+                retorno = 0;
+            }
+            
+            stmt.close();            
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
 }

@@ -320,4 +320,106 @@ public class UsuarioOpController {
         
         return mv;
     }
+    
+    /* Desabilitar Acesso do Usuario Operador */
+    @RequestMapping("desabilitarOperador.html")
+    public ModelAndView desabilitarOperador(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de desabilitação de acesso do Usuário operador do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        
+        UsuarioOpDao uD = new UsuarioOpDao();
+
+        if(rq.getParameter("cod")!=null){
+           int codOperador = Integer.parseInt(rq.getParameter("cod"));
+            
+           UsuarioOperador u = new UsuarioOperador();
+           u.setCod(codOperador);
+			
+           Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+           u.setEstabelecimento(est);
+           u.setEstado(0);
+		   
+           int escolha = 2; // 1 - habilitar, 2 - Desabilitar
+		   
+           try{
+               int retorno = uD.abilitarDesabilitarOperador(u, escolha);
+               
+               switch (retorno) {
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Usuário operador sem acesso ao Sistema!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Desabilitação do usuário operador Concluída!");
+                       break;
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Desabilitação do usuário operador não efetuada!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao desabilitar!");
+                       break;
+               } 
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Desabilitação do usuário operador não efetuada!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao desabilitar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    /* Habilitar Usuário Operador */
+    @RequestMapping("habilitarOperador.html")
+    public ModelAndView habilitarOperador(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário de habilitação de acesso do usuário operador do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        
+        UsuarioOpDao uD = new UsuarioOpDao();
+
+        if(rq.getParameter("cod")!=null){
+           int codUsuario = Integer.parseInt(rq.getParameter("cod"));
+            
+           UsuarioOperador u = new UsuarioOperador();
+           u.setCod(codUsuario);
+			
+           Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+           u.setEstabelecimento(est);
+           u.setEstado(1);
+		   
+           int escolha = 1; // 1 - habilitar, 2 - Desabilitar
+		   
+           try{
+               int retorno = uD.abilitarDesabilitarOperador(u, escolha);
+               
+               switch (retorno) {
+                   case 1:
+                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Usuário operador com acesso ao Sistema!");
+                       mv.addObject("tipo", "success");
+                       System.out.println("Habilitação Concluída!");
+                       break;   
+                   default:
+                       mv.addObject("mensagem", "<Strong>Erro</Strong> Habilitação do usuário operador não efetuada!");
+                       mv.addObject("tipo", "danger");
+                       System.out.println("Erro ao habilitar!");
+                       break;
+               } 
+           }catch(Exception e){
+               e.printStackTrace();
+               mv.addObject("mensagem", "<Strong>Erro</Strong> Habilitação do usuário operador não efetuada!");
+               mv.addObject("tipo", "danger");
+               System.out.println("Erro ao habilitar!");
+           }            
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
 }
