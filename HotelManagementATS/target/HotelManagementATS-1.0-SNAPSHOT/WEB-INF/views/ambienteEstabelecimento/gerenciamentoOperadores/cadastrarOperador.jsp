@@ -47,11 +47,11 @@
                             </c:if>
                             <h2 class="text-center" style="font-size: 28px;">Cadastrar Operador</h2>
                             <br>
-                            <form role="form" action="cadastrarOperador.html" method="POST" style="font-size: 16px;">
+                            <form id="form" role="form" action="cadastrarOperador.html" method="POST" style="font-size: 16px;">
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40" pattern="[a-ZA-ZА-За=з\s]+$" title="Apenas letras!">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o nome do operador" required="true" name="nome" id="nome" maxlength="40" pattern="[a-ZA-ZА-За=з\s]+$" title="Apenas letras!">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -81,9 +81,22 @@
                                 <div class="form-group row">
                                     <label for="senha" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" style="height: 50px;" type="password" placeholder="Digite sua senha" required="true" name="senha" id="senha">
+                                        <input class="form-control" style="height: 50px;" type="password" placeholder="Digite a senha do operador" required="true" name="senha" id="senha">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                        <label for="senhaN" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
+                                        <div class="col-md-8 col-xs-8">
+                                            <input class="form-control" style="height: 50px;" type="password" placeholder="Digite novamente a senha do operador" required="true" name="senhaN" id="senhaN" maxlength="20">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12" id="avisoDiv">
+                                            <div class="alert alert-danger">
+                                                <a data-dismiss="alert"></a><p id="avisoContent"></p>
+                                            </div>    
+                                        </div>  
+                                    </div>
                                 <div class="form-group row">
                                     <div class="col-md-12 col-xs-12">
                                         <p style="text-align: center">
@@ -103,4 +116,5 @@
         <%@ include file="../../../../import/js.jsp" %>
     </body>
     <script type="text/javascript" src="scripts/mask.js"></script>
+    <script type="text/javascript" src="scripts/cadastraContaForm.js"></script>
 </html>

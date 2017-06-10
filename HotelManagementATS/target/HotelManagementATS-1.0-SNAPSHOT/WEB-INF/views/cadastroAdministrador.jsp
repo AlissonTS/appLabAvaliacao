@@ -40,7 +40,7 @@
                                 </c:if>
                                 <h2 class="text-center" style="font-size: 30px;">Cadastro de Administrador</h2>
                                 <br>
-                                <form role="form" action="cadastrarAdministrador.html" method="POST" style="font-size: 16px;">
+                                <form id="form" role="form" action="cadastrarAdministrador.html" method="POST" style="font-size: 16px;">
                                     <div class="form-group row">
                                         <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                         <div class="col-md-8 col-xs-8">
@@ -78,6 +78,19 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="senhaN" class="col-md-3 col-xs-4 col-form-label">Senha: </label>
+                                        <div class="col-md-8 col-xs-8">
+                                            <input class="form-control" style="height: 50px;" type="password" placeholder="Digite novamente sua senha" required="true" name="senhaN" id="senhaN" maxlength="20">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12" id="avisoDiv">
+                                            <div class="alert alert-danger">
+                                                <a data-dismiss="alert"></a><p id="avisoContent"></p>
+                                            </div>    
+                                        </div>  
+                                    </div>
+                                    <div class="form-group row">
                                         <div class="col-md-12 col-xs-12">
                                             <p style="text-align: center">
                                             <button type="submit" class="btn btn-success btn-lg">Cadastrar</button></p>
@@ -94,5 +107,6 @@
         
         <%@ include file="../../import/js.jsp" %>
         <script type="text/javascript" src="scripts/mask.js"></script>
+        <script type="text/javascript" src="scripts/cadastraContaForm.js"></script>
     </body>
 </html>

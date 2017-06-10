@@ -63,6 +63,7 @@
                                           <th>Nickname de Acesso</th>
                                           <th>Alterar Operador</th>
                                           <th>Excluir Operador</th>
+                                          <th>Acesso do Operador</th>
                                         </tr>
                                       </thead>
                                       <tbody>
@@ -73,8 +74,18 @@
                                               <td>${op.telFixo}</td>
                                               <td>${op.telCel}</td>
                                               <td>${op.nickname}</td>
-                                              <td class="text-center"><form action="alterarOperadorForm.html" method="POST"><button value="${op.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
-                                              <td class="text-center"><form id="formularioExcluir" action="excluirOperador.html" method="POST"><button type="submit" value="${op.cod}" id="excluirOperador" name="cod" class="btn btn-danger">Excluir</button></form>
+                                                <c:choose>
+                                                    <c:when test="${op.estado==0}">
+                                                        <td>Alteração não pode ser feita</td>
+                                                        <td class="text-center"><form id="formularioExcluir" action="excluirOperador.html" method="POST"><button type="submit" value="${op.cod}" id="excluirOperador" name="cod" class="btn btn-danger">Excluir</button></form>
+                                                        <td class="text-center"><form action="habilitarOperador.html" method="POST"><button type="submit" value="${op.cod}" id="habilitarOperador" name="cod" class="btn btn-default">Habilitar</button></form></td>    
+                                                    </c:when>
+                                                    <c:when test="${op.estado==1}">
+                                                        <td class="text-center"><form action="alterarOperadorForm.html" method="POST"><button value="${op.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
+                                                        <td class="text-center"><form id="formularioExcluir" action="excluirOperador.html" method="POST"><button type="submit" value="${op.cod}" id="excluirOperador" name="cod" class="btn btn-danger">Excluir</button></form>
+                                                        <td class="text-center"><form action="desabilitarOperador.html" method="POST"><button type="submit" value="${op.cod}" id="desabilitarOperador" name="cod" class="btn btn-default">Desabilitar</button></form></td>    
+                                                    </c:when>
+                                                </c:choose>              
                                             </tr>
                                         </c:forEach>
                                       </tbody>

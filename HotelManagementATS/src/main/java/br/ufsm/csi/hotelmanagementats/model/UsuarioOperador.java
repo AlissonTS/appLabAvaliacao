@@ -13,6 +13,7 @@ public class UsuarioOperador extends Usuario{
     
     private String nickname;
     private String senha;
+    private int estado; // 0 - desabilitado e 1 - habilitado
     private Estabelecimento estabelecimento;
     
     /**
@@ -56,5 +57,18 @@ public class UsuarioOperador extends Usuario{
     public void setEstabelecimento(Estabelecimento estabelecimento) {
         this.estabelecimento = estabelecimento;
     }
-    
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 }

@@ -45,8 +45,8 @@ public class UsuarioOpDao {
             boolean verificador = valor.next();
             
             if(!verificador){
-                sql = "INSERT INTO USUARIOOP (cod, nickname, nome, cpf, telFixo, telCel, senha, codEstabelecimento) "
-                    + "values(DEFAULT, ?, ?, ?, ?, ?, ?, ?);";
+                sql = "INSERT INTO USUARIOOP (cod, nickname, nome, cpf, telFixo, telCel, senha, estado, codEstabelecimento) "
+                    + "values(DEFAULT, ?, ?, ?, ?, ?, ?, 1, ?);";
                 stmt = c.prepareStatement(sql);
                 stmt.setString(1, u.getNickname());
                 stmt.setString(2, u.getNome());
@@ -87,7 +87,7 @@ public class UsuarioOpDao {
             
             if(verificador){
                 sql = "UPDATE USUARIOOP SET nickname=?, senha=?, nome=?, telfixo=?, telcel=?"
-                    + "WHERE COD=? AND CODESTABELECIMENTO=?;";
+                    + "WHERE COD=? AND ESTADO=1 AND CODESTABELECIMENTO=?;";
             
                 stmt = c.prepareStatement(sql);
                 stmt.setString(1, u.getNickname());
@@ -99,7 +99,7 @@ public class UsuarioOpDao {
                 stmt.setInt(7, u.getEstabelecimento().getCod());
             }else{
                 sql = "UPDATE USUARIOOP SET nickname=?, nome=?, telfixo=?, telcel=?"
-                    + "WHERE COD=? AND CODESTABELECIMENTO=?;";
+                    + "WHERE COD=? AND ESTADO=1 AND CODESTABELECIMENTO=?;";
             
                 stmt = c.prepareStatement(sql);
                 stmt.setString(1, u.getNickname());
@@ -152,6 +152,7 @@ public class UsuarioOpDao {
                 u.setCpf(valor.getString("cpf"));
                 u.setTelCel(valor.getString("telcel"));
                 u.setTelFixo(valor.getString("telfixo"));
+                u.setEstado(valor.getInt("estado"));
 
                 operadores.add(u);
             }
@@ -175,7 +176,7 @@ public class UsuarioOpDao {
             c = ConectaBD.getConexao();
             String sql;
             
-            sql = "SELECT * FROM USUARIOOP WHERE NICKNAME=? AND SENHA=?;";
+            sql = "SELECT * FROM USUARIOOP WHERE NICKNAME=? AND SENHA=? AND ESTADO=1;";
             stmt = c.prepareStatement(sql);
             stmt.setString(1, u.getNickname());
             stmt.setString(2, u.getSenha());
@@ -239,7 +240,7 @@ public class UsuarioOpDao {
             c = ConectaBD.getConexao();
             String sql;
 
-            sql = "SELECT * FROM USUARIOOP WHERE cod=? AND codEstabelecimento=?;";
+            sql = "SELECT * FROM USUARIOOP WHERE cod=? AND codEstabelecimento=? AND estado=1;";
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, u.getCod());
             stmt.setInt(2, u.getEstabelecimento().getCod());

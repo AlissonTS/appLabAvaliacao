@@ -21,6 +21,7 @@ public class Hospedagem {
     private float valorHospedagem;
     private float valorGastos;
     private float valorTotal;
+    private int estado; // 0 - em andamento, 1 - finalizada
     private Quarto quarto;
     private List<Cliente> clientes;
     private List<Gasto> gastos;
@@ -180,4 +181,17 @@ public class Hospedagem {
         this.gastos = gastos;
     }
     
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 }
