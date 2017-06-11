@@ -26,4 +26,10 @@
         $(document).ready(function(){
                $("#valorDiaria").maskMoney();
         });
+        $(document).ready(function(){
+               $("#valorTotal").maskMoney();
+        });
+        $(document).ready(function(){
+               $("#valorGasto").maskMoney();
+        });
         

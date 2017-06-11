@@ -86,7 +86,7 @@
                                       </tbody>
                                     </table>
                                     
-                                    <!--Modal 
+                                    <!-- Modal 
                                     <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -120,5 +120,5 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
-    <script type="text/javascript" src="scripts/modalDelete.js"></script>
+    <!-- <script type="text/javascript" src="scripts/modalDelete.js"></script> -->
 </html>

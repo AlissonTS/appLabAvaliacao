@@ -9,3 +9,4 @@
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/jquery.maskMoney.js"></script>
     <script type="text/javascript" src="scripts/dropdown.js"></script>
+    <script src="js/jquery-ui.js"></script>

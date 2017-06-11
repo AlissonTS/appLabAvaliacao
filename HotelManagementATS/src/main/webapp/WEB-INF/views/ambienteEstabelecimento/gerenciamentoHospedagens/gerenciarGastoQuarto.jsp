@@ -124,5 +124,6 @@
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
+        <script type="text/javascript" src="scripts/mask.js"></script>
     </body>
 </html>

@@ -49,7 +49,7 @@
                                 <div class="form-group row">
                                     <label for="dataInicial" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" style="height: 50px;" type="date" id="dataInicial" name="dataInicial" required="true">
+                                        <input class="form-control" style="height: 50px;" type="text" id="dataInicial" name="dataInicial" required="true" placeholder="####-##-##" pattern="\d{4}\-\d{2}\-\d{2}" title="####-##-##">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -136,5 +136,6 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
+    <script type="text/javascript" src="scripts/calendarioJs.js"></script>
     <script type="text/javascript" src="scripts/mask.js"></script>
 </html>

@@ -53,6 +53,32 @@
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-1 col-md-10 col-xs-12">
+                            <div class="row" style="font-size: 16px; margin-bottom: 3%;">
+                                <div class="col-md-offset-3 col-md-6 col-xs-12">
+                                    <h4 class="text-center" style="font-size: 20px;">Informações do Período:</h4>
+                                    <br>
+                                    <form role="form" action="#" method="POST">
+                                        <div class="form-group row">
+                                            <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
+                                            <div class="col-md-5 col-xs-8">
+                                                <input class="form-control" style="height: 50px;" type="text" id="dataFinal" name="dataFinal" required="true" maxlength="10" placeholder="####-##-##" pattern="\d{4}\-\d{2}\-\d{2}" title="####-##-##">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="horaFinal" class="col-md-4 col-xs-4 col-form-label">Hora Final:</label>
+                                            <div class="col-md-5 col-xs-8">
+                                                <input class="form-control" style="height: 50px;" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="valorTotal" class="col-md-4 col-xs-4 col-form-label">Valor da Hospedagem:</label>
+                                            <div class="col-md-6 col-xs-8">
+                                                <input class="form-control" style="height: 50px;" type="text" placeholder="Valor da Hospedagem" required="true" name="valorTotal" id="valorTotal">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>    
                             <div class="row" style="font-size: 16px;">
                                 <div class="col-md-offset-1 col-md-5 col-xs-12">
                                     <div class="row" style="margin-bottom: 3%;">
@@ -82,32 +108,6 @@
                                                             <button type="submit" class="btn btn-default">Inserir Hóspede</button>
                                                         </div>
                                                 </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12 col-xs-12">
-                                                <h4 class="text-center" style="font-size: 20px;">Informações do Período:</h4>
-                                                <br>
-                                                <form role="form" action="#" method="POST">
-                                                    <div class="form-group row">
-                                                        <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
-                                                        <div class="col-md-5 col-xs-8">
-                                                            <input class="form-control" style="height: 50px;" type="date" id="dataFinal" name="dataFinal" required="true" maxlength="10" pattern="\d{2}\/\d{2}\/\d{4}" title="##/##/####">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="horaFinal" class="col-md-4 col-xs-4 col-form-label">Hora Final:</label>
-                                                        <div class="col-md-5 col-xs-8">
-                                                            <input class="form-control" style="height: 50px;" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="valorTotal" class="col-md-4 col-xs-4 col-form-label">Valor da Hospedagem:</label>
-                                                        <div class="col-md-6 col-xs-8">
-                                                            <input class="form-control" style="height: 50px;" type="text" placeholder="Valor da Hospedagem" required="true" name="valorTotal" id="valorTotal">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>	
@@ -158,5 +158,6 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
+    <script type="text/javascript" src="scripts/calendarioJs.js"></script>
     <script type="text/javascript" src="scripts/mask.js"></script>
 </html>
