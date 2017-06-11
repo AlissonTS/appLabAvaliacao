@@ -4,7 +4,8 @@
         });
         $('#yesEstabelecimento').click(function(){
            $('#formularioExcluir').submit();
-        });  
+        });
+        
         /* $("#excluirCliente").click(function(e){
             e.preventDefault;
             var $cliente = $(this).closest('tr').find('th[data-nome]').data('nome');

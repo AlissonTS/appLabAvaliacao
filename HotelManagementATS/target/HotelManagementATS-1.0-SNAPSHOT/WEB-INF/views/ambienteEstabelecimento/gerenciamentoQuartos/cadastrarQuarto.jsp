@@ -21,10 +21,22 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
                                 <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
-                                <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
-                                <li class="active"><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
-                                <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                 <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Operadores <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
+                                        <li><a href="cadastrarOperadorForm.html">Cadastrar Operador</a></li>
+                                        <li><a href="alterarExcluirOperador.html">Operadores Cadastrados</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Quartos <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
+                                        <li><a href="cadastrarQuartoForm.html">Cadastrar Operador</a></li>
+                                        <li><a href="alterarDesabilitarQuarto.html">Operadores Cadastrados</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                 <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                             </ul>
                         </div>

@@ -22,10 +22,22 @@
                             <ul class="nav navbar-nav">
                                 <c:if test="${not empty administrador and empty operador}">
                                     <li class="active"><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
-                                    <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
-                                    <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
-                                    <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                     <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
+                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Operadores <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
+                                            <li><a href="cadastrarOperadorForm.html">Cadastrar Operador</a></li>
+                                            <li><a href="alterarExcluirOperador.html">Operadores Cadastrados</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Quartos <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
+                                            <li><a href="cadastrarQuartoForm.html">Cadastrar Operador</a></li>
+                                            <li><a href="alterarDesabilitarQuarto.html">Operadores Cadastrados</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                     <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                                 </c:if>
                                 <c:if test="${not empty operador and empty administrador}">    

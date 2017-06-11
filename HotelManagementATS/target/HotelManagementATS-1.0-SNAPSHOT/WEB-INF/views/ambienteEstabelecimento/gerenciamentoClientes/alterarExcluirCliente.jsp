@@ -80,13 +80,13 @@
                                               <td>${cliente.telCel}</td>
                                               <td>${cliente.email}</td>
                                               <td class="text-center"><form action="alterarClienteForm.html" method="POST"><button value="${cliente.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
-                                              <td class="text-center"><form id="formularioExcluir" action="excluirCliente.html" method="POST"><button type="submit" value="${cliente.cod}" id="excluirCliente" name="cod" class="btn btn-danger">Excluir</button></form>
+                                              <td class="text-center"><form id="formularioExcluir" action="excluirCliente.html" method="POST"><button value="${cliente.cod}" id="excluirCliente" name="cod" class="btn btn-danger">Excluir</button></form>
                                             </tr><!-- data-toggle="modal" data-target="#confirm"-->
                                         </c:forEach>
                                       </tbody>
                                     </table>
                                     
-                                    <!-- Modal 
+                                    <!--Modal 
                                     <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -103,7 +103,7 @@
                                                 </div>
                                             </div>
                                       </div>
-                                    </div> -->
+                                    </div> --> 
                                  </div>    
                             </c:if>
                             <c:if test="${empty clientes}">
@@ -120,5 +120,5 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
-    <!-- <script type="text/javascript" src="scripts/modalDelete.js"></script> -->
+    <script type="text/javascript" src="scripts/modalDelete.js"></script>
 </html>
