@@ -21,7 +21,28 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
                               <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
-                              <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
+                              <li class="dropdown dropdown-lg">
+                                <a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Hospedagens <span class="caret"></span></a>
+                                <ul class="dropdown-menu dropdown-menu-lg row">
+                                    <li class="col-sm-6">
+                                        <ul>
+                                            <li class="dropdown-header">Hóspedes</li>
+                                            <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
+                                            <li><a href="cadastrarClienteForm.html">Cadastrar Hóspede</a></li>
+                                            <li><a href="alterarExcluirCliente.html">Hóspedes Cadastrados</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="col-sm-6">
+                                        <ul>
+                                            <li class="dropdown-header">Hospedagens</li>
+                                            <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
+                                            <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
+                                            <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                            <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                              </li>
                               <li class="active"><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
                               <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                             </ul>

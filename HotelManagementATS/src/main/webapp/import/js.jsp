@@ -8,5 +8,5 @@
     <script src="js/jquery.maskedinput.js"></script>
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/jquery.maskMoney.js"></script>
-    <script type="text/javascript" src="scripts/dropdown.js"></script>
+    <script type="text/javascript" src="scripts/dropdown.js"></script> <!-- Retirar caso bugar no mobile -->
     <script src="js/jquery-ui.js"></script>

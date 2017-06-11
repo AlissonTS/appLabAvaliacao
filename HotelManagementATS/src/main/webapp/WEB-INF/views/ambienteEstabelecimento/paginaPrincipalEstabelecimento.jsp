@@ -21,7 +21,7 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
                                 <c:if test="${not empty administrador and empty operador}">
-                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Ambiente de Gerenciamento <span class="caret"></span></a>
+                                    <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown">Ambiente de Gerenciamento <span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li class="active"><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
                                             <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
@@ -37,8 +37,8 @@
                                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Quartos <span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
-                                            <li><a href="cadastrarQuartoForm.html">Cadastrar Operador</a></li>
-                                            <li><a href="alterarDesabilitarQuarto.html">Operadores Cadastrados</a></li>
+                                            <li><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></li>
+                                            <li><a href="alterarDesabilitarQuarto.html">Quartos Cadastrados</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown dropdown-lg">
@@ -55,11 +55,11 @@
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hospedagens</li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Cadastrar Hospedagem</a></li>
-                                                    <li><a href="cadastrarClienteForm.html">Alterar Hospedagem</a></li>
-                                                    <li><a href="alterarExcluirCliente.html">Hospedagens em Término</a></li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Gerenciar gasto de Quarto</a></li>
-                                                    <li><a href="cadastrarClienteForm.html">Relatórios de Hospedagem</a></li>
+                                                    <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
+                                                    <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
+                                                    <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
+                                                    <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -82,10 +82,10 @@
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hospedagens</li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Cadastrar Hospedagem</a></li>
-                                                    <li><a href="cadastrarClienteForm.html">Alterar Hospedagem</a></li>
-                                                    <li><a href="alterarExcluirCliente.html">Hospedagens em Término</a></li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Gerenciar gasto de Quarto</a></li>
+                                                    <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
+                                                    <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
+                                                    <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
