@@ -25,7 +25,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                   <li><a href="gerenciamentoEstabelecimentosAdm.html">Gerenciamento de Estabelecimentos</a></li>
                                   <li><a href="cadastrarEstabelecimentoFormAdm.html">Cadastrar Estabelecimento</a></li>
-                                  <li><a href="escolherEstabelecimentoAlterarAdm.html">Alterar Estabelecimento</a></li>
+                                  <li class="active"><a href="escolherEstabelecimentoAlterarAdm.html">Alterar Estabelecimento</a></li>
                                   <li><a href="escolherEstabelecimentoExcluirAdm.html">Excluir Estabelecimento</a></li>
                                 </ul>  
                               </li>
