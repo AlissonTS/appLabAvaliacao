@@ -9,7 +9,7 @@ package br.ufsm.csi.hotelmanagementats.model;
  *
  * @author Alisson
  */
-public class Cliente {
+public class Hospede {
     
     private int cod;
     private String cpf;

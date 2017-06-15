@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -26,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AcessoController {
     
-    @RequestMapping("realizarLogin.html")
+    @RequestMapping(value = "realizarLogin.html", method = RequestMethod.POST)
     public ModelAndView realizarLogin(HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
         System.out.println("-------------------------------");
 	System.out.println("Submit Formulário de Login...");
@@ -105,8 +106,8 @@ public class AcessoController {
         
         ModelAndView mv = new ModelAndView("/WEB-INF/views/paginaInicial");
         
-        mv.addObject("mensagem", "<Strong> Sucesso</Strong> Usuário saiu do sistema!");
-        mv.addObject("tipo", "success");
+        // mv.addObject("mensagem", "<Strong> Sucesso</Strong> Usuário saiu do sistema!");
+        // mv.addObject("tipo", "success");
         
         return mv;
     }

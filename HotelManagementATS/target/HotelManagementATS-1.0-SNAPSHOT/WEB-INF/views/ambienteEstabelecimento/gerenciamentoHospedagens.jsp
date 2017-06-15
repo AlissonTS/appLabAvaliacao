@@ -48,8 +48,8 @@
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                                    <li><a href="cadastrarClienteForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirCliente.html">Hóspedes Cadastrados</a></li>
+                                                    <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
+                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
@@ -76,8 +76,8 @@
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                                    <li><a href="cadastrarClienteForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirCliente.html">Hóspedes Cadastrados</a></li>
+                                                    <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
+                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
@@ -106,12 +106,12 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="cadastrarClienteForm.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Cadastrar Hóspede</a>
+                                    <a href="cadastrarHospedeForm.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Cadastrar Hóspede</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-md-12 col-xs-12" style="text-align: center">
-                                    <a href="alterarExcluirCliente.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Alterar/Excluir Hóspede</a>
+                                    <a href="alterarExcluirHospede.html" class="btn btn-link" role="button" style="font-size: 20px; text-decoration: none">Alterar/Excluir Hóspede</a>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 3%">

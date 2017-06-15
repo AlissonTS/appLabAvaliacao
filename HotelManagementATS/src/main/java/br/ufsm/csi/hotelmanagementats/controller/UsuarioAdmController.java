@@ -17,6 +17,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -26,7 +27,7 @@ import org.apache.commons.codec.binary.Base64;
 public class UsuarioAdmController {
     
     /* Cadastrar Usuário */
-    @RequestMapping("cadastrarAdministrador.html")
+    @RequestMapping(value = "cadastrarAdministrador.html", method = RequestMethod.POST)
     public ModelAndView cadastrarUsuarioAdm(UsuarioAdministrador u, HttpServletRequest rq) throws NoSuchAlgorithmException, UnsupportedEncodingException{
         System.out.println("-------------------------------");
 	System.out.println("Submit Formulário de Cadastro de Administrador...");
@@ -53,6 +54,7 @@ public class UsuarioAdmController {
                boolean retorno = uD.cadastrarUsuarioAdm(u);
                
                if(retorno){
+                   mv = new ModelAndView("/WEB-INF/views/paginaInicial");
                    mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
                    mv.addObject("tipo", "success");
                    System.out.println("Cadastro Concluído!");
@@ -80,7 +82,7 @@ public class UsuarioAdmController {
             return "/WEB-INF/views/ambienteAdministrador/alterarContaAdm";
     }
     
-    @RequestMapping("alterarAdministrador.html")
+    @RequestMapping(value = "alterarAdministrador.html", method = RequestMethod.POST)
     public ModelAndView alterarAdministrador(UsuarioAdministrador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
         System.out.println("-------------------------------");
 	System.out.println("Submit Formulário de Alteração de Administrador..."); 

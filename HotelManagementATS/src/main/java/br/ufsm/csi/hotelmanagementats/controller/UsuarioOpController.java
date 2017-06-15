@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -36,7 +37,7 @@ public class UsuarioOpController {
     }
     
     /* Excluir Operador */
-    @RequestMapping("excluirOperador.html")
+    @RequestMapping(value = "excluirOperador.html", method = RequestMethod.POST)
     public ModelAndView excluirOperador(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Exclusão de Operador do Estabelecimento...");
@@ -83,7 +84,7 @@ public class UsuarioOpController {
         return mv;
     }
     
-    @RequestMapping("alterarOperadorEstabelecimento.html")
+    @RequestMapping(value = "alterarOperadorEstabelecimento.html", method = RequestMethod.POST)
     public ModelAndView alterarOperadorEstabelecimento(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Alteração de Operador do Estabelecimento - Adm..."); 
@@ -149,7 +150,7 @@ public class UsuarioOpController {
             return "/WEB-INF/views/ambienteOperador/alterarContaOp";
     }
     
-    @RequestMapping("alterarOperadorLogado.html")
+    @RequestMapping(value = "alterarOperadorLogado.html", method = RequestMethod.POST)
     public ModelAndView alterarOperadorLogado(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Alteração de Operador Logado..."); 
@@ -229,7 +230,7 @@ public class UsuarioOpController {
     }
     
     /* Cadastrar Operador */
-    @RequestMapping("cadastrarOperador.html")
+    @RequestMapping(value = "cadastrarOperador.html", method = RequestMethod.POST)
     public ModelAndView cadastrarOperador(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Cadastro de Operador do Estabelecimento...");
@@ -288,7 +289,7 @@ public class UsuarioOpController {
         return mv;
     }
     
-    @RequestMapping("alterarOperadorForm.html")
+    @RequestMapping(value = "alterarOperadorForm.html", method = RequestMethod.POST)
     public ModelAndView alterarOperadorForm(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Operador do estabelecimento para Alteração...");
@@ -322,7 +323,7 @@ public class UsuarioOpController {
     }
     
     /* Desabilitar Acesso do Usuario Operador */
-    @RequestMapping("desabilitarOperador.html")
+    @RequestMapping(value = "desabilitarOperador.html", method = RequestMethod.POST)
     public ModelAndView desabilitarOperador(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de desabilitação de acesso do Usuário operador do Estabelecimento...");
@@ -373,7 +374,7 @@ public class UsuarioOpController {
     }
     
     /* Habilitar Usuário Operador */
-    @RequestMapping("habilitarOperador.html")
+    @RequestMapping(value = "habilitarOperador.html", method = RequestMethod.POST)
     public ModelAndView habilitarOperador(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de habilitação de acesso do usuário operador do Estabelecimento...");

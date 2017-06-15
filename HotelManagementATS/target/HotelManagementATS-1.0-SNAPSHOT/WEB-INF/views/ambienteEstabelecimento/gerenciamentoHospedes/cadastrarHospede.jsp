@@ -1,5 +1,5 @@
 <%-- 
-    Document   : cadastrarCliente
+    Document   : cadastrarHospede
     Created on : 20/05/2017, 21:36:31
     Author     : Alisson
 --%>
@@ -48,8 +48,8 @@
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                                    <li class="active"><a href="cadastrarClienteForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirCliente.html">Hóspedes Cadastrados</a></li>
+                                                    <li class="active"><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
+                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
@@ -76,8 +76,8 @@
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                                    <li class="active"><a href="cadastrarClienteForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirCliente.html">Hóspedes Cadastrados</a></li>
+                                                    <li class="active"><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
+                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
@@ -115,7 +115,7 @@
                             </c:if>
                             <h2 class="text-center" style="font-size: 28px;">Cadastrar Hóspede</h2>
                             <br>
-                            <form role="form" action="cadastrarCliente.html" method="POST" style="font-size: 16px;">
+                            <form role="form" action="cadastrarHospede.html" method="POST" style="font-size: 16px;">
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                     <div class="col-md-8 col-xs-8">

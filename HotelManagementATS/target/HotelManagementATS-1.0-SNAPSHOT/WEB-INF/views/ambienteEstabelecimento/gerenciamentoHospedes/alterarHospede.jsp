@@ -1,5 +1,5 @@
 <%-- 
-    Document   : alterarCliente
+    Document   : alterarHospede
     Created on : 20/05/2017, 21:36:45
     Author     : Alisson
 --%>
@@ -48,8 +48,8 @@
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                                    <li><a href="cadastrarClienteForm.html">Cadastrar Hóspede</a></li>
-                                                    <li class="active"><a href="alterarExcluirCliente.html">Hóspedes Cadastrados</a></li>
+                                                    <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
+                                                    <li class="active"><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
@@ -76,8 +76,8 @@
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                                    <li><a href="cadastrarClienteForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirCliente.html">Hóspedes Cadastrados</a></li>
+                                                    <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
+                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
@@ -102,7 +102,7 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="alterarExcluirCliente.html" style="font-size: 16px;">Voltar</a>
+                                <a href="alterarExcluirHospede.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
@@ -115,31 +115,31 @@
                             </c:if>
                             <h2 class="text-center" style="font-size: 25px;">Alterar Hóspede</h2>
                             <br>
-                            <c:if test="${not empty cliente}">
-                                <form role="form" action="alterarCliente.html" method="POST" style="font-size: 16px;">
+                            <c:if test="${not empty hospede}">
+                                <form role="form" action="alterarHospede.html" method="POST" style="font-size: 16px;">
                                     <div class="form-group row">
-                                        <input class="form-control" value="${cliente.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
+                                        <input class="form-control" value="${hospede.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
                                         <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" style="height: 50px;" value="${cliente.nome}" type="text" placeholder="Digite o nome do hóspede" required="true" name="nome" id="nome" maxlength="40">
+                                            <input class="form-control" style="height: 50px;" value="${hospede.nome}" type="text" placeholder="Digite o nome do hóspede" required="true" name="nome" id="nome" maxlength="40">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="cpf" class="col-md-3 col-xs-4 col-form-label">CPF: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" style="height: 50px;" value="${cliente.cpf}" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="###.###.###-##">
+                                            <input class="form-control" style="height: 50px;" value="${hospede.cpf}" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="###.###.###-##">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="telCel" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" style="height: 50px;" value="${cliente.telCel}" type="text" placeholder="(##) #####-####" required="true" name="telCel" id="telCel" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="(##) #####-####">
+                                            <input class="form-control" style="height: 50px;" value="${hospede.telCel}" type="text" placeholder="(##) #####-####" required="true" name="telCel" id="telCel" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="(##) #####-####">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="email" class="col-md-3 col-xs-4 col-form-label">Email: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" style="height: 50px;" value="${cliente.email}" type="text" placeholder="Digite o email do hóspede" required="true" name="email" id="email" maxlength="40">
+                                            <input class="form-control" style="height: 50px;" value="${hospede.email}" type="text" placeholder="Digite o email do hóspede" required="true" name="email" id="email" maxlength="40">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -150,7 +150,7 @@
                                     </div>
                                 </form>
                             </c:if>
-                            <c:if test="${empty cliente}">
+                            <c:if test="${empty hospede}">
                                 <br><p class="text-center" style="font-size: 16px"><strong>Nenhum hóspede selecionado para alteração!</strong></p>
                             </c:if>    
                         </div>

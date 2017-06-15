@@ -1,13 +1,13 @@
 <%-- 
-    Document   : hospedagensCorrentesGasto
-    Created on : 20/05/2017, 23:43:36
+    Document   : alterarExcluirHospede
+    Created on : 20/05/2017, 21:36:56
     Author     : Alisson
 --%>
 
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Gerenciar Gasto de Quarto - ATS-HM</title>
+        <title>Alterar/Excluir Hóspede - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
     </head>
     <body>
@@ -49,17 +49,17 @@
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                                     <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
+                                                    <li class="active"><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hospedagens</li>
-                                                    <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
-                                                    <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
-                                                    <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
-                                                    <li class="active"><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
-                                                    <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
+                                                    <li><a href="gerenciamentoHospedagens.html">Cadastrar Hospedagem</a></li>
+                                                    <li><a href="cadastrarHospedeForm.html">Alterar Hospedagem</a></li>
+                                                    <li><a href="alterarExcluirHospede.html">Hospedagens em Término</a></li>
+                                                    <li><a href="gerenciamentoHospedagens.html">Gerenciar gasto de Quarto</a></li>
+                                                    <li><a href="cadastrarHospedeForm.html">Relatórios de Hospedagem</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -77,16 +77,16 @@
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                                     <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
+                                                    <li class="active"><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hospedagens</li>
-                                                    <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
-                                                    <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
-                                                    <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
-                                                    <li class="active"><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
+                                                    <li><a href="gerenciamentoHospedagens.html">Cadastrar Hospedagem</a></li>
+                                                    <li><a href="cadastrarHospedeForm.html">Alterar Hospedagem</a></li>
+                                                    <li><a href="alterarExcluirHospede.html">Hospedagens em Término</a></li>
+                                                    <li><a href="gerenciamentoHospedagens.html">Gerenciar gasto de Quarto</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -105,39 +105,71 @@
                                 <a href="gerenciamentoHospedagens.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
-                    <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
-                            <h3 class="text-center" style="font-size: 25px;">Hospedagens Correntes</h3>
+                    <div class="row" style="margin-left: 0px; margin-right: 0px;">
+                        <div class="col-md-offset-1 col-md-10 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%; font-size: 16px;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
+                            <h2 class="text-center" style="font-size: 28px;">Alterar/Excluir Hóspede</h2>
                             <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>Número do Quarto</th>
-                                        <th>Data Inicial</th>
-                                        <th>Data Final</th>
-                                        <th>Hora Inicial</th>
-                                        <th>Hora Final</th>
-                                        <th>Valor da Diária</th>
-                                        <th>Valor Total</th>
-                                        <th>Gasto de Quarto</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td class="text-center"><a href="gerenciarGastoQuarto.html" class="btn btn-default" role="button">Gerenciar</a></td>
-                                      </tr>
-                                  </tbody>
-                                </table>
-                            </div>    
+                            
+                            <jsp:useBean id="hospedeDao" class="br.ufsm.csi.hotelmanagementats.dao.HospedeDao"/>
+                            <c:set value="${hospedeDao.getHospedesEstabelecimento(estabelecimentoEscolhido)}" var="hospedes"/>
+                            
+                            <c:if test="${not empty hospedes}">
+                                <div class="table-responsive" style="font-size: 16px;">
+                                    <table class="table table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>Nome</th>
+                                          <th>CPF</th>
+                                          <th>Telefone Celular</th>
+                                          <th>Email</th>
+                                          <th>Alterar Hóspede</th>
+                                          <th>Excluir Hóspede</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <c:forEach var="hospede" items="${hospedes}">  
+                                            <tr>
+                                              <th>${hospede.nome}</th>
+                                              <td>${hospede.cpf}</td>
+                                              <td>${hospede.telCel}</td>
+                                              <td>${hospede.email}</td>
+                                              <td class="text-center"><form action="alterarHospedeForm.html" method="POST"><button value="${hospede.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
+                                              <td class="text-center"><form id="formularioExcluir" action="excluirHospede.html" method="POST"><button value="${hospede.cod}" id="excluirHospede" name="cod" class="btn btn-danger">Excluir</button></form>
+                                            </tr><!-- data-toggle="modal" data-target="#confirm"-->
+                                        </c:forEach>
+                                      </tbody>
+                                    </table>
+                                    
+                                    <!-- Modal 
+                                    <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">Excluir Hospede</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p style="font-size: 17px;">Deseja excluir o hospede <strong id="nomeHospede"></strong>?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <p class="text-center">
+                                                    <button type="button" class="btn btn-danger" id="yesHospede">Desejo excluir o hospede</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                                                </div>
+                                            </div>
+                                      </div>
+                                    </div> --> 
+                                 </div>    
+                            </c:if>
+                            <c:if test="${empty hospedes}">
+                                <br><p class="text-center" style="font-size: 16px"><strong>O estabelecimento não possui hóspedes cadastrados</strong></p>
+                                <p class="text-center"><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></p>
+                            </c:if>    
                         </div>
                     </div>
                 </div>                 
@@ -148,4 +180,5 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
+    <!-- <script type="text/javascript" src="scripts/modalDelete.js"></script> -->
 </html>

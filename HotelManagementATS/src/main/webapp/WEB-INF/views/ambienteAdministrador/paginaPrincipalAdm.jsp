@@ -70,7 +70,7 @@
                             </c:if>
                             <c:if test="${empty estabelecimentos}">
                                 <br><p class="text-center" style="font-size: 15px"><strong>Você não possui estabelecimentos cadastrados</strong></p>
-                                <p class="text-center"><a href="cadastrarEstabelecimentoAdm.html">Cadastrar Estabelecimento</a></p>
+                                <p class="text-center"><a href="cadastrarEstabelecimentoFormAdm.html">Cadastrar Estabelecimento</a></p>
                             </c:if>
                         </div>
                     </div>

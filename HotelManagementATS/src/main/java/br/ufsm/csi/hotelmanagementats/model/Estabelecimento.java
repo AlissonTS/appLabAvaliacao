@@ -19,7 +19,7 @@ public class Estabelecimento {
     private String telFixo;
     private UsuarioAdministrador usuarioAdm;
     private List<UsuarioOperador> usuariosOp;
-    private List<Cliente> clientes;
+    private List<Hospede> hospedes;
 
     /**
      * @return the cod
@@ -106,17 +106,17 @@ public class Estabelecimento {
     }
 
     /**
-     * @return the clientes
+     * @return the hospedes
      */
-    public List<Cliente> getClientes() {
-        return clientes;
+    public List<Hospede> getHospedes() {
+        return hospedes;
     }
 
     /**
-     * @param clientes the clientes to set
+     * @param hospedes the hospedes to set
      */
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
+    public void setHospedes(List<Hospede> hospedes) {
+        this.hospedes = hospedes;
     }
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,7 +28,7 @@ public class QuartoController {
     }
     
     /* Cadastrar Quarto */
-    @RequestMapping("cadastrarQuarto.html")
+    @RequestMapping(value = "cadastrarQuarto.html", method = RequestMethod.POST)
     public ModelAndView cadastrarQuarto(Quarto q, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Cadastro de Quarto no Estabelecimento...");
@@ -78,7 +79,7 @@ public class QuartoController {
         return mv;
     }
     
-    @RequestMapping("alterarQuartoForm.html")
+    @RequestMapping(value = "alterarQuartoForm.html", method = RequestMethod.POST)
     public ModelAndView alterarQuartoForm(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Quarto do Estabelecimento para Alteração...");
@@ -112,7 +113,7 @@ public class QuartoController {
     }
     
     /* Alterar Quarto */
-    @RequestMapping("alterarQuarto.html")
+    @RequestMapping(value = "alterarQuarto.html", method = RequestMethod.POST)
     public ModelAndView alterarQuarto(Quarto q, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Alteração de Quarto do Estabelecimento...");
@@ -173,7 +174,7 @@ public class QuartoController {
     }
     
     /* Desabilitar Quarto */
-    @RequestMapping("desabilitarQuarto.html")
+    @RequestMapping(value = "desabilitarQuarto.html", method = RequestMethod.POST)
     public ModelAndView desabilitarQuarto(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de desabilitação de quarto do Estabelecimento...");
@@ -224,7 +225,7 @@ public class QuartoController {
     }
     
     /* Habilitar Quarto */
-    @RequestMapping("habilitarQuarto.html")
+    @RequestMapping(value = "habilitarQuarto.html", method = RequestMethod.POST)
     public ModelAndView habilitarQuarto(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de habilitação de quarto do Estabelecimento...");

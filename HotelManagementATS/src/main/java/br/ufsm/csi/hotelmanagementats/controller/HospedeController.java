@@ -5,13 +5,14 @@
  */
 package br.ufsm.csi.hotelmanagementats.controller;
 
-import br.ufsm.csi.hotelmanagementats.dao.ClienteDao;
-import br.ufsm.csi.hotelmanagementats.model.Cliente;
+import br.ufsm.csi.hotelmanagementats.dao.HospedeDao;
+import br.ufsm.csi.hotelmanagementats.model.Hospede;
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -19,43 +20,43 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Alisson
  */
 @Controller
-public class ClienteController {
+public class HospedeController {
     
-    @RequestMapping("cadastrarClienteForm.html")
-    public String cadastrarClienteForm(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/cadastrarCliente";
+    @RequestMapping("cadastrarHospedeForm.html")
+    public String cadastrarHospedeForm(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/cadastrarHospede";
     }
     
-    @RequestMapping("alterarExcluirCliente.html")
-    public String alterarExcluirCliente(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarExcluirCliente";
+    @RequestMapping("alterarExcluirHospede.html")
+    public String alterarExcluirHospede(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarExcluirHospede";
     }
     
-    @RequestMapping("alterarClienteForm.html")
-    public ModelAndView alterarClienteForm(HttpServletRequest rq, HttpSession session){
+    @RequestMapping(value = "alterarHospedeForm.html", method = RequestMethod.POST)
+    public ModelAndView alterarHospedeForm(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
-        System.out.println("Submit Escolha Cliente para Alteração...");
+        System.out.println("Submit Escolha Hóspede para Alteração...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarExcluirCliente");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarExcluirHospede");
         
-        ClienteDao cD = new ClienteDao();
+        HospedeDao hD = new HospedeDao();
         
         if(rq.getParameter("cod")!=null){
-            int codCliente= Integer.parseInt(rq.getParameter("cod"));
+            int codHospede = Integer.parseInt(rq.getParameter("cod"));
             
-            Cliente ct = new Cliente();
-            ct.setCod(codCliente);
+            Hospede hp = new Hospede();
+            hp.setCod(codHospede);
 			
             Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
             
-            ct.setEstabelecimento(est);
+            hp.setEstabelecimento(est);
 			
-            ct = cD.carregarClienteEscolhido(ct);
+            hp = hD.carregarHospedeEscolhido(hp);
             
-            if(ct!=null){
-                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarCliente");
-                mv.addObject("cliente", ct);
-                System.out.println("Cliente buscado para alteração!");
+            if(hp!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarHospede");
+                mv.addObject("hospede", hp);
+                System.out.println("Hóspede buscado para alteração!");
             }
         }
         
@@ -64,28 +65,28 @@ public class ClienteController {
         return mv;
     }
     
-    /* Excluir Cliente */
-    @RequestMapping("excluirCliente.html")
-    public ModelAndView excluirCliente(HttpServletRequest rq, HttpSession session){
+    /* Excluir Hospede */
+    @RequestMapping(value = "excluirHospede.html", method = RequestMethod.POST)
+    public ModelAndView excluirHospede(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
-        System.out.println("Submit Formulário de Exclusão de Cliente do Estabelecimento...");
+        System.out.println("Submit Formulário de Exclusão de Hóspede do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarExcluirCliente");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarExcluirHospede");
         
-        ClienteDao cD = new ClienteDao();
+        HospedeDao hD = new HospedeDao();
 
         if(rq.getParameter("cod")!=null){
-            int codCliente= Integer.parseInt(rq.getParameter("cod"));
+            int codHospede = Integer.parseInt(rq.getParameter("cod"));
             
-            Cliente ct = new Cliente();
-            ct.setCod(codCliente);
+            Hospede hp = new Hospede();
+            hp.setCod(codHospede);
 			
             Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
             
-            ct.setEstabelecimento(est);
+            hp.setEstabelecimento(est);
 		   
            try{
-               int retorno = cD.excluirCliente(ct);
+               int retorno = hD.excluirHospede(hp);
                
                switch (retorno) {
                    case 1:
@@ -112,27 +113,27 @@ public class ClienteController {
         return mv;
     }
     
-    /* Alterar Cliente */
-    @RequestMapping("alterarCliente.html")
-    public ModelAndView alterarCliente(Cliente ct, HttpServletRequest rq, HttpSession session){
+    /* Alterar Hospede */
+    @RequestMapping(value = "alterarHospede.html", method = RequestMethod.POST)
+    public ModelAndView alterarHospede(Hospede hp, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
-        System.out.println("Submit Formulário de Alteração de Cliente do Estabelecimento...");
+        System.out.println("Submit Formulário de Alteração de Hóspede do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/alterarExcluirCliente");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarExcluirHospede");
         
-        ClienteDao cD = new ClienteDao();
+        HospedeDao hD = new HospedeDao();
         
-        if(rq.getParameter("cod")!=null && ct.getNome()!=null && ct.getCpf()!=null && 
-           ct.getTelCel()!=null && ct.getEmail()!=null){
-           int codCliente= Integer.parseInt(rq.getParameter("cod"));
-           ct.setCod(codCliente);
+        if(rq.getParameter("cod")!=null && hp.getNome()!=null && hp.getCpf()!=null && 
+           hp.getTelCel()!=null && hp.getEmail()!=null){
+           int codHospede = Integer.parseInt(rq.getParameter("cod"));
+           hp.setCod(codHospede);
 
            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
 		   
-           ct.setEstabelecimento(est);
+           hp.setEstabelecimento(est);
 		   
            try{
-               int retorno = cD.alterarCliente(ct);
+               int retorno = hD.alterarHospede(hp);
                
                switch (retorno) {
                    case 2:
@@ -164,23 +165,23 @@ public class ClienteController {
         return mv;
     }
     
-    /* Cadastrar Cliente */
-    @RequestMapping("cadastrarCliente.html")
-    public ModelAndView cadastrarCliente(Cliente ct, HttpServletRequest rq, HttpSession session){
+    /* Cadastrar Hospede */
+    @RequestMapping(value = "cadastrarHospede.html", method = RequestMethod.POST)
+    public ModelAndView cadastrarHospede(Hospede hp, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
-        System.out.println("Submit Formulário de Cadastro de Cliente no Estabelecimento...");
+        System.out.println("Submit Formulário de Cadastro de Hospede no Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoClientes/cadastrarCliente");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/cadastrarHospede");
         
-        ClienteDao cD = new ClienteDao();
+        HospedeDao hD = new HospedeDao();
         
-        if(ct.getNome()!=null && ct.getCpf()!=null 
-           && ct.getTelCel()!=null && ct.getEmail()!=null){
+        if(hp.getNome()!=null && hp.getCpf()!=null 
+           && hp.getTelCel()!=null && hp.getEmail()!=null){
            
-           ct.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
+           hp.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
 		   
            try{
-               int retorno = cD.cadastrarCliente(ct);
+               int retorno = hD.cadastrarHospede(hp);
                
                switch (retorno) {
                    case 2:		

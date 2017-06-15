@@ -23,7 +23,7 @@ public class Hospedagem {
     private float valorTotal;
     private int estado; // 0 - em andamento, 1 - finalizada
     private Quarto quarto;
-    private List<Cliente> clientes;
+    private List<Hospede> hospedes;
     private List<Gasto> gastos;
     
     
@@ -154,20 +154,6 @@ public class Hospedagem {
     }
 
     /**
-     * @return the clientes
-     */
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
-    /**
-     * @param clientes the clientes to set
-     */
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
-    /**
      * @return the gastos
      */
     public List<Gasto> getGastos() {
@@ -193,5 +179,19 @@ public class Hospedagem {
      */
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    /**
+     * @return the hospedes
+     */
+    public List<Hospede> getHospedes() {
+        return hospedes;
+    }
+
+    /**
+     * @param hospedes the hospedes to set
+     */
+    public void setHospedes(List<Hospede> hospedes) {
+        this.hospedes = hospedes;
     }
 }

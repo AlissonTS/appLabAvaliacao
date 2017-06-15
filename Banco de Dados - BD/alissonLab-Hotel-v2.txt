@@ -1,0 +1,96 @@
+CREATE TABLE USUARIOADM(
+		cod serial not null,
+		email varchar(40) unique not null,
+		senha varchar(70) not null,
+		nome varchar(50) not null,
+		cpf varchar(15) unique not null,
+		telFixo varchar(20),
+		telCel varchar(20) not null,
+		PRIMARY KEY(cod)
+);		
+
+CREATE TABLE ESTABELECIMENTO(
+		cod serial not null,
+		cnpj varchar(25) unique not null,
+		nome varchar(40) not null,
+		telefone varchar(20) not null,
+		codUsuarioAdm int not null,
+		PRIMARY KEY(cod),
+		FOREIGN KEY(codUsuarioAdm) REFERENCES USUARIOADM(cod)
+);
+
+CREATE TABLE USUARIOOP(
+		cod serial not null,
+		nickname varchar(12) unique not null,
+		senha varchar(70) not null,
+		nome varchar(50) not null,
+		cpf varchar(15) not null,
+		estado int not null,
+		telFixo varchar(20),
+		telCel varchar(20) not null,
+		codEstabelecimento int not null,
+		PRIMARY KEY(cod),
+		FOREIGN KEY(codEstabelecimento) REFERENCES ESTABELECIMENTO(cod)
+);
+
+CREATE TABLE QUARTO(
+		cod serial not null,
+		numero int not null,
+		area float not null,
+		maxHosp int not null,
+		descricaoExtra varchar(60) not null,
+		estado int not null,
+		valorDiaria float not null,
+		codEstabelecimento int not null,
+		PRIMARY KEY(cod),
+		FOREIGN KEY(codEstabelecimento) REFERENCES ESTABELECIMENTO(cod)
+);	
+
+CREATE TABLE FOTO(
+		cod serial not null,
+		foto bytea not null,
+		codQuarto int not null,
+		PRIMARY KEY(cod),
+		FOREIGN KEY(codQuarto) REFERENCES QUARTO(cod)
+);
+
+CREATE TABLE HOSPEDE(
+		cod serial not null,
+		email varchar(40) not null,
+		nome varchar(50) not null,
+		cpf varchar(15) not null,
+		telCel varchar(20) not null,
+		codEstabelecimento int not null,
+		PRIMARY KEY(cod),
+		FOREIGN KEY(codEstabelecimento) REFERENCES ESTABELECIMENTO(cod)
+);		
+
+CREATE TABLE HOSPEDAGEM(
+		cod serial not null,
+		dataInicial Date not null,
+		dataFinal Date not null,
+		horaInicial time not null,
+		horaFinal time not null,
+		valorHospedagem float not null,
+		codQuarto int not null,
+		estado int not null,
+		PRIMARY KEY(cod),
+		FOREIGN KEY(codQuarto) REFERENCES QUARTO(cod)
+);
+
+CREATE TABLE HOSP_HOSPEDE(
+		codHospede int not null,
+		codHospedagem int not null,
+		PRIMARY KEY(codHospede, codHospedagem),
+		FOREIGN KEY(codHospede) REFERENCES HOSPEDE(cod),
+		FOREIGN KEY(codHospedagem) REFERENCES HOSPEDAGEM(cod)
+);
+
+CREATE TABLE GASTO(
+		cod serial not null,
+		descricao varchar(20) not null,
+		valor float not null,
+		codHospedagem int not null,
+		PRIMARY KEY(cod),
+		FOREIGN KEY(codHospedagem) REFERENCES HOSPEDAGEM(cod)
+);

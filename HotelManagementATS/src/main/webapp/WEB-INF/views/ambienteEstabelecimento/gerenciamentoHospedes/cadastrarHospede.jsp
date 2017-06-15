@@ -1,13 +1,13 @@
 <%-- 
-    Document   : hospedagensCorrentesGasto
-    Created on : 20/05/2017, 23:43:36
+    Document   : cadastrarHospede
+    Created on : 20/05/2017, 21:36:31
     Author     : Alisson
 --%>
 
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Gerenciar Gasto de Quarto - ATS-HM</title>
+        <title>Cadastrar Hóspede - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
     </head>
     <body>
@@ -48,7 +48,7 @@
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                                    <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
+                                                    <li class="active"><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
                                                     <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
@@ -58,7 +58,7 @@
                                                     <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
-                                                    <li class="active"><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
+                                                    <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                     <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
                                                 </ul>
                                             </li>
@@ -76,7 +76,7 @@
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
                                                     <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
-                                                    <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
+                                                    <li class="active"><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
                                                     <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
@@ -86,7 +86,7 @@
                                                     <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
-                                                    <li class="active"><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
+                                                    <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -105,39 +105,48 @@
                                 <a href="gerenciamentoHospedagens.html" style="font-size: 16px;">Voltar</a>
                         </div>
                     </div>
-                    <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
-                            <h3 class="text-center" style="font-size: 25px;">Hospedagens Correntes</h3>
+                    <div class="row" style="margin-left: 0px; margin-right: 0px">
+                        <div class="col-md-offset-3 col-md-6 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%; font-size: 16px;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
+                            <h2 class="text-center" style="font-size: 28px;">Cadastrar Hóspede</h2>
                             <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>Número do Quarto</th>
-                                        <th>Data Inicial</th>
-                                        <th>Data Final</th>
-                                        <th>Hora Inicial</th>
-                                        <th>Hora Final</th>
-                                        <th>Valor da Diária</th>
-                                        <th>Valor Total</th>
-                                        <th>Gasto de Quarto</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td class="text-center"><a href="gerenciarGastoQuarto.html" class="btn btn-default" role="button">Gerenciar</a></td>
-                                      </tr>
-                                  </tbody>
-                                </table>
-                            </div>    
+                            <form role="form" action="cadastrarHospede.html" method="POST" style="font-size: 16px;">
+                                <div class="form-group row">
+                                    <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o nome do hóspede" required="true" name="nome" id="nome" maxlength="40">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="cpf" class="col-md-3 col-xs-4 col-form-label">CPF: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="###.###.###-##" required="true" name="cpf" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="###.###.###-##">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="telCel" class="col-md-3 col-xs-4 col-form-label">Telefone Celular:</label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="(##) #####-####" required="true" name="telCel" id="telCel" pattern="\([0-9]{2}\)[\s][0-9]{5}-[0-9]{4}" title="(##) #####-####">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-3 col-xs-4 col-form-label">Email: </label>
+                                    <div class="col-md-8 col-xs-8">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o email do hóspede" required="true" name="email" id="email" maxlength="40">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <p style="text-align: center">
+                                        <button type="submit" class="btn btn-success btn-lg">Cadastrar</button></p>
+                                    </div>    
+                                </div>
+                            </form>    
                         </div>
                     </div>
                 </div>                 
@@ -148,4 +157,5 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
+    <script type="text/javascript" src="scripts/mask.js"></script>
 </html>

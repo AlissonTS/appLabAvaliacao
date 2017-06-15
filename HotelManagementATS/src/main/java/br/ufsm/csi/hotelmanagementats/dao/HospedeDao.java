@@ -5,7 +5,7 @@
  */
 package br.ufsm.csi.hotelmanagementats.dao;
 
-import br.ufsm.csi.hotelmanagementats.model.Cliente;
+import br.ufsm.csi.hotelmanagementats.model.Hospede;
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
 import br.ufsm.csi.hotelmanagementats.util.ConectaBD;
 import java.sql.Connection;
@@ -19,12 +19,12 @@ import java.util.List;
  *
  * @author Alisson
  */
-public class ClienteDao {
+public class HospedeDao {
     
-    public int cadastrarCliente(Cliente ct){
+    public int cadastrarHospede(Hospede hp){
         int retorno = 0;
         
-        System.out.println("\nClienteDao - Cadastrar cliente no Estabelecimento...\n");
+        System.out.println("\nHospedeDao - Cadastrar hóspede no Estabelecimento...\n");
         
         Connection c = null;
         PreparedStatement stmt = null;
@@ -33,26 +33,26 @@ public class ClienteDao {
             c = ConectaBD.getConexao();
             String sql;
             
-            sql = "SELECT cpf FROM CLIENTE WHERE EXISTS "
-                    + "(SELECT cliente.cpf FROM CLIENTE, ESTABELECIMENTO  "
-                    + "WHERE cliente.codestabelecimento=estabelecimento.cod "
+            sql = "SELECT cpf FROM HOSPEDE WHERE EXISTS "
+                    + "(SELECT hospede.cpf FROM HOSPEDE, ESTABELECIMENTO  "
+                    + "WHERE hospede.codestabelecimento=estabelecimento.cod "
                     + "and cpf=? and estabelecimento.cod=?);";
             stmt = c.prepareStatement(sql);
-            stmt.setString(1, ct.getCpf());
-            stmt.setInt(2, ct.getEstabelecimento().getCod());
+            stmt.setString(1, hp.getCpf());
+            stmt.setInt(2, hp.getEstabelecimento().getCod());
             
             ResultSet valor = stmt.executeQuery();
             boolean verificador = valor.next();
             
             if(!verificador){
-                sql = "INSERT INTO CLIENTE (cod, email, nome, cpf, telCel, codEstabelecimento) "
+                sql = "INSERT INTO HOSPEDE (cod, email, nome, cpf, telCel, codEstabelecimento) "
                     + "values(DEFAULT, ?, ?, ?, ?, ?);";
                 stmt = c.prepareStatement(sql);
-                stmt.setString(1, ct.getEmail());
-                stmt.setString(2, ct.getNome());
-                stmt.setString(3, ct.getCpf());
-		stmt.setString(4, ct.getTelCel());
-                stmt.setInt(5, ct.getEstabelecimento().getCod());
+                stmt.setString(1, hp.getEmail());
+                stmt.setString(2, hp.getNome());
+                stmt.setString(3, hp.getCpf());
+		stmt.setString(4, hp.getTelCel());
+                stmt.setInt(5, hp.getEstabelecimento().getCod());
 
                 stmt.execute();
                 retorno = 2;
@@ -71,11 +71,11 @@ public class ClienteDao {
         return retorno;
     }
     
-    public List<Cliente> getClientesEstabelecimento(Estabelecimento est){
+    public List<Hospede> getHospedesEstabelecimento(Estabelecimento est){
 			
         // System.out.println("\nClienteDao - Buscar clientes do Estabelecimento...\n");
 
-        List<Cliente> clientes = new ArrayList();
+        List<Hospede> hospedes = new ArrayList();
 
         Connection c = null;
         PreparedStatement stmt = null;
@@ -84,22 +84,22 @@ public class ClienteDao {
             c = ConectaBD.getConexao();
             String sql;
 
-            sql = "SELECT * FROM CLIENTE WHERE codEstabelecimento=? ORDER BY NOME ASC;";
+            sql = "SELECT * FROM HOSPEDE WHERE codEstabelecimento=? ORDER BY NOME ASC;";
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, est.getCod());
 
             ResultSet valor = stmt.executeQuery();
 
             while(valor.next()){
-                Cliente ct = new Cliente();
+                Hospede hp = new Hospede();
 
-                ct.setCod(valor.getInt("cod"));
-                ct.setEmail(valor.getString("email"));
-                ct.setNome(valor.getString("nome"));
-                ct.setCpf(valor.getString("cpf"));
-                ct.setTelCel(valor.getString("telcel"));
+                hp.setCod(valor.getInt("cod"));
+                hp.setEmail(valor.getString("email"));
+                hp.setNome(valor.getString("nome"));
+                hp.setCpf(valor.getString("cpf"));
+                hp.setTelCel(valor.getString("telcel"));
 
-                clientes.add(ct);
+                hospedes.add(hp);
             }
 
             stmt.close();
@@ -108,12 +108,12 @@ public class ClienteDao {
             e.printStackTrace();
         }
 
-        return clientes;
+        return hospedes;
     }
     
-    public Cliente carregarClienteEscolhido(Cliente ct){
+    public Hospede carregarHospedeEscolhido(Hospede hp){
         
-        System.out.println("\nClienteDao - Carregar cliente escolhido...\n");
+        System.out.println("\nHospedeDao - Carregar hospede escolhido...\n");
         
         Connection c = null;
         PreparedStatement stmt = null;
@@ -122,23 +122,23 @@ public class ClienteDao {
                 c = ConectaBD.getConexao();
                 String sql;
 
-                sql = "SELECT * FROM CLIENTE WHERE cod=? AND codEstabelecimento=?;";
+                sql = "SELECT * FROM HOSPEDE WHERE cod=? AND codEstabelecimento=?;";
                 stmt = c.prepareStatement(sql);	
-                stmt.setInt(1, ct.getCod());
-                stmt.setInt(2, ct.getEstabelecimento().getCod());
+                stmt.setInt(1, hp.getCod());
+                stmt.setInt(2, hp.getEstabelecimento().getCod());
 
                 ResultSet valor = stmt.executeQuery();	
 
                 while(valor.next()){
-                    ct.setCod(valor.getInt("cod"));
-                    ct.setCpf(valor.getString("cpf"));
-                    ct.setNome(valor.getString("nome"));
-                    ct.setTelCel(valor.getString("telcel"));
-		    ct.setEmail(valor.getString("email"));
+                    hp.setCod(valor.getInt("cod"));
+                    hp.setCpf(valor.getString("cpf"));
+                    hp.setNome(valor.getString("nome"));
+                    hp.setTelCel(valor.getString("telcel"));
+		    hp.setEmail(valor.getString("email"));
                 }
 
-                if(ct.getNome()==null){
-                    ct = null;
+                if(hp.getNome()==null){
+                    hp = null;
                 }
 
                 stmt.close();
@@ -146,16 +146,16 @@ public class ClienteDao {
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
-            ct = null;
+            hp = null;
         }
 
-        return ct;
+        return hp;
     }
     
-    public int alterarCliente(Cliente ct){
+    public int alterarHospede(Hospede hp){
         int retorno = 0;
         
-        System.out.println("\nClienteDao - Alterar cliente do Estabelecimento...\n");
+        System.out.println("\nHospedeDao - Alterar hóspede do Estabelecimento...\n");
         
         Connection c = null;
         PreparedStatement stmt = null;
@@ -164,28 +164,28 @@ public class ClienteDao {
             c = ConectaBD.getConexao();
             String sql;
             
-            sql = "SELECT cpf FROM CLIENTE WHERE EXISTS "
-                    + "(SELECT cliente.cpf FROM CLIENTE "
+            sql = "SELECT cpf FROM HOSPEDE WHERE EXISTS "
+                    + "(SELECT hospede.cpf FROM HOSPEDE "
                     + "WHERE codEstabelecimento=? and cpf=?"
                     + "and cod!=?);";
             stmt = c.prepareStatement(sql);
-            stmt.setInt(1, ct.getEstabelecimento().getCod());
-            stmt.setString(2, ct.getCpf());
-            stmt.setInt(3, ct.getCod());
+            stmt.setInt(1, hp.getEstabelecimento().getCod());
+            stmt.setString(2, hp.getCpf());
+            stmt.setInt(3, hp.getCod());
             
             ResultSet valor = stmt.executeQuery();
             boolean verificador = valor.next();
             
             if(!verificador){
-                sql = "UPDATE CLIENTE SET nome=?, telCel=?, cpf=?, email=?"
+                sql = "UPDATE HOSPEDE SET nome=?, telCel=?, cpf=?, email=?"
                     + "WHERE cod=? and codEstabelecimento=?;";
                 stmt = c.prepareStatement(sql);
-                stmt.setString(1, ct.getNome());
-                stmt.setString(2, ct.getTelCel());
-                stmt.setString(3, ct.getCpf());
-                stmt.setString(4, ct.getEmail());
-                stmt.setInt(5, ct.getCod());
-                stmt.setInt(6, ct.getEstabelecimento().getCod());
+                stmt.setString(1, hp.getNome());
+                stmt.setString(2, hp.getTelCel());
+                stmt.setString(3, hp.getCpf());
+                stmt.setString(4, hp.getEmail());
+                stmt.setInt(5, hp.getCod());
+                stmt.setInt(6, hp.getEstabelecimento().getCod());
 
                 stmt.execute();
                 retorno = 2;
@@ -204,10 +204,10 @@ public class ClienteDao {
         return retorno;
     }
     
-    public int excluirCliente(Cliente ct){
+    public int excluirHospede(Hospede hp){
         int retorno = 0;
         
-        System.out.println("\nClienteDao - Excluir cliente do Estabelecimento...\n");
+        System.out.println("\nHospedeDao - Excluir hospede do Estabelecimento...\n");
         
         Connection c = null;
         PreparedStatement stmt = null;
@@ -216,19 +216,19 @@ public class ClienteDao {
             c = ConectaBD.getConexao();
             String sql;
             
-            sql = "SELECT * FROM CLIENTE WHERE cod=? and codEstabelecimento=?;";
+            sql = "SELECT * FROM HOSPEDE WHERE cod=? and codEstabelecimento=?;";
             stmt = c.prepareStatement(sql);
-            stmt.setInt(1, ct.getCod());
-            stmt.setInt(2, ct.getEstabelecimento().getCod());
+            stmt.setInt(1, hp.getCod());
+            stmt.setInt(2, hp.getEstabelecimento().getCod());
             
             ResultSet valor = stmt.executeQuery();
             boolean verificador = valor.next();
             
             if(verificador){
-                sql = "DELETE FROM CLIENTE WHERE cod=? and codEstabelecimento=?;";
+                sql = "DELETE FROM HOSPEDE WHERE cod=? and codEstabelecimento=?;";
                 stmt = c.prepareStatement(sql);
-                stmt.setInt(1, ct.getCod());
-                stmt.setInt(2, ct.getEstabelecimento().getCod());
+                stmt.setInt(1, hp.getCod());
+                stmt.setInt(2, hp.getEstabelecimento().getCod());
 
                 stmt.execute();
   

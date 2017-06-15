@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -37,7 +38,7 @@ public class EstabelecimentoController {
     }
     
     /* Cadastrar Estabelecimento */
-    @RequestMapping("cadastrarEstabelecimentoAdm.html")
+    @RequestMapping(value = "cadastrarEstabelecimentoAdm.html", method = RequestMethod.POST)
     public ModelAndView cadastrarEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Cadastro de Estabelecimento do Adm...");
@@ -86,7 +87,7 @@ public class EstabelecimentoController {
         return mv;
     }
     
-    @RequestMapping("alterarEstabelecimentoFormAdm.html")
+    @RequestMapping(value = "alterarEstabelecimentoFormAdm.html", method = RequestMethod.POST)
     public ModelAndView alterarEstabelecimentoFormAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Estabelecimento de Cadastro de Estabelecimento do Adm...");
@@ -115,7 +116,7 @@ public class EstabelecimentoController {
     }
     
     /* Alterar Estabelecimento */
-    @RequestMapping("alterarEstabelecimentoAdm.html")
+    @RequestMapping(value = "alterarEstabelecimentoAdm.html", method = RequestMethod.POST)
     public ModelAndView alterarEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Alteração de Estabelecimento do Adm...");
@@ -163,7 +164,7 @@ public class EstabelecimentoController {
     }
     
     /* Excluir Estabelecimento */
-    @RequestMapping("excluirEstabelecimentoAdm.html")
+    @RequestMapping(value = "excluirEstabelecimentoAdm.html", method = RequestMethod.POST)
     public ModelAndView excluirEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Exclusão de Estabelecimento do Adm...");
@@ -205,7 +206,7 @@ public class EstabelecimentoController {
         return mv;
     }
     
-    @RequestMapping("paginaPrincipalEstabelecimentoAdm.html")
+    @RequestMapping(value = "paginaPrincipalEstabelecimentoAdm.html", method = RequestMethod.POST)
     public String paginaPrincipalEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Estabelecimento de Estabelecimento do Adm para Ambiente de Gerenciamento...");
