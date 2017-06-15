@@ -106,38 +106,53 @@
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                        <div class="col-md-offset-1 col-md-10 col-xs-12">
                             <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
                             <h3 class="text-center" style="font-size: 25px;">Hospedagens Correntes</h3>
                             <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>Número do Quarto</th>
-                                        <th>Data Inicial</th>
-                                        <th>Data Final</th>
-                                        <th>Hora Inicial</th>
-                                        <th>Hora Final</th>
-                                        <th>Valor da Diária</th>
-                                        <th>Valor Total</th>
-                                        <th>Gasto de Quarto</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td class="text-center"><a href="gerenciarGastoQuarto.html" class="btn btn-default" role="button">Gerenciar</a></td>
-                                      </tr>
-                                  </tbody>
-                                </table>
-                            </div>    
+                            
+                            <jsp:useBean id="hospedagemDao" class="br.ufsm.csi.hotelmanagementats.dao.HospedagemDao"/>
+                            <c:set value="${hospedagemDao.getHospedagensCorrentes(estabelecimentoEscolhido)}" var="hospedagens"/>
+                            
+                            <c:if test="${not empty hospedagens}">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>N° do Quarto</th>
+                                            <th>Horário de Entrada</th>
+                                            <th>Horário de Saída</th>
+                                            <th>Valor da Diária</th>
+                                            <th>Total de Gastos</th>
+                                            <th>Valor Total</th>
+                                            <th>Gerenciar Gasto de Quarto</th>
+                                          </tr>
+                                        </thead>
+                                        <c:forEach var="hospedagem" items="${hospedagens}"> 
+                                            <tr>
+                                              <th>${hospedagem.quarto.numero}</th>
+                                              <td>${hospedagem.dataInicial} - ${hospedagem.horaInicial}</td>
+                                              <td>${hospedagem.dataFinal} - ${hospedagem.horaFinal}</td>
+                                              <td>${hospedagem.quarto.valorDiaria}</td>
+                                              
+                                              <c:set value="${hospedagemDao.getTotalGastos(hospedagem)}" var="totalGastos"/>
+                                              <c:if test="${totalGastos.valorGastos>0}">
+                                                  <td>${totalGastos.valorGastos}</td>
+                                              </c:if>
+                                              <c:if test="${totalGastos.valorGastos==0}">
+                                                  <td>Sem gastos de quarto</td>
+                                              </c:if>
+                                              <td>${totalGastos.valorGastos+hospedagem.valorHospedagem}</td>
+                                              <td class="text-center"><a href="gerenciarGastoQuarto.html" class="btn btn-default" role="button">Gerenciar</a></td>
+                                             </tr>
+                                        </c:forEach>     
+                                      </tbody>
+                                    </table>
+                                </div> 
+                            </c:if>
+                            <c:if test="${empty hospedagens}">
+                                <br><p class="text-center"><strong>O estabelecimento não possui hospedagens em andamento.</strong></p>
+                            </c:if>
                         </div>
                     </div>
                 </div>                 
