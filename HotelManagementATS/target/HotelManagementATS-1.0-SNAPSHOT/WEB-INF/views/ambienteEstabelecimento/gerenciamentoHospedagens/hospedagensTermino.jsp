@@ -107,17 +107,15 @@
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Hospedagens em Término</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Hospedagens em término no dia</h2>
                             <br>
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                       <tr>
-                                        <th>Número do Quarto</th>
-                                        <th>Data Inicial</th>
-                                        <th>Data Final</th>
-                                        <th>Hora Inicial</th>
-                                        <th>Hora Final</th>
+                                        <th>N° do Quarto</th>
+                                        <th>Horário de Entrada</th>
+                                        <th>Horário de Saída</th>
                                         <th>Valor da Diária</th>
                                         <th>Valor Total</th>
                                         <th>Finalizar Hospedagem</th>
@@ -130,6 +128,34 @@
                                         <td>Otto</td>
                                         <td>@mdo</td>
                                         <td>@mdo</td>
+                                        <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
+                                      </tr>
+                                  </tbody>
+                                </table>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
+                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                            <h2 class="text-center" style="font-size: 28px;">Hospedagens Atrasadas</h2>
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>N° do Quarto</th>
+                                        <th>Horário de Entrada</th>
+                                        <th>Horário de Saída</th>
+                                        <th>Valor da Diária</th>
+                                        <th>Valor Total</th>
+                                        <th>Finalizar Hospedagem</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
                                         <td>@mdo</td>
                                         <td>@mdo</td>
                                         <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>

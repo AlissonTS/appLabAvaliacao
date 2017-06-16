@@ -145,7 +145,14 @@
                                 <p class="text-center"><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></p>
                             </c:if>
                             <c:if test="${empty quartos}">
-                                <br><p class="text-center"><strong>O estabelecimento não possui quartos cadastrados</strong></p>
+                                <c:set value="${quartoDao.getQuartosQuantidade(estabelecimentoEscolhido)}" var="quantidadeQuartos"/>
+                                <c:if test="${quantidadeQuartos>0}">
+                                    <br><p class="text-center"><strong>O estabelecimento não possui quartos desocupados</strong></p>
+                                </c:if>
+                                <c:if test="${quantidadeQuartos==0}">
+                                    <br><p class="text-center"><strong>O estabelecimento não possui quartos cadastrados</strong></p>
+                                    <p class="text-center"><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></p>
+                                </c:if>    
                             </c:if>
                         </div>
                     </div>

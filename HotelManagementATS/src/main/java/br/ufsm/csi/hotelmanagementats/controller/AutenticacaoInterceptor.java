@@ -44,6 +44,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                    uri.endsWith("gerenciamentoQuartos.html") ||
                    uri.endsWith("gerenciamentoHospedagens.html") ||
                    uri.endsWith("relatoriosHospedagem.html") ||
+                   uri.endsWith("gerarRelatorioHospedagem.html") ||     
                    uri.endsWith("quartosDesocupados.html") ||
                    uri.endsWith("cadastrarHospedagemForm.html") ||     
                    uri.endsWith("hospedagensCorrentesAlterar.html") ||
@@ -89,6 +90,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
             
         }else if(uAdm==null && uOp!=null){
             if(uri.endsWith("relatoriosHospedagem.html") ||
+               uri.endsWith("gerarRelatorioHospedagem.html") ||
                uri.endsWith("gerenciamentoQuartos.html") ||
                uri.endsWith("gerenciamentoOperadores.html") ||     
                uri.endsWith("cadastroAdministrador.html") ||

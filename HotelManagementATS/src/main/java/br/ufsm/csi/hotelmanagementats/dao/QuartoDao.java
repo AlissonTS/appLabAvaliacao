@@ -91,7 +91,7 @@ public class QuartoDao {
             stmt.setInt(1, est.getCod());
 
             ResultSet valor = stmt.executeQuery();
-
+            
             while(valor.next()){
                 Quarto qt = new Quarto();
 
@@ -113,6 +113,37 @@ public class QuartoDao {
         }
 
         return quartos;
+    }
+    
+     public int getQuartosQuantidade(Estabelecimento est){
+			
+        // System.out.println("\nQuartoDao - Buscar quantidade de quartos do Estabelecimento...\n");
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+        int quantidade =0; 
+        
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT COUNT(*) AS quantidade FROM QUARTO WHERE codEstabelecimento=?;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, est.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+            
+            while(valor.next()){
+                quantidade = valor.getInt("quantidade");
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return quantidade;
     }
     
     public List<Quarto> getQuartosDesocupadosEstabelecimento(Estabelecimento est){
