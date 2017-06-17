@@ -73,6 +73,55 @@ public class HospedagemDao {
         return hospedagens;
     }
     
+    public List<Hospedagem> gerarRelatorioHospedagem(String data, Estabelecimento est){
+			
+        // System.out.println("\nHospedagemDao - Buscar informações de relatório de hospedagem do Estabelecimento...\n");
+
+        List<Hospedagem> relatorio = new ArrayList();
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT numero, dataInicial, dataFinal, horaInicial, horaFinal FROM QUARTO, "
+                    + "HOSPEDAGEM WHERE codEstabelecimento=? and quarto.cod=hospedagem.codquarto "
+                    + "and (dataInicial<=? and dataFinal>=?) ORDER BY numero ASC;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, est.getCod());
+            stmt.setString(2, data);
+            stmt.setString(3, data);
+
+            ResultSet valor = stmt.executeQuery();
+
+            while(valor.next()){
+                Quarto qt = new Quarto();
+                Hospedagem h = new Hospedagem();
+
+                h.setDataInicial(valor.getString("dataInicial"));
+                h.setDataFinal(valor.getString("dataFinal"));
+                h.setHoraInicial(valor.getString("horaInicial"));
+                h.setHoraFinal(valor.getString("horaFinal"));
+				
+                qt.setNumero(valor.getInt("numero"));
+                qt.setCod(valor.getInt("codQuarto"));
+				
+                h.setQuarto(qt);
+				
+                relatorio.add(h);
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return relatorio;
+    }
+    
     public Hospedagem getTotalGastos(Hospedagem h){
 			
         // System.out.println("\nHospedagemDao - Buscar valor gasto de serviço de quarto da hospedagem no Estabelecimento...\n");

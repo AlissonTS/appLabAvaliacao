@@ -117,16 +117,12 @@
                                     <tr>
                                       <th>Total de Quartos</th>
                                       <th>Quartos Ocupados</th>
-                                      <th>Quartos Desocupados</th>
-                                      <th>Quartos Desabilitados</th>
                                       <th>% de Ocupação</th>
                                     </tr>
                                   </thead>
                                   <tbody>
                                     <tr>
                                       <th>1</th>
-                                      <td>Conteúdo</td>
-                                      <td>Conteúdo</td>
                                       <td>Conteúdo</td>
                                       <td>Conteúdo</td>
                                     </tr>
@@ -137,7 +133,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h5 class="text-center">Lista de Quartos</h5>	
+                            <h5 class="text-center">Lista de Quartos Ocupados</h5>	
                         </div>
                     </div>
                     <div class="row">	
@@ -147,7 +143,6 @@
                                     <thead>
                                       <tr>
                                         <th>Número do Quarto</th>
-                                        <th>Estado do Quarto</th>
                                         <th>Início da Hospedagem</th>
                                         <th>Final da Hospedagem</th>
                                       </tr>
@@ -155,7 +150,6 @@
                                     <tbody>
                                       <tr>
                                         <th>1</th>
-                                        <td>Conteúdo</td>
                                         <td>Conteúdo</td>
                                         <td>Conteúdo</td>
                                       </tr>
@@ -167,7 +161,8 @@
                     <div class="row" style="margin-bottom: 3%;">	
                         <div class="col-md-12 col-xs-12">
                             <p style="text-align: center">
-                                <button type="submit" class="btn btn-success btn-lg">Imprimir Relatório</button></p>
+                                <input type="button" class="btn btn-success btn-lg" name="print" value="Imprimir Relatório" onClick="imprimir()" style="margin-top: 1%">
+                            </p>
                         </div>
                     </div>
                 </div>                 
@@ -180,4 +175,5 @@
     </body>
     <script type="text/javascript" src="scripts/calendarioJs.js"></script>
     <script type="text/javascript" src="scripts/mask.js"></script>
+    <script type="text/javascript" src="scripts/imprimir.js"></script>
 </html>

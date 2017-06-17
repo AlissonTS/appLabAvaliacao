@@ -48,9 +48,9 @@ public class HospedagemController {
 			
             Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
 			
-            List<Quarto> relatorio = new ArrayList();
+            List<Hospedagem> relatorio = new ArrayList();
 			
-            // relatorio = hD.gerarRelatorioHospedagem(data, est);
+            relatorio = hD.gerarRelatorioHospedagem(data, est);
 			
             if(relatorio!=null){
                 // mv.addObject("hospede", hp);
