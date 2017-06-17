@@ -1,16 +1,16 @@
-C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\dao\ClienteDao.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Estabelecimento.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\AutenticacaoInterceptor.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Hospede.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\QuartoController.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\dao\HospedeDao.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\AcessoController.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Quarto.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\EstabelecimentoController.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\UsuarioAdmController.java
-C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Cliente.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Foto.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\MenuEstabelecimentoController.java
-C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\ClienteController.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\MenuPrincipalAdmController.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\HospedeController.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Hospedagem.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\MenuInicialController.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\dao\QuartoDao.java
@@ -22,5 +22,6 @@ C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManageme
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\UsuarioOpController.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\dao\UsuarioOpDao.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\UsuarioAdministrador.java
+C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\dao\HospedagemDao.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\controller\HospedagemController.java
 C:\Users\Alisson\Documents\Laboratório de Software\appLabAvaliacao\HotelManagementATS\src\main\java\br\ufsm\csi\hotelmanagementats\model\Usuario.java

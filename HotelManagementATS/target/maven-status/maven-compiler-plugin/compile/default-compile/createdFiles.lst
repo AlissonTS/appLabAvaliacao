@@ -5,6 +5,8 @@ br\ufsm\csi\hotelmanagementats\controller\AutenticacaoInterceptor.class
 br\ufsm\csi\hotelmanagementats\model\Quarto.class
 br\ufsm\csi\hotelmanagementats\model\Gasto.class
 br\ufsm\csi\hotelmanagementats\controller\UsuarioAdmController.class
+br\ufsm\csi\hotelmanagementats\dao\HospedeDao.class
+br\ufsm\csi\hotelmanagementats\controller\HospedeController.class
 br\ufsm\csi\hotelmanagementats\controller\MenuInicialController.class
 br\ufsm\csi\hotelmanagementats\controller\MenuPrincipalAdmController.class
 br\ufsm\csi\hotelmanagementats\dao\EstabelecimentoDao.class
@@ -13,12 +15,11 @@ br\ufsm\csi\hotelmanagementats\controller\QuartoController.class
 br\ufsm\csi\hotelmanagementats\controller\HospedagemController.class
 br\ufsm\csi\hotelmanagementats\dao\UsuarioOpDao.class
 br\ufsm\csi\hotelmanagementats\controller\UsuarioOpController.class
-br\ufsm\csi\hotelmanagementats\dao\ClienteDao.class
 br\ufsm\csi\hotelmanagementats\dao\QuartoDao.class
 br\ufsm\csi\hotelmanagementats\util\ConectaBD.class
-br\ufsm\csi\hotelmanagementats\controller\ClienteController.class
+br\ufsm\csi\hotelmanagementats\dao\HospedagemDao.class
 br\ufsm\csi\hotelmanagementats\controller\EstabelecimentoController.class
-br\ufsm\csi\hotelmanagementats\model\Cliente.class
+br\ufsm\csi\hotelmanagementats\model\Hospede.class
 br\ufsm\csi\hotelmanagementats\dao\UsuarioAdmDao.class
 br\ufsm\csi\hotelmanagementats\controller\MenuEstabelecimentoController.class
 br\ufsm\csi\hotelmanagementats\model\Foto.class

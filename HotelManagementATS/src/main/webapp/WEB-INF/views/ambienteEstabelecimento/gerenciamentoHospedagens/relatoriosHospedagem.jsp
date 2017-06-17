@@ -99,72 +99,98 @@
                             </form>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 3%">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h4 class="text-center">Relatório Gerado</h4>	
+                                    
+                    <c:if test="${not empty relatorio && verificador==1}">
+                        <div class="row" style="margin-top: 3%">
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <h4 class="text-center">Relatório Gerado</h4>	
+                            </div>
+                        </div>	
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <h5 class="text-center">Informações Gerais</h5>	
+                            </div>
                         </div>
-                    </div>	
-                    <div class="row">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h5 class="text-center">Informações Gerais</h5>	
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-6 col-xs-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                      <thead>
+                                        <tr>
+                                          <th>Total de Quartos</th>
+                                          <th>Quartos Ocupados</th>
+                                          <th>% de Ocupação</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <jsp:useBean id="quartoDao" class="br.ufsm.csi.hotelmanagementats.dao.QuartoDao"/>
+                                        <c:set value="${quartoDao.getQuartosQuantidade(estabelecimentoEscolhido)}" var="quantidadeQuartos"/>
+                                        <tr>
+                                          <th>${quantidadeQuartos}</th>
+                                          <td>${fn:length(relatorio)}</td>
+                                          <td><c:set var="valor" value="${(fn:length(relatorio)*100)/quantidadeQuartos}"/>
+                                              <fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/>%</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                </div>   
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th>Total de Quartos</th>
-                                      <th>Quartos Ocupados</th>
-                                      <th>% de Ocupação</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <th>1</th>
-                                      <td>Conteúdo</td>
-                                      <td>Conteúdo</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                            </div>   
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <h5 class="text-center">Lista de Quartos Ocupados</h5>	
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h5 class="text-center">Lista de Quartos Ocupados</h5>	
+                        <div class="row">	
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Número do Quarto</th>
+                                            <th>Início da Hospedagem</th>
+                                            <th>Final da Hospedagem</th>
+                                            <th>Total de Gastos (R$)</th>
+                                            <th>Valor Total (R$)</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <jsp:useBean id="hospedagemDao" class="br.ufsm.csi.hotelmanagementats.dao.HospedagemDao"/>  
+                                          <c:forEach var="hospedagem" items="${relatorio}">
+                                            <tr>
+                                              <th>${hospedagem.quarto.numero}</th>
+                                              <td>${hospedagem.dataInicial} - ${hospedagem.horaInicial}</td>
+                                              <td>${hospedagem.dataFinal} - ${hospedagem.horaFinal}</td>
+                                              <c:set value="${hospedagemDao.getTotalGastos(hospedagem)}" var="totalGastos"/>
+                                              <c:if test="${totalGastos.valorGastos>0}">
+                                                  <td>${totalGastos.valorGastos}</td>
+                                              </c:if>
+                                              <c:if test="${totalGastos.valorGastos==0}">
+                                                  <td>Sem gastos de quarto</td>
+                                              </c:if>
+                                              <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
+                                            </tr>
+                                          </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>   
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">	
-                        <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                      <tr>
-                                        <th>Número do Quarto</th>
-                                        <th>Início da Hospedagem</th>
-                                        <th>Final da Hospedagem</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <th>1</th>
-                                        <td>Conteúdo</td>
-                                        <td>Conteúdo</td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>   
+                        <div class="row" style="margin-bottom: 3%;">	
+                            <div class="col-md-12 col-xs-12">
+                                <p style="text-align: center">
+                                    <input type="button" class="btn btn-success btn-lg" name="print" value="Imprimir Relatório" onClick="imprimir()" style="margin-top: 1%">
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 3%;">	
-                        <div class="col-md-12 col-xs-12">
-                            <p style="text-align: center">
-                                <input type="button" class="btn btn-success btn-lg" name="print" value="Imprimir Relatório" onClick="imprimir()" style="margin-top: 1%">
-                            </p>
+                    </c:if>
+                    <c:if test="${empty relatorio && verificador==1}">
+                        <div class="row" style="margin-top: 3%">
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <br><p class="text-center"><strong>Relatório sem informações em relação à data inserida.</strong></p>
+                            </div>
                         </div>
-                    </div>
+                    </c:if>
                 </div>                 
             </div>
                         

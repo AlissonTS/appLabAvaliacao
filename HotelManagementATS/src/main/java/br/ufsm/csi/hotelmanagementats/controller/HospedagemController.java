@@ -11,6 +11,7 @@ import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
 import br.ufsm.csi.hotelmanagementats.model.Gasto;
 import br.ufsm.csi.hotelmanagementats.model.Hospedagem;
 import br.ufsm.csi.hotelmanagementats.model.Quarto;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -28,12 +29,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class HospedagemController {
     
     @RequestMapping("relatoriosHospedagem.html")
-    public String relatoriosHospedagem(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/relatoriosHospedagem";
+    public ModelAndView relatoriosHospedagem(){	
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/relatoriosHospedagem");
+        mv.addObject("verificador", 0);
+        
+        return mv;
     }
     
     @RequestMapping(value = "gerarRelatorioHospedagem.html", method = RequestMethod.POST)
-    public ModelAndView gerarRelatorioHospedagem(HttpServletRequest rq, HttpSession session){
+    public ModelAndView gerarRelatorioHospedagem(HttpServletRequest rq, HttpSession session) throws ParseException{
         System.out.println("-------------------------------");
         System.out.println("Submit Relatório de Hospedagem de Acordo com Data Informada...");
         
@@ -51,13 +55,14 @@ public class HospedagemController {
             List<Hospedagem> relatorio = new ArrayList();
 			
             relatorio = hD.gerarRelatorioHospedagem(data, est);
-			
-            if(relatorio!=null){
-                // mv.addObject("hospede", hp);
-                System.out.println("Hóspede buscado para alteração!");
+            
+            mv.addObject("verificador", 1);
+            if(relatorio.size()>0){
+                mv.addObject("relatorio", relatorio);  
+                System.out.println("Relatório buscado com sucesso!");
             }else{
-                // mv.addObject("hospede", hp);
-                System.out.println("Hóspede buscado para alteração!");
+                mv.addObject("relatorio", relatorio);
+                System.out.println("Relatório sem informações!");
 	    }
         }
         

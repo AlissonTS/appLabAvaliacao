@@ -14,6 +14,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,12 +76,12 @@ public class HospedagemDao {
         return hospedagens;
     }
     
-    public List<Hospedagem> gerarRelatorioHospedagem(String data, Estabelecimento est){
+    public List<Hospedagem> gerarRelatorioHospedagem(String data, Estabelecimento est) throws ParseException{
 			
         // System.out.println("\nHospedagemDao - Buscar informações de relatório de hospedagem do Estabelecimento...\n");
 
         List<Hospedagem> relatorio = new ArrayList();
-
+        
         Connection c = null;
         PreparedStatement stmt = null;
 
@@ -86,13 +89,17 @@ public class HospedagemDao {
             c = ConectaBD.getConexao();
             String sql;
 
-            sql = "SELECT numero, dataInicial, dataFinal, horaInicial, horaFinal FROM QUARTO, "
-                    + "HOSPEDAGEM WHERE codEstabelecimento=? and quarto.cod=hospedagem.codquarto "
-                    + "and (dataInicial<=? and dataFinal>=?) ORDER BY numero ASC;";
+            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date dataN = new java.sql.Date(fmt.parse(data).getTime());
+            
+            sql = "SELECT hospedagem.cod AS cod, quarto.numero, dataInicial, dataFinal, horaInicial, horaFinal, valorHospedagem "
+                    + "FROM QUARTO, HOSPEDAGEM WHERE "
+                    + "codEstabelecimento=? and quarto.cod=hospedagem.codquarto "
+                    + "and dataInicial<=? and dataFinal>=? ORDER BY numero ASC;";
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, est.getCod());
-            stmt.setString(2, data);
-            stmt.setString(3, data);
+            stmt.setDate(2, dataN);
+            stmt.setDate(3, dataN);
 
             ResultSet valor = stmt.executeQuery();
 
@@ -100,13 +107,14 @@ public class HospedagemDao {
                 Quarto qt = new Quarto();
                 Hospedagem h = new Hospedagem();
 
+                h.setCod(valor.getInt("cod"));
                 h.setDataInicial(valor.getString("dataInicial"));
                 h.setDataFinal(valor.getString("dataFinal"));
                 h.setHoraInicial(valor.getString("horaInicial"));
                 h.setHoraFinal(valor.getString("horaFinal"));
-				
+		h.setValorHospedagem(valor.getFloat("valorHospedagem"));
+                
                 qt.setNumero(valor.getInt("numero"));
-                qt.setCod(valor.getInt("codQuarto"));
 				
                 h.setQuarto(qt);
 				
