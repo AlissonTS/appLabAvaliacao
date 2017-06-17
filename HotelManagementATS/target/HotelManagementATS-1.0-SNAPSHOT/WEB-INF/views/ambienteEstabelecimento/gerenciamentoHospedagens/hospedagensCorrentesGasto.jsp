@@ -122,9 +122,9 @@
                                             <th>N° do Quarto</th>
                                             <th>Horário de Entrada</th>
                                             <th>Horário de Saída</th>
-                                            <th>Valor da Diária</th>
-                                            <th>Total de Gastos</th>
-                                            <th>Valor Total</th>
+                                            <th>Valor da Diária (R$)</th>
+                                            <th>Total de Gastos (R$)</th>
+                                            <th>Valor Total (R$)</th>
                                             <th>Gerenciar Gasto de Quarto</th>
                                           </tr>
                                         </thead>
@@ -142,8 +142,8 @@
                                               <c:if test="${totalGastos.valorGastos==0}">
                                                   <td>Sem gastos de quarto</td>
                                               </c:if>
-                                              <td>${totalGastos.valorGastos+hospedagem.valorHospedagem}</td>
-                                              <td class="text-center"><a href="gerenciarGastoQuarto.html" class="btn btn-default" role="button">Gerenciar</a></td>
+                                              <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
+                                              <td class="text-center"><form id="gerenciarGastoQuarto" action="gerenciarGastoQuarto.html" method="POST"><button type="submit" value="${hospedagem.cod}" id="gerenciarGastoQuarto" name="cod" class="btn btn-default">Gerenciar</button></form></td>
                                              </tr>
                                         </c:forEach>     
                                       </tbody>

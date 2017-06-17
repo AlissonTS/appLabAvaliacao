@@ -6,6 +6,7 @@
 package br.ufsm.csi.hotelmanagementats.dao;
 
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
+import br.ufsm.csi.hotelmanagementats.model.Hospedagem;
 import br.ufsm.csi.hotelmanagementats.model.Quarto;
 import br.ufsm.csi.hotelmanagementats.util.ConectaBD;
 import java.sql.Connection;
@@ -330,5 +331,48 @@ public class QuartoDao {
         }
         
         return retorno;
+    }
+    
+    public Quarto carregarQuartoHospedagem(Hospedagem h, Estabelecimento est){
+        
+        System.out.println("\nQuartoDao - Carregar quarto escolhido pertencente à hospedagem...\n");
+        
+        Quarto q = new Quarto();
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT quarto.cod AS codQuarto, numero FROM QUARTO, HOSPEDAGEM "
+                    + "WHERE quarto.cod=hospedagem.codQuarto AND "
+                    + "hospedagem.cod=? AND codEstabelecimento=? "
+                    + "AND quarto.estado=1 AND hospedagem.estado=0;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, h.getCod());
+            stmt.setInt(2, est.getCod());
+
+            ResultSet valor = stmt.executeQuery();	
+
+            while(valor.next()){
+                q.setCod(valor.getInt("codQuarto"));
+                q.setNumero(valor.getInt("numero"));
+            }
+
+            if(q.getNumero()<0){
+                q = null;
+            }
+
+            stmt.close();
+
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            q = null;
+        }
+
+        return q;
     }
 }

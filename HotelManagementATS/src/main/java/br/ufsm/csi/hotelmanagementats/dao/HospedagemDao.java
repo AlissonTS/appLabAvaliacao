@@ -6,6 +6,7 @@
 package br.ufsm.csi.hotelmanagementats.dao;
 
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
+import br.ufsm.csi.hotelmanagementats.model.Gasto;
 import br.ufsm.csi.hotelmanagementats.model.Hospedagem;
 import br.ufsm.csi.hotelmanagementats.model.Quarto;
 import br.ufsm.csi.hotelmanagementats.util.ConectaBD;
@@ -100,5 +101,77 @@ public class HospedagemDao {
         }
 
         return h;
+    }
+    
+    public Hospedagem carregarGastosHospedagem(Hospedagem h){
+			
+        // System.out.println("\nHospedagemDao - Buscar gastos de serviço de quarto da hospedagem no Estabelecimento...\n");
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+		
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT * FROM GASTO, HOSPEDAGEM WHERE gasto.codHospedagem=hospedagem.cod and hospedagem.cod=?";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, h.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+
+            List<Gasto> gastos = new ArrayList();
+            
+            while(valor.next()){		
+                Gasto g = new Gasto();
+                g.setDescricao(valor.getString("descricao"));
+                g.setValor(valor.getFloat("valor"));
+                
+                gastos.add(g);
+            }
+
+            if(gastos.size()>0){
+                h.setGastos(gastos);
+            }
+            
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return h;
+    }
+    
+    public boolean inserirGastoHospedagem(Hospedagem h, Gasto g){
+        boolean retorno = false;
+        
+        System.out.println("\nHospedagemDao - Cadastrar gasto de quarto do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+            
+            sql = "INSERT INTO GASTO (cod, descricao, valor, codHospedagem) "
+                    + "values(DEFAULT, ?, ?, ?);";
+            stmt = c.prepareStatement(sql);
+            stmt.setString(1, g.getDescricao());
+            stmt.setFloat(2, g.getValor());
+            stmt.setInt(3, h.getCod());
+            
+            stmt.execute();
+            stmt.close();
+            retorno = true;
+            
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            retorno = false;
+        }
+        
+        return retorno;
     }
 }

@@ -108,7 +108,7 @@
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
                             <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
-                            <h3 class="text-center" style="font-size: 25px;">Quarto ??</h3>
+                            <h3 class="text-center" style="font-size: 25px;">Quarto ${hospedagemEscolhida.quarto.numero}</h3>
                             <br>
                          </div>    
                     </div>
@@ -120,11 +120,17 @@
                                         <div class="col-md-12 col-xs-12">
                                             <h4 class="text-center" style="font-size: 20px;">Cadastrar gasto de Quarto:</h4>
                                             <br>
-                                            <form role="form" action="#" method="POST">
+                                            <c:if test="${not empty mensagem}">
+                                                <div class="alert alert-${tipo}" style="font-size: 16px;">
+                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                    ${mensagem}
+                                                </div>
+                                            </c:if>
+                                            <form role="form" action="cadastrarGastoQuarto.html" method="POST">
                                                 <div class="form-group row">
                                                     <label for="descricaoGasto" class="col-xs-4 col-form-label">Descrição do gasto:</label>
                                                     <div class="col-xs-8">
-                                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite a descrição do gasto" id="descricaoGasto" name="descricaoGasto" required="true" maxlength="10">
+                                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite a descrição do gasto" id="descricaoGasto" name="descricaoGasto" required="true" maxlength="20">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -136,7 +142,7 @@
                                                 <div class="form-group row">
                                                     <div class="col-md-12 col-xs-12"> 
                                                         <p style="text-align: center">
-                                                         <button type="submit" class="btn btn-success">Cadastrar Gasto</button></p>
+                                                         <button type="submit" name="cod" value="${hospedagemEscolhida.cod}" class="btn btn-success">Cadastrar Gasto</button></p>
                                                     </div>    
                                                 </div>
                                             </form>
@@ -147,32 +153,41 @@
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
                                             <h4 style="font-size: 20px;">Gastos com serviço de quarto já cadastrados:</h4>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-hover">
-                                                  <thead>
-                                                    <tr>
-                                                      <th>Descrição</th>
-                                                      <th>Valor</th>
-                                                    </tr>
-                                                  </thead>
-                                                  <tbody>
-                                                    <tr>
-                                                      <th>1</th>
-                                                      <td>Conteúdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                      <th>2</th>
-                                                      <td>Conteúdo</td>
-                                                    </tr>
-                                                  </tbody>
-                                                </table>
-                                            </div>
+                                            
+                                            <jsp:useBean id="hospedagemDao" class="br.ufsm.csi.hotelmanagementats.dao.HospedagemDao"/>
+                                            <c:set value="${hospedagemDao.getTotalGastos(hospedagemEscolhida)}" var="totalGastos"/>
+                                            
+                                            <c:if test="${totalGastos.valorGastos>0}">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-hover">
+                                                      <thead>
+                                                        <tr>
+                                                          <th>Descrição</th>
+                                                          <th>Valor (R$)</th>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        <c:forEach var="gasto" items="${hospedagemEscolhida.gastos}">  
+                                                            <tr>
+                                                              <th>${gasto.descricao}</th>
+                                                              <td>${gasto.valor}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                      </tbody>
+                                                    </table>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${totalGastos.valorGastos==0}">
+                                                <br><p class="text-center"><strong>A hospedagem não possui gastos de quarto cadastrados</strong></p>
+                                            </c:if>
                                         </div>    
                                     </div>
-                                    <div class="row">
-                                        <p class="col-xs-6">Total de gastos - Serviço de Quarto:</p>
-                                        <p class="col-xs-6"> R$10,00</p>
-                                    </div>
+                                    <c:if test="${totalGastos.valorGastos>0}">
+                                       <div class="row">
+                                            <p class="col-xs-6">Total de gastos - Serviço de Quarto:</p>
+                                            <p class="col-xs-6"> R$ ${totalGastos.valorGastos}</p>
+                                        </div> 
+                                    </c:if>    
                                 </div>	
                             </div>
                         </div>

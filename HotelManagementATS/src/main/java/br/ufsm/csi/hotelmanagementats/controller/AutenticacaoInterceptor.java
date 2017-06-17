@@ -53,6 +53,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                    uri.endsWith("finalizarHospedagem.html") ||     
                    uri.endsWith("hospedagensCorrentesGasto.html") ||     
                    uri.endsWith("gerenciarGastoQuarto.html") ||
+                   uri.endsWith("cadastrarGastoQuarto.html") ||
                    uri.endsWith("alterarOperadorEstabelecimento.html")     
                 ){
                     response.sendRedirect("paginaPrincipalAdm.html");

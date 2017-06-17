@@ -6,7 +6,10 @@
 package br.ufsm.csi.hotelmanagementats.controller;
 
 import br.ufsm.csi.hotelmanagementats.dao.HospedagemDao;
+import br.ufsm.csi.hotelmanagementats.dao.QuartoDao;
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
+import br.ufsm.csi.hotelmanagementats.model.Gasto;
+import br.ufsm.csi.hotelmanagementats.model.Hospedagem;
 import br.ufsm.csi.hotelmanagementats.model.Quarto;
 import java.util.ArrayList;
 import java.util.List;
@@ -98,8 +101,108 @@ public class HospedagemController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensCorrentesGasto";
     }
     
-    @RequestMapping("gerenciarGastoQuarto.html")
-    public String gerenciarGastoQuarto(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/gerenciarGastoQuarto";
+    @RequestMapping(value = "gerenciarGastoQuarto.html", method = RequestMethod.POST)
+    public ModelAndView gerenciarGastoQuarto(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Quarto do Estabelecimento para Gerenciamento de Gasto de Quarto...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensCorrentesGasto");
+        
+        HospedagemDao hD = new HospedagemDao();
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+            
+            Hospedagem h = new Hospedagem();
+            h.setCod(codHospedagem);
+			
+            Quarto q = new Quarto();
+
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+            q = qD.carregarQuartoHospedagem(h, est);
+	    
+            if(q!=null){
+                h.setQuarto(q);
+            
+                h = hD.carregarGastosHospedagem(h);
+
+                if(h!=null){
+                    mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/gerenciarGastoQuarto");
+                    mv.addObject("hospedagemEscolhida", h);
+                    System.out.println("Hospedagem buscada para gerenciamento de Gasto de Quarto!");
+                }
+            }
+           
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "cadastrarGastoQuarto.html", method = RequestMethod.POST)
+    public ModelAndView cadastrarGastoQuarto(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Formulário cadastro Gasto de Quarto da Hospedagem Escolhida do Estabelecimento...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensCorrentesGasto");
+        
+        HospedagemDao hD = new HospedagemDao();
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null && rq.getParameter("descricaoGasto")!=null 
+                && rq.getParameter("valorGasto")!=null){
+            
+            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+	    String descricao = rq.getParameter("descricaoGasto");
+            float valor = Float.parseFloat(rq.getParameter("valorGasto"));
+			
+            Gasto g = new Gasto();
+            g.setDescricao(descricao);
+            g.setValor(valor);
+			
+            Hospedagem h = new Hospedagem();
+            h.setCod(codHospedagem);
+			
+            Quarto q = new Quarto();
+
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+            q = qD.carregarQuartoHospedagem(h, est);
+	    
+            if(q!=null){
+                boolean verificador = false;
+                try{
+                    verificador = hD.inserirGastoHospedagem(h, g);
+                    
+                }catch(Exception e){
+                    e.printStackTrace();
+                }  
+
+                h.setQuarto(q);
+
+                h = hD.carregarGastosHospedagem(h);
+
+                if(h!=null && verificador){
+                    mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/gerenciarGastoQuarto");
+                    mv.addObject("hospedagemEscolhida", h);
+                    if(verificador){
+                        mv.addObject("mensagem", "<Strong> Sucesso</Strong> Gasto de quarto cadastrado!");
+                        mv.addObject("tipo", "success");	
+                    }else{
+                        mv.addObject("mensagem", "<Strong> Erro</Strong> Gasto de quarto não cadastrado!");
+                        mv.addObject("tipo", "danger");
+                    }
+                    System.out.println("Hospedagem atualizada com gastos de Hospedagem!");
+                }
+            }
+           
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
     }
 }

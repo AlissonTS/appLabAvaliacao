@@ -41,7 +41,7 @@ public class Gasto {
      * @param descricao the descricao to set
      */
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = descricao.toUpperCase();
     }
 
     /**
