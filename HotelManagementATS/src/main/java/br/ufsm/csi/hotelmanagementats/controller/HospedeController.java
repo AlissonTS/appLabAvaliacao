@@ -65,6 +65,11 @@ public class HospedeController {
         return mv;
     }
     
+    @RequestMapping(value = "alterarHospedeForm.html", method = RequestMethod.GET)
+    public String alterarHospedeFormGET(){	
+        return "forward:alterarExcluirHospede.html";
+    }
+    
     /* Excluir Hospede */
     @RequestMapping(value = "excluirHospede.html", method = RequestMethod.POST)
     public ModelAndView excluirHospede(HttpServletRequest rq, HttpSession session){
@@ -111,6 +116,11 @@ public class HospedeController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "excluirHospede.html", method = RequestMethod.GET)
+    public String excluirHospedeGET(){	
+        return "forward:alterarExcluirHospede.html";
     }
     
     /* Alterar Hospede */
@@ -165,6 +175,11 @@ public class HospedeController {
         return mv;
     }
     
+    @RequestMapping(value = "alterarHospede.html", method = RequestMethod.GET)
+    public String alterarHospedeGET(){	
+        return "forward:alterarExcluirHospede.html";
+    }
+    
     /* Cadastrar Hospede */
     @RequestMapping(value = "cadastrarHospede.html", method = RequestMethod.POST)
     public ModelAndView cadastrarHospede(Hospede hp, HttpServletRequest rq, HttpSession session){
@@ -212,5 +227,10 @@ public class HospedeController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "cadastrarHospede.html", method = RequestMethod.GET)
+    public String cadastrarHospedeGET(){	
+        return "forward:cadastrarHospedeForm.html";
     }
 }

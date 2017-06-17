@@ -87,6 +87,11 @@ public class EstabelecimentoController {
         return mv;
     }
     
+    @RequestMapping(value = "cadastrarEstabelecimentoAdm.html", method = RequestMethod.GET)
+    public String cadastrarEstabelecimentoAdmGET(){	
+        return "forward:cadastrarEstabelecimentoFormAdm.html";
+    }
+    
     @RequestMapping(value = "alterarEstabelecimentoFormAdm.html", method = RequestMethod.POST)
     public ModelAndView alterarEstabelecimentoFormAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
@@ -113,6 +118,11 @@ public class EstabelecimentoController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "alterarEstabelecimentoFormAdm.html", method = RequestMethod.GET)
+    public String alterarEstabelecimentoFormAdmGET(){	
+        return "forward:gerenciamentoEstabelecimentosAdm.html";
     }
     
     /* Alterar Estabelecimento */
@@ -163,6 +173,11 @@ public class EstabelecimentoController {
         return mv;
     }
     
+    @RequestMapping(value = "alterarEstabelecimentoAdm.html", method = RequestMethod.GET)
+    public String alterarEstabelecimentoAdmGET(){	
+        return "forward:gerenciamentoEstabelecimentosAdm.html";
+    }
+    
     /* Excluir Estabelecimento */
     @RequestMapping(value = "excluirEstabelecimentoAdm.html", method = RequestMethod.POST)
     public ModelAndView excluirEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
@@ -206,6 +221,11 @@ public class EstabelecimentoController {
         return mv;
     }
     
+    @RequestMapping(value = "excluirEstabelecimentoAdm.html", method = RequestMethod.GET)
+    public String excluirEstabelecimentoAdmGET(){	
+        return "forward:gerenciamentoEstabelecimentosAdm.html";
+    }
+    
     @RequestMapping(value = "paginaPrincipalEstabelecimentoAdm.html", method = RequestMethod.POST)
     public String paginaPrincipalEstabelecimentoAdm(Estabelecimento est, HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
@@ -236,5 +256,10 @@ public class EstabelecimentoController {
         System.out.println("\n-------------------------------\n");
         
         return retorno;
+    }
+    
+    @RequestMapping(value = "paginaPrincipalEstabelecimentoAdm.html", method = RequestMethod.GET)
+    public String paginaPrincipalEstabelecimentoAdmGET(){	
+        return "forward:paginaPrincipalAdm.html";
     }
 }

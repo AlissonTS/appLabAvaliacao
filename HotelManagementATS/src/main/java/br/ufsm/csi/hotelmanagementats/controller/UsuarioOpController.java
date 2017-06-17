@@ -83,6 +83,11 @@ public class UsuarioOpController {
         
         return mv;
     }
+
+    @RequestMapping(value = "excluirOperador.html", method = RequestMethod.GET)
+    public String excluirOperadorGET(){	
+        return "forward:alterarExcluirOperador.html";
+    }
     
     @RequestMapping(value = "alterarOperadorEstabelecimento.html", method = RequestMethod.POST)
     public ModelAndView alterarOperadorEstabelecimento(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
@@ -143,6 +148,11 @@ public class UsuarioOpController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "alterarOperadorEstabelecimento.html", method = RequestMethod.GET)
+    public String alterarOperadorEstabelecimentoGET(){	
+        return "forward:alterarExcluirOperador.html";
     }
     
     @RequestMapping("alterarContaOp.html")
@@ -229,6 +239,11 @@ public class UsuarioOpController {
         return mv;
     }
     
+    @RequestMapping(value = "alterarOperadorLogado.html", method = RequestMethod.GET)
+    public String alterarOperadorLogadoGET(){	
+        return "forward:alterarContaOp.html";
+    }
+    
     /* Cadastrar Operador */
     @RequestMapping(value = "cadastrarOperador.html", method = RequestMethod.POST)
     public ModelAndView cadastrarOperador(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{
@@ -289,6 +304,11 @@ public class UsuarioOpController {
         return mv;
     }
     
+    @RequestMapping(value = "cadastrarOperador.html", method = RequestMethod.GET)
+    public String cadastrarOperadorGET(){	
+        return "forward:cadastrarOperadorForm.html";
+    }
+    
     @RequestMapping(value = "alterarOperadorForm.html", method = RequestMethod.POST)
     public ModelAndView alterarOperadorForm(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
@@ -320,6 +340,11 @@ public class UsuarioOpController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "alterarOperadorForm.html", method = RequestMethod.GET)
+    public String alterarOperadorFormGET(){	
+        return "forward:alterarExcluirOperador.html";
     }
     
     /* Desabilitar Acesso do Usuario Operador */
@@ -373,6 +398,11 @@ public class UsuarioOpController {
         return mv;
     }
     
+    @RequestMapping(value = "desabilitarOperador.html", method = RequestMethod.GET)
+    public String desabilitarOperadorGET(){	
+        return "forward:alterarExcluirOperador.html";
+    }
+    
     /* Habilitar Usuário Operador */
     @RequestMapping(value = "habilitarOperador.html", method = RequestMethod.POST)
     public ModelAndView habilitarOperador(HttpServletRequest rq, HttpSession session){
@@ -422,5 +452,10 @@ public class UsuarioOpController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "habilitarOperador.html", method = RequestMethod.GET)
+    public String habilitarOperadorGET(){	
+        return "forward:alterarExcluirOperador.html";
     }
 }

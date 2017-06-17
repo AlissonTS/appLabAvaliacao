@@ -99,6 +99,11 @@ public class AcessoController {
         return mv;
     }
     
+    @RequestMapping(value = "realizarLogin.html", method = RequestMethod.GET)
+    public String realizarLoginGET(){	
+        return "/WEB-INF/views/paginaInicial";
+    }
+    
     @RequestMapping("realizarLogout.html")
     public ModelAndView realizarLogout(HttpSession session){
             

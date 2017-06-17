@@ -77,6 +77,11 @@ public class UsuarioAdmController {
         return mv;
     }
     
+    @RequestMapping(value = "cadastrarAdministrador.html", method = RequestMethod.GET)
+    public String cadastrarAdministradorGET(){	
+        return "forward:cadastroAdministrador.html";
+    }
+    
     @RequestMapping("alterarContaAdmForm.html")
     public String alterarContaAdmForm(){	
             return "/WEB-INF/views/ambienteAdministrador/alterarContaAdm";
@@ -148,5 +153,10 @@ public class UsuarioAdmController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "alterarAdministrador.html", method = RequestMethod.GET)
+    public String alterarAdministradorGET(){	
+        return "forward:alterarContaAdmForm.html";
     }
 }

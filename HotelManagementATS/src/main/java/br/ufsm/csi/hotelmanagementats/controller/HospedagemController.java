@@ -66,6 +66,11 @@ public class HospedagemController {
         return mv;
     }
     
+    @RequestMapping(value = "gerarRelatorioHospedagem.html", method = RequestMethod.GET)
+    public String gerarRelatorioHospedagemGET(){	
+        return "forward:relatoriosHospedagem.html";
+    }
+    
     @RequestMapping("quartosDesocupados.html")
     public String quartosDesocupados(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/quartosDesocupados";
@@ -142,6 +147,11 @@ public class HospedagemController {
         return mv;
     }
     
+    @RequestMapping(value = "gerenciarGastoQuarto.html", method = RequestMethod.GET)
+    public String gerenciarGastoQuartoGET(){	
+        return "hospedagensCorrentesGasto.html";
+    }
+    
     @RequestMapping(value = "cadastrarGastoQuarto.html", method = RequestMethod.POST)
     public ModelAndView cadastrarGastoQuarto(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
@@ -204,5 +214,10 @@ public class HospedagemController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "cadastrarGastoQuarto.html", method = RequestMethod.GET)
+    public String cadastrarGastoQuartoGET(){	
+        return "hospedagensCorrentesGasto.html";
     }
 }

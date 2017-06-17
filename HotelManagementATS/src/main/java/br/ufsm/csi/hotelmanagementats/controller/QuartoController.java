@@ -79,6 +79,11 @@ public class QuartoController {
         return mv;
     }
     
+    @RequestMapping(value = "cadastrarQuarto.html", method = RequestMethod.GET)
+    public String cadastrarQuartoGET(){	
+        return "forward:cadastrarQuartoForm.html";
+    }
+    
     @RequestMapping(value = "alterarQuartoForm.html", method = RequestMethod.POST)
     public ModelAndView alterarQuartoForm(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");
@@ -110,6 +115,11 @@ public class QuartoController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "alterarQuartoForm.html", method = RequestMethod.GET)
+    public String alterarQuartoFormGET(){	
+        return "forward:alterarDesabilitarQuarto.html";
     }
     
     /* Alterar Quarto */
@@ -168,6 +178,11 @@ public class QuartoController {
         return mv;
     }
     
+    @RequestMapping(value = "alterarQuarto.html", method = RequestMethod.GET)
+    public String alterarQuartoGET(){	
+        return "forward:alterarDesabilitarQuarto.html";
+    }
+    
     @RequestMapping("alterarDesabilitarQuarto.html")
     public String alterarDesabilitarQuarto(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto";
@@ -224,6 +239,11 @@ public class QuartoController {
         return mv;
     }
     
+    @RequestMapping(value = "desabilitarQuarto.html", method = RequestMethod.GET)
+    public String desabilitarQuartoGET(){	
+        return "forward:alterarDesabilitarQuarto.html";
+    }
+    
     /* Habilitar Quarto */
     @RequestMapping(value = "habilitarQuarto.html", method = RequestMethod.POST)
     public ModelAndView habilitarQuarto(HttpServletRequest rq, HttpSession session){
@@ -273,5 +293,10 @@ public class QuartoController {
         System.out.println("\n-------------------------------\n");
         
         return mv;
+    }
+    
+    @RequestMapping(value = "habilitarQuarto.html", method = RequestMethod.GET)
+    public String habilitarQuartoGET(){	
+        return "forward:alterarDesabilitarQuarto.html";
     }
 }
