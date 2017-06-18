@@ -91,7 +91,7 @@
                             
                             <c:if test="${not empty quartos}">
                                 <div class="table-responsive" style="font-size: 16px;">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" id="tblQuartos">
                                       <thead>
                                         <tr>
                                           <th>N° de Identificação</th>
@@ -106,15 +106,15 @@
                                       <tbody>
                                        <c:forEach var="quarto" items="${quartos}">    
                                         <tr>
-                                          <th>${quarto.numero}</th>
-                                          <td>${quarto.area}</td>
+                                          <th data-numero="${quarto.numero}">${quarto.numero}</th>
+                                          <td data-cod="${quarto.cod}">${quarto.area}</td>
                                           <td>${quarto.maxHosp}</td>
                                           <td>${quarto.valorDiaria}</td>
                                           <c:choose>
                                              <c:when test="${quarto.estado==0}">
                                                  <td>Desocupado</td>
                                                  <td class="text-center"><form action="alterarQuartoForm.html" method="POST"><button value="${quarto.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
-                                                 <td class="text-center"><form id="formularioDesabilitar" action="desabilitarQuarto.html" method="POST"><button type="submit" value="${quarto.cod}" id="desabilitarQuarto" name="cod" class="btn btn-default">Desabilitar</button></form></td>
+                                                 <td class="text-center"><button type="button" id="desabilitarQuarto" name="cod" class="btn btn-default" data-toggle="modal" data-target="#confirmDesabilitar">Desabilitar</button></td>
                                              </c:when>
                                              <c:when test="${quarto.estado==1}">
                                                  <td>Ocupado</td>
@@ -124,7 +124,7 @@
                                              <c:when test="${quarto.estado==2}">
                                                  <td>Desabilitado</td>
                                                  <td>Alteração não pode ser feita</td>
-                                                 <td class="text-center"><form id="formularioHabilitar" action="habilitarQuarto.html" method="POST"><button type="submit" value="${quarto.cod}" id="habilitarQuarto" name="cod" class="btn btn-default">Habilitar</button></form></td>
+                                                 <td class="text-center"><button type="button" id="habilitarQuarto" name="cod" class="btn btn-default" data-toggle="modal" data-target="#confirmHabilitar">Habilitar</button></td>
                                              </c:when>
                                           </c:choose>
                                         </tr>
@@ -141,12 +141,53 @@
                     </div>
                 </div>                 
             </div>
-                        
+            
+            <!-- Modal Habilitar Quarto -->
+            <div class="modal fade" id="confirmHabilitar" tabindex="-1" role="dialog" aria-labelledby="confirmHabilitarLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Habilitar Quarto</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja habilitar o quarto número <strong id="numeroQuarto"></strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formularioHabilitar" action="habilitarQuarto.html" method="POST">
+                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesQuarto" name="cod">Sim</button>
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                            </form>
+                        </div>
+                    </div>
+              </div>
+            </div>
+            
+            <!-- Modal Desabilitar Operador -->
+            <div class="modal fade" id="confirmDesabilitar" tabindex="-1" role="dialog" aria-labelledby="confirmDesabilitarLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Desabilitar Quarto</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja desabilitar o quarto número <strong id="numeroQuarto2"></strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formularioDesabilitar" action="desabilitarQuarto.html" method="POST">
+                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesQuarto2" name="cod">Sim</button>
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                            </form>
+                        </div>
+                    </div>
+              </div>
+            </div>                
+                            
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
     <script type="text/javascript" src="scripts/mask.js"></script>
+    <script type="text/javascript" src="scripts/modalDelete.js"></script>
 </html>
 

@@ -171,7 +171,7 @@
                             <p style="font-size: 17px;">Deseja habilitar o operador <strong id="nomeOperador2"></strong>?</p>
                         </div>
                         <div class="modal-footer">
-                            <form id="formularioExcluir" action="habilitarOperador.html" method="POST">
+                            <form id="formularioHabilitar" action="habilitarOperador.html" method="POST">
                                <p class="text-center"><button type="submit" class="btn btn-danger" id="yesOperador2" name="cod">Sim</button>
                                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
                             </form>
@@ -191,7 +191,7 @@
                             <p style="font-size: 17px;">Deseja desabilitar o operador <strong id="nomeOperador3"></strong>?</p>
                         </div>
                         <div class="modal-footer">
-                            <form id="formularioExcluir" action="desabilitarOperador.html" method="POST">
+                            <form id="formularioDesabilitar" action="desabilitarOperador.html" method="POST">
                                <p class="text-center"><button type="submit" class="btn btn-danger" id="yesOperador3" name="cod">Sim</button>
                                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
                             </form>

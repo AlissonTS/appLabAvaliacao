@@ -5,6 +5,7 @@
         $('#yesEstabelecimento').click(function(){
            $('#formularioExcluir').submit();
         });
+        
         $(document).on('click', '#tblOperadores td', function(e) {
             e.preventDefault;
             
@@ -21,3 +22,15 @@
             $("#yesOperador3").val(cod);
         });
 
+        $(document).on('click', '#tblQuartos td', function(e) {
+            e.preventDefault;
+            
+            var numero = $(this).closest('tr').find('th[data-numero]').data('numero');
+            var cod = $(this).closest('tr').find('td[data-cod]').data('cod');
+            
+            $("#numeroQuarto").html(numero);
+            $("#yesQuarto").val(cod);
+            
+            $("#numeroQuarto2").html(numero);
+            $("#yesQuarto2").val(cod);
+        });
