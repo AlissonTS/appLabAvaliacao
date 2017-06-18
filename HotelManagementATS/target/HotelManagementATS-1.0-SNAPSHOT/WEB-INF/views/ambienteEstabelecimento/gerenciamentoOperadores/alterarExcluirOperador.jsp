@@ -115,13 +115,13 @@
                                                 <c:choose>
                                                     <c:when test="${op.estado==0}">
                                                         <td>Alteração não pode ser feita</td>
-                                                        <td class="text-center"><button type="button" id="excluirOperador" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirm">Excluir</button>
-                                                        <td class="text-center"><form action="habilitarOperador.html" method="POST"><button type="submit" value="${op.cod}" id="habilitarOperador" name="cod" class="btn btn-default">Habilitar</button></form></td>    
+                                                        <td class="text-center"><button type="button" id="excluirOperador" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirmExcluir">Excluir</button>
+                                                        <td class="text-center"><button type="submit" id="habilitarOperador" name="cod" class="btn btn-default" data-toggle="modal" data-target="#confirmHabilitar">Habilitar</button></td>    
                                                     </c:when>
                                                     <c:when test="${op.estado==1}">
                                                         <td class="text-center"><form action="alterarOperadorForm.html" method="POST"><button value="${op.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
-                                                        <td class="text-center"><button type="button" id="excluirOperador" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirm">Excluir</button>
-                                                        <td class="text-center"><form action="desabilitarOperador.html" method="POST"><button type="submit" value="${op.cod}" id="desabilitarOperador" name="cod" class="btn btn-default">Desabilitar</button></form></td>    
+                                                        <td class="text-center"><button type="button" id="excluirOperador" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirmExcluir">Excluir</button>
+                                                        <td class="text-center"><button type="submit" id="desabilitarOperador" name="cod" class="btn btn-default" data-toggle="modal" data-target="#confirmDesabilitar">Desabilitar</button></td>    
                                                     </c:when>
                                                 </c:choose>              
                                             </tr>
@@ -139,8 +139,9 @@
                     </div>
                 </div>                 
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+            
+            <!-- Modal Excluir Operador -->
+            <div class="modal fade" id="confirmExcluir" tabindex="-1" role="dialog" aria-labelledby="confirmExcluirLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -152,6 +153,46 @@
                         <div class="modal-footer">
                             <form id="formularioExcluir" action="excluirOperador.html" method="POST">
                                <p class="text-center"><button type="submit" class="btn btn-danger" id="yesOperador" name="cod">Sim</button>
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                            </form>
+                        </div>
+                    </div>
+              </div>
+            </div>
+            
+            <!-- Modal Habilitar Operador -->
+            <div class="modal fade" id="confirmHabilitar" tabindex="-1" role="dialog" aria-labelledby="confirmHabilitarLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Habilitar Operador</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja habilitar o operador <strong id="nomeOperador2"></strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formularioExcluir" action="habilitarOperador.html" method="POST">
+                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesOperador2" name="cod">Sim</button>
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                            </form>
+                        </div>
+                    </div>
+              </div>
+            </div>
+            
+            <!-- Modal Desabilitar Operador -->
+            <div class="modal fade" id="confirmDesabilitar" tabindex="-1" role="dialog" aria-labelledby="confirmDesabilitarLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Desabilitar Operador</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja desabilitar o operador <strong id="nomeOperador3"></strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formularioExcluir" action="desabilitarOperador.html" method="POST">
+                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesOperador3" name="cod">Sim</button>
                                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
                             </form>
                         </div>

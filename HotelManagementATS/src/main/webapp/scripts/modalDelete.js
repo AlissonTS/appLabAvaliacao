@@ -7,9 +7,17 @@
         });
         $(document).on('click', '#tblOperadores td', function(e) {
             e.preventDefault;
+            
             var nome = $(this).closest('tr').find('th[data-nome]').data('nome');
             var cod = $(this).closest('tr').find('td[data-cod]').data('cod');
+            
             $("#nomeOperador").html(nome);
             $("#yesOperador").val(cod);
+            
+            $("#nomeOperador2").html(nome);
+            $("#yesOperador2").val(cod);
+            
+            $("#nomeOperador3").html(nome);
+            $("#yesOperador3").val(cod);
         });
 
