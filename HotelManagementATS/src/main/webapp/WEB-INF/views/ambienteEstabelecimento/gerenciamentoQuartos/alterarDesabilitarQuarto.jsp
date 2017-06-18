@@ -94,7 +94,7 @@
                                     <table class="table table-bordered">
                                       <thead>
                                         <tr>
-                                          <th>Número de Identificação</th>
+                                          <th>N° de Identificação</th>
                                           <th>Área do quarto (m²)</th>
                                           <th>Máximo de Hóspedes</th>
                                           <th>Valor da diária (R$)</th>

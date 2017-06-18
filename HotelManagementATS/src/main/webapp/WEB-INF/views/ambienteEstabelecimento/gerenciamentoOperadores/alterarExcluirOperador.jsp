@@ -91,7 +91,7 @@
                             
                             <c:if test="${not empty operadores}">
                                 <div class="table-responsive" style="font-size: 16px;">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" id="tblOperadores">
                                       <thead>
                                         <tr>
                                           <th>Nome</th>
@@ -107,20 +107,20 @@
                                       <tbody>
                                         <c:forEach var="op" items="${operadores}">   
                                             <tr>
-                                              <th>${op.nome}</th>
-                                              <td>${op.cpf}</td>
+                                              <th data-nome="${op.nome}">${op.nome}</th>
+                                              <td data-cod="${op.cod}">${op.cpf}</td>
                                               <td>${op.telFixo}</td>
                                               <td>${op.telCel}</td>
                                               <td>${op.nickname}</td>
                                                 <c:choose>
                                                     <c:when test="${op.estado==0}">
                                                         <td>Alteração não pode ser feita</td>
-                                                        <td class="text-center"><form id="formularioExcluir" action="excluirOperador.html" method="POST"><button type="submit" value="${op.cod}" id="excluirOperador" name="cod" class="btn btn-danger">Excluir</button></form>
+                                                        <td class="text-center"><button type="button" id="excluirOperador" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirm">Excluir</button>
                                                         <td class="text-center"><form action="habilitarOperador.html" method="POST"><button type="submit" value="${op.cod}" id="habilitarOperador" name="cod" class="btn btn-default">Habilitar</button></form></td>    
                                                     </c:when>
                                                     <c:when test="${op.estado==1}">
                                                         <td class="text-center"><form action="alterarOperadorForm.html" method="POST"><button value="${op.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
-                                                        <td class="text-center"><form id="formularioExcluir" action="excluirOperador.html" method="POST"><button type="submit" value="${op.cod}" id="excluirOperador" name="cod" class="btn btn-danger">Excluir</button></form>
+                                                        <td class="text-center"><button type="button" id="excluirOperador" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirm">Excluir</button>
                                                         <td class="text-center"><form action="desabilitarOperador.html" method="POST"><button type="submit" value="${op.cod}" id="desabilitarOperador" name="cod" class="btn btn-default">Desabilitar</button></form></td>    
                                                     </c:when>
                                                 </c:choose>              
@@ -139,10 +139,31 @@
                     </div>
                 </div>                 
             </div>
-                        
+            <!-- Modal -->
+            <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Excluir Operador</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja excluir o operador <strong id="nomeOperador"></strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formularioExcluir" action="excluirOperador.html" method="POST">
+                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesOperador" name="cod">Sim</button>
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                            </form>
+                        </div>
+                    </div>
+              </div>
+            </div>
+                            
+                            
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
+        <script type="text/javascript" src="scripts/modalDelete.js"></script>
     </body>
 </html>

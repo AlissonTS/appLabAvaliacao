@@ -5,15 +5,11 @@
         $('#yesEstabelecimento').click(function(){
            $('#formularioExcluir').submit();
         });
-        
-        /* $("#excluirCliente").click(function(e){
+        $(document).on('click', '#tblOperadores td', function(e) {
             e.preventDefault;
-            var $cliente = $(this).closest('tr').find('th[data-nome]').data('nome');
-            console.log($cliente);
-            $("#nomeCliente").html($cliente);
+            var nome = $(this).closest('tr').find('th[data-nome]').data('nome');
+            var cod = $(this).closest('tr').find('td[data-cod]').data('cod');
+            $("#nomeOperador").html(nome);
+            $("#yesOperador").val(cod);
         });
-        $('#yesCliente').click(function(){
-           $('#formularioExcluir').submit();
-        }); */
-
 

@@ -46,6 +46,8 @@ public class UsuarioOpController {
         
         UsuarioOpDao cD = new UsuarioOpDao();
 
+        System.out.println("Código: "+rq.getParameter("cod"));
+        
         if(rq.getParameter("cod")!=null){
            int codOperador = Integer.parseInt(rq.getParameter("cod"));
             
