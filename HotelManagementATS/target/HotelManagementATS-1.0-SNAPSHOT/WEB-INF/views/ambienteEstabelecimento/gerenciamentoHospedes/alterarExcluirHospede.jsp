@@ -55,11 +55,11 @@
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hospedagens</li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Cadastrar Hospedagem</a></li>
-                                                    <li><a href="cadastrarHospedeForm.html">Alterar Hospedagem</a></li>
-                                                    <li><a href="alterarExcluirHospede.html">Hospedagens em Término</a></li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Gerenciar gasto de Quarto</a></li>
-                                                    <li><a href="cadastrarHospedeForm.html">Relatórios de Hospedagem</a></li>
+                                                    <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
+                                                    <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
+                                                    <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
+                                                    <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -121,7 +121,7 @@
                             
                             <c:if test="${not empty hospedes}">
                                 <div class="table-responsive" style="font-size: 16px;">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" id="tblHospedes">
                                       <thead>
                                         <tr>
                                           <th>Nome</th>
@@ -135,35 +135,16 @@
                                       <tbody>
                                         <c:forEach var="hospede" items="${hospedes}">  
                                             <tr>
-                                              <th>${hospede.nome}</th>
-                                              <td>${hospede.cpf}</td>
+                                              <th data-nome="${hospede.nome}">${hospede.nome}</th>
+                                              <td data-cod="${hospede.cod}">${hospede.cpf}</td>
                                               <td>${hospede.telCel}</td>
                                               <td>${hospede.email}</td>
                                               <td class="text-center"><form action="alterarHospedeForm.html" method="POST"><button value="${hospede.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
-                                              <td class="text-center"><form id="formularioExcluir" action="excluirHospede.html" method="POST"><button value="${hospede.cod}" id="excluirHospede" name="cod" class="btn btn-danger">Excluir</button></form>
-                                            </tr><!-- data-toggle="modal" data-target="#confirm"-->
+                                              <td class="text-center"><button id="excluirHospede" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirmExcluir">Excluir</button></td>
+                                            </tr>
                                         </c:forEach>
                                       </tbody>
                                     </table>
-                                    
-                                    <!-- Modal 
-                                    <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="myModalLabel">Excluir Hospede</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p style="font-size: 17px;">Deseja excluir o hospede <strong id="nomeHospede"></strong>?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <p class="text-center">
-                                                    <button type="button" class="btn btn-danger" id="yesHospede">Desejo excluir o hospede</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
-                                                </div>
-                                            </div>
-                                      </div>
-                                    </div> --> 
                                  </div>    
                             </c:if>
                             <c:if test="${empty hospedes}">
@@ -174,11 +155,31 @@
                     </div>
                 </div>                 
             </div>
-                        
+            
+            <!-- Modal Excluir Hóspede -->
+            <div class="modal fade" id="confirmExcluir" tabindex="-1" role="dialog" aria-labelledby="confirmExcluirLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Excluir Hóspede</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja excluir o hóspede <strong id="nomeHospede"></strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formularioExcluir" action="excluirHospede.html" method="POST">
+                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesHospede" name="cod">Sim</button>
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                            </form>
+                        </div>
+                    </div>
+              </div>
+            </div>                
+                            
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
-    <!-- <script type="text/javascript" src="scripts/modalDelete.js"></script> -->
+    <script type="text/javascript" src="scripts/modalDelete.js"></script>
 </html>

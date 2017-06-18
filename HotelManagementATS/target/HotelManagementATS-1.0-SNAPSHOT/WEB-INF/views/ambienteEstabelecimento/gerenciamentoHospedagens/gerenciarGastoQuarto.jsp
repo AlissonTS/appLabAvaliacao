@@ -108,7 +108,7 @@
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
                             <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
-                            <h3 class="text-center" style="font-size: 25px;">Quarto ${hospedagemEscolhida.quarto.numero}</h3>
+                            <h3 class="text-center" style="font-size: 25px;">Quarto número ${hospedagemEscolhida.quarto.numero}</h3>
                             <br>
                          </div>    
                     </div>

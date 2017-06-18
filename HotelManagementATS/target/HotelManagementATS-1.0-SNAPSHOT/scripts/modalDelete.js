@@ -34,3 +34,13 @@
             $("#numeroQuarto2").html(numero);
             $("#yesQuarto2").val(cod);
         });
+        
+        $(document).on('click', '#tblHospedes td', function(e) {
+            e.preventDefault;
+            
+            var nome = $(this).closest('tr').find('th[data-nome]').data('nome');
+            var cod = $(this).closest('tr').find('td[data-cod]').data('cod');
+            
+            $("#nomeHospede").html(nome);
+            $("#yesHospede").val(cod);
+        });
