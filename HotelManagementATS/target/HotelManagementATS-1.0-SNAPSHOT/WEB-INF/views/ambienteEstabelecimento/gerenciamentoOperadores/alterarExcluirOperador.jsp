@@ -205,6 +205,6 @@
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
-        <script type="text/javascript" src="scripts/modalDelete.js"></script>
+        <script type="text/javascript" src="scripts/modalAcao.js"></script>
     </body>
 </html>

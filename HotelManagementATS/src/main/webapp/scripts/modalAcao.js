@@ -2,8 +2,13 @@
             var $estabelecimento = $("input[name='estabelecimento']:checked").attr("id");
             $("#nomeEstabelecimento").html($estabelecimento);
         });
-        $('#yesEstabelecimento').click(function(){
+        
+        $('#yesExcluir').click(function(){
            $('#formularioExcluir').submit();
+        });
+        
+        $('#yesAlterar').click(function(){
+           $('#formularioAlterar').submit();
         });
         
         $(document).on('click', '#tblOperadores td', function(e) {

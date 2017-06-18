@@ -47,7 +47,7 @@
                             <h2 class="text-center" style="font-size: 28px;">Alterar Estabelecimento</h2>
                             <br>
                             <c:if test="${not empty estabelecimento}">
-                               <form role="form" action="alterarEstabelecimentoAdm.html" method="POST" style="font-size:16px;">
+                               <form role="form" id="formularioAlterar" action="alterarEstabelecimentoAdm.html" method="POST" style="font-size:16px;">
                                     <div class="form-group row">
                                         <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome: </label>
                                         <div class="col-md-8 col-xs-8">
@@ -69,7 +69,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12">
                                             <p style="text-align: center">
-                                            <button type="submit" class="btn btn-primary btn-lg">Alterar</button></p>
+                                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#confirm">Alterar</button></p>
                                         </div>
                                     </div>
                                 </form>
@@ -81,11 +81,31 @@
                     </div>
                 </div>                 
             </div>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Alterar Estabelecimento</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja confirmar a alteração do estabelecimento?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center">
+                            <button type="button" class="btn btn-primary" id="yesAlterar">Sim</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                        </div>
+                    </div>
+              </div>
+            </div>            
                         
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
         <script type="text/javascript" src="scripts/mask.js"></script>
+        <script type="text/javascript" src="scripts/modalAcao.js"></script>
     </body>
 </html>

@@ -80,7 +80,7 @@
                             <h2 class="text-center" style="font-size: 25px;">Alterar Operador</h2>
                             <br>
                             <c:if test="${not empty operadorEscolhido}">
-                                <form role="form" action="alterarOperadorEstabelecimento.html" method="POST" style="font-size: 16px;">
+                                <form id="formularioAlterar" role="form" action="alterarOperadorEstabelecimento.html" method="POST" style="font-size: 16px;">
                                     <div class="form-group row">
                                         <input class="form-control" value="${operadorEscolhido.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
                                         <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
@@ -143,7 +143,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12">
                                             <p style="text-align: center">
-                                            <button type="submit" class="btn btn-primary btn-lg">Alterar</button></p>
+                                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#confirm">Alterar</button></p>
                                         </div>
                                     </div>
                                     <p class="text-center">* Nickname: O nickname ou apelido deve ser único ao usuário operador, pois é a partir dele que o mesmo possui acesso ao ambiente de gerenciamento do estabelecimento em que ele está vinculado.</p>
@@ -156,6 +156,25 @@
                     </div>
                 </div>                 
             </div>
+             
+            <!-- Modal -->
+            <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Alterar Operador</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja confirmar a alteração do operador?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center">
+                            <button type="button" class="btn btn-primary" id="yesAlterar">Sim</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                        </div>
+                    </div>
+              </div>
+            </div>            
                         
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
@@ -164,4 +183,5 @@
     </body>
     <script type="text/javascript" src="scripts/mask.js"></script>
     <script type="text/javascript" src="scripts/hiddenForm.js"></script>
+    <script type="text/javascript" src="scripts/modalAcao.js"></script>
 </html>

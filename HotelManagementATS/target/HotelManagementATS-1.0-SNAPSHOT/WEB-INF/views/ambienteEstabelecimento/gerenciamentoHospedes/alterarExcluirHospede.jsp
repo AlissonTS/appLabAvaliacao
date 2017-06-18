@@ -181,5 +181,5 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
-    <script type="text/javascript" src="scripts/modalDelete.js"></script>
+    <script type="text/javascript" src="scripts/modalAcao.js"></script>
 </html>

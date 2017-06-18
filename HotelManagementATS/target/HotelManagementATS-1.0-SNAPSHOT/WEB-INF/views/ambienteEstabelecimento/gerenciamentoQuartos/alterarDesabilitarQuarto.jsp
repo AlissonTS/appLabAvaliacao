@@ -36,7 +36,7 @@
                                 <li class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Quartos <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
-                                        <li><a href="cadastrarQuartoForm.html">Cadastrar Operador</a></li>
+                                        <li><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></li>
                                         <li class="active"><a href="alterarDesabilitarQuarto.html">Quartos Cadastrados</a></li>
                                     </ul>
                                 </li>
@@ -188,6 +188,6 @@
         <%@ include file="../../../../import/js.jsp" %>
     </body>
     <script type="text/javascript" src="scripts/mask.js"></script>
-    <script type="text/javascript" src="scripts/modalDelete.js"></script>
+    <script type="text/javascript" src="scripts/modalAcao.js"></script>
 </html>
 
