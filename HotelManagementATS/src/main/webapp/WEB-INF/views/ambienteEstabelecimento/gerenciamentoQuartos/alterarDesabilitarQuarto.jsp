@@ -83,7 +83,7 @@
                                     ${mensagem}
                                 </div>
                             </c:if>
-                            <h2 class="text-center" style="font-size: 28px;">Alterar/Desabilitar Quarto</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Quartos Cadastrados</h2>
                             <br>
                             
                             <jsp:useBean id="quartoDao" class="br.ufsm.csi.hotelmanagementats.dao.QuartoDao"/>
