@@ -127,6 +127,7 @@
                                                 </div>
                                             </c:if>
                                             <form id="formularioCadastrar" role="form" action="cadastrarGastoQuarto.html" method="POST">
+                                                <input class="form-control" value="${hospedagemEscolhida.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
                                                 <div class="form-group row">
                                                     <label for="descricaoGasto" class="col-xs-4 col-form-label">Descrição do gasto:</label>
                                                     <div class="col-xs-8">
@@ -136,14 +137,14 @@
                                                 <div class="form-group row">
                                                     <label for="valorGasto" class="col-xs-4 col-form-label">Valor do gasto:</label>
                                                     <div class="col-xs-8">
-                                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o valor do gasto" id="valorGasto" name="valorGasto" required="true">
+                                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o valor do gasto" id="valorGasto" name="valorGasto" required="true" maxlength="6">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-12 col-xs-12"> 
                                                         <p style="text-align: center">
-                                                         <button type="submit" name="cod" value="${hospedagemEscolhida.cod}" class="btn btn-success">Cadastrar Gasto</button></p>
-                                                    </div>    <!-- data-toggle="modal" data-target="#confirm" -->
+                                                         <button type="submit" class="btn btn-success">Cadastrar Gasto</button></p>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -195,8 +196,8 @@
                 </div>                 
             </div>
              
-            <!-- Modal 
-            <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+            <!-- Modal -->
+            <div class="modal fade" id="confirmCadastrar" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -215,13 +216,13 @@
                         </div>
                     </div>
               </div>
-            </div> -->
+            </div> 
                                             
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
         <script type="text/javascript" src="scripts/mask.js"></script>
-        <!-- <script type="text/javascript" src="scripts/modalAcao.js"></script> -->
+        <script type="text/javascript" src="scripts/modalAcao.js"></script>
     </body>
 </html>

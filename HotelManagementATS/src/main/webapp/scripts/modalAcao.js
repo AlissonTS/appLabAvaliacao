@@ -7,22 +7,30 @@
            $('#formularioExcluir').submit();
         });
         
-        /* 
-        $('#yesAlterar').click(function(){
-           $('#formularioAlterar').submit();
+        $('#formularioAlterar').on('submit', function(event){
+            event.preventDefault();
+           $("#confirmAlterar").modal("show");
         });
         
-        $('#cadastrarGasto').click(function(){
+        $('#yesAlterar').click(function(){
+           $('#formularioAlterar').unbind('submit').submit();
+        });
+
+        $('#formularioCadastrar').on('submit', function(event){
+            event.preventDefault();
+        
             var descricao = $("input[name=descricaoGasto]").val();
             var valor = $("input[name=valorGasto]").val();
             
             $("#descricao").html(descricao);
             $("#valor").html(valor);
+        
+            $("#confirmCadastrar").modal("show");
         });
         
         $('#yesCadastrar').click(function(){
-           $('#formularioCadastrar').submit();
-        }); */
+           $('#formularioCadastrar').unbind('submit').submit();
+        });
         
         $(document).on('click', '#tblOperadores td', function(e) {
             e.preventDefault;

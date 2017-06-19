@@ -158,8 +158,8 @@
                 </div>                 
             </div>
             
-            <!-- Modal 
-            <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+            <!-- Modal --> 
+            <div class="modal fade" id="confirmAlterar" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -175,7 +175,7 @@
                         </div>
                     </div>
               </div>
-            </div>  -->          
+            </div>           
                         
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
@@ -183,5 +183,5 @@
         <%@ include file="../../../../import/js.jsp" %>
     </body>
     <script type="text/javascript" src="scripts/mask.js"></script>
-    <!-- <script type="text/javascript" src="scripts/modalAcao.js"></script> -->
+    <script type="text/javascript" src="scripts/modalAcao.js"></script>
 </html>

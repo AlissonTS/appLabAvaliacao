@@ -122,7 +122,7 @@
                                         <div class="col-md-12 col-xs-12">
                                             <p style="text-align: center">
                                             <button type="submit" class="btn btn-primary btn-lg">Alterar</button></p>
-                                        </div> <!-- data-toggle="modal" data-target="#confirm" -->   
+                                        </div>   
                                     </div>
                                 </form>
                             </c:if>
@@ -134,8 +134,8 @@
                 </div>                 
             </div>
             
-            <!-- Modal 
-            <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+            <!-- Modal -->
+            <div class="modal fade" id="confirmAlterar" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -151,7 +151,7 @@
                         </div>
                     </div>
               </div>
-            </div> -->
+            </div> 
                         
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
@@ -159,5 +159,5 @@
         <%@ include file="../../../../import/js.jsp" %>
     </body>
     <script type="text/javascript" src="scripts/mask.js"></script>
-    <!-- <script type="text/javascript" src="scripts/modalAcao.js"></script> -->
+    <script type="text/javascript" src="scripts/modalAcao.js"></script>
 </html>
