@@ -7,9 +7,22 @@
            $('#formularioExcluir').submit();
         });
         
+        /* 
         $('#yesAlterar').click(function(){
            $('#formularioAlterar').submit();
         });
+        
+        $('#cadastrarGasto').click(function(){
+            var descricao = $("input[name=descricaoGasto]").val();
+            var valor = $("input[name=valorGasto]").val();
+            
+            $("#descricao").html(descricao);
+            $("#valor").html(valor);
+        });
+        
+        $('#yesCadastrar').click(function(){
+           $('#formularioCadastrar').submit();
+        }); */
         
         $(document).on('click', '#tblOperadores td', function(e) {
             e.preventDefault;

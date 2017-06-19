@@ -247,10 +247,11 @@ public class QuartoDao {
             sql = "SELECT numero FROM QUARTO WHERE EXISTS "
                     + "(SELECT quarto.numero FROM QUARTO, ESTABELECIMENTO  "
                     + "WHERE quarto.codestabelecimento=estabelecimento.cod "
-                    + "and numero=? and estabelecimento.cod=?);";
+                    + "and numero=? and estabelecimento.cod=? and quarto.cod!=?);";
             stmt = c.prepareStatement(sql);
             stmt.setInt(1, q.getNumero());
             stmt.setInt(2, q.getEstabelecimento().getCod());
+            stmt.setInt(3, q.getCod());
             
             ResultSet valor = stmt.executeQuery();
             boolean verificador = valor.next();
