@@ -27,7 +27,6 @@
                                     <li class="col-sm-6">
                                         <ul>
                                             <li class="dropdown-header">Hóspedes</li>
-                                            <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                             <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
                                             <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
                                         </ul>

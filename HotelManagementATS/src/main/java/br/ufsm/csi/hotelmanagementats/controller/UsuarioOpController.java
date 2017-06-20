@@ -31,9 +31,9 @@ public class UsuarioOpController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/cadastrarOperador";
     }
     
-    @RequestMapping("alterarExcluirOperador.html")
-    public String alterarExcluirOperador(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador";
+    @RequestMapping("operadoresCadastrados.html")
+    public String operadoresCadastrados(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados";
     }
     
     /* Excluir Operador */
@@ -42,7 +42,7 @@ public class UsuarioOpController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Exclusão de Operador do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados");
         
         UsuarioOpDao cD = new UsuarioOpDao();
 
@@ -88,7 +88,7 @@ public class UsuarioOpController {
 
     @RequestMapping(value = "excluirOperador.html", method = RequestMethod.GET)
     public String excluirOperadorGET(){	
-        return "forward:alterarExcluirOperador.html";
+        return "forward:operadoresCadastrados.html";
     }
     
     @RequestMapping(value = "alterarOperadorEstabelecimento.html", method = RequestMethod.POST)
@@ -98,7 +98,7 @@ public class UsuarioOpController {
 
         Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
 
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados");
 
         String redefinir = rq.getParameter("redefinir");
         String senhaN = rq.getParameter("senhaN");
@@ -154,7 +154,7 @@ public class UsuarioOpController {
     
     @RequestMapping(value = "alterarOperadorEstabelecimento.html", method = RequestMethod.GET)
     public String alterarOperadorEstabelecimentoGET(){	
-        return "forward:alterarExcluirOperador.html";
+        return "forward:operadoresCadastrados.html";
     }
     
     @RequestMapping("alterarContaOp.html")
@@ -276,7 +276,8 @@ public class UsuarioOpController {
                int retorno = uD.cadastrarOperador(u);
                
                switch (retorno) {
-                   case 2:		
+                   case 2:
+                       mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados");
                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
                        mv.addObject("tipo", "success");
                        System.out.println("Cadastro Concluído!");
@@ -316,7 +317,7 @@ public class UsuarioOpController {
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Operador do estabelecimento para Alteração...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados");
         
         UsuarioOpDao uD = new UsuarioOpDao();
         
@@ -346,7 +347,7 @@ public class UsuarioOpController {
     
     @RequestMapping(value = "alterarOperadorForm.html", method = RequestMethod.GET)
     public String alterarOperadorFormGET(){	
-        return "forward:alterarExcluirOperador.html";
+        return "forward:operadoresCadastrados.html";
     }
     
     /* Desabilitar Acesso do Usuario Operador */
@@ -355,7 +356,7 @@ public class UsuarioOpController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de desabilitação de acesso do Usuário operador do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados");
         
         UsuarioOpDao uD = new UsuarioOpDao();
 
@@ -402,7 +403,7 @@ public class UsuarioOpController {
     
     @RequestMapping(value = "desabilitarOperador.html", method = RequestMethod.GET)
     public String desabilitarOperadorGET(){	
-        return "forward:alterarExcluirOperador.html";
+        return "forward:operadoresCadastrados.html";
     }
     
     /* Habilitar Usuário Operador */
@@ -411,7 +412,7 @@ public class UsuarioOpController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de habilitação de acesso do usuário operador do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/alterarExcluirOperador");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados");
         
         UsuarioOpDao uD = new UsuarioOpDao();
 
@@ -458,6 +459,6 @@ public class UsuarioOpController {
     
     @RequestMapping(value = "habilitarOperador.html", method = RequestMethod.GET)
     public String habilitarOperadorGET(){	
-        return "forward:alterarExcluirOperador.html";
+        return "forward:operadoresCadastrados.html";
     }
 }

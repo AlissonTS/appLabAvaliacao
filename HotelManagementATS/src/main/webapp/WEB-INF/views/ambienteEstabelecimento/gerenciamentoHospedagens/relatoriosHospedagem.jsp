@@ -28,16 +28,14 @@
                                 </li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Operadores <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
                                         <li><a href="cadastrarOperadorForm.html">Cadastrar Operador</a></li>
-                                        <li><a href="alterarExcluirOperador.html">Operadores Cadastrados</a></li>
+                                        <li><a href="operadoresCadastrados.html">Operadores Cadastrados</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Quartos <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
                                         <li><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></li>
-                                        <li><a href="alterarDesabilitarQuarto.html">Quartos Cadastrados</a></li>
+                                        <li><a href="quartosCadastrados.html">Quartos Cadastrados</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown dropdown-lg active">
@@ -46,9 +44,8 @@
                                         <li class="col-sm-6">
                                             <ul>
                                                 <li class="dropdown-header">Hóspedes</li>
-                                                <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                                 <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
-                                                <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
+                                                <li><a href="hospedesCadastrados.html">Hóspedes Cadastrados</a></li>
                                             </ul>
                                         </li>
                                         <li class="col-sm-6">
@@ -70,11 +67,6 @@
                 </nav>
                 
                 <div class="container-fluid" style="margin-bottom: 3%">
-                    <div class="row" style="margin-top: 1%">
-                        <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                                <a href="gerenciamentoHospedagens.html" style="font-size: 16px;">Voltar</a>
-                        </div>
-                    </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
                             <h2 class="text-center" style="font-size: 28px;">Relatórios de Hospedagem</h2>  

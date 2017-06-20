@@ -31,11 +31,6 @@ public class MenuPrincipalAdmController {
         return "/WEB-INF/views/ambienteAdministrador/paginaPrincipalAdm";
     }
     
-    @RequestMapping("gerenciamentoEstabelecimentosAdm.html")
-    public String gerenciamentoEstabelecimentosAdm(){	
-            return "/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentosAdm";
-    }
-    
     @RequestMapping("gerenciamentoContaAdm.html")
     public String gerenciamentoContaAdm(){	
             return "/WEB-INF/views/ambienteAdministrador/gerenciamentoContaAdm";

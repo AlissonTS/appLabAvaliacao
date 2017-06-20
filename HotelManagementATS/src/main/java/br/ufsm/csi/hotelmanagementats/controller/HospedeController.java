@@ -27,9 +27,9 @@ public class HospedeController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/cadastrarHospede";
     }
     
-    @RequestMapping("alterarExcluirHospede.html")
-    public String alterarExcluirHospede(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarExcluirHospede";
+    @RequestMapping("hospedesCadastrados.html")
+    public String hospedesCadastrados(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/hospedesCadastrados";
     }
     
     @RequestMapping(value = "alterarHospedeForm.html", method = RequestMethod.POST)
@@ -37,7 +37,7 @@ public class HospedeController {
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Hóspede para Alteração...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarExcluirHospede");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/hospedesCadastrados");
         
         HospedeDao hD = new HospedeDao();
         
@@ -67,7 +67,7 @@ public class HospedeController {
     
     @RequestMapping(value = "alterarHospedeForm.html", method = RequestMethod.GET)
     public String alterarHospedeFormGET(){	
-        return "forward:alterarExcluirHospede.html";
+        return "forward:hospedesCadastrados.html";
     }
     
     /* Excluir Hospede */
@@ -76,7 +76,7 @@ public class HospedeController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Exclusão de Hóspede do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarExcluirHospede");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/hospedesCadastrados");
         
         HospedeDao hD = new HospedeDao();
 
@@ -120,7 +120,7 @@ public class HospedeController {
     
     @RequestMapping(value = "excluirHospede.html", method = RequestMethod.GET)
     public String excluirHospedeGET(){	
-        return "forward:alterarExcluirHospede.html";
+        return "forward:hospedesCadastrados.html";
     }
     
     /* Alterar Hospede */
@@ -129,7 +129,7 @@ public class HospedeController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Alteração de Hóspede do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/alterarExcluirHospede");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/hospedesCadastrados");
         
         HospedeDao hD = new HospedeDao();
         
@@ -177,7 +177,7 @@ public class HospedeController {
     
     @RequestMapping(value = "alterarHospede.html", method = RequestMethod.GET)
     public String alterarHospedeGET(){	
-        return "forward:alterarExcluirHospede.html";
+        return "forward:hospedesCadastrados.html";
     }
     
     /* Cadastrar Hospede */
@@ -199,7 +199,8 @@ public class HospedeController {
                int retorno = hD.cadastrarHospede(hp);
                
                switch (retorno) {
-                   case 2:		
+                   case 2:
+                       mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/hospedesCadastrados");
                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
                        mv.addObject("tipo", "success");
                        System.out.println("Cadastro Concluído!");

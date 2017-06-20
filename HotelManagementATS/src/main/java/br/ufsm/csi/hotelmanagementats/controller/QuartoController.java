@@ -49,7 +49,8 @@ public class QuartoController {
                int retorno = qD.cadastrarQuarto(q);
                
                switch (retorno) {
-                   case 2:		
+                   case 2:
+                       mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados");
                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
                        mv.addObject("tipo", "success");
                        System.out.println("Cadastro Concluído!");
@@ -89,7 +90,7 @@ public class QuartoController {
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Quarto do Estabelecimento para Alteração...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados");
         
         QuartoDao qD = new QuartoDao();
         
@@ -119,7 +120,7 @@ public class QuartoController {
     
     @RequestMapping(value = "alterarQuartoForm.html", method = RequestMethod.GET)
     public String alterarQuartoFormGET(){	
-        return "forward:alterarDesabilitarQuarto.html";
+        return "forward:quartosCadastrados.html";
     }
     
     /* Alterar Quarto */
@@ -128,7 +129,7 @@ public class QuartoController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Alteração de Quarto do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados");
         
         QuartoDao qD = new QuartoDao();
         
@@ -180,12 +181,12 @@ public class QuartoController {
     
     @RequestMapping(value = "alterarQuarto.html", method = RequestMethod.GET)
     public String alterarQuartoGET(){	
-        return "forward:alterarDesabilitarQuarto.html";
+        return "forward:quartosCadastrados.html";
     }
     
-    @RequestMapping("alterarDesabilitarQuarto.html")
-    public String alterarDesabilitarQuarto(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto";
+    @RequestMapping("quartosCadastrados.html")
+    public String quartosCadastrados(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados";
     }
     
     /* Desabilitar Quarto */
@@ -194,7 +195,7 @@ public class QuartoController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de desabilitação de quarto do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados");
         
         QuartoDao qD = new QuartoDao();
 
@@ -241,7 +242,7 @@ public class QuartoController {
     
     @RequestMapping(value = "desabilitarQuarto.html", method = RequestMethod.GET)
     public String desabilitarQuartoGET(){	
-        return "forward:alterarDesabilitarQuarto.html";
+        return "forward:quartosCadastrados.html";
     }
     
     /* Habilitar Quarto */
@@ -250,7 +251,7 @@ public class QuartoController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de habilitação de quarto do Estabelecimento...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/alterarDesabilitarQuarto");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados");
         
         QuartoDao qD = new QuartoDao();
 
@@ -297,6 +298,6 @@ public class QuartoController {
     
     @RequestMapping(value = "habilitarQuarto.html", method = RequestMethod.GET)
     public String habilitarQuartoGET(){	
-        return "forward:alterarDesabilitarQuarto.html";
+        return "forward:quartosCadastrados.html";
     }
 }

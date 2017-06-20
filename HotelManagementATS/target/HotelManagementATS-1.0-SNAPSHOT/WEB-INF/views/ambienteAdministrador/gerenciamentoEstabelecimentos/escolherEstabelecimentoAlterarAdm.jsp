@@ -23,7 +23,6 @@
                               <li><a href="paginaPrincipalAdm.html">Página Principal - ADM</a></li>
                               <li class="active dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Estabelecimentos <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                  <li><a href="gerenciamentoEstabelecimentosAdm.html">Gerenciamento de Estabelecimentos</a></li>
                                   <li><a href="cadastrarEstabelecimentoFormAdm.html">Cadastrar Estabelecimento</a></li>
                                   <li class="active"><a href="escolherEstabelecimentoAlterarAdm.html">Alterar Estabelecimento</a></li>
                                   <li><a href="escolherEstabelecimentoExcluirAdm.html">Excluir Estabelecimento</a></li>
@@ -37,14 +36,9 @@
                 </nav>
                 
                 <div class="container-fluid">
-                    <div class="row" style="margin-top: 1%">
-                        <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
-                            <a href="gerenciamentoEstabelecimentosAdm.html" style="font-size: 16px;">Voltar</a>
-                        </div>
-                    </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
                         <div class="col-md-offset-3 col-md-6 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Gerenciamento de Estabelecimentos </h2>
+                            <h2 class="text-center" style="font-size: 28px;">Alterar Estabelecimento </h2>
                             <br>
                             
                             <jsp:useBean id="estabelecimentoDao" class="br.ufsm.csi.hotelmanagementats.dao.EstabelecimentoDao"/>
@@ -52,7 +46,7 @@
                             
                             <c:if test="${not empty estabelecimentos}">
                                 <h4 class="text-center" style="font-size: 20px;">Escolha o estabelecimento para alteração: </h4>
-                                <form action="alterarEstabelecimentoFormAdm.html" method="POST">
+                                <form action="alterarEstabelecimentoFormAdm.html" method="POST" style="font-size: 16px;">
                                     <div class="form-group row">
                                         <center>
                                             <c:set value="0" var="contador"/>

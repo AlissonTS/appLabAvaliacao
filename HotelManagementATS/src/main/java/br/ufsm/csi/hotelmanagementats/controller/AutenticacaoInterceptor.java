@@ -39,10 +39,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                 return false;
             }
             if(est==null){
-                if(uri.endsWith("paginaPrincipalEstabelecimento.html") ||     
-                   uri.endsWith("gerenciamentoOperadores.html") ||
-                   uri.endsWith("gerenciamentoQuartos.html") ||
-                   uri.endsWith("gerenciamentoHospedagens.html") ||
+                if(uri.endsWith("paginaPrincipalEstabelecimento.html") ||
                    uri.endsWith("relatoriosHospedagem.html") ||
                    uri.endsWith("gerarRelatorioHospedagem.html") ||     
                    uri.endsWith("quartosDesocupados.html") ||
@@ -61,8 +58,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                 }
             }else if(est.getNome()!=null){
                 if(uri.endsWith("cadastroAdministrador.html") ||
-                   uri.endsWith("cadastrarAdministrador.html") ||      
-                   uri.endsWith("gerenciamentoEstabelecimentosAdm.html") ||
+                   uri.endsWith("cadastrarAdministrador.html") ||
                    uri.endsWith("gerenciamentoContaAdm.html") ||
                    uri.endsWith("alterarContaAdmForm.html") ||
                    uri.endsWith("alterarAdministrador.html") ||     
@@ -91,12 +87,9 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
             
         }else if(uAdm==null && uOp!=null){
             if(uri.endsWith("relatoriosHospedagem.html") ||
-               uri.endsWith("gerarRelatorioHospedagem.html") ||
-               uri.endsWith("gerenciamentoQuartos.html") ||
-               uri.endsWith("gerenciamentoOperadores.html") ||     
+               uri.endsWith("gerarRelatorioHospedagem.html") ||  
                uri.endsWith("cadastroAdministrador.html") ||
                uri.endsWith("paginaPrincipalAdm.html") ||
-               uri.endsWith("gerenciamentoEstabelecimentosAdm.html") ||
                uri.endsWith("gerenciamentoContaAdm.html") ||
                uri.endsWith("alterarContaAdmForm.html") ||
                uri.endsWith("alterarAdministrador.html") ||      
@@ -112,11 +105,13 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                uri.endsWith("cadastrarOperador.html") || 
                uri.endsWith("alterarOperadorForm.html") ||
                uri.endsWith("alterarOperadorEstabelecimento.html") ||
+               uri.endsWith("quartosCadastrados.html") || 
                uri.endsWith("cadastrarQuarto.html") || 
                uri.endsWith("alterarQuartoForm.html") ||
                uri.endsWith("alterarQuarto.html") ||
                uri.endsWith("desabilitarQuarto.html") ||
                uri.endsWith("habilitarQuarto.html")  ||
+               uri.endsWith("operadoresCadastrados.html") ||      
                uri.endsWith("desabilitarOperador.html") ||
                uri.endsWith("habilitarOperador.html")       
             ){

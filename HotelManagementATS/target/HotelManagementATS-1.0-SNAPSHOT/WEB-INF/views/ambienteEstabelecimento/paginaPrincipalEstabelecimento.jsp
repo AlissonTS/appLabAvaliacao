@@ -29,16 +29,14 @@
                                     </li>
                                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Operadores <span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="gerenciamentoOperadores.html">Gerenciamento de Operadores</a></li>
                                             <li><a href="cadastrarOperadorForm.html">Cadastrar Operador</a></li>
-                                            <li><a href="alterarExcluirOperador.html">Operadores Cadastrados</a></li>
+                                            <li><a href="operadoresCadastrados.html">Operadores Cadastrados</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Quartos <span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="gerenciamentoQuartos.html">Gerenciamento de Quartos</a></li>
                                             <li><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></li>
-                                            <li><a href="alterarDesabilitarQuarto.html">Quartos Cadastrados</a></li>
+                                            <li><a href="quartosCadastrados.html">Quartos Cadastrados</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown dropdown-lg">
@@ -47,9 +45,8 @@
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                                     <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
+                                                    <li><a href="hospedesCadastrados.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">
@@ -74,9 +71,8 @@
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hóspedes</li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Gerenciamento de Hospedagens</a></li>
                                                     <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
-                                                    <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
+                                                    <li><a href="hospedesCadastrados.html">Hóspedes Cadastrados</a></li>
                                                 </ul>
                                             </li>
                                             <li class="col-sm-6">

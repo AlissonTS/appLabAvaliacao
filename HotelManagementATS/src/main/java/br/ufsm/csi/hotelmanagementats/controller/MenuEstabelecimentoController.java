@@ -24,19 +24,4 @@ public class MenuEstabelecimentoController {
     public String paginaPrincipalEstabelecimento(){	
             return "/WEB-INF/views/ambienteEstabelecimento/paginaPrincipalEstabelecimento";
     }
-    
-    @RequestMapping("gerenciamentoOperadores.html")
-    public String gerenciamentoOperadores(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores";
-    }
-    
-    @RequestMapping("gerenciamentoQuartos.html")
-    public String gerenciamentoQuartos(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos";
-    }
-    
-    @RequestMapping("gerenciamentoHospedagens.html")
-    public String gerenciamentoHospedagens(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens";
-    }
 }

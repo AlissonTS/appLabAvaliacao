@@ -57,7 +57,6 @@ public class EstabelecimentoController {
                
                switch (retorno) {
                    case 2:
-                       mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentosAdm");
                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
                        mv.addObject("tipo", "success");
                        System.out.println("Cadastro Concluído!");
@@ -97,7 +96,7 @@ public class EstabelecimentoController {
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Estabelecimento de Cadastro de Estabelecimento do Adm...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentosAdm");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/escolherEstabelecimentoAlterarAdm");
         
         EstabelecimentoDao eD = new EstabelecimentoDao();
         
@@ -122,7 +121,7 @@ public class EstabelecimentoController {
     
     @RequestMapping(value = "alterarEstabelecimentoFormAdm.html", method = RequestMethod.GET)
     public String alterarEstabelecimentoFormAdmGET(){	
-        return "forward:gerenciamentoEstabelecimentosAdm.html";
+        return "forward:escolherEstabelecimentoAlterarAdm.html";
     }
     
     /* Alterar Estabelecimento */
@@ -131,7 +130,7 @@ public class EstabelecimentoController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Alteração de Estabelecimento do Adm...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentosAdm");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/escolherEstabelecimentoAlterarAdm");
         
         EstabelecimentoDao eD = new EstabelecimentoDao();
         
@@ -175,7 +174,7 @@ public class EstabelecimentoController {
     
     @RequestMapping(value = "alterarEstabelecimentoAdm.html", method = RequestMethod.GET)
     public String alterarEstabelecimentoAdmGET(){	
-        return "forward:gerenciamentoEstabelecimentosAdm.html";
+        return "forward:escolherEstabelecimentoAlterarAdm.html";
     }
     
     /* Excluir Estabelecimento */
@@ -184,7 +183,7 @@ public class EstabelecimentoController {
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Exclusão de Estabelecimento do Adm...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoEstabelecimentosAdm");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/escolherEstabelecimentoExcluirAdm");
         
         EstabelecimentoDao eD = new EstabelecimentoDao();
 
@@ -223,7 +222,7 @@ public class EstabelecimentoController {
     
     @RequestMapping(value = "excluirEstabelecimentoAdm.html", method = RequestMethod.GET)
     public String excluirEstabelecimentoAdmGET(){	
-        return "forward:gerenciamentoEstabelecimentosAdm.html";
+        return "forward:escolherEstabelecimentoExcluirAdm.html";
     }
     
     @RequestMapping(value = "paginaPrincipalEstabelecimentoAdm.html", method = RequestMethod.POST)
