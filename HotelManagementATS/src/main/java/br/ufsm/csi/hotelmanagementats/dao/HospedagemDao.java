@@ -141,7 +141,7 @@ public class HospedagemDao {
             c = ConectaBD.getConexao();
             String sql;
 
-            sql = "SELECT sum(valor) as valor FROM GASTO, HOSPEDAGEM WHERE gasto.codHospedagem=hospedagem.cod and hospedagem.cod=?";
+            sql = "SELECT sum(valor) as valor FROM GASTO, HOSPEDAGEM WHERE gasto.codHospedagem=hospedagem.cod and hospedagem.cod=?;";
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, h.getCod());
 

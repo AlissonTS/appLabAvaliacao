@@ -110,41 +110,46 @@ public class UsuarioOpController {
             && u.getCpf()!=null && u.getTelFixo()!=null 
             && u.getTelCel()!=null && u.getNickname()!=null && u.getSenha()!=null 
             && senhaN!=null && redefinir!=null){
-			
-           if(redefinir.equals("Sim")){
-               byte[] senha = rq.getParameter("senha").getBytes(); 
-           
-               MessageDigest md = MessageDigest.getInstance("SHA-256");
-               byte[] hashSenha = md.digest(senha);
-
-               byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
-               String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
-
-               u.setSenha(valorSenha);
-               verificador = true;
-           }
-		   
-           u.setEstabelecimento(est);
-           
-           try{
-               boolean retorno = uD.alterarUsuarioOperador(u, verificador);
-               
-               if(retorno){				 
-                   mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
-                   mv.addObject("tipo", "success");
-                   System.out.println("Alteração Concluída!");
-               }else{
-                   mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário operador cadastrado no Sistema.");
-                   mv.addObject("tipo", "danger");
-                   System.out.println("Erro ao Alterar!");
-               }
-           }catch(Exception e){
-               e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário operador cadastrado no Sistema.");
-               mv.addObject("tipo", "danger");
-               System.out.println("Erro ao Alterar!");
-           }
             
+            if(u.getNome().length()>0 && u.getCpf().length()==14
+                && u.getTelCel().length()==15 && u.getNickname().length()>0){
+                
+               if(redefinir.equals("Sim")){
+                   if(u.getSenha().length()>=0 && senhaN.length()>=0){
+                       byte[] senha = rq.getParameter("senha").getBytes(); 
+
+                       MessageDigest md = MessageDigest.getInstance("SHA-256");
+                       byte[] hashSenha = md.digest(senha);
+
+                       byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
+                       String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+
+                       u.setSenha(valorSenha);
+                       verificador = true;
+                   }
+                }
+		   
+                u.setEstabelecimento(est);
+
+                try{
+                    boolean retorno = uD.alterarUsuarioOperador(u, verificador);
+
+                    if(retorno){				 
+                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                        mv.addObject("tipo", "success");
+                        System.out.println("Alteração Concluída!");
+                    }else{
+                        mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário operador cadastrado no Sistema.");
+                        mv.addObject("tipo", "danger");
+                        System.out.println("Erro ao Alterar!");
+                    }
+                }catch(Exception e){
+                    e.printStackTrace();
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário operador cadastrado no Sistema.");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao Alterar!");
+                }
+            } 
         }
 
         System.out.println("\n-------------------------------\n");
@@ -192,48 +197,54 @@ public class UsuarioOpController {
            u.getNickname()!=null && u.getSenha()!=null && 
            senhaN!=null && redefinir!=null){
 
-           u.setCod(codUsuario);
+           if(u.getNome().length()>0 && u.getCpf().length()==14
+                && u.getTelCel().length()==15 && u.getNickname().length()>0){
+                
+                u.setCod(codUsuario);
 
-           if(redefinir.equals("Sim")){
-               byte[] senha = rq.getParameter("senha").getBytes(); 
-           
-               MessageDigest md = MessageDigest.getInstance("SHA-256");
-               byte[] hashSenha = md.digest(senha);
+                if(redefinir.equals("Sim")){
+                    if(u.getSenha().length()>=0 && senhaN.length()>=0){
+                        byte[] senha = rq.getParameter("senha").getBytes(); 
 
-               byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
-               String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+                        MessageDigest md = MessageDigest.getInstance("SHA-256");
+                        byte[] hashSenha = md.digest(senha);
 
-               u.setSenha(valorSenha);
+                        byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
+                        String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+
+                        u.setSenha(valorSenha);
+
+                        verificador = true;
+                    }
+                }else{
+                    u.setSenha(senhaAntiga);
+                }
+
+                u.setEstabelecimento(est);
+
+                try{
+                    boolean retorno = uD.alterarUsuarioOperador(u, verificador);
+
+                    if(retorno){
+                        session.setAttribute("operador", u);
+                        mv = new ModelAndView("/WEB-INF/views/ambienteOperador/gerenciamentoContaOp");
+
+                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                        mv.addObject("tipo", "success");
+                        System.out.println("Alteração Concluída!");
+                    }else{
+                        mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
+                        mv.addObject("tipo", "danger");
+                        System.out.println("Erro ao Alterar!");
+                    }
+                }catch(Exception e){
+                    e.printStackTrace();
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao Alterar!");
+                }
                
-               verificador = true;
-           }else{
-               u.setSenha(senhaAntiga);
-           }
-           
-           u.setEstabelecimento(est);
-           
-           try{
-               boolean retorno = uD.alterarUsuarioOperador(u, verificador);
-               
-               if(retorno){
-                   session.setAttribute("operador", u);
-                   mv = new ModelAndView("/WEB-INF/views/ambienteOperador/gerenciamentoContaOp");
-					 
-                   mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
-                   mv.addObject("tipo", "success");
-                   System.out.println("Alteração Concluída!");
-               }else{
-                   mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
-                   mv.addObject("tipo", "danger");
-                   System.out.println("Erro ao Alterar!");
-               }
-           }catch(Exception e){
-               e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
-               mv.addObject("tipo", "danger");
-               System.out.println("Erro ao Alterar!");
-           }
-            
+           } 
         }
 
         System.out.println("\n-------------------------------\n");
@@ -260,45 +271,50 @@ public class UsuarioOpController {
            && u.getTelCel()!=null && u.getTelFixo()!=null 
            && u.getNickname()!=null && u.getSenha()!=null){
            
-           u.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
+           if(u.getNome().length()>0 && u.getCpf().length()==14
+                && u.getTelCel().length()==15 && u.getNickname().length()>0 
+                && u.getSenha().length()>0){
+                
+                u.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
 		   
-	   byte[] senha = rq.getParameter("senha").getBytes(); 
-           
-           MessageDigest md = MessageDigest.getInstance("SHA-256");
-           byte[] hashSenha = md.digest(senha);
-           
-           byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
-           String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
-           
-           u.setSenha(valorSenha);
-		   
-           try{
-               int retorno = uD.cadastrarOperador(u);
-               
-               switch (retorno) {
-                   case 2:
-                       mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados");
-                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
-                       mv.addObject("tipo", "success");
-                       System.out.println("Cadastro Concluído!");
-                       break;
-                   case 1:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um operador com mesmo CPF!");
-                       mv.addObject("tipo", "danger");
-                       System.out.println("Erro ao cadastrar!");
-                       break;
-                   default:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
-                       mv.addObject("tipo", "danger");
-                       System.out.println("Erro ao cadastrar!");
-                       break;
-               }
-               
-           }catch(Exception e){
-               e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
-               mv.addObject("tipo", "danger");
-               System.out.println("Erro ao cadastrar!");
+                byte[] senha = rq.getParameter("senha").getBytes(); 
+
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                byte[] hashSenha = md.digest(senha);
+
+                byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
+                String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+
+                u.setSenha(valorSenha);
+
+                try{
+                    int retorno = uD.cadastrarOperador(u);
+
+                    switch (retorno) {
+                        case 2:
+                            mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoOperadores/operadoresCadastrados");
+                            mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
+                            mv.addObject("tipo", "success");
+                            System.out.println("Cadastro Concluído!");
+                            break;
+                        case 1:
+                            mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um operador com mesmo CPF!");
+                            mv.addObject("tipo", "danger");
+                            System.out.println("Erro ao cadastrar!");
+                            break;
+                        default:
+                            mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                            mv.addObject("tipo", "danger");
+                            System.out.println("Erro ao cadastrar!");
+                            break;
+                    }
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao cadastrar!");
+                }
            }            
         }
         

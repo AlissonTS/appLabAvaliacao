@@ -39,37 +39,42 @@ public class UsuarioAdmController {
         if(u.getNome()!=null && u.getCpf()!=null && 
            u.getTelFixo()!=null && u.getTelCel()!=null &&
            u.getEmail()!=null && u.getSenha()!=null){
-            
-           byte[] senha = rq.getParameter("senha").getBytes(); 
            
-           MessageDigest md = MessageDigest.getInstance("SHA-256");
-           byte[] hashSenha = md.digest(senha);
-           
-           byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
-           String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
-           
-           u.setSenha(valorSenha);
-           
-           try{
-               boolean retorno = uD.cadastrarUsuarioAdm(u);
+           if(u.getNome().length()>0 && u.getCpf().length()==14 
+                && u.getTelCel().length()==15 
+                && u.getEmail().length()>0 && u.getSenha().length()>0){
                
-               if(retorno){
-                   mv = new ModelAndView("/WEB-INF/views/paginaInicial");
-                   mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
-                   mv.addObject("tipo", "success");
-                   System.out.println("Cadastro Concluído!");
-               }else{
-                   mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
-                   mv.addObject("tipo", "danger");
-                   System.out.println("Erro ao cadastrar!");
-               }
-               
-           }catch(Exception e){
-               e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
-               mv.addObject("tipo", "danger");
-               System.out.println("Erro ao cadastrar!");
-           }            
+                byte[] senha = rq.getParameter("senha").getBytes(); 
+           
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                byte[] hashSenha = md.digest(senha);
+
+                byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
+                String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+
+                u.setSenha(valorSenha);
+
+                try{
+                    boolean retorno = uD.cadastrarUsuarioAdm(u);
+
+                    if(retorno){
+                        mv = new ModelAndView("/WEB-INF/views/paginaInicial");
+                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
+                        mv.addObject("tipo", "success");
+                        System.out.println("Cadastro Concluído!");
+                    }else{
+                        mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                        mv.addObject("tipo", "danger");
+                        System.out.println("Erro ao cadastrar!");
+                    }
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao cadastrar!");
+                }
+           }          
         }
         
         System.out.println("\n-------------------------------\n");
@@ -109,45 +114,51 @@ public class UsuarioAdmController {
            u.getTelFixo()!=null && u.getTelCel()!=null &&
            u.getEmail()!=null && u.getSenha()!=null && senhaN!=null && redefinir!=null){
            
-           u.setCod(codUsuario);
-           u.setCpf(cpfAntigo);
-           
-           if(redefinir.equals("Sim")){
-               byte[] senha = rq.getParameter("senha").getBytes(); 
-           
-               MessageDigest md = MessageDigest.getInstance("SHA-256");
-               byte[] hashSenha = md.digest(senha);
+           if(u.getNome().length()>0 && u.getCpf().length()==14 && 
+                u.getTelCel().length()==15 &&
+                u.getEmail().length()>0){
+                
+                u.setCod(codUsuario);
+                u.setCpf(cpfAntigo);
 
-               byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
-               String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+                if(redefinir.equals("Sim")){
+                    if(u.getSenha().length()>=0 && senhaN.length()>=0){
+                        byte[] senha = rq.getParameter("senha").getBytes(); 
 
-               u.setSenha(valorSenha);
-           }else{
-               u.setSenha(senhaAntiga);
-           }
-           
-           try{
-               boolean retorno = uD.alterarUsuarioAdm(u);
-               
-               if(retorno){                   
-                   session.setAttribute("administrador", u);
-                   
-                   mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoContaAdm");
-                   mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
-                   mv.addObject("tipo", "success");
-                   System.out.println("Alteração Concluída!");
-               }else{
-                   mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
-                   mv.addObject("tipo", "danger");
-                   System.out.println("Erro ao Alterar!");
-               }
-           }catch(Exception e){
-               e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
-               mv.addObject("tipo", "danger");
-               System.out.println("Erro ao Alterar!");
-           }
-            
+                        MessageDigest md = MessageDigest.getInstance("SHA-256");
+                        byte[] hashSenha = md.digest(senha);
+
+                        byte[] hashSenhaBase = Base64.encodeBase64(hashSenha);
+                        String valorSenha = new String(hashSenhaBase, "ISO-8859-1");
+
+                        u.setSenha(valorSenha);
+                    }
+                }else{
+                    u.setSenha(senhaAntiga);
+                }
+
+                try{
+                    boolean retorno = uD.alterarUsuarioAdm(u);
+
+                    if(retorno){                   
+                        session.setAttribute("administrador", u);
+
+                        mv = new ModelAndView("/WEB-INF/views/ambienteAdministrador/gerenciamentoContaAdm");
+                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                        mv.addObject("tipo", "success");
+                        System.out.println("Alteração Concluída!");
+                    }else{
+                        mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
+                        mv.addObject("tipo", "danger");
+                        System.out.println("Erro ao Alterar!");
+                    }
+                }catch(Exception e){
+                    e.printStackTrace();
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados alterados já utilizados por outro usuário do Sistema.");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao Alterar!");
+                }
+           } 
         }
 
         System.out.println("\n-------------------------------\n");

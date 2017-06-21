@@ -179,9 +179,9 @@ public class EstabelecimentoDao {
                     + "WHERE codusuarioadm=? and cnpj=?;";
                 stmt = c.prepareStatement(sql);
                 stmt.setString(1, est.getNome());
-				stmt.setString(2, est.getTelFixo());
+                stmt.setString(2, est.getTelFixo());
                 stmt.setInt(3, est.getUsuarioAdm().getCod());
-				stmt.setString(4, est.getCnpj());
+                stmt.setString(4, est.getCnpj());
 
                 stmt.execute();
                 retorno = 2;

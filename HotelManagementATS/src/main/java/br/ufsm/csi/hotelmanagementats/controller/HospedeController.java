@@ -135,38 +135,43 @@ public class HospedeController {
         
         if(rq.getParameter("cod")!=null && hp.getNome()!=null && hp.getCpf()!=null && 
            hp.getTelCel()!=null && hp.getEmail()!=null){
-           int codHospede = Integer.parseInt(rq.getParameter("cod"));
-           hp.setCod(codHospede);
+            
+           if(hp.getNome().length()>0 && hp.getCpf().length()==14 && 
+                hp.getTelCel().length()==15 && hp.getEmail().length()>0){
+            
+                int codHospede = Integer.parseInt(rq.getParameter("cod"));
+                hp.setCod(codHospede);
 
-           Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
-		   
-           hp.setEstabelecimento(est);
-		   
-           try{
-               int retorno = hD.alterarHospede(hp);
-               
-               switch (retorno) {
-                   case 2:
-                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
-                       mv.addObject("tipo", "success");
-                       System.out.println("Alteração Concluída!");
-                       break;
-                   case 1:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro hóspede com mesmo CPF!");
-                       mv.addObject("tipo", "danger");
-                       System.out.println("Erro ao alterar!");
-                       break;
-                   default:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro hóspede!");
-                       mv.addObject("tipo", "danger");
-                       System.out.println("Erro ao alterar!");
-                       break;
-               }     
-           }catch(Exception e){
-               e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro hóspede!");
-               mv.addObject("tipo", "danger");
-               System.out.println("Erro ao alterar!");
+                Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+                hp.setEstabelecimento(est);
+
+                try{
+                    int retorno = hD.alterarHospede(hp);
+
+                    switch (retorno) {
+                        case 2:
+                            mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                            mv.addObject("tipo", "success");
+                            System.out.println("Alteração Concluída!");
+                            break;
+                        case 1:
+                            mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro hóspede com mesmo CPF!");
+                            mv.addObject("tipo", "danger");
+                            System.out.println("Erro ao alterar!");
+                            break;
+                        default:
+                            mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro hóspede!");
+                            mv.addObject("tipo", "danger");
+                            System.out.println("Erro ao alterar!");
+                            break;
+                    }     
+                }catch(Exception e){
+                    e.printStackTrace();
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados por outro hóspede!");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao alterar!");
+                }
            }            
         }
         
@@ -193,36 +198,40 @@ public class HospedeController {
         if(hp.getNome()!=null && hp.getCpf()!=null 
            && hp.getTelCel()!=null && hp.getEmail()!=null){
            
-           hp.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
+           if(hp.getNome().length()>0 && hp.getCpf().length()==14 && 
+                hp.getTelCel().length()==15 && hp.getEmail().length()>0){
+               
+                hp.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
 		   
-           try{
-               int retorno = hD.cadastrarHospede(hp);
-               
-               switch (retorno) {
-                   case 2:
-                       mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/hospedesCadastrados");
-                       mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
-                       mv.addObject("tipo", "success");
-                       System.out.println("Cadastro Concluído!");
-                       break;
-                   case 1:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um hóspede com mesmo CPF!");
-                       mv.addObject("tipo", "danger");
-                       System.out.println("Erro ao cadastrar!");
-                       break;
-                   default:
-                       mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
-                       mv.addObject("tipo", "danger");
-                       System.out.println("Erro ao cadastrar!");
-                       break;
-               }
-               
-           }catch(Exception e){
-               e.printStackTrace();
-               mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
-               mv.addObject("tipo", "danger");
-               System.out.println("Erro ao cadastrar!");
-           }            
+                try{
+                    int retorno = hD.cadastrarHospede(hp);
+
+                    switch (retorno) {
+                        case 2:
+                            mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedes/hospedesCadastrados");
+                            mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
+                            mv.addObject("tipo", "success");
+                            System.out.println("Cadastro Concluído!");
+                            break;
+                        case 1:
+                            mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um hóspede com mesmo CPF!");
+                            mv.addObject("tipo", "danger");
+                            System.out.println("Erro ao cadastrar!");
+                            break;
+                        default:
+                            mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                            mv.addObject("tipo", "danger");
+                            System.out.println("Erro ao cadastrar!");
+                            break;
+                    }
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao cadastrar!");
+                } 
+           }           
         }
         
         System.out.println("\n-------------------------------\n");

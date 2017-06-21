@@ -108,7 +108,7 @@
                                     <div class="form-group row">
                                         <label for="descricaoExtra" class="col-md-3 col-xs-4 col-form-label">Informações extras sobre o quarto (Não obrigatório): </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <textarea class="form-control" style="height: 50px;" rows="5" id="descricaoExtra" name="descricaoExtra" maxlength="120" placeholder="Digite informações extras sobre o quarto, como por exemplo: mobília e serviços disponibilizados">${quartoEscolhido.descricaoExtra}</textarea>
+                                            <textarea class="form-control" style="height: 120px;" rows="5" id="descricaoExtra" name="descricaoExtra" maxlength="120" placeholder="Digite informações extras sobre o quarto, como por exemplo: mobília e serviços disponibilizados">${quartoEscolhido.descricaoExtra}</textarea>
                                         </div>
                                     </div><!--
                                     <div class="form-group row">

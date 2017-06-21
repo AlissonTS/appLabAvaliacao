@@ -170,50 +170,53 @@ public class HospedagemController {
         if(rq.getParameter("cod")!=null && rq.getParameter("descricaoGasto")!=null 
                 && rq.getParameter("valorGasto")!=null){
             
-            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
-	    String descricao = rq.getParameter("descricaoGasto");
-            float valor = Float.parseFloat(rq.getParameter("valorGasto"));
-			
-            Gasto g = new Gasto();
-            g.setDescricao(descricao);
-            g.setValor(valor);
-			
-            Hospedagem h = new Hospedagem();
-            h.setCod(codHospedagem);
-			
-            Quarto q = new Quarto();
+            if(rq.getParameter("descricaoGasto").length()>0 && rq.getParameter("valorGasto").length()>0){
+                int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+                
+                String descricao = rq.getParameter("descricaoGasto");
+                float valor = Float.parseFloat(rq.getParameter("valorGasto"));
 
-            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+                Gasto g = new Gasto();
+                g.setDescricao(descricao);
+                g.setValor(valor);
 
-            q = qD.carregarQuartoHospedagem(h, est);
-	    
-            if(q!=null){
-                boolean verificador = false;
-                try{
-                    verificador = hD.inserirGastoHospedagem(h, g);
-                    
-                }catch(Exception e){
-                    e.printStackTrace();
-                }  
+                Hospedagem h = new Hospedagem();
+                h.setCod(codHospedagem);
 
-                h.setQuarto(q);
+                Quarto q = new Quarto();
 
-                h = hD.carregarGastosHospedagem(h);
+                Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
 
-                if(h!=null && verificador){
-                    mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/gerenciarGastoQuarto");
-                    mv.addObject("hospedagemEscolhida", h);
-                    if(verificador){
-                        mv.addObject("mensagem", "<Strong> Sucesso</Strong> Gasto de quarto cadastrado!");
-                        mv.addObject("tipo", "success");	
-                    }else{
-                        mv.addObject("mensagem", "<Strong> Erro</Strong> Gasto de quarto não cadastrado!");
-                        mv.addObject("tipo", "danger");
+                q = qD.carregarQuartoHospedagem(h, est);
+
+                if(q!=null){
+                    boolean verificador = false;
+                    try{
+                        verificador = hD.inserirGastoHospedagem(h, g);
+
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }  
+
+                    h.setQuarto(q);
+
+                    h = hD.carregarGastosHospedagem(h);
+
+                    if(h!=null && verificador){
+                        mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/gerenciarGastoQuarto");
+                        mv.addObject("hospedagemEscolhida", h);
+                        if(verificador){
+                            mv.addObject("mensagem", "<Strong> Sucesso</Strong> Gasto de quarto cadastrado!");
+                            mv.addObject("tipo", "success");	
+                        }else{
+                            mv.addObject("mensagem", "<Strong> Erro</Strong> Gasto de quarto não cadastrado!");
+                            mv.addObject("tipo", "danger");
+                        }
+                        System.out.println("Hospedagem atualizada com gastos de Hospedagem!");
                     }
-                    System.out.println("Hospedagem atualizada com gastos de Hospedagem!");
                 }
+                
             }
-           
         }
         
         System.out.println("\n-------------------------------\n");
