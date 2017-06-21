@@ -40,6 +40,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
             }
             if(est==null){
                 if(uri.endsWith("paginaPrincipalEstabelecimento.html") ||
+                   uri.endsWith("dadosEstabelecimento.html") ||
                    uri.endsWith("relatoriosHospedagem.html") ||
                    uri.endsWith("gerarRelatorioHospedagem.html") ||     
                    uri.endsWith("quartosDesocupados.html") ||

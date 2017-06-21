@@ -24,4 +24,9 @@ public class MenuEstabelecimentoController {
     public String paginaPrincipalEstabelecimento(){	
             return "/WEB-INF/views/ambienteEstabelecimento/paginaPrincipalEstabelecimento";
     }
+    
+    @RequestMapping("dadosEstabelecimento.html")
+    public String dadosEstabelecimento(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/dadosEstabelecimento";
+    }
 }

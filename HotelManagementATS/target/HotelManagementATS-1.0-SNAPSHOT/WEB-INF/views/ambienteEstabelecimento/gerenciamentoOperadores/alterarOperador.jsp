@@ -60,6 +60,7 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li><a href="dadosEstabelecimento.html"><span class="glyphicon glyphicon-info-sign"></span> Estabelecimento</a></li>
                                 <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                             </ul>
                         </div>
@@ -82,7 +83,7 @@
                                         <input class="form-control" value="${operadorEscolhido.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
                                         <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                         <div class="col-md-8 col-xs-8">
-                                            <input class="form-control" style="height: 50px;" value="${operadorEscolhido.nome}" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40" pattern="[a-ZA-Zá-úÁ=Ú\s]+$" title="Apenas letras!">
+                                            <input class="form-control" style="height: 50px;" value="${operadorEscolhido.nome}" type="text" placeholder="Digite seu Nome" required="true" name="nome" id="nome" maxlength="40" pattern="^[A-Za-záàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ'\s]+$" title="Apenas letras!">
                                         </div>
                                     </div>
                                     <div class="form-group row">

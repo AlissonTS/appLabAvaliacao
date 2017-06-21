@@ -61,6 +61,7 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    <li><a href="dadosEstabelecimento.html"><span class="glyphicon glyphicon-info-sign"></span> Estabelecimento</a></li>
                                     <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                                 </c:if>
                             
@@ -87,6 +88,7 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    <li><a href="dadosEstabelecimento.html"><span class="glyphicon glyphicon-info-sign"></span> Estabelecimento</a></li>
                                     <li><a href="gerenciamentoContaOp.html"><span class="glyphicon glyphicon-cog"></span> Gerenciamento de Conta</a></li>
                                     <li><a href="realizarLogout.html"><span class="glyphicon glyphicon-log-out"></span> Sair do Sistema</a></li>
                                 </c:if>
@@ -110,7 +112,7 @@
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                     <div class="col-md-8 col-xs-8">
-                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o nome do hóspede" required="true" name="nome" id="nome" maxlength="40">
+                                        <input class="form-control" style="height: 50px;" type="text" placeholder="Digite o nome do hóspede" required="true" name="nome" id="nome" maxlength="40" pattern="^[A-Za-záàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ'\s]+$" title="Apenas letras!">
                                     </div>
                                 </div>
                                 <div class="form-group row">
