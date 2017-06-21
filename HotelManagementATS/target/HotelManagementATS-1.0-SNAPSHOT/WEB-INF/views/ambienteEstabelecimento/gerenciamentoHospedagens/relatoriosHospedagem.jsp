@@ -8,7 +8,8 @@
 <html>
     <head>
         <title>Relatórios de Hospedagem - ATS-HM</title>
-        <%@ include file="../../../../import/head.jsp" %>
+        <%@ include file="../../../../import/head.jsp" %> 
+        <link rel="stylesheet" href="css/cssPrint.css">
     </head>
     <body>
         <div id="wrapper">
@@ -83,7 +84,7 @@
                                         <input value="${data}" class="form-control" style="height: 50px;" type="text" id="dataInicial" name="dataInicial" required="true" placeholder="####-##-##" pattern="\d{4}\-\d{2}\-\d{2}" title="####-##-##">
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" id="botaoData">
                                     <div class="col-md-12 col-xs-12">
                                         <p style="text-align: center">
                                         <button type="submit" class="btn btn-default">Gerar Relatório</button></p>
@@ -172,7 +173,7 @@
                         <div class="row" style="margin-bottom: 3%;">	
                             <div class="col-md-12 col-xs-12">
                                 <p style="text-align: center">
-                                    <input type="button" class="btn btn-success btn-lg" name="print" value="Imprimir Relatório" onClick="imprimir()" style="margin-top: 1%">
+                                    <input type="button" class="btn btn-success btn-lg" name="print" id="botaoImprimir" value="Imprimir Relatório" onClick="imprimir()" style="margin-top: 1%">
                                 </p>
                             </div>
                         </div>

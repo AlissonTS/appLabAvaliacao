@@ -80,10 +80,10 @@
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hospedagens</li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Cadastrar Hospedagem</a></li>
-                                                    <li><a href="cadastrarHospedeForm.html">Alterar Hospedagem</a></li>
-                                                    <li><a href="alterarExcluirHospede.html">Hospedagens em Término</a></li>
-                                                    <li><a href="gerenciamentoHospedagens.html">Gerenciar gasto de Quarto</a></li>
+                                                    <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
+                                                    <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
+                                                    <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

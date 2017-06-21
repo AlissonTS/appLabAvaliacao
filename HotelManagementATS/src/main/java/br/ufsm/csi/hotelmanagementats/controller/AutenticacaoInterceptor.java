@@ -32,51 +32,32 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
         if(uAdm!=null && uOp==null){
             if(uri.endsWith("alterarContaOp.html") ||
                uri.endsWith("gerenciamentoContaOp.html") ||
-               uri.endsWith("alterarOperadorLogado.html") ||     
+               uri.endsWith("alterarOpLogado.html") ||     
                uri.endsWith("cadastroAdministrador.html")     
             ){
                 response.sendRedirect("paginaPrincipalAdm.html");
                 return false;
             }
-            if(est==null){
+            if(est==null){ // Ajeitar
                 if(uri.endsWith("paginaPrincipalEstabelecimento.html") ||
-                   uri.endsWith("dadosEstabelecimento.html") ||
-                   uri.endsWith("relatoriosHospedagem.html") ||
-                   uri.endsWith("gerarRelatorioHospedagem.html") ||     
-                   uri.endsWith("quartosDesocupados.html") ||
-                   uri.endsWith("cadastrarHospedagemForm.html") ||     
-                   uri.endsWith("hospedagensCorrentesAlterar.html") ||
-                   uri.endsWith("alterarHospedagemForm.html") ||     
-                   uri.endsWith("hospedagensTermino.html") ||     
-                   uri.endsWith("finalizarHospedagem.html") ||     
-                   uri.endsWith("hospedagensCorrentesGasto.html") ||     
-                   uri.endsWith("gerenciarGastoQuarto.html") ||
-                   uri.endsWith("cadastrarGastoQuarto.html") ||
-                   uri.endsWith("alterarOperadorEstabelecimento.html")     
-                ){
+                   uri.contains("operador") ||
+                   uri.contains("Operador") ||
+                   uri.contains("quarto") ||
+                   uri.contains("Quarto") ||
+                   uri.contains("hospede") ||
+                   uri.contains("Hospede") ||
+                   uri.contains("Hospedagem") ||
+                   uri.contains("hospedagens") ||
+                   uri.contains("Gasto") ||     
+                   uri.contains("relatorio") ||
+                   uri.contains("Relatorio") ||
+                   uri.contains("dados"))     
+                {
                     response.sendRedirect("paginaPrincipalAdm.html");
                     return false;
                 }
             }else if(est.getNome()!=null){
-                if(uri.endsWith("cadastroAdministrador.html") ||
-                   uri.endsWith("cadastrarAdministrador.html") ||
-                   uri.endsWith("gerenciamentoContaAdm.html") ||
-                   uri.endsWith("alterarContaAdmForm.html") ||
-                   uri.endsWith("alterarAdministrador.html") ||     
-                   uri.endsWith("paginaPrincipalEstabelecimentoAdm.html") ||
-                   uri.endsWith("cadastrarEstabelecimentoFormAdm.html")  ||
-                   uri.endsWith("escolherEstabelecimentoAlterarAdm.html")  ||
-                   uri.endsWith("alterarEstabelecimentoFormAdm.html")  ||     
-                   uri.endsWith("alterarEstabelecimentoAdm.html")  ||
-                   uri.endsWith("cadastrarEstabelecimentoAdm.html")  ||     
-                   uri.endsWith("escolherEstabelecimentoExcluirAdm.html")  ||
-                   uri.endsWith("excluirEstabelecimentoAdm.html")    
-                ){
-                    e = null;
-                    request.getSession().setAttribute("estabelecimentoEscolhido", e);
-                    response.sendRedirect("paginaInicial.html");
-                    return false;
-                }else if(uri.contains("paginaInicial.html") ||
+                if(uri.contains("paginaInicial.html") ||
                      uri.endsWith("paginaPrincipalAdm.html") ||   
                      uri.endsWith("sobreAplicacao.html")   
                 ){
@@ -84,37 +65,28 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
                     request.getSession().setAttribute("estabelecimentoEscolhido", e);
                     return true;   
                 }
+                else if(uri.contains("Adm")){
+                    e = null;
+                    request.getSession().setAttribute("estabelecimentoEscolhido", e);
+                    response.sendRedirect("paginaInicial.html");
+                    return false;
+                } 
             }
             
         }else if(uAdm==null && uOp!=null){
-            if(uri.endsWith("relatoriosHospedagem.html") ||
-               uri.endsWith("gerarRelatorioHospedagem.html") ||  
-               uri.endsWith("cadastroAdministrador.html") ||
-               uri.endsWith("paginaPrincipalAdm.html") ||
-               uri.endsWith("gerenciamentoContaAdm.html") ||
-               uri.endsWith("alterarContaAdmForm.html") ||
-               uri.endsWith("alterarAdministrador.html") ||      
-               uri.endsWith("cadastrarEstabelecimentoFormAdm.html") ||
-               uri.endsWith("cadastrarEstabelecimentoAdm.html") ||      
-               uri.endsWith("escolherEstabelecimentoAlterarAdm.html") ||  
-               uri.endsWith("escolherEstabelecimentoExcluirAdm.html") ||
-               uri.endsWith("alterarEstabelecimentoFormAdm.html") ||
-               uri.endsWith("alterarEstabelecimentoAdm.html") ||
-               uri.endsWith("excluirEstabelecimentoAdm.html") ||
-               uri.endsWith("paginaPrincipalEstabelecimentoAdm.html") ||
-               uri.endsWith("alterarOperadorEstabelecimento.html") ||
-               uri.endsWith("cadastrarOperador.html") || 
-               uri.endsWith("alterarOperadorForm.html") ||
-               uri.endsWith("alterarOperadorEstabelecimento.html") ||
-               uri.endsWith("quartosCadastrados.html") || 
-               uri.endsWith("cadastrarQuarto.html") || 
-               uri.endsWith("alterarQuartoForm.html") ||
-               uri.endsWith("alterarQuarto.html") ||
-               uri.endsWith("desabilitarQuarto.html") ||
-               uri.endsWith("habilitarQuarto.html")  ||
-               uri.endsWith("operadoresCadastrados.html") ||      
-               uri.endsWith("desabilitarOperador.html") ||
-               uri.endsWith("habilitarOperador.html")       
+            if(uri.contains("quartosDesocupados") ||
+                uri.contains("cadastrarGastoQuarto") ||
+                uri.contains("gerenciarGastoQuarto")    
+            ){
+                return true;
+            }
+            else if(uri.contains("Adm") ||
+                uri.contains("operador") ||
+                uri.contains("Operador") ||
+                uri.contains("quarto") ||
+                uri.contains("Quarto") ||
+                uri.contains("relatorio") ||
+                uri.contains("Relatorio")     
             ){
                 response.sendRedirect("paginaPrincipalEstabelecimento.html");
                 return false;

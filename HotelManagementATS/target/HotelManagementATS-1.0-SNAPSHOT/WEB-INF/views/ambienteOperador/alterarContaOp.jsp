@@ -28,7 +28,7 @@
                                         <ul>
                                             <li class="dropdown-header">Hóspedes</li>
                                             <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
-                                            <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
+                                            <li><a href="hospedesCadastrados.html">Hóspedes Cadastrados</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-sm-6">
@@ -66,7 +66,7 @@
                             </c:if>
                             <h2 class="text-center" style="font-size: 28px;">Alterar Conta</h2>
                             <br>
-                            <form id="formularioAlterar" role="form" action="alterarOperadorLogado.html" method="POST" style="font-size: 16px;">
+                            <form id="formularioAlterar" role="form" action="alterarOpLogado.html" method="POST" style="font-size: 16px;">
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                     <div class="col-md-8 col-xs-8">

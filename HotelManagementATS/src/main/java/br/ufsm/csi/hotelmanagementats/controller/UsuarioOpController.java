@@ -167,7 +167,7 @@ public class UsuarioOpController {
             return "/WEB-INF/views/ambienteOperador/alterarContaOp";
     }
     
-    @RequestMapping(value = "alterarOperadorLogado.html", method = RequestMethod.POST)
+    @RequestMapping(value = "alterarOpLogado.html", method = RequestMethod.POST)
     public ModelAndView alterarOperadorLogado(UsuarioOperador u, HttpServletRequest rq, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException{	
         System.out.println("-------------------------------");
         System.out.println("Submit Formulário de Alteração de Operador Logado..."); 
@@ -252,7 +252,7 @@ public class UsuarioOpController {
         return mv;
     }
     
-    @RequestMapping(value = "alterarOperadorLogado.html", method = RequestMethod.GET)
+    @RequestMapping(value = "alterarOpLogado.html", method = RequestMethod.GET)
     public String alterarOperadorLogadoGET(){	
         return "forward:alterarContaOp.html";
     }

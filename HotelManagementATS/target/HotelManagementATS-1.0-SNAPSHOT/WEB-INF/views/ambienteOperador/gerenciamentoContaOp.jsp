@@ -28,7 +28,7 @@
                                         <ul>
                                             <li class="dropdown-header">Hóspedes</li>
                                             <li><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></li>
-                                            <li><a href="alterarExcluirHospede.html">Hóspedes Cadastrados</a></li>
+                                            <li><a href="hospedesCadastrados.html">Hóspedes Cadastrados</a></li>
                                         </ul>
                                     </li>
                                     <li class="col-sm-6">
