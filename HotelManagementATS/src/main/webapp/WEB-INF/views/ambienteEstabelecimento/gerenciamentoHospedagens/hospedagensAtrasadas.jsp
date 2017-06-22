@@ -1,13 +1,13 @@
 <%-- 
-    Document   : quartosDesocupados
-    Created on : 20/05/2017, 22:19:27
+    Document   : hospedagensDiaFinalizar
+    Created on : 21/06/2017, 22:39:56
     Author     : Alisson
 --%>
 
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Quartos Desocupados - ATS-HM</title>
+        <title>Hospedagens Atrasadas - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
     </head>
     <body>
@@ -52,7 +52,7 @@
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hospedagens</li>
-                                                    <li class="active"><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
+                                                    <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
                                                     <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
@@ -81,7 +81,7 @@
                                             <li class="col-sm-6">
                                                 <ul>
                                                     <li class="dropdown-header">Hospedagens</li>
-                                                    <li class="active"><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
+                                                    <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
                                                     <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
@@ -102,53 +102,32 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Cadastrar Hospedagem</h2>
-                            <h3 class="text-center" style="font-size: 25px;">Quartos Desocupados</h3>
+                            <h2 class="text-center" style="font-size: 28px;">Hospedagens Atrasadas</h2>
                             <br>
-                            
-                            <jsp:useBean id="quartoDao" class="br.ufsm.csi.hotelmanagementats.dao.QuartoDao"/>
-                            <c:set value="${quartoDao.getQuartosDesocupadosEstabelecimento(estabelecimentoEscolhido)}" var="quartos"/>
-                            
-                            <c:if test="${not empty quartos}">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                          <tr>
-                                            <th>Número de Identificação</th>
-                                            <th>Área do quarto (m²)</th>
-                                            <th>Máximo de hóspedes</th>
-                                            <th>Valor da diária (R$)</th>
-                                            <th>Mostrar Quarto</th>
-                                            <th>Escolher Quarto</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <c:forEach var="quarto" items="${quartos}">  
-                                            <tr>
-                                              <th>${quarto.numero}</th>
-                                              <td>${quarto.area}</td>
-                                              <td>${quarto.maxHosp}</td>
-                                              <td>${quarto.valorDiaria}</td>
-                                              <td class="text-center"><form action="mostrarQuartoDesocupado.html" method="POST"><button type="submit" value="${quarto.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
-                                              <td class="text-center"><a href="cadastrarHospedagemForm.html" class="btn btn-default" role="button">Escolher</a></td>
-                                            </tr>
-                                          </c:forEach>
-                                      </tbody>
-                                    </table>
-                                </div>
-                                <br><p class="text-center"><strong>Para realizar o cadastro de hospedagem é preciso que os hóspedes estejam cadastrados</strong></p>
-                                <p class="text-center"><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></p>
-                            </c:if>
-                            <c:if test="${empty quartos}">
-                                <c:set value="${quartoDao.getQuartosQuantidade(estabelecimentoEscolhido)}" var="quantidadeQuartos"/>
-                                <c:if test="${quantidadeQuartos>0}">
-                                    <br><p class="text-center"><strong>O estabelecimento não possui quartos desocupados</strong></p>
-                                </c:if>
-                                <c:if test="${quantidadeQuartos==0}">
-                                    <br><p class="text-center"><strong>O estabelecimento não possui quartos cadastrados</strong></p>
-                                    <p class="text-center"><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></p>
-                                </c:if>    
-                            </c:if>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>N° do Quarto</th>
+                                        <th>Horário de Entrada</th>
+                                        <th>Horário de Saída</th>
+                                        <th>Valor da Diária</th>
+                                        <th>Valor Total</th>
+                                        <th>Finalizar Hospedagem</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                        <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
+                                      </tr>
+                                  </tbody>
+                                </table>
+                            </div>    
                         </div>
                     </div>
                 </div>                 

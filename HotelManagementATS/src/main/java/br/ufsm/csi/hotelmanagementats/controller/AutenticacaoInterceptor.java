@@ -76,6 +76,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
         }else if(uAdm==null && uOp!=null){
             if(uri.contains("quartosDesocupados") ||
                 uri.contains("cadastrarGastoQuarto") ||
+                uri.contains("mostrarQuartoDesocupado") ||    
                 uri.contains("gerenciarGastoQuarto")    
             ){
                 return true;

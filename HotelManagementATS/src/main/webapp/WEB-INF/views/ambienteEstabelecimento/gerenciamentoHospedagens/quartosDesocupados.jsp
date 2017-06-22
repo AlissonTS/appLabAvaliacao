@@ -55,6 +55,7 @@
                                                     <li class="active"><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                     <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                     <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
                                                 </ul>
@@ -83,6 +84,7 @@
                                                     <li class="active"><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                     <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                 </ul>
                                             </li>
@@ -127,7 +129,7 @@
                                               <td>${quarto.area}</td>
                                               <td>${quarto.maxHosp}</td>
                                               <td>${quarto.valorDiaria}</td>
-                                              <td class="text-center"><a href="#" class="btn btn-info" role="button">Mostrar</a></td>
+                                              <td class="text-center"><form action="mostrarQuartoDesocupado.html" method="POST"><button type="submit" value="${quarto.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
                                               <td class="text-center"><a href="cadastrarHospedagemForm.html" class="btn btn-default" role="button">Escolher</a></td>
                                             </tr>
                                           </c:forEach>

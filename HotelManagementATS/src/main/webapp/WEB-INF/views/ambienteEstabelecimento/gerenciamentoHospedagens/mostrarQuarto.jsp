@@ -1,13 +1,13 @@
 <%-- 
-    Document   : quartosDesocupados
-    Created on : 20/05/2017, 22:19:27
+    Document   : mostrarQuartoDesocupado
+    Created on : 21/06/2017, 23:09:09
     Author     : Alisson
 --%>
 
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Quartos Desocupados - ATS-HM</title>
+        <title>Mostrar Quarto - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
     </head>
     <body>
@@ -100,54 +100,27 @@
                 </nav>
                 
                 <div class="container-fluid" style="margin-bottom: 3%">
-                    <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                    <div class="row" style="margin-top: 1%">
+                        <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
+                                <a href="quartosDesocupados.html" style="font-size: 16px;">Voltar</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 18px; text-align: center;">
+                        <div class="col-md-offset-3 col-md-6 col-xs-12">
                             <h2 class="text-center" style="font-size: 28px;">Cadastrar Hospedagem</h2>
-                            <h3 class="text-center" style="font-size: 25px;">Quartos Desocupados</h3>
-                            <br>
-                            
-                            <jsp:useBean id="quartoDao" class="br.ufsm.csi.hotelmanagementats.dao.QuartoDao"/>
-                            <c:set value="${quartoDao.getQuartosDesocupadosEstabelecimento(estabelecimentoEscolhido)}" var="quartos"/>
-                            
-                            <c:if test="${not empty quartos}">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                          <tr>
-                                            <th>Número de Identificação</th>
-                                            <th>Área do quarto (m²)</th>
-                                            <th>Máximo de hóspedes</th>
-                                            <th>Valor da diária (R$)</th>
-                                            <th>Mostrar Quarto</th>
-                                            <th>Escolher Quarto</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <c:forEach var="quarto" items="${quartos}">  
-                                            <tr>
-                                              <th>${quarto.numero}</th>
-                                              <td>${quarto.area}</td>
-                                              <td>${quarto.maxHosp}</td>
-                                              <td>${quarto.valorDiaria}</td>
-                                              <td class="text-center"><form action="mostrarQuartoDesocupado.html" method="POST"><button type="submit" value="${quarto.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
-                                              <td class="text-center"><a href="cadastrarHospedagemForm.html" class="btn btn-default" role="button">Escolher</a></td>
-                                            </tr>
-                                          </c:forEach>
-                                      </tbody>
-                                    </table>
-                                </div>
-                                <br><p class="text-center"><strong>Para realizar o cadastro de hospedagem é preciso que os hóspedes estejam cadastrados</strong></p>
-                                <p class="text-center"><a href="cadastrarHospedeForm.html">Cadastrar Hóspede</a></p>
-                            </c:if>
-                            <c:if test="${empty quartos}">
-                                <c:set value="${quartoDao.getQuartosQuantidade(estabelecimentoEscolhido)}" var="quantidadeQuartos"/>
-                                <c:if test="${quantidadeQuartos>0}">
-                                    <br><p class="text-center"><strong>O estabelecimento não possui quartos desocupados</strong></p>
+                            <c:if test="${not empty quartoEscolhido}">
+                                <h3 class="text-center" style="font-size: 25px;">Quarto número ${quartoEscolhido.numero}</h3>
+                                <br>
+                                <p>Área do quarto (m²): ${quartoEscolhido.area} m².</p>
+                                <p>Máximo de hóspedes que podem estar presentes no quarto: ${quartoEscolhido.maxHosp} pessoa(s).</p>
+                                <p>Valor cobrado pela diária no quarto: R$ ${quartoEscolhido.valorDiaria}.</p>
+                                <p>Informações extras sobre o quarto: </p>
+                                <c:if test="${not empty quartoEscolhido.descricaoExtra}">
+                                    <p>${quartoEscolhido.descricaoExtra}</p>
                                 </c:if>
-                                <c:if test="${quantidadeQuartos==0}">
-                                    <br><p class="text-center"><strong>O estabelecimento não possui quartos cadastrados</strong></p>
-                                    <p class="text-center"><a href="cadastrarQuartoForm.html">Cadastrar Quarto</a></p>
-                                </c:if>    
+                                <c:if test="${empty quartoEscolhido}">
+                                    <p>Nenhuma informação extra informada sobre o quarto desocupado.</p>
+                                </c:if>
                             </c:if>
                         </div>
                     </div>

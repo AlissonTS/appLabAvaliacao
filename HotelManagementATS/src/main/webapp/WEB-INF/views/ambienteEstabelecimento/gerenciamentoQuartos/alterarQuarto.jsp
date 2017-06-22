@@ -55,6 +55,7 @@
                                                <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                               <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
                                             </ul>
@@ -94,7 +95,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="maxhospedes" class="col-md-3 col-xs-4 col-form-label">Máximo de clientes hospedados:  </label>
+                                        <label for="maxhospedes" class="col-md-3 col-xs-4 col-form-label">Máximo de hóspedes:  </label>
                                         <div class="col-md-8 col-xs-8">
                                             <input class="form-control" style="height: 50px;" value="${quartoEscolhido.maxHosp}" type="text" placeholder="Digite o máximo de hóspedes" name="maxHosp" id="maxHosp" maxlength="3" pattern="[0-9]+$" title="Apenas Números">
                                         </div>

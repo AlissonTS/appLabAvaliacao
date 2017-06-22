@@ -55,6 +55,7 @@
                                                     <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                     <li class="active"><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                     <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
                                                 </ul>
@@ -83,6 +84,7 @@
                                                     <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                     <li class="active"><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                 </ul>
                                             </li>
@@ -118,6 +120,7 @@
                                             <th>Valor da Diária (R$)</th>
                                             <th>Total de Gastos (R$)</th>
                                             <th>Valor Total (R$)</th>
+                                            <th>Mostrar Hóspedes</th>
                                             <th>Gerenciar Gasto de Quarto</th>
                                           </tr>
                                         </thead>
@@ -136,6 +139,7 @@
                                                   <td>Sem gastos de quarto</td>
                                               </c:if>
                                               <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
+                                              <td class="text-center"><form action="hospedesQuartoHospedagem.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
                                               <td class="text-center"><form id="gerenciarGastoQuarto" action="gerenciarGastoQuarto.html" method="POST"><button type="submit" value="${hospedagem.cod}" id="gerenciarGastoQuarto" name="cod" class="btn btn-default">Gerenciar</button></form></td>
                                              </tr>
                                         </c:forEach>     

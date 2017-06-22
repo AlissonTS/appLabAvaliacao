@@ -101,6 +101,11 @@ public class HospedagemController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensTermino";
     }
     
+    @RequestMapping("hospedagensAtrasadas.html")
+    public String hospedagensAtrasadas(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensAtrasadas";
+    }
+    
     @RequestMapping("finalizarHospedagem.html")
     public String finalizarHospedagem(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem";

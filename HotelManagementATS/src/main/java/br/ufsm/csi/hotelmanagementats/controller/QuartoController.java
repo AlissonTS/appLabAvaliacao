@@ -22,6 +22,44 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class QuartoController {
     
+    @RequestMapping(value = "mostrarQuartoDesocupado.html", method = RequestMethod.POST)
+    public ModelAndView mostrarQuartoDesocupado(HttpServletRequest rq, HttpSession session){	
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Quarto desocupado do Estabelecimento para Mostrar...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/quartosDesocupados");
+        
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codQuarto= Integer.parseInt(rq.getParameter("cod"));
+            
+            Quarto q = new Quarto();
+            q.setCod(codQuarto);
+			
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+            q.setEstabelecimento(est);
+			
+            q = qD.carregarQuartoEscolhido(q);
+            
+            if(q!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/mostrarQuarto");
+                mv.addObject("quartoEscolhido", q);
+                System.out.println("Quarto buscado para ser mostrado!");
+            }
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "mostrarQuartoDesocupado.html", method = RequestMethod.GET)
+    public String mostrarQuartoDesocupado(){	
+            return "forward:quartosDesocupados.html";
+    }
+    
     @RequestMapping("cadastrarQuartoForm.html")
     public String cadastrarQuartoForm(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/cadastrarQuarto";

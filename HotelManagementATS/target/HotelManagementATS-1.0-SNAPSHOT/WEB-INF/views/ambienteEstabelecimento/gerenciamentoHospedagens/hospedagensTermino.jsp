@@ -55,6 +55,7 @@
                                                     <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li class="active"><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                     <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                     <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
                                                 </ul>
@@ -83,6 +84,7 @@
                                                     <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
                                                     <li class="active"><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                     <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                 </ul>
                                             </li>
@@ -100,37 +102,7 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Hospedagens em término no dia</h2>
-                            <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>N° do Quarto</th>
-                                        <th>Horário de Entrada</th>
-                                        <th>Horário de Saída</th>
-                                        <th>Valor da Diária</th>
-                                        <th>Valor Total</th>
-                                        <th>Finalizar Hospedagem</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
-                                      </tr>
-                                  </tbody>
-                                </table>
-                            </div>    
-                        </div>
-                    </div>
-                    <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Hospedagens Atrasadas</h2>
+                            <h2 class="text-center" style="font-size: 28px;">Hospedagens em Término</h2>
                             <br>
                             <div class="table-responsive">
                                 <table class="table table-bordered">
