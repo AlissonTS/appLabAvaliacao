@@ -38,7 +38,7 @@ CREATE TABLE QUARTO(
 		numero int not null,
 		area float not null,
 		maxHosp int not null,
-		descricaoExtra varchar(120) not null,
+		descricaoExtra varchar(120),
 		estado int not null,
 		valorDiaria float not null,
 		codEstabelecimento int not null,

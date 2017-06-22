@@ -8,6 +8,7 @@ package br.ufsm.csi.hotelmanagementats.dao;
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
 import br.ufsm.csi.hotelmanagementats.model.Gasto;
 import br.ufsm.csi.hotelmanagementats.model.Hospedagem;
+import br.ufsm.csi.hotelmanagementats.model.Hospede;
 import br.ufsm.csi.hotelmanagementats.model.Quarto;
 import br.ufsm.csi.hotelmanagementats.util.ConectaBD;
 import java.sql.Connection;
@@ -230,5 +231,52 @@ public class HospedagemDao {
         }
         
         return retorno;
+    }
+    
+    public Hospedagem carregarHospedesHospedagem(Hospedagem h){
+			
+        // System.out.println("\nHospedagemDao - Buscar hóspedes presentes na hospedagem no Estabelecimento...\n");
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+		
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT hospede.cod AS cod, email, nome, cpf, telcel "
+                    + "FROM HOSPEDE, HOSPEDAGEM, HOSP_HOSPEDE WHERE "
+                    + "hospede.cod=hosp_hospede.codHospede and "
+                    + "hospedagem.cod=hosp_hospede.codHospedagem and hospedagem.cod=?";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, h.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+
+            List<Hospede> hospedes = new ArrayList();
+            
+            while(valor.next()){		
+                Hospede hp = new Hospede();
+				
+                hp.setCod(valor.getInt("cod"));
+                hp.setEmail(valor.getString("email"));
+                hp.setNome(valor.getString("nome"));
+                hp.setCpf(valor.getString("cpf"));
+                hp.setTelCel(valor.getString("telcel"));
+
+                hospedes.add(hp);
+            }
+
+            if(hospedes.size()>0){
+                h.setHospedes(hospedes);
+            }
+            
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return h;
     }
 }

@@ -28,6 +28,51 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HospedagemController {
     
+    @RequestMapping(value = "hospedesQuartoHospedagem.html", method = RequestMethod.POST)
+    public ModelAndView hospedesQuartoHospedagem(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Hospedagem do Estabelecimento para mostrar Hóspedes...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensCorrentesGasto");
+        
+        HospedagemDao hD = new HospedagemDao();
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+            
+            Hospedagem h = new Hospedagem();
+            h.setCod(codHospedagem);
+			
+            Quarto q = new Quarto();
+
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+            q = qD.carregarQuartoHospedagem(h, est);
+	    
+            if(q!=null){
+                h.setQuarto(q);
+            
+                h = hD.carregarHospedesHospedagem(h);
+
+                if(h!=null){
+                    mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedesQuartoHospedagem");
+                    mv.addObject("hospedagemEscolhida", h);
+                    System.out.println("Hospedes pertencentes a hospedagem buscados!");
+                }
+            }
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "hospedesQuartoHospedagem.html", method = RequestMethod.GET)
+    public String hospedesQuartoHospedagem(){	
+        return "forward:hospedagensCorrentesGasto.html";
+    }
+    
     @RequestMapping("relatoriosHospedagem.html")
     public ModelAndView relatoriosHospedagem(){	
         ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/relatoriosHospedagem");
