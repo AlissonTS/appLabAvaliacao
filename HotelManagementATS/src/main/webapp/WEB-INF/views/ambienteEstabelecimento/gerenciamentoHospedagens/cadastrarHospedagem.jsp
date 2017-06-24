@@ -9,6 +9,7 @@
     <head>
         <title>Cadastrar Hospedagem - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
+        <link rel="stylesheet" href="css/bootstrap-chosen.css"/>
     </head>
     <body>
         <div id="wrapper">
@@ -148,7 +149,8 @@
                                                 <div class="form-group row">
                                                     <label for="hospedes" class="col-md-4 col-xs-4 col-form-label">Hóspedes:</label>
                                                         <div class="col-md-8 col-xs-8">
-                                                            <select class="form-control" id="hospedes" style="height: 50px;">
+                                                            <select data-placeholder="Escolha um Hóspede" class="chosen-select" tabindex="2" id="hospedes" style="height: 50px;">
+                                                                <option></option>
                                                                 <option>Alisson - 1111111111</option>
                                                                 <option>Trindade - 1111111111</option>
                                                                 <option>Souza - 1111111111</option>
@@ -164,8 +166,8 @@
                                                                 <option>Mito - 1111111111</option>
                                                                 <option>Brasil - 1111111111</option>
                                                                 <option>Gab - 1111111111</option>
-                                                            </select><br>
-                                                            <button type="submit" class="btn btn-default">Inserir Hóspede</button>
+                                                            </select><br><br>
+                                                            <button type="button" class="btn btn-default">Inserir Hóspede</button>
                                                         </div>
                                                 </div>
                                         </div>
@@ -220,4 +222,7 @@
     </body>
     <script type="text/javascript" src="scripts/calendarioJs.js"></script>
     <script type="text/javascript" src="scripts/mask.js"></script>
+    
+    <script type="text/javascript" src="js/chosen.jquery.js"></script>
+    <script type="text/javascript" src="scripts/chosenHospedagem.js"></script>
 </html>
