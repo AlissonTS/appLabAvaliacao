@@ -100,20 +100,121 @@
                 
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px;">
-                        <div class="col-md-offset-3 col-md-6 col-xs-12">
+                        <div class="col-md-offset-1 col-md-10 col-xs-12">
                             <h2 class="text-center" style="font-size: 28px;">Página Principal - Estabelecimento </h2>
-
-                            <c:if test="${not empty operador and empty administrador}">   
-                                <p class="text-center" style="font-size: 18px">Olá, ${operador.nome}</p>
-                            </c:if> 
-                            <br>    
-                            <c:if test="${not empty estabelecimentoEscolhido}">
-                                <div style="font-size: 19px">
-                                    <p class="text-center">Nome do Hotel: ${estabelecimentoEscolhido.nome}</p>
-                                    <p class="text-center">CNPJ: ${estabelecimentoEscolhido.cnpj}</p>
-                                    <p class="text-center">Telefone Fixo: ${estabelecimentoEscolhido.telFixo}</p>
+                            <br>
+                            
+                            <div class="row">
+                                <div class="col-md-offset-4 col-md-4 col-xs-12">
+                                    <div class="form-group text-center">
+                                        <label for="filtro">Selecione um tipo de filtro:</label>
+                                        <select class="form-control" id="filtro">
+                                            <option selected disabled hidden>Filtro de Postagens</option>
+                                            <option value="1">Hospedagens em Término</option>
+                                            <option value="2">Hospedagens Atrasadas</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </c:if>
+                            </div>
+                            
+                            <jsp:useBean id="hospedagemDao" class="br.ufsm.csi.hotelmanagementats.dao.HospedagemDao"/>
+                            
+                            <div class="row" id="hospedagensTermino" style="margin-top: 1%;">
+                                <div class="col-md-12 col-xs-12">
+                                    <div>
+                                        <h2 class="text-center" style="font-size: 24px;">Hospedagens em Término</h2>
+
+                                        <c:set value="${hospedagemDao.getHospedagensTermino(estabelecimentoEscolhido)}" var="hospedagensTermino"/>
+
+                                        <c:if test="${not empty hospedagensTermino}">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                      <tr>
+                                                        <th>N° do Quarto</th>
+                                                        <th>Horário de Entrada</th>
+                                                        <th>Horário de Saída</th>
+                                                        <th>Valor da Diária</th>
+                                                        <th>Valor Total</th>
+                                                        <th>Mostrar Hospedagem</th>
+                                                        <th>Finalizar Hospedagem</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <c:forEach var="hospedagem" items="${hospedagensTermino}">   
+                                                        <tr>
+                                                          <td>${hospedagem.quarto.numero}</td>
+                                                          <td>${hospedagem.dataInicial} - ${hospedagem.horaInicial}</td>
+                                                          <td>${hospedagem.dataFinal} - ${hospedagem.horaFinal}</td>
+                                                          <td>${hospedagem.quarto.valorDiaria}</td>
+
+                                                          <c:set value="${hospedagemDao.getTotalGastos(hospedagem)}" var="totalGastos"/>
+
+                                                          <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
+                                                          <td class="text-center"><form action="mostrarHospedagemTermino.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
+                                                          <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
+                                                        </tr>
+                                                      </c:forEach>
+                                                  </tbody>
+                                                </table>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${empty hospedagensTermino}">
+                                            <br><p class="text-center"><strong>O estabelecimento não possui hospedagens em término no dia*.</strong></p><br>
+                                            <p class="text-center"><strong>* Hospedagens que devem ser finalizadas antes de seu horário de término no dia de hoje.</strong></p>
+                                        </c:if> 
+                                    </div>
+                                </div>    
+                            </div>
+                                        
+                            <div class="row" id="hospedagensAtrasadas" style="margin-top: 1%; display: none;">
+                                <div class="col-md-12 col-xs-12">            
+                                    <div>
+                                        <h2 class="text-center" style="font-size: 24px;">Hospedagens Atrasadas</h2>                                
+
+                                        <c:set value="${hospedagemDao.getHospedagensAtrasadas(estabelecimentoEscolhido)}" var="hospedagensAtrasadas"/>
+
+                                        <c:if test="${not empty hospedagensAtrasadas}">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                      <tr>
+                                                        <th>N° do Quarto</th>
+                                                        <th>Horário de Entrada</th>
+                                                        <th>Horário de Saída ¹</th>
+                                                        <th>Valor da Diária</th>
+                                                        <th>Valor Total ¹</th>
+                                                        <th>Mostrar Hospedagem</th>
+                                                        <th>Finalizar Hospedagem</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <c:forEach var="hospedagem" items="${hospedagensAtrasadas}">   
+                                                        <tr>
+                                                          <td>${hospedagem.quarto.numero}</td>
+                                                          <td>${hospedagem.dataInicial} - ${hospedagem.horaInicial}</td>
+                                                          <td>${hospedagem.dataFinal} - ${hospedagem.horaFinal}</td>
+                                                          <td>${hospedagem.quarto.valorDiaria}</td>
+
+                                                          <c:set value="${hospedagemDao.getTotalGastos(hospedagem)}" var="totalGastos"/>
+
+                                                          <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
+                                                          <td class="text-center"><form action="mostrarHospedagemAtrasada.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
+                                                          <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
+                                                        </tr>
+                                                      </c:forEach>
+                                                  </tbody>
+                                                </table>
+                                            </div>
+                                            <br><p class="text-center"><strong>1 - Horário de saída e valor total da hospedagem serão atualizados ao finalizar a hospedagem.</strong></p>
+                                        </c:if>
+                                        <c:if test="${empty hospedagensAtrasadas}">
+                                            <br><p class="text-center"><strong>O estabelecimento não possui hospedagens atrasadas.</strong></p>
+                                        </c:if>
+                                    </div>
+                                </div>    
+                            </div>        
+                            
                         </div>
                     </div>
                 </div>                 
@@ -123,5 +224,6 @@
         </div>  
         
         <%@ include file="../../../import/js.jsp" %>
+        <script type="text/javascript" src="scripts/filtroHospedagens.js"></script>
     </body>
 </html>
