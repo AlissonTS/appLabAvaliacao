@@ -70,3 +70,23 @@
             $("#nomeHospede").html(nome);
             $("#yesHospede").val(cod);
         });
+
+        $(document).on('click', '#tblHospedagensAtrasadas td', function(e) {
+            e.preventDefault;
+            
+            var numero = $(this).closest('tr').find('th[data-numero]').data('numero');
+            var cod = $(this).closest('tr').find('td[data-cod]').data('cod');
+            
+            $("#numeroQuarto2").html(numero);
+            $("#yesQuarto2").val(cod);
+        });
+        
+        $(document).on('click', '#tblHospedagensTermino td', function(e) {
+            e.preventDefault;
+            
+            var numero = $(this).closest('tr').find('th[data-numero]').data('numero');
+            var cod = $(this).closest('tr').find('td[data-cod]').data('cod');
+            
+            $("#numeroQuarto").html(numero);
+            $("#yesQuarto").val(cod);
+        });

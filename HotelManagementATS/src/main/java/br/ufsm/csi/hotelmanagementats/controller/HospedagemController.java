@@ -198,11 +198,6 @@ public class HospedagemController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensAtrasadas";
     }
     
-    @RequestMapping("finalizarHospedagem.html")
-    public String finalizarHospedagem(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem";
-    }
-    
     @RequestMapping("hospedagensCorrentesGasto.html")
     public String hospedagensCorrentesGasto(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensCorrentesGasto";
@@ -418,5 +413,29 @@ public class HospedagemController {
     @RequestMapping(value = "mostrarHospedagemAtrasada.html", method = RequestMethod.GET)
     public String mostrarHospedagemAtrasada(){	
         return "forward:hospedagensAtrasadas.html";
+    }
+    
+    @RequestMapping(value = "finalizarHospedagemTermino.html", method = RequestMethod.POST)
+    public ModelAndView finalizarHospedagemTermino(HttpServletRequest rq, HttpSession session){	
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "finalizarHospedagemTermino.html", method = RequestMethod.GET)
+    public String finalizarHospedagemTermino(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem";
+    }
+    
+    @RequestMapping(value = "finalizarHospedagemAtrasada.html", method = RequestMethod.POST)
+    public ModelAndView finalizarHospedagemAtrasada(HttpServletRequest rq, HttpSession session){	
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "finalizarHospedagemAtrasada.html", method = RequestMethod.GET)
+    public String finalizarHospedagemAtrasada(){	
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem";
     }
 }

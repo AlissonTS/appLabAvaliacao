@@ -110,7 +110,7 @@
                             
                             <c:if test="${not empty hospedagens}">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered" id="tblHospedagensAtrasadas">
                                         <thead>
                                           <tr>
                                             <th>N° do Quarto</th>
@@ -125,8 +125,8 @@
                                         <tbody>
                                           <c:forEach var="hospedagem" items="${hospedagens}">   
                                             <tr>
-                                              <td>${hospedagem.quarto.numero}</td>
-                                              <td>${hospedagem.dataInicial} - ${hospedagem.horaInicial}</td>
+                                              <th data-numero="${hospedagem.quarto.numero}">${hospedagem.quarto.numero}</th>
+                                              <td data-cod="${hospedagem.cod}">${hospedagem.dataInicial} - ${hospedagem.horaInicial}</td>
                                               <td>${hospedagem.dataFinal} - ${hospedagem.horaFinal}</td>
                                               <td>${hospedagem.quarto.valorDiaria}</td>
                                               
@@ -134,7 +134,7 @@
                                               
                                               <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
                                               <td class="text-center"><form action="mostrarHospedagemAtrasada.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
-                                              <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
+                                              <td class="text-center"><button type="button" id="finalizarHospedagem" name="cod" class="btn btn-default" data-toggle="modal" data-target="#confirmFinalizar">Finalizar</button></td>
                                             </tr>
                                           </c:forEach>
                                       </tbody>
@@ -149,10 +149,31 @@
                     </div>
                 </div>                 
             </div>
-                        
+            
+            <!-- Modal Finalizar Hospedagem Atrasada -->                  
+            <div class="modal fade" id="confirmFinalizar" tabindex="-1" role="dialog" aria-labelledby="confirmFinalizarLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Finalizar Hospedagem</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja finalizar a hospedagem do quarto número <strong id="numeroQuarto"></strong>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <form id="formularioHabilitar" action="finalizarHospedagemAtrasada.html" method="POST">
+                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesQuarto" name="cod">Sim</button>
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>                  
+                            
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
+        <script type="text/javascript" src="scripts/modalAcao.js"></script>
     </body>
 </html>
