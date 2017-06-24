@@ -7,7 +7,7 @@
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Finalizar Hospedagem - ATS-HM</title>
+        <title>Mostrar Hospedagem - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
     </head>
     <body>
@@ -102,50 +102,60 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%; margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
+                            <c:if test="${verificador==0}">
                                 <a href="hospedagensTermino.html" style="font-size: 16px;">Voltar</a>
+                            </c:if>
+                            <c:if test="${verificador==1}">
+                                <a href="hospedagensAtrasadas.html" style="font-size: 16px;">Voltar</a>
+                            </c:if>
+                            
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Finalizar Hospedagem</h2>
-                            <h3 class="text-center" style="font-size: 25px;">Quarto ??</h3>   
+                            <h2 class="text-center" style="font-size: 28px;">Mostrar Hospedagem</h2>
+                            <h3 class="text-center" style="font-size: 25px;">Quarto número ${hospedagemEscolhida.quarto.numero}</h3><br>  
                          </div>    
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
-                        <div class="col-md-offset-1 col-md-10 col-xs-12">
+                        <div class="col-md-12 col-xs-12">
                             <div class="row" style="font-size: 16px;">
-                                <div class="col-md-offset-1 col-md-5 col-xs-12">
+                                <div class="col-md-offset-1 col-md-4 col-xs-12">
                                     <div class="row" style="margin-bottom: 2%;">
                                         <div class="col-md-12 col-xs-12">
                                             <h4 class="text-center" style="font-size: 20px;">Informações Gerais:</h4>
                                             <br>
                                             <div class="row">
                                                 <p class="col-xs-4"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial:</p>
-                                                <p class="col-xs-8"> 11/05/2017 </p>
+                                                <p class="col-xs-8"> ${hospedagemEscolhida.dataInicial} </p>
                                             </div>
                                             <div class="row">
                                                 <p class="col-xs-4"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</p>
-                                                <p class="col-xs-8"> 12/05/2017 </p>
+                                                <p class="col-xs-8"> ${hospedagemEscolhida.dataFinal} </p>
                                             </div>
                                             <div class="row">
                                                 <p class="col-xs-4">Hora Inicial:</p>
-                                                <p class="col-xs-8"> 22:30 </p>
+                                                <p class="col-xs-8"> ${hospedagemEscolhida.horaInicial} </p>
                                             </div>
                                             <div class="row">
                                                 <p class="col-xs-4">Hora Final:</p>
-                                                <p class="col-xs-8"> 22:30 </p>
+                                                <p class="col-xs-8"> ${hospedagemEscolhida.horaFinal} </p>
                                             </div>
                                             <div class="row">
                                                 <p class="col-xs-4">Valor da Diária:</p>
-                                                <p class="col-xs-8"> R$ 530,00 </p>
+                                                <p class="col-xs-8"> ${hospedagemEscolhida.quarto.valorDiaria} </p>
                                             </div>
                                             <div class="row">
                                                 <p class="col-xs-4">Valor da Hospedagem:</p>
-                                                <p class="col-xs-8"> R$ 530,00 </p>
+                                                <p class="col-xs-8"> ${hospedagemEscolhida.valorHospedagem}</p>
                                             </div>
+                                            
+                                            <jsp:useBean id="hospedagemDao" class="br.ufsm.csi.hotelmanagementats.dao.HospedagemDao"/>
+                                            <c:set value="${hospedagemDao.getTotalGastos(hospedagemEscolhida)}" var="totalGastos"/>
+                                            
                                             <div class="row">
                                                 <p class="col-xs-4">Valor total:</p>
-                                                <p class="col-xs-8"> R$ 540,00 </p>
+                                                <p class="col-xs-8"><c:set var="valor" value="${totalGastos.valorGastos+hospedagemEscolhida.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></p>
                                             </div>
                                         </div>
                                     </div>
@@ -154,65 +164,68 @@
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
                                             <h4 style="font-size: 20px;">Hóspedes presentes no quarto:</h4>
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered table-hover">
-                                                      <thead>
-                                                        <tr>
-                                                          <th>Nome do Hóspede</th>
-                                                          <th>CPF</th>
-                                                        </tr>
-                                                      </thead>
-                                                      <tbody>
-                                                        <tr>
-                                                          <th>1</th>
-                                                          <td>Conteúdo</td>
-                                                        </tr>
-                                                        <tr>
-                                                          <th>2</th>
-                                                          <td>Conteúdo</td>
-                                                        </tr>
-                                                      </tbody>
-                                                    </table>
-                                                </div>
+                                                <c:if test="${not empty hospedagemEscolhida.hospedes}">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-hover">
+                                                          <thead>
+                                                            <tr>
+                                                              <th>Nome do Hóspede</th>
+                                                              <th>CPF</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <c:forEach var="hospede" items="${hospedagemEscolhida.hospedes}">    
+                                                            <tr>
+                                                              <th>${hospede.nome}</th>
+                                                              <td>${hospede.cpf}</td>
+                                                            </tr>
+                                                            </c:forEach>
+                                                          </tbody>
+                                                        </table>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${empty hospedagemEscolhida.hospedes}">
+                                                    <p class="text-center"><strong>A hospedagem não possui hóspedes vinculados.</strong></p>
+                                                </c:if>
                                         </div>    
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12" style="margin-top:5%">
                                             <h4 style="font-size: 20px;">Gastos com serviço de quarto:</h4>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-hover">
-                                                  <thead>
-                                                    <tr>
-                                                      <th>Descrição</th>
-                                                      <th>Valor</th>
-                                                    </tr>
-                                                  </thead>
-                                                  <tbody>
-                                                    <tr>
-                                                      <th>1</th>
-                                                      <td>Conteúdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                      <th>2</th>
-                                                      <td>Conteúdo</td>
-                                                    </tr>
-                                                  </tbody>
-                                                </table>
-                                            </div>
+                                            
+                                            <c:if test="${totalGastos.valorGastos>0}">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-hover">
+                                                      <thead>
+                                                        <tr>
+                                                          <th>Descrição</th>
+                                                          <th>Valor (R$)</th>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        <c:forEach var="gasto" items="${hospedagemEscolhida.gastos}">  
+                                                            <tr>
+                                                              <th>${gasto.descricao}</th>
+                                                              <td>${gasto.valor}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                      </tbody>
+                                                    </table>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${totalGastos.valorGastos==0}">
+                                                <br><p class="text-center"><strong>A hospedagem não possui gastos de quarto cadastrados</strong></p>
+                                            </c:if>
                                         </div>    
                                     </div>
-                                    <div class="row">
-                                        <p class="col-xs-6">Total de gastos - Serviço de Quarto:</p>
-                                        <p class="col-xs-6"> R$10,00</p>
-                                    </div> 
+                                    <c:if test="${totalGastos.valorGastos>0}">
+                                       <div class="row">
+                                            <p class="col-xs-6">Total de gastos - Serviço de Quarto:</p>
+                                            <p class="col-xs-6"> R$ ${totalGastos.valorGastos}</p>
+                                        </div> 
+                                    </c:if> 
                                 </div>	
                             </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 3%; margin-top: 3%">
-                        <div class="col-lg-offset-3 col-lg-6">
-                            <p style="text-align: center">
-                            <button type="submit" class="btn btn-success btn-lg">Finalizar Hospedagem</button></p>
                         </div>
                     </div>
                 </div>                 

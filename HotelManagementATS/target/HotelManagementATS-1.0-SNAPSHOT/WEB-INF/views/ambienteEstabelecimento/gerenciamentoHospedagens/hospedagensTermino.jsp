@@ -133,7 +133,7 @@
                                               <c:set value="${hospedagemDao.getTotalGastos(hospedagem)}" var="totalGastos"/>
                                               
                                               <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
-                                              <td class="text-center"><form action="hospedesQuartoHospedagem.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
+                                              <td class="text-center"><form action="mostrarHospedagemTermino.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
                                               <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
                                             </tr>
                                           </c:forEach>

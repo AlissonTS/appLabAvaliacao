@@ -278,4 +278,98 @@ public class HospedagemController {
     public String cadastrarGastoQuartoGET(){	
         return "hospedagensCorrentesGasto.html";
     }
+    
+    @RequestMapping(value = "mostrarHospedagemTermino.html", method = RequestMethod.POST)
+    public ModelAndView mostrarHospedagemTermino(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Hospedagem em término do Estabelecimento para mostrar...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensTermino");
+        
+        HospedagemDao hD = new HospedagemDao();
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+            
+            Hospedagem h = new Hospedagem();
+            h.setCod(codHospedagem);
+			
+            Quarto q = new Quarto();
+
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+            q = qD.carregarQuartoHospedagem(h, est);
+	    
+            if(q!=null){
+                h.setQuarto(q);
+            
+                h = hD.carregarDadosHospedagem(h);
+
+                if(h!=null){
+                    mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/mostrarHospedagem");
+                    mv.addObject("hospedagemEscolhida", h);
+                    mv.addObject("verificador", 0);
+                    System.out.println("Hospedagem em término buscada para mostrar!");
+                }
+            }
+           
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "mostrarHospedagemTermino.html", method = RequestMethod.GET)
+    public String mostrarHospedagemTermino(){	
+        return "forward:hospedagensTermino.html";
+    }
+    
+    @RequestMapping(value = "mostrarHospedagemAtrasada.html", method = RequestMethod.POST)
+    public ModelAndView mostrarHospedagemAtrasada(HttpServletRequest rq, HttpSession session){
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Hospedagem em término do Estabelecimento para mostrar...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensAtrasadas");
+        
+        HospedagemDao hD = new HospedagemDao();
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+            
+            Hospedagem h = new Hospedagem();
+            h.setCod(codHospedagem);
+			
+            Quarto q = new Quarto();
+
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+            q = qD.carregarQuartoHospedagem(h, est);
+	    
+            if(q!=null){
+                h.setQuarto(q);
+            
+                h = hD.carregarDadosHospedagem(h);
+
+                if(h!=null){
+                    mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/mostrarHospedagem");
+                    mv.addObject("hospedagemEscolhida", h);
+                    mv.addObject("verificador", 1);
+                    System.out.println("Hospedagem em término buscada para mostrar!");
+                }
+            }
+           
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "mostrarHospedagemAtrasada.html", method = RequestMethod.GET)
+    public String mostrarHospedagemAtrasada(){	
+        return "forward:hospedagensAtrasadas.html";
+    }
 }

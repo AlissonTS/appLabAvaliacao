@@ -54,7 +54,7 @@
                                                     <li class="dropdown-header">Hospedagens</li>
                                                     <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
-                                                    <li class="active"><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
                                                     <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                     <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                     <li><a href="relatoriosHospedagem.html">Relatórios de Hospedagem</a></li>
@@ -83,7 +83,7 @@
                                                     <li class="dropdown-header">Hospedagens</li>
                                                     <li><a href="quartosDesocupados.html">Cadastrar Hospedagem</a></li>
                                                     <li><a href="hospedagensCorrentesAlterar.html">Alterar Hospedagem</a></li>
-                                                    <li class="active"><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
+                                                    <li><a href="hospedagensTermino.html">Hospedagens em Término</a></li>
                                                     <li><a href="hospedagensAtrasadas.html">Hospedagens Atrasadas</a></li>
                                                     <li><a href="hospedagensCorrentesGasto.html">Gerenciar gasto de Quarto</a></li>
                                                 </ul>

@@ -418,4 +418,61 @@ public class HospedagemDao {
 
         return h;
     }
+    
+    public Hospedagem carregarDadosHospedagem(Hospedagem h){
+        h = carregarHospedagem(h);
+        h = carregarHospedesHospedagem(h);
+        h = carregarGastosHospedagem(h);
+        
+        return h;
+    }
+    
+    public Hospedagem carregarHospedagem(Hospedagem h){
+			
+        // System.out.println("\nHospedagemDao - Buscar dados da hospedagem...\n");
+
+        List<Hospedagem> hospedagens = new ArrayList();
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT valorDiaria, numero, hospedagem.* FROM QUARTO, HOSPEDAGEM WHERE hospedagem.cod=? and "
+                    + "quarto.cod=hospedagem.codquarto "
+                    + "and quarto.estado=1 and hospedagem.estado=0 ORDER BY datafinal, horafinal ASC;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, h.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+
+            while(valor.next()){
+                Quarto qt = new Quarto();
+
+                h.setCod(valor.getInt("cod"));
+                h.setDataInicial(valor.getString("dataInicial"));
+                h.setDataFinal(valor.getString("dataFinal"));
+                h.setHoraInicial(valor.getString("horaInicial"));
+                h.setHoraFinal(valor.getString("horaFinal"));
+                h.setValorHospedagem(valor.getFloat("valorHospedagem"));
+				
+                qt.setNumero(valor.getInt("numero"));
+                qt.setCod(valor.getInt("codQuarto"));
+                qt.setValorDiaria(valor.getFloat("valorDiaria"));
+				
+                h.setQuarto(qt);
+				
+                hospedagens.add(h);
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return h;
+    }
 }
