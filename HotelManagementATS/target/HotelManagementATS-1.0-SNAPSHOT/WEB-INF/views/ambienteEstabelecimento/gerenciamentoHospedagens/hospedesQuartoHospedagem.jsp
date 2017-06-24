@@ -102,12 +102,22 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-top: 1%">
                         <div class="col-md-offset-3 col-md-3 col-xs-offset-1 col-xs-5">
+                            <c:if test="${verificador==0}">
+                                <a href="hospedagensCorrentesAlterar.html" style="font-size: 16px;">Voltar</a>
+                            </c:if>
+                            <c:if test="${verificador==1}">
                                 <a href="hospedagensCorrentesGasto.html" style="font-size: 16px;">Voltar</a>
+                            </c:if>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px; text-align: center;">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
-                            <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
+                            <c:if test="${verificador==0}">
+                                <h2 class="text-center" style="font-size: 28px;">Alterar Hospedagem</h2>
+                            </c:if>
+                            <c:if test="${verificador==1}">
+                                <h2 class="text-center" style="font-size: 28px;">Gerenciar gasto de Quarto</h2>
+                            </c:if>
                             <c:if test="${not empty hospedagemEscolhida}">
                                 <h3 class="text-center" style="font-size: 25px;">Hóspedes presentes no quarto ${hospedagemEscolhida.quarto.numero}</h3>
                                 <br>

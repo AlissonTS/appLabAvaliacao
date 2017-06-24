@@ -139,7 +139,7 @@
                                                   <td>Sem gastos de quarto</td>
                                               </c:if>
                                               <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
-                                              <td class="text-center"><form action="hospedesQuartoHospedagem.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
+                                              <td class="text-center"><form action="hospedesQuartoHospedagemGasto.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
                                               <td class="text-center"><form id="gerenciarGastoQuarto" action="gerenciarGastoQuarto.html" method="POST"><button type="submit" value="${hospedagem.cod}" id="gerenciarGastoQuarto" name="cod" class="btn btn-default">Gerenciar</button></form></td>
                                              </tr>
                                         </c:forEach>     

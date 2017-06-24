@@ -117,7 +117,7 @@
                                             <th>Horário de Entrada</th>
                                             <th>Horário de Saída ¹</th>
                                             <th>Valor da Diária</th>
-                                            <th>Valor Total ²</th>
+                                            <th>Valor Total ¹</th>
                                             <th>Mostrar Hospedagem</th>
                                             <th>Finalizar Hospedagem</th>
                                           </tr>
@@ -140,9 +140,7 @@
                                       </tbody>
                                     </table>
                                 </div>
-                                <br><p class="text-center"><strong>1 - Horário de saída desatualizado.</strong></p>
-                                <p class="text-center"><strong>2 - Valor total desatualizado.</strong></p>
-                                <p class="text-center"><strong>Serão atualizados ao finalizar a hospedagem.</strong></p>
+                                <br><p class="text-center"><strong>1 - Horário de saída e valor total da hospedagem serão atualizados ao finalizar a hospedagem.</strong></p>
                             </c:if>
                             <c:if test="${empty hospedagens}">
                                 <br><p class="text-center"><strong>O estabelecimento não possui hospedagens atrasadas.</strong></p>

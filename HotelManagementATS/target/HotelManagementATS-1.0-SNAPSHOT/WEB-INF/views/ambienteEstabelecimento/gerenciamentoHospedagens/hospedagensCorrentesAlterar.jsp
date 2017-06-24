@@ -117,8 +117,9 @@
                                             <th>N° do Quarto</th>
                                             <th>Horário de Entrada</th>
                                             <th>Horário de Saída</th>
-                                            <th>Valor da Diária</th>
-                                            <th>Valor da Hospedagem</th>
+                                            <th>Valor da Diária (R$)</th>
+                                            <th>Valor da Hospedagem (R$)</th>
+                                            <th>Mostrar Hóspedes</th>
                                             <th>Alterar Hospedagem</th>
                                           </tr>
                                         </thead>
@@ -130,6 +131,7 @@
                                                   <td>${hospedagem.dataFinal} - ${hospedagem.horaFinal}</td>
                                                   <td>${hospedagem.quarto.valorDiaria}</td>
                                                   <td>${hospedagem.valorHospedagem}</td>
+                                                  <td class="text-center"><form action="hospedesQuartoHospedagemAlterar.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
                                                   <td class="text-center"><a href="alterarHospedagemForm.html" class="btn btn-primary" role="button">Alterar</a></td>
                                                 </tr>
                                             </c:forEach>   

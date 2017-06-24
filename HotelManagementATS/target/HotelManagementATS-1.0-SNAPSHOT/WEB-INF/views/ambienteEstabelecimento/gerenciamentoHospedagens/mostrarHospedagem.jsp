@@ -108,7 +108,6 @@
                             <c:if test="${verificador==1}">
                                 <a href="hospedagensAtrasadas.html" style="font-size: 16px;">Voltar</a>
                             </c:if>
-                            
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
@@ -126,27 +125,19 @@
                                             <h4 class="text-center" style="font-size: 20px;">Informações Gerais:</h4>
                                             <br>
                                             <div class="row">
-                                                <p class="col-xs-4"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial:</p>
-                                                <p class="col-xs-8"> ${hospedagemEscolhida.dataInicial} </p>
+                                                <p class="col-xs-4"><i class="fa fa-calendar" style="font-size: 20px;"></i> Horário de Entrada:</p>
+                                                <p class="col-xs-8"> ${hospedagemEscolhida.dataInicial} - ${hospedagemEscolhida.horaInicial}</p>
                                             </div>
                                             <div class="row">
-                                                <p class="col-xs-4"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</p>
-                                                <p class="col-xs-8"> ${hospedagemEscolhida.dataFinal} </p>
-                                            </div>
-                                            <div class="row">
-                                                <p class="col-xs-4">Hora Inicial:</p>
-                                                <p class="col-xs-8"> ${hospedagemEscolhida.horaInicial} </p>
-                                            </div>
-                                            <div class="row">
-                                                <p class="col-xs-4">Hora Final:</p>
-                                                <p class="col-xs-8"> ${hospedagemEscolhida.horaFinal} </p>
+                                                <p class="col-xs-4">Horário de Saída¹:</p>
+                                                <p class="col-xs-8"> ${hospedagemEscolhida.dataFinal} - ${hospedagemEscolhida.horaFinal} </p>
                                             </div>
                                             <div class="row">
                                                 <p class="col-xs-4">Valor da Diária:</p>
                                                 <p class="col-xs-8"> ${hospedagemEscolhida.quarto.valorDiaria} </p>
                                             </div>
                                             <div class="row">
-                                                <p class="col-xs-4">Valor da Hospedagem:</p>
+                                                <p class="col-xs-4">Valor da Hospedagem¹:</p>
                                                 <p class="col-xs-8"> ${hospedagemEscolhida.valorHospedagem}</p>
                                             </div>
                                             
@@ -154,9 +145,15 @@
                                             <c:set value="${hospedagemDao.getTotalGastos(hospedagemEscolhida)}" var="totalGastos"/>
                                             
                                             <div class="row">
-                                                <p class="col-xs-4">Valor total:</p>
+                                                <p class="col-xs-4">Valor total¹:</p>
                                                 <p class="col-xs-8"><c:set var="valor" value="${totalGastos.valorGastos+hospedagemEscolhida.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></p>
                                             </div>
+                                            
+                                            <c:if test="${verificador==1}">
+                                                <div class="row">
+                                                    <p class="col-xs-12">1 - Dados serão atualizados com base no horário de saída atual (hoje) ao finalizar a hospedagem.</p>
+                                                </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>	
