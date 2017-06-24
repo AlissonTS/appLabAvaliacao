@@ -101,33 +101,50 @@
                 
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
-                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                        <div class="col-md-offset-1 col-md-10 col-xs-12">
                             <h2 class="text-center" style="font-size: 28px;">Hospedagens Atrasadas</h2>
                             <br>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                        <th>N° do Quarto</th>
-                                        <th>Horário de Entrada</th>
-                                        <th>Horário de Saída</th>
-                                        <th>Valor da Diária</th>
-                                        <th>Valor Total</th>
-                                        <th>Finalizar Hospedagem</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
-                                      </tr>
-                                  </tbody>
-                                </table>
-                            </div>    
+                            
+                            <jsp:useBean id="hospedagemDao" class="br.ufsm.csi.hotelmanagementats.dao.HospedagemDao"/>
+                            <c:set value="${hospedagemDao.getHospedagensAtrasadas(estabelecimentoEscolhido)}" var="hospedagens"/>
+                            
+                            <c:if test="${not empty hospedagens}">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>N° do Quarto</th>
+                                            <th>Horário de Entrada</th>
+                                            <th>Horário de Saída</th>
+                                            <th>Valor da Diária</th>
+                                            <th>Valor Total *</th>
+                                            <th>Mostrar Hospedagem</th>
+                                            <th>Finalizar Hospedagem</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <c:forEach var="hospedagem" items="${hospedagens}">   
+                                            <tr>
+                                              <td>${hospedagem.quarto.numero}</td>
+                                              <td>${hospedagem.dataInicial} - ${hospedagem.horaInicial}</td>
+                                              <td>${hospedagem.dataFinal} - ${hospedagem.horaFinal}</td>
+                                              <td>${hospedagem.quarto.valorDiaria}</td>
+                                              
+                                              <c:set value="${hospedagemDao.getTotalGastos(hospedagem)}" var="totalGastos"/>
+                                              
+                                              <td><c:set var="valor" value="${totalGastos.valorGastos+hospedagem.valorHospedagem}"/><fmt:formatNumber type = "number" maxFractionDigits="2" value="${valor}"/></td>
+                                              <td class="text-center"><form action="hospedesQuartoHospedagem.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
+                                              <td class="text-center"><a href="finalizarHospedagem.html" class="btn btn-default">Finalizar</a></td>
+                                            </tr>
+                                          </c:forEach>
+                                      </tbody>
+                                    </table>
+                                </div>
+                                <br><p class="text-center"><strong>* Valor total desatualizado, será atualizado ao finalizar a hospedagem.</strong></p>
+                            </c:if>
+                            <c:if test="${empty hospedagens}">
+                                <br><p class="text-center"><strong>O estabelecimento não possui hospedagens atrasadas.</strong></p>
+                            </c:if>
                         </div>
                     </div>
                 </div>                 

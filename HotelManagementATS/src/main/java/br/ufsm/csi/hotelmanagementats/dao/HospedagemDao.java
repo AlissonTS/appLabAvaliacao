@@ -19,6 +19,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,6 +48,143 @@ public class HospedagemDao {
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, est.getCod());
 
+            ResultSet valor = stmt.executeQuery();
+
+            while(valor.next()){
+                Hospedagem h = new Hospedagem();
+                Quarto qt = new Quarto();
+
+                h.setCod(valor.getInt("cod"));
+                h.setDataInicial(valor.getString("dataInicial"));
+                h.setDataFinal(valor.getString("dataFinal"));
+                h.setHoraInicial(valor.getString("horaInicial"));
+                h.setHoraFinal(valor.getString("horaFinal"));
+                h.setValorHospedagem(valor.getFloat("valorHospedagem"));
+				
+                qt.setNumero(valor.getInt("numero"));
+                qt.setCod(valor.getInt("codQuarto"));
+                qt.setValorDiaria(valor.getFloat("valorDiaria"));
+				
+                h.setQuarto(qt);
+				
+                hospedagens.add(h);
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return hospedagens;
+    }
+    
+    public List<Hospedagem> getHospedagensTermino(Estabelecimento est) throws ParseException{
+			
+        // System.out.println("\nHospedagemDao - Buscar hospedagens em término do Estabelecimento...\n");
+
+        List<Hospedagem> hospedagens = new ArrayList();
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            Date data = Calendar.getInstance().getTime();
+            String horaFormatada = sdf.format(data);
+
+            java.sql.Time horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
+            
+            sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            String dataFormatada = sdf.format(data);
+            
+            java.sql.Date dataN = new java.sql.Date(sdf.parse(dataFormatada).getTime());
+            
+            // System.out.println("Data: "+dataN+", Hora: "+horaN);
+            
+            sql = "SELECT valorDiaria, numero, hospedagem.* FROM QUARTO, HOSPEDAGEM WHERE codEstabelecimento=? "
+                    + "and quarto.cod=hospedagem.codquarto "
+                    + "and quarto.estado=1 and hospedagem.estado=0 "
+                    + "and dataFinal=? and horaFinal>=? "
+                    + "ORDER BY datafinal, horafinal ASC;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, est.getCod());
+            stmt.setDate(2, dataN);
+            stmt.setTime(3, horaN);
+            
+            ResultSet valor = stmt.executeQuery();
+
+            while(valor.next()){
+                Hospedagem h = new Hospedagem();
+                Quarto qt = new Quarto();
+
+                h.setCod(valor.getInt("cod"));
+                h.setDataInicial(valor.getString("dataInicial"));
+                h.setDataFinal(valor.getString("dataFinal"));
+                h.setHoraInicial(valor.getString("horaInicial"));
+                h.setHoraFinal(valor.getString("horaFinal"));
+                h.setValorHospedagem(valor.getFloat("valorHospedagem"));
+				
+                qt.setNumero(valor.getInt("numero"));
+                qt.setCod(valor.getInt("codQuarto"));
+                qt.setValorDiaria(valor.getFloat("valorDiaria"));
+				
+                h.setQuarto(qt);
+				
+                hospedagens.add(h);
+            }
+
+            stmt.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return hospedagens;
+    }
+    
+    public List<Hospedagem> getHospedagensAtrasadas(Estabelecimento est) throws ParseException{
+			
+        // System.out.println("\nHospedagemDao - Buscar hospedagens atrasadas do Estabelecimento...\n");
+
+        List<Hospedagem> hospedagens = new ArrayList();
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            Date data = Calendar.getInstance().getTime();
+            String horaFormatada = sdf.format(data);
+
+            java.sql.Time horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
+            
+            sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            String dataFormatada = sdf.format(data);
+            
+            java.sql.Date dataN = new java.sql.Date(sdf.parse(dataFormatada).getTime());
+            
+            // System.out.println("Data: "+dataN+", Hora: "+horaN);
+            
+            sql = "SELECT valorDiaria, numero, hospedagem.* FROM QUARTO, HOSPEDAGEM WHERE codEstabelecimento=? "
+                    + "and quarto.cod=hospedagem.codquarto "
+                    + "and quarto.estado=1 and hospedagem.estado=0 "
+                    + "and ((dataFinal=? and horaFinal<?) or (dataFinal<?)) "
+                    + "ORDER BY datafinal, horafinal ASC;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, est.getCod());
+            stmt.setDate(2, dataN);
+            stmt.setTime(3, horaN);
+            stmt.setDate(4, dataN);
+            
             ResultSet valor = stmt.executeQuery();
 
             while(valor.next()){
