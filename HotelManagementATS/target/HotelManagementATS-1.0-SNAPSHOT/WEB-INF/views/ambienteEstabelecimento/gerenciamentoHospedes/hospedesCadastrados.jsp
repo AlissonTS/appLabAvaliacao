@@ -134,8 +134,17 @@
                                               <td data-cod="${hospede.cod}">${hospede.cpf}</td>
                                               <td>${hospede.telCel}</td>
                                               <td>${hospede.email}</td>
-                                              <td class="text-center"><form action="alterarHospedeForm.html" method="POST"><button value="${hospede.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
-                                              <td class="text-center"><button id="excluirHospede" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirmExcluir">Excluir</button></td>
+                                              
+                                              <c:choose>
+                                                <c:when test="${hospede.estado==0}">
+                                                    <td class="text-center"><form action="alterarHospedeForm.html" method="POST"><button value="${hospede.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
+                                                    <td class="text-center"><button id="excluirHospede" name="cod" class="btn btn-danger" data-toggle="modal" data-target="#confirmExcluir">Excluir</button></td>
+                                                </c:when>
+                                                <c:when test="${hospede.estado==1}">
+                                                    <td>Alteração não pode ser feita</td>
+                                                    <td>Exclusão não pode ser feita</td>
+                                                </c:when>
+                                              </c:choose>
                                             </tr>
                                         </c:forEach>
                                       </tbody>

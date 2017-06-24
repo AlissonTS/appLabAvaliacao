@@ -16,6 +16,7 @@ public class Hospede {
     private String nome;
     private String email;
     private String telCel;
+    private int estado; // 0 - Não hospedado, 1 - Hospedado no hotel,
     private Estabelecimento estabelecimento;
 
     /**
@@ -100,6 +101,20 @@ public class Hospede {
      */
     public void setEstabelecimento(Estabelecimento estabelecimento) {
         this.estabelecimento = estabelecimento;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
     
 }

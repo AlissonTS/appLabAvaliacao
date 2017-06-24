@@ -45,14 +45,15 @@ public class HospedeDao {
             boolean verificador = valor.next();
             
             if(!verificador){
-                sql = "INSERT INTO HOSPEDE (cod, email, nome, cpf, telCel, codEstabelecimento) "
-                    + "values(DEFAULT, ?, ?, ?, ?, ?);";
+                sql = "INSERT INTO HOSPEDE (cod, email, nome, cpf, telCel, estado, codEstabelecimento) "
+                    + "values(DEFAULT, ?, ?, ?, ?, ?, ?);";
                 stmt = c.prepareStatement(sql);
                 stmt.setString(1, hp.getEmail());
                 stmt.setString(2, hp.getNome());
                 stmt.setString(3, hp.getCpf());
 		stmt.setString(4, hp.getTelCel());
-                stmt.setInt(5, hp.getEstabelecimento().getCod());
+                stmt.setInt(5, hp.getEstado());
+                stmt.setInt(6, hp.getEstabelecimento().getCod());
 
                 stmt.execute();
                 retorno = 2;
@@ -98,6 +99,7 @@ public class HospedeDao {
                 hp.setNome(valor.getString("nome"));
                 hp.setCpf(valor.getString("cpf"));
                 hp.setTelCel(valor.getString("telcel"));
+                hp.setEstado(valor.getInt("estado"));
 
                 hospedes.add(hp);
             }
@@ -122,7 +124,7 @@ public class HospedeDao {
                 c = ConectaBD.getConexao();
                 String sql;
 
-                sql = "SELECT * FROM HOSPEDE WHERE cod=? AND codEstabelecimento=?;";
+                sql = "SELECT * FROM HOSPEDE WHERE cod=? AND estado=0 AND codEstabelecimento=?;";
                 stmt = c.prepareStatement(sql);	
                 stmt.setInt(1, hp.getCod());
                 stmt.setInt(2, hp.getEstabelecimento().getCod());
@@ -135,6 +137,7 @@ public class HospedeDao {
                     hp.setNome(valor.getString("nome"));
                     hp.setTelCel(valor.getString("telcel"));
 		    hp.setEmail(valor.getString("email"));
+                    hp.setEstado(valor.getInt("estado"));
                 }
 
                 if(hp.getNome()==null){
@@ -178,7 +181,7 @@ public class HospedeDao {
             
             if(!verificador){
                 sql = "UPDATE HOSPEDE SET nome=?, telCel=?, cpf=?, email=?"
-                    + "WHERE cod=? and codEstabelecimento=?;";
+                    + "WHERE cod=? and codEstabelecimento=? and estado=0;";
                 stmt = c.prepareStatement(sql);
                 stmt.setString(1, hp.getNome());
                 stmt.setString(2, hp.getTelCel());
@@ -216,7 +219,7 @@ public class HospedeDao {
             c = ConectaBD.getConexao();
             String sql;
             
-            sql = "SELECT * FROM HOSPEDE WHERE cod=? and codEstabelecimento=?;";
+            sql = "SELECT * FROM HOSPEDE WHERE cod=? and codEstabelecimento=? and estado=0;";
             stmt = c.prepareStatement(sql);
             stmt.setInt(1, hp.getCod());
             stmt.setInt(2, hp.getEstabelecimento().getCod());
@@ -225,7 +228,7 @@ public class HospedeDao {
             boolean verificador = valor.next();
             
             if(verificador){
-                sql = "DELETE FROM HOSPEDE WHERE cod=? and codEstabelecimento=?;";
+                sql = "DELETE FROM HOSPEDE WHERE cod=? and codEstabelecimento=? and estado=0;";
                 stmt = c.prepareStatement(sql);
                 stmt.setInt(1, hp.getCod());
                 stmt.setInt(2, hp.getEstabelecimento().getCod());

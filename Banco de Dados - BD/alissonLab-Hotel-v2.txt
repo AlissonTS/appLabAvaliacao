@@ -60,6 +60,7 @@ CREATE TABLE HOSPEDE(
 		nome varchar(50) not null,
 		cpf varchar(15) not null,
 		telCel varchar(20) not null,
+		estado int not null,
 		codEstabelecimento int not null,
 		PRIMARY KEY(cod),
 		FOREIGN KEY(codEstabelecimento) REFERENCES ESTABELECIMENTO(cod)

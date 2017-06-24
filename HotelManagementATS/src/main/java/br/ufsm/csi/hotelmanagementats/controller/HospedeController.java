@@ -202,7 +202,9 @@ public class HospedeController {
                 hp.getTelCel().length()==15 && hp.getEmail().length()>0){
                
                 hp.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
-		   
+		
+                hp.setEstado(0);
+                
                 try{
                     int retorno = hD.cadastrarHospede(hp);
 
