@@ -62,7 +62,8 @@ public class HospedeDao {
                 retorno = 1;
             }
             
-            stmt.close();            
+            stmt.close();
+            c.close();
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");
@@ -105,6 +106,7 @@ public class HospedeDao {
             }
 
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -145,7 +147,7 @@ public class HospedeDao {
                 }
 
                 stmt.close();
-
+                c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -197,7 +199,8 @@ public class HospedeDao {
                 retorno = 1;
             }
             
-            stmt.close();            
+            stmt.close(); 
+            c.close();
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");
@@ -240,7 +243,8 @@ public class HospedeDao {
                 retorno = 0;
             }
   
-            stmt.close();             	
+            stmt.close();
+            c.close();
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");

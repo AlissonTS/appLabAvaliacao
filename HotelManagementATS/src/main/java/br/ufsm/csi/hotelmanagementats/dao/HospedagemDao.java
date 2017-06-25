@@ -74,6 +74,7 @@ public class HospedagemDao {
             }
 
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -142,6 +143,7 @@ public class HospedagemDao {
             }
 
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -213,6 +215,7 @@ public class HospedagemDao {
             }
 
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -271,7 +274,7 @@ public class HospedagemDao {
             }
 
             stmt.close();   
-            
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -305,6 +308,7 @@ public class HospedagemDao {
             }
 
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -345,6 +349,7 @@ public class HospedagemDao {
             }
             
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -374,6 +379,7 @@ public class HospedagemDao {
             
             stmt.execute();
             stmt.close();
+            c.close();
             retorno = true;
             
         }catch(SQLException e){
@@ -424,6 +430,7 @@ public class HospedagemDao {
             }
             
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -484,6 +491,7 @@ public class HospedagemDao {
             }
 
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -510,6 +518,7 @@ public class HospedagemDao {
 
             java.sql.Time horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
 
+            c.setAutoCommit(false);
             // Update Hóspedes
             sql = "UPDATE HOSPEDE SET estado=0 FROM HOSP_HOSPEDE "
                     + "WHERE hosp_hospede.codHospede=hospede.cod and hosp_hospede.codHospedagem=?;";
@@ -537,7 +546,9 @@ public class HospedagemDao {
 
             retorno = 1;
 
-            stmt.close();                   
+            stmt.close(); 
+            c.commit();
+            c.close();
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");
@@ -597,6 +608,8 @@ public class HospedagemDao {
 
             horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
             
+            c.setAutoCommit(false);
+            
             // Update Hóspedes
             sql = "UPDATE HOSPEDE SET estado=0 FROM HOSP_HOSPEDE "
                     + "WHERE hosp_hospede.codHospede=hospede.cod and hosp_hospede.codHospedagem=?;";
@@ -626,7 +639,9 @@ public class HospedagemDao {
 
             retorno = 1;
             
-            stmt.close();            
+            stmt.close();
+            c.commit();
+            c.close();
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");

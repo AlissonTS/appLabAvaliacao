@@ -44,7 +44,7 @@ public class UsuarioAdmDao {
             stmt.execute();
             stmt.close();
             retorno = true;
-            
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -81,7 +81,7 @@ public class UsuarioAdmDao {
             stmt.execute();
             stmt.close();
             retorno = true;
-            
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -125,7 +125,7 @@ public class UsuarioAdmDao {
             }
             
             stmt.close();
-            
+            c.close();
         }catch(Exception e){
             e.printStackTrace();
             u = null;

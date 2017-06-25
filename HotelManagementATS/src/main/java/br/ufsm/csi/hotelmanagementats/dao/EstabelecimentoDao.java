@@ -60,7 +60,8 @@ public class EstabelecimentoDao {
                 retorno = 1;
             }
             
-            stmt.close();            
+            stmt.close(); 
+            c.close();
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");
@@ -100,6 +101,7 @@ public class EstabelecimentoDao {
             }
 
             stmt.close();
+            c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -140,7 +142,7 @@ public class EstabelecimentoDao {
                 }
 
                 stmt.close();
-
+                c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
@@ -190,7 +192,8 @@ public class EstabelecimentoDao {
                 retorno = 1;
             }
             
-            stmt.close();            
+            stmt.close(); 
+            c.close();
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");
@@ -232,7 +235,8 @@ public class EstabelecimentoDao {
                 retorno = 0;
             }
  
-            stmt.close();   	
+            stmt.close();
+            c.close();
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");
