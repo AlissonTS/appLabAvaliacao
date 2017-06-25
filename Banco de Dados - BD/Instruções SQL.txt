@@ -11,3 +11,14 @@ insert into hospedagem(cod, datainicial, datafinal, horainicial, horafinal, valo
 insert into hospedagem(cod, datainicial, datafinal, horainicial, horafinal, valorhospedagem, codquarto, estado) values (2, '2017-06-13', '2017-06-15', '08:00', '16:00', 500, 2, 0)
 
 insert into HOSP_HOSPEDE(codHospedagem, codHospede) values (1, 1);  
+
+
+select * from hospedagem;
+select * from quarto;
+select * from hospede;
+select * from hosp_hospede;
+
+update quarto set estado=1 where cod=1;
+update hospede set estado=1 where cod=1;
+
+update hospedagem set horaFinal='23:59:00', dataFinal='2017-06-25', estado=0 where cod=1;

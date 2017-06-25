@@ -440,11 +440,11 @@ public class QuartoDao {
         return q;
     }
     
-    public Quarto carregarQuartoHospedagemAtrasada(Hospedagem h, Estabelecimento est) throws ParseException{
+    public Hospedagem carregarQuartoHospedagemAtrasada(Hospedagem h, Estabelecimento est) throws ParseException{
         
         System.out.println("\nQuartoDao - Carregar quarto escolhido pertencente à hospedagem atrasada a ser finalizada...\n");
         
-        Quarto q = new Quarto();
+        // Quarto q = new Quarto();
         
         Connection c = null;
         PreparedStatement stmt = null;
@@ -465,7 +465,7 @@ public class QuartoDao {
 			
             java.sql.Time horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
 			
-            sql = "SELECT quarto.cod AS codQuarto, numero FROM QUARTO, HOSPEDAGEM "
+            sql = "SELECT quarto.cod AS codQuarto, numero, valorDiaria, dataInicial FROM QUARTO, HOSPEDAGEM "
                     + "WHERE quarto.cod=hospedagem.codQuarto "
                     + "AND hospedagem.cod=? AND codEstabelecimento=? "
                     + "AND quarto.estado=1 AND hospedagem.estado=0 "
@@ -480,22 +480,24 @@ public class QuartoDao {
             ResultSet valor = stmt.executeQuery();	
 
             while(valor.next()){
-                q.setCod(valor.getInt("codQuarto"));
-                q.setNumero(valor.getInt("numero"));
+                h.getQuarto().setCod(valor.getInt("codQuarto"));
+                h.getQuarto().setNumero(valor.getInt("numero"));
+                h.getQuarto().setValorDiaria(valor.getFloat("valorDiaria"));
+                h.setDataInicial(valor.getString("dataInicial"));
             }
 
-            if(q.getNumero()<0){
-                q = null;
+            if(h.getQuarto().getNumero()<0){
+                h = null;
             }
-
+            
             stmt.close();
 
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
-            q = null;
+            h = null;
         }
 
-        return q;
+        return h;
     }
 }
