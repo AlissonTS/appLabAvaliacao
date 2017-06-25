@@ -420,7 +420,7 @@ public class HospedagemController {
         System.out.println("-------------------------------");
         System.out.println("Submit Escolha Hospedagem em término do Estabelecimento finalizar...");
         
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensAtrasadas");
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensTermino");
         
         HospedagemDao hD = new HospedagemDao();
         QuartoDao qD = new QuartoDao();
@@ -468,7 +468,7 @@ public class HospedagemController {
                     h = hD.carregarDadosHospedagem(h);
 
                     if(h!=null){
-                        mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem");
+                        mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagemFinalizada");
                         mv.addObject("mensagem", "<Strong>Sucesso</Strong> Hospedagem finalizada!");
                         mv.addObject("tipo", "success");
                         mv.addObject("hospedagemEscolhida", h);
@@ -483,7 +483,7 @@ public class HospedagemController {
     
     @RequestMapping(value = "finalizarHospedagemTermino.html", method = RequestMethod.GET)
     public String finalizarHospedagemTermino(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem";
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensTermino";
     }
     
     @RequestMapping(value = "finalizarHospedagemAtrasada.html", method = RequestMethod.POST)
@@ -532,7 +532,7 @@ public class HospedagemController {
                     }     
                 }catch(Exception e){
                     e.printStackTrace();
-                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados!");
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Finalização de hospedagem não concluída!");
                     mv.addObject("tipo", "danger");
                     System.out.println("Erro ao alterar!");
                 }
@@ -541,7 +541,7 @@ public class HospedagemController {
                     h = hD.carregarDadosHospedagem(h);
 
                     if(h!=null){
-                        mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem");
+                        mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagemFinalizada");
                         mv.addObject("mensagem", "<Strong>Sucesso</Strong> Hospedagem finalizada!");
                         mv.addObject("tipo", "success");
                         mv.addObject("hospedagemEscolhida", h);
@@ -556,6 +556,6 @@ public class HospedagemController {
     
     @RequestMapping(value = "finalizarHospedagemAtrasada.html", method = RequestMethod.GET)
     public String finalizarHospedagemAtrasada(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem";
+            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensAtrasadas";
     }
 }

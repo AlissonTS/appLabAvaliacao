@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -80,7 +82,7 @@ public class HospedagemDao {
         return hospedagens;
     }
     
-    public List<Hospedagem> getHospedagensTermino(Estabelecimento est) throws ParseException{
+    public List<Hospedagem> getHospedagensTermino(Estabelecimento est){
 			
         // System.out.println("\nHospedagemDao - Buscar hospedagens em término do Estabelecimento...\n");
 
@@ -143,12 +145,14 @@ public class HospedagemDao {
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
+        } catch (ParseException ex) {
+            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return hospedagens;
     }
     
-    public List<Hospedagem> getHospedagensAtrasadas(Estabelecimento est) throws ParseException{
+    public List<Hospedagem> getHospedagensAtrasadas(Estabelecimento est){
 			
         // System.out.println("\nHospedagemDao - Buscar hospedagens atrasadas do Estabelecimento...\n");
 
@@ -212,12 +216,14 @@ public class HospedagemDao {
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
+        } catch(ParseException ex){
+            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return hospedagens;
     }
     
-    public List<Hospedagem> gerarRelatorioHospedagem(String data, Estabelecimento est) throws ParseException{
+    public List<Hospedagem> gerarRelatorioHospedagem(String data, Estabelecimento est){
 			
         // System.out.println("\nHospedagemDao - Buscar informações de relatório de hospedagem do Estabelecimento...\n");
 
@@ -231,12 +237,14 @@ public class HospedagemDao {
             String sql;
 
             DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-            java.sql.Date dataN = new java.sql.Date(fmt.parse(data).getTime());
+            java.sql.Date dataN;
             
+            dataN = new java.sql.Date(fmt.parse(data).getTime());
+
             sql = "SELECT hospedagem.cod AS cod, quarto.numero, dataInicial, dataFinal, horaInicial, horaFinal, valorHospedagem "
-                    + "FROM QUARTO, HOSPEDAGEM WHERE "
-                    + "codEstabelecimento=? and quarto.cod=hospedagem.codquarto "
-                    + "and dataInicial<=? and dataFinal>=? ORDER BY numero ASC;";
+                + "FROM QUARTO, HOSPEDAGEM WHERE "
+                + "codEstabelecimento=? and quarto.cod=hospedagem.codquarto "
+                + "and dataInicial<=? and dataFinal>=? ORDER BY numero ASC;";
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, est.getCod());
             stmt.setDate(2, dataN);
@@ -253,20 +261,24 @@ public class HospedagemDao {
                 h.setDataFinal(valor.getString("dataFinal"));
                 h.setHoraInicial(valor.getString("horaInicial"));
                 h.setHoraFinal(valor.getString("horaFinal"));
-		h.setValorHospedagem(valor.getFloat("valorHospedagem"));
-                
+                h.setValorHospedagem(valor.getFloat("valorHospedagem"));
+
                 qt.setNumero(valor.getInt("numero"));
-				
+
                 h.setQuarto(qt);
-				
+
                 relatorio.add(h);
             }
 
-            stmt.close();
+            stmt.close();   
+            
         }catch(SQLException e){
             System.out.println("Exception SQL!");
             e.printStackTrace();
+        }catch(ParseException ex){
+            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
 
         return relatorio;
     }
@@ -492,6 +504,12 @@ public class HospedagemDao {
             c = ConectaBD.getConexao();
             String sql="";
             
+            DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            Date data = Calendar.getInstance().getTime();
+            String horaFormatada = sdf.format(data);
+
+            java.sql.Time horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
+
             // Update Hóspedes
             sql = "UPDATE HOSPEDE SET estado=0 FROM HOSP_HOSPEDE "
                     + "WHERE hosp_hospede.codHospede=hospede.cod and hosp_hospede.codHospedagem=?;";
@@ -499,7 +517,7 @@ public class HospedagemDao {
             stmt.setInt(1, h.getCod());
 
             stmt.execute();
-            
+
             // Update Quarto
             sql = "UPDATE QUARTO SET estado=0 WHERE cod=? AND codEstabelecimento=?;";
             stmt = c.prepareStatement(sql);
@@ -509,26 +527,30 @@ public class HospedagemDao {
             stmt.execute();
 
             // Update Hospedagem
-            sql = "UPDATE HOSPEDAGEM SET estado=1 WHERE cod=? AND codQuarto=?;";
+            sql = "UPDATE HOSPEDAGEM SET estado=1, horaFinal=? WHERE cod=? AND codQuarto=?;";
             stmt = c.prepareStatement(sql);
-            stmt.setInt(1, h.getCod());
-            stmt.setInt(2, h.getQuarto().getCod());
-
+            stmt.setTime(1, horaN);
+            stmt.setInt(2, h.getCod());
+            stmt.setInt(3, h.getQuarto().getCod());
+            
             stmt.execute();
 
             retorno = 1;
-            
-            stmt.close();            
+
+            stmt.close();                   
         }catch(SQLException e){
             retorno = 0;
             System.out.println("Exception SQL!");
             e.printStackTrace();
+        }catch (ParseException ex){
+            retorno = 0;
+            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+            
         return retorno;
     }
     
-    public int finalizarHospedagemAtrasada(Hospedagem h) throws ParseException{
+    public int finalizarHospedagemAtrasada(Hospedagem h){
         int retorno = 0;
         
         System.out.println("\nHospedagemDao - Finalizar hospedagem atrasada do Estabelecimento...\n");
@@ -543,11 +565,15 @@ public class HospedagemDao {
             DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date data = Calendar.getInstance().getTime();
 
-            Date dataInicial = sdf.parse(h.getDataInicial());
+            Date dataInicial;
             
+            java.sql.Date dataN;
+            java.sql.Time horaN;
+            
+            dataInicial = sdf.parse(h.getDataInicial());
             long dt = (data.getTime() - dataInicial.getTime()) + 3600000;      
             long dias = (dt / 86400000L);
-            
+
             if(dias<0){
                 dias = dias*-1;
             }
@@ -555,21 +581,21 @@ public class HospedagemDao {
                 dias = 1;
             }
             String dataFormatada = sdf.format(data);
-            
-            java.sql.Date dataN = new java.sql.Date(sdf.parse(dataFormatada).getTime());
-            
+
+            dataN = new java.sql.Date(sdf.parse(dataFormatada).getTime());
+
             // System.out.println("Valor da Diária: "+h.getQuarto().getValorDiaria());
             float valorHospedagemNovo = h.getQuarto().getValorDiaria()*dias;
-            
+
             // System.out.println("Dias: "+dias);
             // System.out.println("Valor Novo: "+valorHospedagemNovo);
-            
+
             h.setValorHospedagem(valorHospedagemNovo);
-            
+
             sdf = new SimpleDateFormat("HH:mm:ss");
             String horaFormatada = sdf.format(data);
 
-            java.sql.Time horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
+            horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
             
             // Update Hóspedes
             sql = "UPDATE HOSPEDE SET estado=0 FROM HOSP_HOSPEDE "
@@ -605,6 +631,9 @@ public class HospedagemDao {
             retorno = 0;
             System.out.println("Exception SQL!");
             e.printStackTrace();
+        }catch(ParseException ex) {
+            retorno = 0;
+            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return retorno;

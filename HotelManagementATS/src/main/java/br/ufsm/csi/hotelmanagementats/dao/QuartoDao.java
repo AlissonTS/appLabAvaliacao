@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -382,7 +384,7 @@ public class QuartoDao {
         return q;
     }
     
-    public Quarto carregarQuartoHospedagemTermino(Hospedagem h, Estabelecimento est) throws ParseException{
+    public Quarto carregarQuartoHospedagemTermino(Hospedagem h, Estabelecimento est){
         
         System.out.println("\nQuartoDao - Carregar quarto escolhido pertencente à hospedagem em término a ser finalizada...\n");
         
@@ -435,12 +437,15 @@ public class QuartoDao {
             System.out.println("Exception SQL!");
             e.printStackTrace();
             q = null;
+        } catch (ParseException ex) {
+            q = null;
+            Logger.getLogger(QuartoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return q;
     }
     
-    public Hospedagem carregarQuartoHospedagemAtrasada(Hospedagem h, Estabelecimento est) throws ParseException{
+    public Hospedagem carregarQuartoHospedagemAtrasada(Hospedagem h, Estabelecimento est){
         
         System.out.println("\nQuartoDao - Carregar quarto escolhido pertencente à hospedagem atrasada a ser finalizada...\n");
         
@@ -496,6 +501,9 @@ public class QuartoDao {
             System.out.println("Exception SQL!");
             e.printStackTrace();
             h = null;
+        } catch (ParseException ex) {
+            h = null;
+            Logger.getLogger(QuartoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return h;

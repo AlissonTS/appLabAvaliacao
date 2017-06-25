@@ -7,7 +7,7 @@
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Finalizar Hospedagem - ATS-HM</title>
+        <title>Hospedagem Finalizada - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
         <link rel="stylesheet" href="css/cssPrintRecibo.css">
     </head>
