@@ -102,6 +102,12 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
                         <div class="col-md-12 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%; font-size: 16px;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
                             <h2 class="text-center" style="font-size: 28px;">Hospedagens Atrasadas</h2>
                             <br>
                             
@@ -158,11 +164,11 @@
                             <h4 class="modal-title" id="myModalLabel">Finalizar Hospedagem</h4>
                         </div>
                         <div class="modal-body">
-                            <p style="font-size: 17px;">Deseja finalizar a hospedagem do quarto número <strong id="numeroQuarto"></strong>?</p>
+                            <p style="font-size: 17px;">Deseja finalizar a hospedagem do quarto número <strong id="numeroQuarto2"></strong>?</p>
                         </div>
                         <div class="modal-footer">
                             <form id="formularioHabilitar" action="finalizarHospedagemAtrasada.html" method="POST">
-                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesQuarto" name="cod">Sim</button>
+                               <p class="text-center"><button type="submit" class="btn btn-danger" id="yesQuarto2" name="cod">Sim</button>
                                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
                             </form>
                         </div>

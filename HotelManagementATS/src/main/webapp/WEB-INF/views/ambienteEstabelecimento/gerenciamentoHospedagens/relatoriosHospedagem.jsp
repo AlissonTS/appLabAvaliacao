@@ -9,7 +9,7 @@
     <head>
         <title>Relatórios de Hospedagem - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %> 
-        <link rel="stylesheet" href="css/cssPrint.css">
+        <link rel="stylesheet" href="css/cssPrintRelatorio.css">
     </head>
     <body>
         <div id="wrapper">

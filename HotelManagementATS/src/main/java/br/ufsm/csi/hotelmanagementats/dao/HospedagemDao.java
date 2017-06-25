@@ -431,8 +431,6 @@ public class HospedagemDao {
 			
         // System.out.println("\nHospedagemDao - Buscar dados da hospedagem...\n");
 
-        List<Hospedagem> hospedagens = new ArrayList();
-
         Connection c = null;
         PreparedStatement stmt = null;
 
@@ -440,9 +438,16 @@ public class HospedagemDao {
             c = ConectaBD.getConexao();
             String sql;
 
-            sql = "SELECT valorDiaria, numero, hospedagem.* FROM QUARTO, HOSPEDAGEM WHERE hospedagem.cod=? and "
-                    + "quarto.cod=hospedagem.codquarto "
-                    + "and quarto.estado=1 and hospedagem.estado=0 ORDER BY datafinal, horafinal ASC;";
+            sql = "SELECT valorDiaria, numero, hospedagem.* FROM QUARTO, HOSPEDAGEM WHERE hospedagem.cod=? "
+                    + "and quarto.cod=hospedagem.codquarto "
+                    + "ORDER BY datafinal, horafinal ASC;";
+            
+            /* 
+            sql = "SELECT valorDiaria, numero, hospedagem.* FROM QUARTO, HOSPEDAGEM WHERE hospedagem.cod=? "
+                + "and quarto.cod=hospedagem.codquarto "
+                + "and quarto.estado=1 ORDER BY datafinal, horafinal ASC;";
+            */
+
             stmt = c.prepareStatement(sql);	
             stmt.setInt(1, h.getCod());
 
@@ -463,8 +468,6 @@ public class HospedagemDao {
                 qt.setValorDiaria(valor.getFloat("valorDiaria"));
 				
                 h.setQuarto(qt);
-				
-                hospedagens.add(h);
             }
 
             stmt.close();
@@ -474,5 +477,53 @@ public class HospedagemDao {
         }
 
         return h;
+    }
+    
+    public int finalizarHospedagemTermino(Hospedagem h){
+        int retorno = 0;
+        
+        System.out.println("\nHospedagemDao - Finalizar hospedagem em término do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql="";
+            
+            // Update Hóspedes
+            sql = "UPDATE HOSPEDE SET estado=0 FROM HOSP_HOSPEDE "
+                    + "WHERE hosp_hospede.codHospede=hospede.cod and hosp_hospede.codHospedagem=?;";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, h.getCod());
+
+            stmt.execute();
+            
+            // Update Quarto
+            sql = "UPDATE QUARTO SET estado=0 WHERE cod=? AND codEstabelecimento=?;";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, h.getQuarto().getCod());
+            stmt.setInt(2, h.getQuarto().getEstabelecimento().getCod());
+
+            stmt.execute();
+
+            // Update Hospedagem
+            sql = "UPDATE HOSPEDAGEM SET estado=1 WHERE cod=? AND codQuarto=?;";
+            stmt = c.prepareStatement(sql);
+            stmt.setInt(1, h.getCod());
+            stmt.setInt(2, h.getQuarto().getCod());
+
+            stmt.execute();
+
+            retorno = 1;
+            
+            stmt.close();            
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+        
+        return retorno;
     }
 }

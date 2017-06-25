@@ -416,10 +416,69 @@ public class HospedagemController {
     }
     
     @RequestMapping(value = "finalizarHospedagemTermino.html", method = RequestMethod.POST)
-    public ModelAndView finalizarHospedagemTermino(HttpServletRequest rq, HttpSession session){	
-        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem");
+    public ModelAndView finalizarHospedagemTermino(HttpServletRequest rq, HttpSession session) throws ParseException{	
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Hospedagem em término do Estabelecimento finalizar...");
         
-        return mv;
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensAtrasadas");
+        
+        HospedagemDao hD = new HospedagemDao();
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+            
+            Hospedagem h = new Hospedagem();
+            h.setCod(codHospedagem);
+			
+            Quarto q = new Quarto();
+
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+            q = qD.carregarQuartoHospedagemTermino(h, est);
+	    
+            if(q!=null){
+                q.setEstabelecimento(est);
+                h.setQuarto(q);
+				
+                int carregarDados=0;
+				
+                try{
+                    int retorno = hD.finalizarHospedagemTermino(h);
+				
+                    switch (retorno) {
+                        case 1:
+                            carregarDados=1; 
+                            System.out.println("Hospedagem finalizada!");
+                            break;
+                        default:
+                            mv.addObject("mensagem", "<Strong>Erro</Strong> Finalização de hospedagem não concluída!");
+                            mv.addObject("tipo", "danger");
+                            System.out.println("Erro ao finalizar hospedagem!");
+                            break;
+                    }     
+                }catch(Exception e){
+                    e.printStackTrace();
+                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados!");
+                    mv.addObject("tipo", "danger");
+                    System.out.println("Erro ao alterar!");
+                }
+				
+                if(carregarDados==1){
+                    h = hD.carregarDadosHospedagem(h);
+
+                    if(h!=null){
+                        mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/finalizarHospedagem");
+                        mv.addObject("mensagem", "<Strong>Sucesso</Strong> Hospedagem finalizada!");
+                        mv.addObject("tipo", "success");
+                        mv.addObject("hospedagemEscolhida", h);
+                        mv.addObject("verificador", 0);
+                        System.out.println("Hospedagem em término buscada para mostrar no recibo!");
+                    }
+                }
+            }
+        }
+        return mv;	
     }
     
     @RequestMapping(value = "finalizarHospedagemTermino.html", method = RequestMethod.GET)

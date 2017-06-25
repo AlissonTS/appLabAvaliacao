@@ -206,7 +206,7 @@
                         <div class="modal-body" style="font-size: 17px;">
                             <p class="text-center"><strong>Gasto:</strong></p>
                             <p class="text-center">Descrição: <strong id="descricao"></strong></p>
-                            <p class="text-center">Preço: <strong id="valor"></strong></p>
+                            <p class="text-center">Preço: R$ <strong id="valor"></strong></p>
                             <p>Deseja confirmar a o cadastro de gasto de quarto?</p>
                         </div>
                         <div class="modal-footer">

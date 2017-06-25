@@ -13,8 +13,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -355,6 +360,123 @@ public class QuartoDao {
             stmt.setInt(1, h.getCod());
             stmt.setInt(2, est.getCod());
 
+            ResultSet valor = stmt.executeQuery();	
+
+            while(valor.next()){
+                q.setCod(valor.getInt("codQuarto"));
+                q.setNumero(valor.getInt("numero"));
+            }
+
+            if(q.getNumero()<0){
+                q = null;
+            }
+
+            stmt.close();
+
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            q = null;
+        }
+
+        return q;
+    }
+    
+    public Quarto carregarQuartoHospedagemTermino(Hospedagem h, Estabelecimento est) throws ParseException{
+        
+        System.out.println("\nQuartoDao - Carregar quarto escolhido pertencente à hospedagem em término a ser finalizada...\n");
+        
+        Quarto q = new Quarto();
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date data = Calendar.getInstance().getTime();
+            String dataFormatada = sdf.format(data);
+			
+            java.sql.Date dataN = new java.sql.Date(sdf.parse(dataFormatada).getTime());
+			
+            sdf = new SimpleDateFormat("HH:mm:ss");
+            sdf.format(data);
+            String horaFormatada = sdf.format(data);
+			
+            java.sql.Time horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
+			
+            sql = "SELECT quarto.cod AS codQuarto, numero FROM QUARTO, HOSPEDAGEM "
+                    + "WHERE quarto.cod=hospedagem.codQuarto "
+                    + "AND hospedagem.cod=? AND codEstabelecimento=? "
+                    + "AND quarto.estado=1 AND hospedagem.estado=0 "
+                    + "AND dataFinal=? AND horaFinal>=?;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, h.getCod());
+            stmt.setInt(2, est.getCod());
+            stmt.setDate(3, dataN);
+            stmt.setTime(4, horaN);
+			
+            ResultSet valor = stmt.executeQuery();	
+
+            while(valor.next()){
+                q.setCod(valor.getInt("codQuarto"));
+                q.setNumero(valor.getInt("numero"));
+            }
+
+            if(q.getNumero()<0){
+                q = null;
+            }
+
+            stmt.close();
+
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            q = null;
+        }
+
+        return q;
+    }
+    
+    public Quarto carregarQuartoHospedagemAtrasada(Hospedagem h, Estabelecimento est) throws ParseException{
+        
+        System.out.println("\nQuartoDao - Carregar quarto escolhido pertencente à hospedagem atrasada a ser finalizada...\n");
+        
+        Quarto q = new Quarto();
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date data = Calendar.getInstance().getTime();
+            String dataFormatada = sdf.format(data);
+			
+            java.sql.Date dataN = new java.sql.Date(sdf.parse(dataFormatada).getTime());
+			
+            sdf = new SimpleDateFormat("HH:mm:ss");
+            sdf.format(data);
+            String horaFormatada = sdf.format(data);
+			
+            java.sql.Time horaN = new java.sql.Time(sdf.parse(horaFormatada).getTime());
+			
+            sql = "SELECT quarto.cod AS codQuarto, numero FROM QUARTO, HOSPEDAGEM "
+                    + "WHERE quarto.cod=hospedagem.codQuarto "
+                    + "AND hospedagem.cod=? AND codEstabelecimento=? "
+                    + "AND quarto.estado=1 AND hospedagem.estado=0 "
+                    + "AND ((dataFinal=? and horaFinal<?) or (dataFinal<?));";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, h.getCod());
+            stmt.setInt(2, est.getCod());
+            stmt.setDate(3, dataN);
+            stmt.setTime(4, horaN);
+	    stmt.setDate(5, dataN);		
+			
             ResultSet valor = stmt.executeQuery();	
 
             while(valor.next()){
