@@ -253,4 +253,47 @@ public class HospedeDao {
         
         return retorno;
     }
+    
+    public List<Hospede> carregarHospedesDesocupados(Estabelecimento est){
+        
+        System.out.println("\nHospedeDao - Carregar hóspedes que não estejam ocupados no momento no estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+        
+        List<Hospede> hospedes = new ArrayList();
+        
+        try{
+                c = ConectaBD.getConexao();
+                String sql;
+
+                sql = "SELECT * FROM HOSPEDE WHERE estado=0 AND codEstabelecimento=?;";
+                stmt = c.prepareStatement(sql);	
+                stmt.setInt(1, est.getCod());
+
+                ResultSet valor = stmt.executeQuery();	
+
+                while(valor.next()){
+                    Hospede hp = new Hospede();
+                    
+                    hp.setCod(valor.getInt("cod"));
+                    hp.setCpf(valor.getString("cpf"));
+                    hp.setNome(valor.getString("nome"));
+                    
+                    hospedes.add(hp);
+                }
+                if(hospedes.isEmpty()){
+                    hospedes=null;
+                }
+                
+                stmt.close();
+                c.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+            hospedes = null;
+        }
+
+        return hospedes;
+    }
 }

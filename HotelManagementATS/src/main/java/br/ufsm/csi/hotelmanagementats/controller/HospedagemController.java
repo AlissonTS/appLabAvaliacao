@@ -6,10 +6,12 @@
 package br.ufsm.csi.hotelmanagementats.controller;
 
 import br.ufsm.csi.hotelmanagementats.dao.HospedagemDao;
+import br.ufsm.csi.hotelmanagementats.dao.HospedeDao;
 import br.ufsm.csi.hotelmanagementats.dao.QuartoDao;
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
 import br.ufsm.csi.hotelmanagementats.model.Gasto;
 import br.ufsm.csi.hotelmanagementats.model.Hospedagem;
+import br.ufsm.csi.hotelmanagementats.model.Hospede;
 import br.ufsm.csi.hotelmanagementats.model.Quarto;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -27,6 +29,57 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class HospedagemController {
+    
+    @RequestMapping(value = "cadastrarHospedagemForm.html", method = RequestMethod.POST)
+    public ModelAndView cadastrarHospedagemForm(HttpServletRequest rq, HttpSession session){	
+        
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha quarto desocupado para Cadastro de Hospedagem...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/quartosDesocupados");
+        
+        HospedagemDao hD = new HospedagemDao();
+        QuartoDao qD = new QuartoDao();
+        
+        if(rq.getParameter("cod")!=null){
+            int codQuarto = Integer.parseInt(rq.getParameter("cod"));
+			
+            Quarto q = new Quarto();
+			
+            q.setCod(codQuarto);
+			
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            q.setEstabelecimento(est);
+			
+            q = qD.carregarQuartoEscolhido(q);
+            
+            HospedeDao hp = new HospedeDao();
+            List<Hospede> hospedes = new ArrayList();
+			
+            if(q!=null){
+                hospedes = hp.carregarHospedesDesocupados(est);
+
+                if(hospedes!=null){
+                    mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/cadastrarHospedagem");
+                    mv.addObject("hospedes", hospedes);
+                    mv.addObject("quarto", q);
+                    System.out.println("Quartos e hóspedes buscados para iniciar cadastro de hospedagem!");
+                }else{
+                    mv.addObject("mensagem", "<Strong> Aviso!</Strong> Estabelecimento não possui hóspedes que não estejam hospedados no momento!");
+                    mv.addObject("tipo", "warning");
+                }
+            }
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv; 
+    }
+    
+    @RequestMapping(value = "cadastrarHospedagemForm.html", method = RequestMethod.GET)
+    public String cadastrarHospedagemForm(){	
+            return "forward:quartosDesocupados.html";
+    }
     
     @RequestMapping(value = "hospedesQuartoHospedagemAlterar.html", method = RequestMethod.POST)
     public ModelAndView hospedesQuartoHospedagemAlterar(HttpServletRequest rq, HttpSession session){
@@ -171,11 +224,6 @@ public class HospedagemController {
     @RequestMapping("quartosDesocupados.html")
     public String quartosDesocupados(){	
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/quartosDesocupados";
-    }
-    
-    @RequestMapping("cadastrarHospedagemForm.html")
-    public String cadastrarHospedagemForm(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/cadastrarHospedagem";
     }
     
     @RequestMapping("hospedagensCorrentesAlterar.html")

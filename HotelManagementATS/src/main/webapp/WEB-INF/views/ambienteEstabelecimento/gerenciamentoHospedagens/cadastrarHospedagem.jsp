@@ -109,7 +109,7 @@
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
                         <div class="col-md-offset-2 col-md-8 col-xs-12">
                             <h2 class="text-center" style="font-size: 28px;">Cadastrar Hospedagem</h2>
-                            <h3 class="text-center" style="font-size: 25px;">Quarto ??</h3>   
+                            <h3 class="text-center" style="font-size: 25px;">Quarto número ${quarto.numero}</h3>   
                          </div>    
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px">
@@ -134,7 +134,7 @@
                                         <div class="form-group row">
                                             <label for="valorTotal" class="col-md-4 col-xs-4 col-form-label">Valor da Hospedagem:</label>
                                             <div class="col-md-6 col-xs-8">
-                                                <input class="form-control" style="height: 50px;" type="text" placeholder="Valor da Hospedagem" required="true" name="valorTotal" id="valorTotal">
+                                                <input class="form-control" style="height: 50px;" type="text" placeholder="Valor da Hospedagem" required="true" name="valorTotal" id="valorTotal" readonly="readonly">
                                             </div>
                                         </div>
                                     </form>
@@ -151,23 +151,11 @@
                                                         <div class="col-md-8 col-xs-8">
                                                             <select data-placeholder="Escolha um Hóspede" class="chosen-select" tabindex="2" id="hospedes" style="height: 50px;">
                                                                 <option></option>
-                                                                <option>Alisson - 1111111111</option>
-                                                                <option>Trindade - 1111111111</option>
-                                                                <option>Souza - 1111111111</option>
-                                                                <option>Mario - 1111111111</option>
-                                                                <option>Gabriel - 1111111111</option>
-                                                                <option>Alcantara - 1111111111</option>
-                                                                <option>Trineros - 1111111111</option>
-                                                                <option>Mito - 1111111111</option>
-                                                                <option>Brasil - 1111111111</option>
-                                                                <option>Gab - 1111111111</option>
-                                                                <option>Alcantara - 1111111111</option>
-                                                                <option>Trineros - 1111111111</option>
-                                                                <option>Mito - 1111111111</option>
-                                                                <option>Brasil - 1111111111</option>
-                                                                <option>Gab - 1111111111</option>
+                                                                <c:forEach var="hospede" items="${hospedes}"> 
+                                                                    <option value="${hospede.cod}">${hospede.nome} - ${hospede.cpf}</option>
+                                                                </c:forEach>
                                                             </select><br><br>
-                                                            <button type="button" class="btn btn-default">Inserir Hóspede</button>
+                                                            <button type="button" class="btn btn-default" onclick="adicionarHospede()">Adicionar Hóspede</button>
                                                         </div>
                                                 </div>
                                         </div>
@@ -178,7 +166,7 @@
                                         <div class="col-md-12 col-xs-12" style="margin-top:0%">
                                             <h4 style="font-size: 20px;">Hóspedes adicionados:</h4>
                                             <div class="table-responsive">
-                                                <table class="table table-bordered table-hover">
+                                                <table class="table table-bordered table-hover" id="hospedes-tabela">
                                                   <thead>
                                                     <tr>
                                                       <th>Nome do Hóspede</th>
@@ -187,16 +175,7 @@
                                                     </tr>
                                                   </thead>
                                                   <tbody>
-                                                    <tr>
-                                                      <th>1</th>
-                                                      <td>Conteúdo</td>
-                                                      <td class="text-center"><button type="button" class="btn btn-danger">Retirar</button></td>
-                                                    </tr>
-                                                    <tr>
-                                                      <th>2</th>
-                                                      <td>Conteúdo</td>
-                                                      <td class="text-center"><button type="button" class="btn btn-danger">Retirar</button></td>
-                                                    </tr>
+                                                    
                                                   </tbody>
                                                 </table>
                                             </div>
@@ -225,4 +204,5 @@
     
     <script type="text/javascript" src="js/chosen.jquery.js"></script>
     <script type="text/javascript" src="scripts/chosenHospedagem.js"></script>
+    <script type="text/javascript" src="scripts/cadastroHospedagem.js"></script>
 </html>
