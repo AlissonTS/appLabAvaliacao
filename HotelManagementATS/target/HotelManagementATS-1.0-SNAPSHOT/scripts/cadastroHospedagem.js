@@ -12,7 +12,11 @@
            var nome = informacaoTabela[0];
            var cpf = informacaoTabela[1];
            
-           if(nome.length>0 && cpf.length>0 && hospedeSelect1>0){
+           var maxHosp = document.getElementById("max").innerHTML;
+           
+           console.log(hospedeSelect1);
+           
+           if(nome.length>0 && cpf.length>0 && hospedeSelect1>0 && hospedes.length<maxHosp){
                
                var verificador=0;
                
@@ -35,14 +39,104 @@
 
                     colunas += '<td>'+nome+'</td>';
                     colunas += '<td>'+cpf+'</td>';
-                    colunas += '<td>';
-                    colunas += '<button class="btn btn-danger center" onclick="removerHospede(this, '+hospedeSelect1+')" type="button">Retirar</button>';
-                    colunas += '</td>';
+                    colunas += '<td><p class="text-center">';
+                    colunas += '<button class="btn btn-danger " onclick="removerHospede(this, '+hospedeSelect1+')" type="button">Retirar</button>';
+                    colunas += '<p></td>';
 
                     colunas += '</tr>';
 
                     novaLinha.append(colunas);
                     $("#hospedes-tabela").append(novaLinha);
                }
+               
+               if(hospedes.length==maxHosp){
+                   document.getElementById('quantidadeHospedes').innerHTML = "Quantidade: Quarto cheio!";
+               }else{
+                   document.getElementById('quantidadeHospedes').innerHTML = "Quantidade: "+hospedes.length;
+               }
            }
+           return false;
         };
+        
+        removerHospede = function(handler, hospedeSelect1) {
+            
+            var tamanhoA = hospedes.length;
+            hospedes.pop(hospedeSelect1);
+            var tamanhoN = hospedes.length;
+            
+            if(tamanhoN<tamanhoA){
+                var tr = $(handler).closest('tr');
+
+                tr.fadeOut(400, function(){ 
+                    tr.remove();
+
+                    document.getElementById('quantidadeHospedes').innerHTML = "Quantidade: "+hospedes.length;
+
+                    return false;
+                });
+            }    
+            return false;
+      };
+      
+      function parseDate(str) {
+            var mdy = str.split('/');
+            return new Date(mdy[2], mdy[1], mdy[0]-1);
+      }
+      
+      function calcularValor() {  
+            var dataFinal1 = document.getElementById("dataFinal").value;
+            var dataInicial1 = new Date();
+            var dataInicial = parseDate(moment(dataInicial1, "YYYY-MM-DD").format("DD/MM/YYYY"));
+            var dataFinal = parseDate(moment(dataFinal1, "YYYY-MM-DD").format("DD/MM/YYYY"));
+            
+            var horaFinal = document.getElementById("horaFinal").value;
+            
+            var informacaoHora = horaFinal.split(":");
+           
+            var hora = informacaoHora[0];
+            var minuto = informacaoHora[1];
+            
+            if((hora>=0 && hora<=23) && (minuto>=0 && minuto<=59)){
+                var valorDiaria = document.getElementById('val').innerHTML;
+                
+                var diferenca = Math.abs(dataFinal - dataInicial); //diferença em milésimos e positivo
+                var dia = 1000*60*60*24; // milésimos de segundo correspondente a um dia
+                var total = Math.round(diferenca/dia); //valor total de dias arredondado
+
+                if(!dataInicial || !dataFinal) return false;
+                if(dataInicial>dataFinal){
+                    console.log("Data Inicial é maior que a Data Final!");
+                    return false;
+                }
+                if(dataFinal>dataInicial){
+                    var momentoAtual = new Date(); 
+                    var horaAtual = momentoAtual.getHours(); 
+                    
+                    var horaDif;
+                    horaDif = hora-horaAtual; 
+                    if(hora>horaAtual){
+                        if(horaDif>=5){
+                            document.getElementById('valorTotal').value = valorDiaria*(total+1);
+                        }else{
+                            document.getElementById('valorTotal').value = valorDiaria*(total);
+                        }
+                    }else if(horaAtual>=hora){
+                        if(horaDif<=-5){
+                            document.getElementById('valorTotal').value = valorDiaria*total;
+                        }else{
+                            document.getElementById('valorTotal').value = valorDiaria*(total+1);
+                        }
+                    }
+                }
+                if(total===0){
+                    var momentoAtual = new Date(); 
+                    var horaAtual = momentoAtual.getHours(); 
+                    
+                    var horaDif;
+                    horaDif = hora-horaAtual; 
+                    if(hora>horaAtual+1){
+                        document.getElementById('valorTotal').value = valorDiaria*total;
+                    }
+                }
+            }
+      };

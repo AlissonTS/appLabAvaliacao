@@ -10,6 +10,10 @@
         <title>Cadastrar Hospedagem - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
         <link rel="stylesheet" href="css/bootstrap-chosen.css"/>
+        <script type="text/javascript" src="js/moment.js"></script>
+        <script>
+            moment().format();
+        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -116,10 +120,12 @@
                         <div class="col-md-offset-1 col-md-10 col-xs-12">
                             <div class="row" style="font-size: 16px; margin-bottom: 3%;">
                                 <div class="col-md-offset-3 col-md-6 col-xs-12">
+                                    <span style="display: none" id="max">${quarto.maxHosp}</span>
+                                    <span style="display: none" id="val">${quarto.valorDiaria}</span>
                                     <h4 class="text-center" style="font-size: 20px;">Informações do Período:</h4>
                                     <br>
                                     <form role="form" action="#" method="POST">
-                                        <div class="form-group row">
+                                        <div class="form-group row" id="dataFinal-Div">
                                             <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
                                             <div class="col-md-5 col-xs-8">
                                                 <input class="form-control" style="height: 50px;" type="text" id="dataFinal" name="dataFinal" required="true" maxlength="10" placeholder="####-##-##" pattern="\d{4}\-\d{2}\-\d{2}" title="####-##-##">
@@ -128,7 +134,7 @@
                                         <div class="form-group row">
                                             <label for="horaFinal" class="col-md-4 col-xs-4 col-form-label">Hora Final:</label>
                                             <div class="col-md-5 col-xs-8">
-                                                <input class="form-control" style="height: 50px;" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##">
+                                                <input class="form-control" style="height: 50px;" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##" onblur="calcularValor()">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -178,6 +184,8 @@
                                                     
                                                   </tbody>
                                                 </table>
+                                                <p>Máximo de hóspedes que o quarto pode hospedar: ${quarto.maxHosp}</p>
+                                                <p id="quantidadeHospedes">Quantidade: 0</p>
                                             </div>
                                         </div>    
                                     </div>
@@ -185,7 +193,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="margin-bottom: 3%;">
+                    <div class="row" style="margin-top: 2%; margin-bottom: 3%;">
                         <div class="col-lg-offset-3 col-lg-6">
                             <p style="text-align: center">
                             <button type="submit" class="btn btn-success btn-lg">Cadastrar Hospedagem</button></p>
@@ -198,11 +206,11 @@
         </div>  
         
         <%@ include file="../../../../import/js.jsp" %>
-    </body>
-    <script type="text/javascript" src="scripts/calendarioJs.js"></script>
-    <script type="text/javascript" src="scripts/mask.js"></script>
+        <script type="text/javascript" src="scripts/calendarioJs.js"></script>
+        <script type="text/javascript" src="scripts/mask.js"></script>
     
-    <script type="text/javascript" src="js/chosen.jquery.js"></script>
-    <script type="text/javascript" src="scripts/chosenHospedagem.js"></script>
-    <script type="text/javascript" src="scripts/cadastroHospedagem.js"></script>
+        <script type="text/javascript" src="js/chosen.jquery.js"></script>
+        <script type="text/javascript" src="scripts/chosenHospedagem.js"></script>
+        <script type="text/javascript" src="scripts/cadastroHospedagem.js"></script>
+    </body>
 </html>

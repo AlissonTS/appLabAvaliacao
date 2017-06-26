@@ -82,38 +82,40 @@ public class QuartoController {
             if(rq.getParameter("numero").length()>0 && rq.getParameter("maxHosp").length()>0 
                 && rq.getParameter("area").length()>0 && rq.getParameter("valorDiaria").length()>0){
                 
-                q.setEstado(0); // Quarto desocupado
+                if(q.getNumero()>0 && q.getMaxHosp()>0 && q.getArea()>0 && q.getValorDiaria()>0){
+                    q.setEstado(0); // Quarto desocupado
 
-                q.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
+                    q.setEstabelecimento((Estabelecimento) session.getAttribute("estabelecimentoEscolhido"));
 
-                try{
-                    int retorno = qD.cadastrarQuarto(q);
+                    try{
+                        int retorno = qD.cadastrarQuarto(q);
 
-                    switch (retorno) {
-                        case 2:
-                            mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados");
-                            mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
-                            mv.addObject("tipo", "success");
-                            System.out.println("Cadastro Concluído!");
-                            break;
-                        case 1:
-                            mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um quarto com mesmo número de identificação!");
-                            mv.addObject("tipo", "danger");
-                            System.out.println("Erro ao cadastrar!");
-                            break;
-                        default:
-                            mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
-                            mv.addObject("tipo", "danger");
-                            System.out.println("Erro ao cadastrar!");
-                            break;
+                        switch (retorno) {
+                            case 2:
+                                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados");
+                                mv.addObject("mensagem", "<Strong>Sucesso</Strong> Cadastro feito com sucesso!");
+                                mv.addObject("tipo", "success");
+                                System.out.println("Cadastro Concluído!");
+                                break;
+                            case 1:
+                                mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um quarto com mesmo número de identificação!");
+                                mv.addObject("tipo", "danger");
+                                System.out.println("Erro ao cadastrar!");
+                                break;
+                            default:
+                                mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                                mv.addObject("tipo", "danger");
+                                System.out.println("Erro ao cadastrar!");
+                                break;
+                        }
+
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
+                        mv.addObject("tipo", "danger");
+                        System.out.println("Erro ao cadastrar!");
                     }
-
-                }catch(Exception e){
-                    e.printStackTrace();
-                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de cadastro já utilizados!");
-                    mv.addObject("tipo", "danger");
-                    System.out.println("Erro ao cadastrar!");
-                }
+                }  
             }
         }
 
@@ -182,40 +184,42 @@ public class QuartoController {
            if(rq.getParameter("numero").length()>0 && rq.getParameter("maxHosp").length()>0 
                 && rq.getParameter("area").length()>0 && rq.getParameter("valorDiaria").length()>0){
                
-                int codQuarto = Integer.parseInt(rq.getParameter("cod"));
-                q.setCod(codQuarto);
+                if(q.getNumero()>0 && q.getMaxHosp()>0 && q.getArea()>0 && q.getValorDiaria()>0){
+                    int codQuarto = Integer.parseInt(rq.getParameter("cod"));
+                    q.setCod(codQuarto);
 
-                // q.setEstado(0); // Quarto desocupado
+                    // q.setEstado(0); // Quarto desocupado
 
-                Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+                    Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
 
-                q.setEstabelecimento(est);
+                    q.setEstabelecimento(est);
 
-                try{
-                    int retorno = qD.alterarQuarto(q);
+                    try{
+                        int retorno = qD.alterarQuarto(q);
 
-                    switch (retorno) {
-                        case 2:
-                            mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
-                            mv.addObject("tipo", "success");
-                            System.out.println("Alteração Concluída!");
-                            break;
-                        case 1:
-                            mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro quarto com mesmo número de identificação!");
-                            mv.addObject("tipo", "danger");
-                            System.out.println("Erro ao alterar!");
-                            break;
-                        default:
-                            mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados!");
-                            mv.addObject("tipo", "danger");
-                            System.out.println("Erro ao alterar!");
-                            break;
-                    }     
-                }catch(Exception e){
-                    e.printStackTrace();
-                    mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados!");
-                    mv.addObject("tipo", "danger");
-                    System.out.println("Erro ao alterar!");
+                        switch (retorno) {
+                            case 2:
+                                mv.addObject("mensagem", "<Strong>Sucesso</Strong> Alteração feita com sucesso!");
+                                mv.addObject("tipo", "success");
+                                System.out.println("Alteração Concluída!");
+                                break;
+                            case 1:
+                                mv.addObject("mensagem", "<Strong>Erro</Strong> Você possui um outro quarto com mesmo número de identificação!");
+                                mv.addObject("tipo", "danger");
+                                System.out.println("Erro ao alterar!");
+                                break;
+                            default:
+                                mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados!");
+                                mv.addObject("tipo", "danger");
+                                System.out.println("Erro ao alterar!");
+                                break;
+                        }     
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        mv.addObject("mensagem", "<Strong>Erro</Strong> Dados de alteração já utilizados!");
+                        mv.addObject("tipo", "danger");
+                        System.out.println("Erro ao alterar!");
+                    }
                 }
            }            
         }

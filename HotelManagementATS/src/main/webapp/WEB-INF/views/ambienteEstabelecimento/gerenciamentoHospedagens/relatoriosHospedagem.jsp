@@ -79,7 +79,7 @@
                         <div class="col-md-offset-4 col-md-4 col-xs-12">
                             <br>
                             <form role="form" action="gerarRelatorioHospedagem.html" method="POST">
-                                <div class="form-group row">
+                                <div class="form-group row" id="dataInicial-Div">
                                     <label for="dataInicial" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Inicial: </label>
                                     <div class="col-md-8 col-xs-8">
                                         <input value="${data}" class="form-control" style="height: 50px;" type="text" id="dataInicial" name="dataInicial" required="true" placeholder="####-##-##" pattern="\d{4}\-\d{2}\-\d{2}" title="####-##-##">
