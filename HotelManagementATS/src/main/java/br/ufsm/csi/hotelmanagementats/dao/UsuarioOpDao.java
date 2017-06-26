@@ -317,7 +317,7 @@ public class UsuarioOpDao {
         return retorno;
     }
     
-    public int abilitarDesabilitarOperador(UsuarioOperador u, int escolha){
+    public int habilitarDesabilitarOperador(UsuarioOperador u, int escolha){
         int retorno = 0;
         
         System.out.println("\nUsuarioOpDao - Habilitar/Desabilitar Acesso do Operador no Estabelecimento...\n");

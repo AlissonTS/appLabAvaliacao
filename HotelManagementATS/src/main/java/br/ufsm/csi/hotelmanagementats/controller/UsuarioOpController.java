@@ -390,7 +390,7 @@ public class UsuarioOpController {
            int escolha = 2; // 1 - habilitar, 2 - Desabilitar
 		   
            try{
-               int retorno = uD.abilitarDesabilitarOperador(u, escolha);
+               int retorno = uD.habilitarDesabilitarOperador(u, escolha);
                
                switch (retorno) {
                    case 1:
@@ -446,7 +446,7 @@ public class UsuarioOpController {
            int escolha = 1; // 1 - habilitar, 2 - Desabilitar
 		   
            try{
-               int retorno = uD.abilitarDesabilitarOperador(u, escolha);
+               int retorno = uD.habilitarDesabilitarOperador(u, escolha);
                
                switch (retorno) {
                    case 1:

@@ -297,7 +297,7 @@ public class QuartoDao {
         return retorno;
     }
     
-    public int abilitarDesabilitarQuarto(Quarto q, int escolha){
+    public int habilitarDesabilitarQuarto(Quarto q, int escolha){
         int retorno = 0;
         
         System.out.println("\nQuartoDao - Habilitar/Desabilitar quarto do Estabelecimento...\n");
