@@ -32,7 +32,8 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
         if(uAdm!=null && uOp==null){
             if(uri.endsWith("alterarContaOp.html") ||
                uri.endsWith("gerenciamentoContaOp.html") ||
-               uri.endsWith("alterarOpLogado.html") ||     
+               uri.endsWith("alterarOpLogado.html") ||
+               uri.endsWith("quartosEstabelecimento.html") ||        
                uri.endsWith("cadastroAdministrador.html")     
             ){
                 response.sendRedirect("paginaPrincipalAdm.html");
@@ -75,6 +76,7 @@ public class AutenticacaoInterceptor extends HandlerInterceptorAdapter{
             
         }else if(uAdm==null && uOp!=null){
             if(uri.contains("quartosDesocupados") ||
+                uri.contains("quartosEstabelecimento") ||    
                 uri.contains("cadastrarGastoQuarto") ||
                 uri.contains("mostrarQuartoDesocupado") || 
                 uri.contains("hospedesQuartoHospedagem") ||     

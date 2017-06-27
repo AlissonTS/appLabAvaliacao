@@ -21,6 +21,7 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="nav navbar-nav">
                               <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
+                              <li><a href="quartosEstabelecimento.html">Quartos do Estabelecimento</a></li>
                               <li class="dropdown dropdown-lg">
                                 <a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Hospedagens <span class="caret"></span></a>
                                 <ul class="dropdown-menu dropdown-menu-lg row">

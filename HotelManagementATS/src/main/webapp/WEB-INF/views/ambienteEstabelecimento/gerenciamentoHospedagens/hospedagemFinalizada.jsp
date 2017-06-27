@@ -69,6 +69,7 @@
                             
                                 <c:if test="${not empty operador and empty administrador}">
                                     <li><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
+                                    <li><a href="quartosEstabelecimento.html">Quartos do Estabelecimento</a></li>
                                     <li class="dropdown dropdown-lg active">
                                         <a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Hospedagens <span class="caret"></span></a>
                                         <ul class="dropdown-menu dropdown-menu-lg row">
@@ -136,7 +137,7 @@
                                                 <p class="col-xs-8"> ${hospedagemEscolhida.dataInicial} - ${hospedagemEscolhida.horaInicial}</p>
                                             </div>
                                             <div class="row">
-                                                <p class="col-xs-4">Horário de Saída¹:</p>
+                                                <p class="col-xs-4">Horário de Saída:</p>
                                                 <p class="col-xs-8"> ${hospedagemEscolhida.dataFinal} - ${hospedagemEscolhida.horaFinal} </p>
                                             </div>
                                             <div class="row">
@@ -144,7 +145,7 @@
                                                 <p class="col-xs-8"> ${hospedagemEscolhida.quarto.valorDiaria} </p>
                                             </div>
                                             <div class="row">
-                                                <p class="col-xs-4">Valor da Hospedagem¹:</p>
+                                                <p class="col-xs-4">Valor da Hospedagem:</p>
                                                 <p class="col-xs-8"> ${hospedagemEscolhida.valorHospedagem}</p>
                                             </div>
                                             

@@ -181,7 +181,6 @@
         
         <%@ include file="../../../../import/js.jsp" %>
     </body>
-    <script type="text/javascript" src="scripts/mask.js"></script>
     <script type="text/javascript" src="scripts/modalAcao.js"></script>
 </html>
 

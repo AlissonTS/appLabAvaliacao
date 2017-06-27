@@ -67,6 +67,7 @@
                                 </c:if>
                                 <c:if test="${not empty operador and empty administrador}">    
                                     <li class="active"><a href="paginaPrincipalEstabelecimento.html">Página Principal - Estabelecimento</a></li>
+                                    <li><a href="quartosEstabelecimento.html">Quartos do Estabelecimento</a></li>
                                     <li class="dropdown dropdown-lg">
                                         <a class="dropdown-toggle" data-toggle="dropdown">Gerenciamento de Hospedagens <span class="caret"></span></a>
                                         <ul class="dropdown-menu dropdown-menu-lg row">
@@ -107,14 +108,17 @@
                             <div class="row">
                                 <div class="col-md-offset-4 col-md-4 col-xs-12">
                                     <div class="form-group text-center">
-                                        <label for="filtro">Selecione um tipo de filtro:</label>
+                                        <a href="quartosDesocupados.html" class="btn btn-default" role="button">Cadastrar Hospedagem</a>
+                                        <br><br><br>
+                                        <p style="font-size: 16px;"><strong>Visualzar Hospedagens:</strong></p><label for="filtro">Selecione um tipo de filtro:</label>
                                         <select class="form-control" id="filtro">
                                             <option selected disabled hidden>Filtro de Postagens</option>
                                             <option value="1">Hospedagens em Término</option>
                                             <option value="2">Hospedagens Atrasadas</option>
+                                            <option value="3">Hospedagens Correntes - Alterar</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                             
                             <jsp:useBean id="hospedagemDao" class="br.ufsm.csi.hotelmanagementats.dao.HospedagemDao"/>
@@ -213,8 +217,50 @@
                                         </c:if>
                                     </div>
                                 </div>    
-                            </div>        
+                            </div>
                             
+                            <div class="row" id="hospedagensAlterar" style="margin-top: 1%; display: none;">
+                                <div class="col-md-12 col-xs-12">
+                                    <h2 class="text-center" style="font-size: 24px;">Alterar Hospedagem</h2>
+                                    <h3 class="text-center" style="font-size: 21px;">Hospedagens Correntes</h3>
+                                    <br>
+                                    <c:set value="${hospedagemDao.getHospedagensCorrentes(estabelecimentoEscolhido)}" var="hospedagensAlterar"/>
+
+                                    <c:if test="${not empty hospedagensAlterar}">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                  <tr>
+                                                    <th>N° do Quarto</th>
+                                                    <th>Horário de Entrada</th>
+                                                    <th>Horário de Saída</th>
+                                                    <th>Valor da Diária (R$)</th>
+                                                    <th>Valor da Hospedagem (R$)</th>
+                                                    <th>Mostrar Hóspedes</th>
+                                                    <th>Alterar Hospedagem</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="hospedagem" items="${hospedagensAlterar}"> 
+                                                        <tr>
+                                                          <th>${hospedagem.quarto.numero}</th>
+                                                          <td>${hospedagem.dataInicial} - ${hospedagem.horaInicial}</td>
+                                                          <td>${hospedagem.dataFinal} - ${hospedagem.horaFinal}</td>
+                                                          <td>${hospedagem.quarto.valorDiaria}</td>
+                                                          <td>${hospedagem.valorHospedagem}</td>
+                                                          <td class="text-center"><form action="hospedesQuartoHospedagemAlterar.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
+                                                          <td class="text-center"><form action="alterarHospedagemForm.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-primary">Alterar</button></form></td>
+                                                        </tr>
+                                                    </c:forEach>   
+                                              </tbody>
+                                            </table>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${empty hospedagensAlterar}">
+                                        <br><p class="text-center"><strong>O estabelecimento não possui hospedagens em andamento.</strong></p>
+                                    </c:if>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>                 

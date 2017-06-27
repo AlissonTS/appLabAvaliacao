@@ -239,6 +239,11 @@ public class QuartoController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados";
     }
     
+    @RequestMapping("quartosEstabelecimento.html")
+    public String quartosEstabelecimento(){	
+            return "/WEB-INF/views/ambienteOperador/quartosEstabelecimento";
+    }
+    
     /* Desabilitar Quarto */
     @RequestMapping(value = "desabilitarQuarto.html", method = RequestMethod.POST)
     public ModelAndView desabilitarQuarto(HttpServletRequest rq, HttpSession session){

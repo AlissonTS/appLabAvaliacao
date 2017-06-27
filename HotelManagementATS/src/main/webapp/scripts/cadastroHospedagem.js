@@ -105,7 +105,9 @@
                 var diferenca = Math.abs(dataFinal - dataInicial); //diferença em milésimos e positivo
                 var dia = 1000*60*60*24; // milésimos de segundo correspondente a um dia
                 var total = Math.round(diferenca/dia); //valor total de dias arredondado
-
+                
+                console.log(total);
+                
                 if(!dataInicial || !dataFinal) return false;
                 if(dataInicial>dataFinal){
                     console.log("Data Inicial é maior que a Data Final!");
