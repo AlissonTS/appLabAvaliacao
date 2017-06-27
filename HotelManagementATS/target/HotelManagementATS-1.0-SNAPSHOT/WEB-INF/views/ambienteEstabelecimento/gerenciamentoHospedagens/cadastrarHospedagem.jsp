@@ -124,26 +124,24 @@
                                     <span style="display: none" id="val">${quarto.valorDiaria}</span>
                                     <h4 class="text-center" style="font-size: 20px;">Informações do Período:</h4>
                                     <br>
-                                    <form role="form" action="#" method="POST">
-                                        <div class="form-group row" id="dataFinal-Div">
-                                            <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
-                                            <div class="col-md-5 col-xs-8">
-                                                <input class="form-control" style="height: 50px;" type="text" id="dataFinal" name="dataFinal" required="true" maxlength="10" placeholder="####-##-##" pattern="\d{4}\-\d{2}\-\d{2}" title="####-##-##">
-                                            </div>
+                                    <div class="form-group row" id="dataFinal-Div">
+                                        <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
+                                        <div class="col-md-5 col-xs-8">
+                                            <input form="formularioCadastrar" class="form-control" style="height: 50px;" type="text" id="dataFinal" name="dataFinal" required="true" maxlength="10" placeholder="####-##-##" pattern="\d{4}\-\d{2}\-\d{2}" title="####-##-##" onblur="calcularValor()">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="horaFinal" class="col-md-4 col-xs-4 col-form-label">Hora Final:</label>
-                                            <div class="col-md-5 col-xs-8">
-                                                <input class="form-control" style="height: 50px;" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##" onblur="calcularValor()">
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="horaFinal" class="col-md-4 col-xs-4 col-form-label">Hora Final:</label>
+                                        <div class="col-md-5 col-xs-8">
+                                            <input form="formularioCadastrar" class="form-control" style="height: 50px;" type="text" placeholder="##:##" required="true" name="horaFinal" id="horaFinal" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="##:##" onblur="calcularValor()">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="valorTotal" class="col-md-4 col-xs-4 col-form-label">Valor da Hospedagem:</label>
-                                            <div class="col-md-6 col-xs-8">
-                                                <input class="form-control" style="height: 50px;" type="text" placeholder="Valor da Hospedagem" required="true" name="valorTotal" id="valorTotal" readonly="readonly">
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="valorHospedagem" class="col-md-4 col-xs-4 col-form-label">Valor da Hospedagem:</label>
+                                        <div class="col-md-6 col-xs-8">
+                                            <input form="formularioCadastrar" class="form-control" style="height: 50px;" type="text" placeholder="Valor da Hospedagem" required="true" name="valorHospedagem" id="valorHospedagem" readonly="readonly">
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>    
                             <div class="row" style="font-size: 16px;">
@@ -180,9 +178,7 @@
                                                       <th>Retirar Hóspede</th>
                                                     </tr>
                                                   </thead>
-                                                  <tbody>
-                                                    
-                                                  </tbody>
+                                                  <tbody></tbody>
                                                 </table>
                                                 <p>Máximo de hóspedes que o quarto pode hospedar: ${quarto.maxHosp}</p>
                                                 <p id="quantidadeHospedes">Quantidade: 0</p>
@@ -195,13 +191,53 @@
                     </div>
                     <div class="row" style="margin-top: 2%; margin-bottom: 3%;">
                         <div class="col-lg-offset-3 col-lg-6">
-                            <p style="text-align: center">
-                            <button type="submit" class="btn btn-success btn-lg">Cadastrar Hospedagem</button></p>
+                            <form id="formularioCadastrar" role="form" action="cadastrarHospedagem.html" method="POST">
+                                <input class="form-control" value="${quarto.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
+                                <p style="text-align: center">
+                                <button type="submit" class="btn btn-success btn-lg">Cadastrar Hospedagem</button></p>
+                            </form>
                         </div>
                     </div>
                 </div>                 
             </div>
-                        
+            
+            <!-- Modal -->  
+            <div class="modal fade" id="confirmCadastrar" tabindex="-1" role="dialog" aria-labelledby="confirmLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Cadastrar Hospedagem</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Deseja confirmar o cadastro da hospedagem?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center">
+                            <button type="button" class="btn btn-primary" id="yesCadastrar">Sim</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                        </div>
+                    </div>
+              </div>
+            </div>
+            
+            <!-- Modal -->  
+            <div class="modal fade" id="infoCadastrar" tabindex="-1" role="dialog" aria-labelledby="infoLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Atenção!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="font-size: 17px;">Falta de informações necessárias para realizar a hospedagem!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Não</button></p>
+                        </div>
+                    </div>
+              </div>
+            </div>  
+                                                
            <%@ include file="../../../../import/footer.jsp" %>
         </div>  
         

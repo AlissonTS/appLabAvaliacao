@@ -1,4 +1,4 @@
-
+        
         var hospedes = new Array();
 
         adicionarHospede = function() {
@@ -37,7 +37,7 @@
                     var novaLinha = $("<tr>");
                     var colunas = "";
 
-                    colunas += '<td>'+nome+'</td>';
+                    colunas += '<td>'+nome+'<input form="formularioCadastrar" value="'+hospedeSelect1+'" style="display: none" type="checkbox" name="hospedes" checked></td>';
                     colunas += '<td>'+cpf+'</td>';
                     colunas += '<td><p class="text-center">';
                     colunas += '<button class="btn btn-danger " onclick="removerHospede(this, '+hospedeSelect1+')" type="button">Retirar</button>';
@@ -106,6 +106,7 @@
                 if(!dataInicial || !dataFinal) return false;
                 if(dataInicial>dataFinal){
                     console.log("Data Inicial é maior que a Data Final!");
+                    document.getElementById('valorHospedagem').value = 0.0;
                     return false;
                 }
                 if(dataFinal>dataInicial){
@@ -116,15 +117,15 @@
                     horaDif = hora-horaAtual; 
                     if(hora>horaAtual){
                         if(horaDif>=5){
-                            document.getElementById('valorTotal').value = valorDiaria*(total+1);
+                            document.getElementById('valorHospedagem').value = valorDiaria*(total+1);
                         }else{
-                            document.getElementById('valorTotal').value = valorDiaria*(total);
+                            document.getElementById('valorHospedagem').value = valorDiaria*(total);
                         }
                     }else if(horaAtual>=hora){
                         if(horaDif<=-5){
-                            document.getElementById('valorTotal').value = valorDiaria*total;
+                            document.getElementById('valorHospedagem').value = valorDiaria*total;
                         }else{
-                            document.getElementById('valorTotal').value = valorDiaria*(total+1);
+                            document.getElementById('valorHospedagem').value = valorDiaria*(total+1);
                         }
                     }
                 }
@@ -135,8 +136,35 @@
                     var horaDif;
                     horaDif = hora-horaAtual; 
                     if(hora>horaAtual+1){
-                        document.getElementById('valorTotal').value = valorDiaria*total;
+                        document.getElementById('valorHospedagem').value = valorDiaria*total;
                     }
                 }
             }
+            // document.getElementById('valorTotal').value = 0.0;
       };
+      
+      $('#formularioCadastrar').on('submit', function(event){
+            event.preventDefault();
+            
+            var tabela = document.getElementById('hospedes-tabela');
+            var linhas = tabela.getElementsByTagName('tr');
+
+            var dataFinal = document.getElementById("dataFinal").value;
+            var horaFinal = document.getElementById("horaFinal").value;
+            var valorHospedagem = document.getElementById("valorHospedagem").value;
+
+            var informacaoHora = horaFinal.split(":");
+           
+            var hora = informacaoHora[0];
+            var minuto = informacaoHora[1];
+
+            if((linhas.length-1)>0 && (hora>=0 && hora<=23) && (minuto>=0 && minuto<=59) && dataFinal!="____-__-__" && valorHospedagem>0){
+                $("#confirmCadastrar").modal("show");
+            }else{
+                $("#infoCadastrar").modal("show");
+            }
+      });
+
+     $('#yesCadastrar').click(function(){
+        $('#formularioCadastrar').unbind('submit').submit();
+     });

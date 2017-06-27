@@ -81,6 +81,86 @@ public class HospedagemController {
             return "forward:quartosDesocupados.html";
     }
     
+    @RequestMapping(value = "cadastrarHospedagem.html", method = RequestMethod.POST)
+    public ModelAndView cadastrarHospedagem(HttpServletRequest rq, HttpSession session){	
+        System.out.println("-------------------------------");
+        System.out.println("Submit Cadastro de Hospedagem...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/quartosDesocupados");
+        
+        HospedagemDao hD = new HospedagemDao();
+        QuartoDao qD = new QuartoDao();
+        
+        String dataFinal = rq.getParameter("dataFinal");
+        String valorHospedagem = rq.getParameter("valorHospedagem");
+        String horaFinal = rq.getParameter("horaFinal");
+
+        String[] hospedesCod = rq.getParameterValues("hospedes");
+
+        if(rq.getParameter("cod")!=null && dataFinal!=null && valorHospedagem!=null && horaFinal!=null){
+            String valorReplace = valorHospedagem.replaceAll(",", "");
+            Float valorNovo = Float.parseFloat(valorReplace);
+            
+            horaFinal = horaFinal+":00";
+            
+            int codQuarto = Integer.parseInt(rq.getParameter("cod"));
+
+            Quarto q = new Quarto();
+
+            q.setCod(codQuarto);
+
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            q.setEstabelecimento(est);
+
+            q = qD.carregarQuartoEscolhido(q);
+            
+            List<Hospede> hospedes = new ArrayList();
+            for(String hp : hospedesCod){
+                int codHospede = Integer.parseInt(hp);
+                Hospede hosp = new Hospede();
+                hosp.setCod(codHospede);
+
+                hospedes.add(hosp);
+            }
+
+            Hospedagem h = new Hospedagem();
+
+            h.setHospedes(hospedes);
+            h.setDataFinal(dataFinal);
+            h.setValorHospedagem(valorNovo);
+            h.setHoraFinal(horaFinal);
+            h.setQuarto(q);
+            
+            for(int i=0; i<h.getHospedes().size(); i++){
+                System.out.println("Hóspede: "+h.getHospedes().get(i).getCod());
+            }
+            System.out.println("Código Quarto: "+h.getQuarto().getCod());
+            System.out.println("Data Final: "+h.getDataFinal());
+            System.out.println("Hora Final: "+h.getHoraFinal());
+            System.out.println("Valor Hospedagem: "+h.getValorHospedagem());
+            
+            if(q!=null){
+                int retorno = hD.cadastrarHospedagem(h);
+
+                if(retorno==1){
+                    mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Hospedagem cadastrada com sucesso!");
+                    mv.addObject("tipo", "success");
+                    System.out.println("Hospedagem cadastrada com sucesso!");
+                }else{
+                    mv.addObject("mensagem", "<Strong> Aviso!</Strong> Hospedagem não cadastrada!");
+                    mv.addObject("tipo", "danger");
+                }
+            }   
+        }
+        
+        return mv;
+    }    
+    
+    @RequestMapping(value = "cadastrarHospedagem.html", method = RequestMethod.GET)
+    public String cadastrarHospedagem(){	
+            return "forward:quartosDesocupados.html";
+    }
+    
     @RequestMapping(value = "hospedesQuartoHospedagemAlterar.html", method = RequestMethod.POST)
     public ModelAndView hospedesQuartoHospedagemAlterar(HttpServletRequest rq, HttpSession session){
         System.out.println("-------------------------------");

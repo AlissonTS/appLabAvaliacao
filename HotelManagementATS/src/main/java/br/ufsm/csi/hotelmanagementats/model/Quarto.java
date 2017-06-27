@@ -22,7 +22,6 @@ public class Quarto {
     private float valorDiaria;
     private Estabelecimento estabelecimento;
     private List<Hospedagem> hospedagens;
-    private Foto foto;
 
     /**
      * @return the cod
@@ -148,20 +147,6 @@ public class Quarto {
      */
     public void setHospedagens(List<Hospedagem> hospedagens) {
         this.hospedagens = hospedagens;
-    }
-
-    /**
-     * @return the foto
-     */
-    public Foto getFoto() {
-        return foto;
-    }
-
-    /**
-     * @param foto the foto to set
-     */
-    public void setFoto(Foto foto) {
-        this.foto = foto;
     }
     
 }

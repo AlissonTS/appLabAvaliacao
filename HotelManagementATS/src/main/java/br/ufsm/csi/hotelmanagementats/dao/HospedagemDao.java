@@ -653,4 +653,149 @@ public class HospedagemDao {
         
         return retorno;
     }
+    
+    public int cadastrarHospedagem(Hospedagem h){
+        int retorno = 0;
+        
+        System.out.println("\nHospedagemDao - Cadastrar hospedagem do Estabelecimento...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql="";
+            
+            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date data = Calendar.getInstance().getTime();
+
+            java.sql.Date dataDao;
+            java.sql.Date dataPagina;
+            java.sql.Time horaDao;
+            java.sql.Time horaPagina;
+            
+            String dataFormatada = sdf.format(data);
+
+            dataDao = new java.sql.Date(sdf.parse(dataFormatada).getTime());
+            
+            dataPagina = new java.sql.Date(sdf.parse(h.getDataFinal()).getTime());
+
+            sdf = new SimpleDateFormat("HH:mm:ss");
+            String horaDaoString = sdf.format(data);
+
+            horaDao = new java.sql.Time(sdf.parse(horaDaoString).getTime());
+
+            horaPagina = new java.sql.Time(sdf.parse(h.getHoraFinal()).getTime());
+
+            if(dataDao.getTime()<=dataPagina.getTime()){
+                c.setAutoCommit(false);
+            
+                // Insert Hospedagem
+                sql = "INSERT INTO HOSPEDAGEM(cod, dataInicial, dataFinal, horaInicial, horaFinal, valorHospedagem, codQuarto, estado)"
+                        + " values (DEFAULT, ?, ?, ?, ?, ?, ?, ?);";
+                stmt = c.prepareStatement(sql);
+                stmt.setDate(1, dataDao);
+                stmt.setDate(2, dataPagina);
+                stmt.setTime(3, horaDao);
+                stmt.setTime(4, horaPagina);
+                stmt.setFloat(5, h.getValorHospedagem());
+                stmt.setInt(6, h.getQuarto().getCod());
+                stmt.setInt(7, 0);
+                
+                System.out.println("Executou cadastro de hospedagem!");
+                stmt.execute();
+                
+                // Update Hóspedes
+                for(int i=0; i<h.getHospedes().size(); i++){
+                    sql = "UPDATE HOSPEDE SET estado=1 where cod=?;";
+                    stmt = c.prepareStatement(sql);
+                    stmt.setInt(1, h.getHospedes().get(i).getCod());
+
+                    stmt.execute();
+                }
+                
+                System.out.println("Executou update de hospedes!");
+                
+                // Update Quarto
+                sql = "UPDATE QUARTO SET estado=1 WHERE cod=? AND codEstabelecimento=?;";
+                stmt = c.prepareStatement(sql);
+                stmt.setInt(1, h.getQuarto().getCod());
+                stmt.setInt(2, h.getQuarto().getEstabelecimento().getCod());
+
+                stmt.execute();
+                
+                System.out.println("Executou update de quarto!");
+                
+                sql = "SELECT cod FROM HOSPEDAGEM where codQuarto=? and estado=0;";
+                stmt = c.prepareStatement(sql);	
+                stmt.setInt(1, h.getQuarto().getCod());
+
+                ResultSet valor = stmt.executeQuery();
+
+                while(valor.next()){
+                    h.setCod(valor.getInt("cod"));
+                }
+                
+                // Update Hóspedes
+                for(int i=0; i<h.getHospedes().size(); i++){
+                    sql = "INSERT INTO HOSP_HOSPEDE(codHospede, codHospedagem) "
+                        + "values (?, ?);";
+                    stmt = c.prepareStatement(sql);
+                    stmt.setInt(1, h.getHospedes().get(i).getCod());
+                    stmt.setInt(2, h.getCod());
+                    
+                    stmt.execute();
+                }
+                System.out.println("Executou cadastro relação hospede e hospedagem!");
+                
+                retorno = 1;
+
+                stmt.close();
+                c.commit();
+                c.close(); 
+            }
+        }catch(SQLException e){
+            retorno = 0;
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }catch(ParseException ex){
+            retorno = 0;
+            Logger.getLogger(HospedagemDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
+    }
+    
+    public Hospedagem carregarHospedagemInserida(Quarto q){
+			
+        // System.out.println("\nHospedagemDao - Buscar hospedagem inserida para atualização da tabela Hosp_Hospedagem ...\n");
+
+        Connection c = null;
+        PreparedStatement stmt = null;
+	
+        Hospedagem h = new Hospedagem();
+        
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT cod FROM HOSPEDAGEM where codQuarto=? and estado=0;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, q.getCod());
+
+            ResultSet valor = stmt.executeQuery();
+            
+            while(valor.next()){
+                h.setCod(valor.getInt("cod"));
+            }
+            
+            stmt.close();
+            c.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            e.printStackTrace();
+        }
+
+        return h;
+    }
 }
