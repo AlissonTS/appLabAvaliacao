@@ -81,7 +81,7 @@
       function parseDate(str) {
             var mdy = str.split('/');
             return new Date(mdy[2], mdy[1], mdy[0]-1);
-      }
+      };
       
       function calcularValor() {  
             var dataFinal1 = document.getElementById("dataFinal").value;
@@ -95,6 +95,9 @@
            
             var hora = informacaoHora[0];
             var minuto = informacaoHora[1];
+            
+            console.log(dataInicial);
+            console.log(dataFinal);
             
             if((hora>=0 && hora<=23) && (minuto>=0 && minuto<=59)){
                 var valorDiaria = document.getElementById('val').innerHTML;
@@ -133,10 +136,10 @@
                     var momentoAtual = new Date(); 
                     var horaAtual = momentoAtual.getHours(); 
                     
-                    var horaDif;
-                    horaDif = hora-horaAtual; 
                     if(hora>horaAtual+1){
-                        document.getElementById('valorHospedagem').value = valorDiaria*total;
+                        document.getElementById('valorHospedagem').value = valorDiaria*1;
+                    }else if(hora<horaAtual){
+                        document.getElementById('valorHospedagem').value = 0.0;
                     }
                 }
             }

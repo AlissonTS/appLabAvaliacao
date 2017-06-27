@@ -97,7 +97,7 @@ public class HospedagemController {
 
         String[] hospedesCod = rq.getParameterValues("hospedes");
 
-        if(rq.getParameter("cod")!=null && dataFinal!=null && valorHospedagem!=null && horaFinal!=null){
+        if(rq.getParameter("cod")!=null && hospedesCod!=null && dataFinal!=null && valorHospedagem!=null && horaFinal!=null){
             String valorReplace = valorHospedagem.replaceAll(",", "");
             Float valorNovo = Float.parseFloat(valorReplace);
             
@@ -131,13 +131,14 @@ public class HospedagemController {
             h.setHoraFinal(horaFinal);
             h.setQuarto(q);
             
+            /*
             for(int i=0; i<h.getHospedes().size(); i++){
                 System.out.println("Hóspede: "+h.getHospedes().get(i).getCod());
             }
             System.out.println("Código Quarto: "+h.getQuarto().getCod());
             System.out.println("Data Final: "+h.getDataFinal());
             System.out.println("Hora Final: "+h.getHoraFinal());
-            System.out.println("Valor Hospedagem: "+h.getValorHospedagem());
+            System.out.println("Valor Hospedagem: "+h.getValorHospedagem()); */
             
             if(q!=null){
                 int retorno = hD.cadastrarHospedagem(h);
@@ -311,9 +312,107 @@ public class HospedagemController {
             return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensCorrentesAlterar";
     }
     
-    @RequestMapping("alterarHospedagemForm.html")
+    @RequestMapping(value = "alterarHospedagemForm.html", method = RequestMethod.POST)
+    public ModelAndView alterarHospedagemForm(HttpServletRequest rq, HttpSession session){	
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha hospedagem corrente para Alteração...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensCorrentesAlterar");
+        
+        if(rq.getParameter("cod")!=null){
+            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+			
+            Quarto q = new Quarto();
+			
+            Hospedagem h = new Hospedagem();
+            h.setCod(codHospedagem);
+			
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            q.setEstabelecimento(est);
+            
+            h.setQuarto(q);
+            
+            HospedagemDao hD = new HospedagemDao();
+
+            h = hD.carregarHospedagemAlterar(h);
+
+            if(h!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/alterarHospedagem");
+                mv.addObject("hospedagem", h);
+                System.out.println("Hospedagem encontrada para alteração!");
+            }else{
+                mv.addObject("mensagem", "<Strong> Erro!</Strong> Dados de hospedagem não encontrados!");
+                mv.addObject("tipo", "danger");
+            }
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv; 
+    }
+    
+    @RequestMapping(value = "alterarHospedagemForm.html", method = RequestMethod.GET)
     public String alterarHospedagemForm(){	
-            return "/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/alterarHospedagem";
+            return "forward:hospedagensCorrentesAlterar.html";
+    }
+    
+    @RequestMapping(value = "alterarHospedagem.html", method = RequestMethod.POST)
+    public ModelAndView alterarHospedagem(HttpServletRequest rq, HttpSession session){	
+        System.out.println("-------------------------------");
+        System.out.println("Submit Alteração de Hospedagem...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoHospedagens/hospedagensCorrentesAlterar");
+        
+        String dataFinal = rq.getParameter("dataFinal");
+        String valorHospedagem = rq.getParameter("valorHospedagem");
+        String horaFinal = rq.getParameter("horaFinal");
+
+        if(rq.getParameter("cod")!=null && dataFinal!=null && valorHospedagem!=null && horaFinal!=null){
+            String valorReplace = valorHospedagem.replaceAll(",", "");
+            Float valorNovo = Float.parseFloat(valorReplace);
+            
+            horaFinal = horaFinal+":00";
+            
+            Hospedagem h = new Hospedagem();
+            
+            int codHospedagem = Integer.parseInt(rq.getParameter("cod"));
+            h.setCod(codHospedagem);
+            
+            HospedagemDao hD = new HospedagemDao();
+            QuartoDao qD = new QuartoDao();
+            Quarto q = new Quarto();
+
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+
+            q = qD.carregarQuartoHospedagem(h, est);
+
+            if(q!=null){
+                q.setEstabelecimento(est);
+				
+                h.setDataFinal(dataFinal);
+                h.setValorHospedagem(valorNovo);
+                h.setHoraFinal(horaFinal);
+                h.setQuarto(q);
+				
+                int retorno = hD.alterarHospedagem(h);
+
+                if(retorno==1){
+                    mv.addObject("mensagem", "<Strong> Sucesso!</Strong> Hospedagem alterada com sucesso!");
+                    mv.addObject("tipo", "success");
+                    System.out.println("Hospedagem alterada com sucesso!");
+                }else{
+                    mv.addObject("mensagem", "<Strong> Aviso!</Strong> Hospedagem não alterada!");
+                    mv.addObject("tipo", "danger");
+                }
+            }   
+        }
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "alterarHospedagem.html", method = RequestMethod.GET)
+    public String alterarHospedagem(){	
+            return "forward:hospedagensCorrentesAlterar.html";
     }
     
     @RequestMapping("hospedagensTermino.html")

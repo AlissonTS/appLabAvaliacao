@@ -124,6 +124,12 @@
                                     <span style="display: none" id="val">${quarto.valorDiaria}</span>
                                     <h4 class="text-center" style="font-size: 20px;">Informações do Período:</h4>
                                     <br>
+                                    <div class="form-group row">
+                                            <label for="valorDiaria" class="col-md-4 col-xs-4 col-form-label">Valor da Diária:</label>
+                                            <div class="col-md-5 col-xs-8">
+                                                <input class="form-control" style="height: 50px;" value="${quarto.valorDiaria}" type="text" id="valorDiaria" name="valorDiaria" required="true" maxlength="10" placeholder="####-##-##" pattern="\d{4}\-\d{2}\-\d{2}" title="####-##-##" disabled>
+                                            </div>
+                                        </div>
                                     <div class="form-group row" id="dataFinal-Div">
                                         <label for="dataFinal" class="col-md-4 col-xs-4 col-form-label"><i class="fa fa-calendar" style="font-size: 20px;"></i> Data Final:</label>
                                         <div class="col-md-5 col-xs-8">

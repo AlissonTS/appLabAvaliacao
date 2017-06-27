@@ -102,6 +102,12 @@
                 <div class="container-fluid" style="margin-bottom: 3%">
                     <div class="row" style="margin-left: 0px; margin-right: 0px; font-size: 16px;">
                         <div class="col-md-offset-1 col-md-10 col-xs-12">
+                            <c:if test="${not empty mensagem}">
+                                <div class="alert alert-${tipo}" style="margin-top: 3%; font-size: 16px;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    ${mensagem}
+                                </div>
+                            </c:if>
                             <h2 class="text-center" style="font-size: 28px;">Alterar Hospedagem</h2>
                             <h3 class="text-center" style="font-size: 25px;">Hospedagens Correntes</h3>
                             <br>
@@ -132,7 +138,7 @@
                                                   <td>${hospedagem.quarto.valorDiaria}</td>
                                                   <td>${hospedagem.valorHospedagem}</td>
                                                   <td class="text-center"><form action="hospedesQuartoHospedagemAlterar.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
-                                                  <td class="text-center"><a href="alterarHospedagemForm.html" class="btn btn-primary" role="button">Alterar</a></td>
+                                                  <td class="text-center"><form action="alterarHospedagemForm.html" method="POST"><button type="submit" value="${hospedagem.cod}" name="cod" class="btn btn-primary">Alterar</button></form></td>
                                                 </tr>
                                             </c:forEach>   
                                       </tbody>

@@ -22,6 +22,5 @@ br\ufsm\csi\hotelmanagementats\controller\EstabelecimentoController.class
 br\ufsm\csi\hotelmanagementats\model\Hospede.class
 br\ufsm\csi\hotelmanagementats\dao\UsuarioAdmDao.class
 br\ufsm\csi\hotelmanagementats\controller\MenuEstabelecimentoController.class
-br\ufsm\csi\hotelmanagementats\model\Foto.class
 br\ufsm\csi\hotelmanagementats\model\UsuarioOperador.class
 br\ufsm\csi\hotelmanagementats\controller\AcessoController.class

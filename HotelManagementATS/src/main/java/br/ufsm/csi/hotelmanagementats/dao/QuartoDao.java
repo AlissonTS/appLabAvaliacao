@@ -383,8 +383,8 @@ public class QuartoDao {
             c.close();
         }catch(SQLException e){
             System.out.println("Exception SQL!");
-            e.printStackTrace();
             q = null;
+            e.printStackTrace();
         }
 
         return q;
@@ -445,7 +445,8 @@ public class QuartoDao {
             q = null;
         } catch (ParseException ex) {
             q = null;
-            Logger.getLogger(QuartoDao.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(QuartoDao.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
 
         return q;
@@ -509,7 +510,8 @@ public class QuartoDao {
             h = null;
         } catch (ParseException ex) {
             h = null;
-            Logger.getLogger(QuartoDao.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(QuartoDao.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
 
         return h;
