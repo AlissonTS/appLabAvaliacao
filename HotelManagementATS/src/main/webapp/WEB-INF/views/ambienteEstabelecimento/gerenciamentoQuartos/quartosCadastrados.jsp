@@ -93,6 +93,7 @@
                                           <th>Máximo de Hóspedes</th>
                                           <th>Valor da diária (R$)</th>
                                           <th>Estado do Quarto</th>
+                                          <th>Mostrar Quarto</th>
                                           <th>Alterar Quarto</th>
                                           <th>Habilitar/Desabilitar Quarto</th>
                                         </tr>
@@ -107,16 +108,19 @@
                                           <c:choose>
                                              <c:when test="${quarto.estado==0}">
                                                  <td>Desocupado</td>
+                                                 <td class="text-center"><form action="mostrarQuarto.html" method="POST"><button type="submit" value="${quarto.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
                                                  <td class="text-center"><form action="alterarQuartoForm.html" method="POST"><button value="${quarto.cod}" name="cod" type="submit" class="btn btn-primary">Alterar</button></form></td>
                                                  <td class="text-center"><button type="button" id="desabilitarQuarto" name="cod" class="btn btn-default" data-toggle="modal" data-target="#confirmDesabilitar">Desabilitar</button></td>
                                              </c:when>
                                              <c:when test="${quarto.estado==1}">
                                                  <td>Ocupado</td>
+                                                 <td class="text-center"><form action="mostrarQuarto.html" method="POST"><button type="submit" value="${quarto.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
                                                  <td>Alteração não pode ser feita</td>
                                                  <td>Não é possível desabilitar</td>
                                              </c:when>
                                              <c:when test="${quarto.estado==2}">
                                                  <td>Desabilitado</td>
+                                                 <td class="text-center"><form action="mostrarQuarto.html" method="POST"><button type="submit" value="${quarto.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>
                                                  <td>Alteração não pode ser feita</td>
                                                  <td class="text-center"><button type="button" id="habilitarQuarto" name="cod" class="btn btn-default" data-toggle="modal" data-target="#confirmHabilitar">Habilitar</button></td>
                                              </c:when>

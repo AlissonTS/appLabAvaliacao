@@ -243,6 +243,48 @@ public class QuartoDao {
         return q;
     }
     
+    public Quarto carregarQuartoMostrar(Quarto q){
+        
+        System.out.println("\nQuartoDao - Carregar quarto do Estabelecimento para ser mostrado...\n");
+        
+        Connection c = null;
+        PreparedStatement stmt = null;
+
+        try{
+            c = ConectaBD.getConexao();
+            String sql;
+
+            sql = "SELECT * FROM QUARTO WHERE cod=? AND codEstabelecimento=?;";
+            stmt = c.prepareStatement(sql);	
+            stmt.setInt(1, q.getCod());
+            stmt.setInt(2, q.getEstabelecimento().getCod());
+
+            ResultSet valor = stmt.executeQuery();	
+
+            while(valor.next()){
+                q.setCod(valor.getInt("cod"));
+                q.setNumero(valor.getInt("numero"));
+                q.setArea(valor.getFloat("area"));
+                q.setMaxHosp(valor.getInt("maxHosp"));
+                q.setDescricaoExtra(valor.getString("descricaoExtra"));
+                q.setValorDiaria(valor.getFloat("valorDiaria"));
+            }
+
+            if(q.getNumero()<0){
+                q = null;
+            }
+
+            stmt.close();
+            c.close();
+        }catch(SQLException e){
+            System.out.println("Exception SQL!");
+            q = null;
+            e.printStackTrace();
+        }
+
+        return q;
+    }
+    
     public int alterarQuarto(Quarto q){
         int retorno = 0;
         

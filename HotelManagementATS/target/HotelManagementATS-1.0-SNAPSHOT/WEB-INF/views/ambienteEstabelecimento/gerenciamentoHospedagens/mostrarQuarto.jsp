@@ -7,7 +7,7 @@
 <%@ include file="../../../../import/contentType.jsp" %>
 <html>
     <head>
-        <title>Mostrar Quarto - ATS-HM</title>
+        <title>Mostrar Quarto Desocupado - ATS-HM</title>
         <%@ include file="../../../../import/head.jsp" %>
     </head>
     <body>

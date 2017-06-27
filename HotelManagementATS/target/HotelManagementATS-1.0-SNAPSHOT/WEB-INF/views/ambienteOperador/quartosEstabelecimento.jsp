@@ -71,13 +71,14 @@
                                           <th>Máximo de Hóspedes</th>
                                           <th>Valor da diária (R$)</th>
                                           <th>Estado do Quarto</th>
+                                          <th>Mostrar Quarto</th>
                                         </tr>
                                       </thead>
                                       <tbody>
                                        <c:forEach var="quarto" items="${quartos}">    
                                         <tr>
-                                          <th data-numero="${quarto.numero}">${quarto.numero}</th>
-                                          <td data-cod="${quarto.cod}">${quarto.area}</td>
+                                          <th>${quarto.numero}</th>
+                                          <td>${quarto.area}</td>
                                           <td>${quarto.maxHosp}</td>
                                           <td>${quarto.valorDiaria}</td>
                                           <c:choose>
@@ -91,6 +92,7 @@
                                                  <td>Desabilitado</td>
                                              </c:when>
                                           </c:choose>
+                                          <td class="text-center"><form action="mostrarQuarto.html" method="POST"><button type="submit" value="${quarto.cod}" name="cod" class="btn btn-info">Mostrar</button></form></td>     
                                         </tr>
                                        </c:forEach>
                                        </tbody>

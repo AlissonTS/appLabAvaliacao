@@ -8,6 +8,8 @@ package br.ufsm.csi.hotelmanagementats.controller;
 import br.ufsm.csi.hotelmanagementats.dao.QuartoDao;
 import br.ufsm.csi.hotelmanagementats.model.Estabelecimento;
 import br.ufsm.csi.hotelmanagementats.model.Quarto;
+import br.ufsm.csi.hotelmanagementats.model.UsuarioAdministrador;
+import br.ufsm.csi.hotelmanagementats.model.UsuarioOperador;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -58,6 +60,73 @@ public class QuartoController {
     @RequestMapping(value = "mostrarQuartoDesocupado.html", method = RequestMethod.GET)
     public String mostrarQuartoDesocupado(){	
             return "forward:quartosDesocupados.html";
+    }
+    
+    @RequestMapping(value = "mostrarQuarto.html", method = RequestMethod.POST)
+    public ModelAndView mostrarQuarto(HttpServletRequest rq, HttpSession session){	
+        System.out.println("-------------------------------");
+        System.out.println("Submit Escolha Quarto do Estabelecimento para Mostrar...");
+        
+        ModelAndView mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/paginaPrincipalEstabelecimento");
+        
+        QuartoDao qD = new QuartoDao();
+        
+        String cod = rq.getParameter("cod");
+        System.out.println("Código: "+cod);
+        
+        if(rq.getParameter("cod")!=null){
+            int codQuarto= Integer.parseInt(rq.getParameter("cod"));
+            
+            UsuarioOperador uOp = (UsuarioOperador) session.getAttribute("operador");
+            UsuarioAdministrador uAdm = (UsuarioAdministrador) session.getAttribute("administrador");
+            
+            if(uOp!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteOperador/quartosEstabelecimento");
+            }else if(uAdm!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/quartosCadastrados");
+            }
+            
+            Quarto q = new Quarto();
+            q.setCod(codQuarto);
+			
+            Estabelecimento est = (Estabelecimento) session.getAttribute("estabelecimentoEscolhido");
+            
+            q.setEstabelecimento(est);
+			
+            q = qD.carregarQuartoMostrar(q);
+            
+            if(q!=null){
+                mv = new ModelAndView("/WEB-INF/views/ambienteEstabelecimento/gerenciamentoQuartos/mostrarQuarto");
+                mv.addObject("quartoEscolhido", q);
+                
+                if(uOp!=null){
+                    mv.addObject("verificador", 1);
+                }else if(uAdm!=null){
+                    mv.addObject("verificador", 0);
+                }
+                
+                System.out.println("Quarto buscado para ser mostrado!");
+            }
+        }
+        
+        System.out.println("\n-------------------------------\n");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "mostrarQuarto.html", method = RequestMethod.GET)
+    public String mostrarQuarto(HttpSession session){
+        UsuarioOperador uOp = (UsuarioOperador) session.getAttribute("operador");
+        UsuarioAdministrador uAdm = (UsuarioAdministrador) session.getAttribute("administrador");
+        
+        String retorno = "paginaInicial.html";
+        
+        if(uOp!=null){
+            retorno = "forward:quartosEstabelecimento.html";
+        }else if(uAdm!=null){
+            retorno = "forward:quartosCadastrados.html";
+        }
+        return retorno;
     }
     
     @RequestMapping("cadastrarQuartoForm.html")
