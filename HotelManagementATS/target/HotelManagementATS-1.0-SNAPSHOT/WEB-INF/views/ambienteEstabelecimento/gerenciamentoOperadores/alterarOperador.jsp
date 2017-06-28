@@ -79,7 +79,7 @@
                             <h2 class="text-center" style="font-size: 25px;">Alterar Operador</h2>
                             <br>
                             <c:if test="${not empty operadorEscolhido}">
-                                <form id="formularioAlterar" role="form" action="alterarOperadorEstabelecimento.html" method="POST" style="font-size: 16px;">
+                                <form id="formularioAlterarConta" role="form" action="alterarOperadorEstabelecimento.html" method="POST" style="font-size: 16px;">
                                     <div class="form-group row">
                                         <input class="form-control" value="${operadorEscolhido.cod}" type="hidden" required="true" name="cod" id="cod" maxlength="40" pattern="[0-9]+$" title="Apenas Números">
                                         <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
@@ -182,5 +182,4 @@
     </body>
     <script type="text/javascript" src="scripts/mask.js"></script>
     <script type="text/javascript" src="scripts/hiddenForm.js"></script>
-    <script type="text/javascript" src="scripts/modalAcao.js"></script>
 </html>

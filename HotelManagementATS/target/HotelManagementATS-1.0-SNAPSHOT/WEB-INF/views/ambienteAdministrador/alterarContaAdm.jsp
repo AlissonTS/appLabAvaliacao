@@ -51,7 +51,7 @@
                             </c:if>
                             <h2 class="text-center" style="font-size: 28px;">Alterar Conta</h2>
                             <br>
-                            <form id="formularioAlterar" role="form" action="alterarAdministrador.html" method="POST" style="font-size: 16px;">
+                            <form id="formularioAlterarConta" role="form" action="alterarAdministrador.html" method="POST" style="font-size: 16px;">
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                     <div class="col-md-8 col-xs-8">
@@ -86,7 +86,7 @@
                                     <label for="redefinir" class="col-md-3 col-xs-4 col-form-label">Redefinir Senha? </label>
                                     <div class="col-md-8 col-xs-8">
                                         <select class="form-control" id="redefinir" name="redefinir" style="height: 50px;">
-                                            <option value="Não">Não</option>
+                                            <option value="Não" checked>Não</option>
                                             <option value="Sim">Sim</option>
                                         </select>
                                     </div>
@@ -147,6 +147,5 @@
         <%@ include file="../../../import/js.jsp" %>
         <script type="text/javascript" src="scripts/mask.js"></script>
         <script type="text/javascript" src="scripts/hiddenForm.js"></script>
-        <script type="text/javascript" src="scripts/modalAcao.js"></script> 
     </body>
 </html>

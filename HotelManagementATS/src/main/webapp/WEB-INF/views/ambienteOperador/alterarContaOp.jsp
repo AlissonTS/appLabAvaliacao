@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 5%">
-                        <div class="col-md-offset-3 col-md-6 col-xs-12">
+                        <div class="col-md-offset-3 col-md-6 col-xs-12" style="font-size: 16px;">
                             <c:if test="${not empty mensagem}">
                                 <div class="alert alert-${tipo}" style="margin-top: 3%; font-size: 16px;">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -68,7 +68,7 @@
                             </c:if>
                             <h2 class="text-center" style="font-size: 28px;">Alterar Conta</h2>
                             <br>
-                            <form id="formularioAlterar" role="form" action="alterarOpLogado.html" method="POST" style="font-size: 16px;">
+                            <form id="formularioAlterarConta" role="form" action="alterarOpLogado.html" method="POST" style="font-size: 16px;">
                                 <div class="form-group row">
                                     <label for="nome" class="col-md-3 col-xs-4 col-form-label">Nome Completo: </label>
                                     <div class="col-md-8 col-xs-8">
@@ -164,6 +164,5 @@
         <%@ include file="../../../import/js.jsp" %>
         <script type="text/javascript" src="scripts/mask.js"></script>
         <script type="text/javascript" src="scripts/hiddenForm.js"></script>
-        <script type="text/javascript" src="scripts/modalAcao.js"></script>
     </body>
 </html>

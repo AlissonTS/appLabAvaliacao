@@ -23,15 +23,20 @@
                 });
                 
                 $("form").submit(function(event){
+                    event.preventDefault();
                     if ($('#senha').val() === $('#senhaN').val() && $('#redefinir').val() === 'Sim') {
-                        return true;
+                        $("#confirmAlterar").modal("show");
                     }else if($('#redefinir').val() !== 'Sim'){
-                        return true;
+                        $("#confirmAlterar").modal("show");
                     }else{
                         $('#avisoDiv').show();
                         $("#avisoContent").html("<Strong> Erro</Strong> Senhas diferentes!");
                         return false;
                     }
+                });
+                
+                $('#yesAlterar').click(function(){
+                    $('#formularioAlterarConta').unbind('submit').submit();
                 });
             });
 
